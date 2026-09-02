@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dharmapuri — coming soon</title>
+<meta name="description" content="The Dharmapuri app is on the way: government offices, landmarks, markets and local shops in one place.">
+<meta name="theme-color" content="#fbfaf6">
+<meta property="og:title" content="Dharmapuri — coming soon">
+<meta property="og:description" content="Government offices, landmarks, markets and local shops of Dharmapuri, in one app.">
+<meta property="og:image" content="icon-512.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fbfaf6;
+    --ink:#133a2b;
+    --orange:#e4711f;
+    --leaf:#3e8e2f;
+    --muted:#5f7268;
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    min-height:100svh;
+    background:
+      radial-gradient(120% 62% at 50% 6%, #fff6e6 0%, rgba(255,246,230,0) 62%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"Anek Tamil",system-ui,sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:clamp(2rem,6vh,4.5rem) 1.25rem 1.5rem;
+  }
+
+  .stage{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    max-width:33rem;
+  }
+
+  .logo{
+    width:min(21rem,76vw);
+    height:auto;
+    display:block;
+  }
+
+  .soon-ta{
+    margin:clamp(1.5rem,4vh,2.5rem) 0 .1rem;
+    font-size:clamp(1.15rem,4vw,1.4rem);
+    font-weight:500;
+    color:var(--orange);
+    line-height:1.2;
+  }
+
+  h1{
+    margin:0;
+    font-size:clamp(2rem,7.5vw,2.9rem);
+    font-weight:600;
+    letter-spacing:-.02em;
+    line-height:1.05;
+  }
+
+  .arc{
+    width:min(15rem,60vw);
+    height:14px;
+    margin:1.4rem 0 0;
+  }
+  .arc path{
+    fill:none;
+    stroke:var(--orange);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    opacity:.55;
+  }
+
+  .lede{
+    margin:1.5rem 0 0;
+    max-width:29rem;
+    font-size:clamp(1.02rem,2.6vw,1.14rem);
+    line-height:1.6;
+    color:var(--muted);
+  }
+
+  .store{
+    margin:1.6rem 0 0;
+    font-size:.98rem;
+    font-weight:500;
+    color:var(--leaf);
+  }
+
+  footer{
+    margin-top:2.5rem;
+    font-size:.9rem;
+    color:color-mix(in srgb,var(--muted) 82%,var(--paper));
+  }
+  footer a{
+    color:inherit;
+    text-decoration:none;
+    border-bottom:1px solid color-mix(in srgb,var(--orange) 60%,transparent);
+  }
+  footer a:hover{color:var(--ink)}
+
+  .logo,.soon-ta,h1,.arc,.lede,.store{
+    animation:rise .85s cubic-bezier(.2,.7,.25,1) both;
+  }
+  .soon-ta{animation-delay:.12s}
+  h1{animation-delay:.18s}
+  .arc{animation-delay:.26s}
+  .lede{animation-delay:.32s}
+  .store{animation-delay:.38s}
+  @keyframes rise{
+    from{opacity:0;transform:translateY(.6rem)}
+    to{opacity:1;transform:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important}
+  }
+
+  :focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
+</style>
+</head>
+<body>
+
+  <main class="stage">
+    <img class="logo" src="dpi-logo.png" width="760" height="964"
+         alt="Dharmapuri — Hogenakkal falls, the hill fort and the temple gopuram inside a leaf emblem">
+
+    <p class="soon-ta" lang="ta">விரைவில்</p>
+    <h1>Coming soon</h1>
+
+    <svg class="arc" viewBox="0 0 240 14" aria-hidden="true">
+      <path d="M4 10C60 2 180 2 236 10"/>
+    </svg>
+
+    <p class="lede">
+      Government offices, landmarks, markets, repair shops and wholesale
+      traders across the district — all in one app.
+    </p>
+
+    <p class="store">Launching on Google Play</p>
+  </main>
+
+  <footer>
+    Dharmapuri, Tamil Nadu &nbsp;·&nbsp;
+    <a href="mailto:admin@techieqa.com">admin@techieqa.com</a>
+  </footer>
+
+</body>
+</html>
