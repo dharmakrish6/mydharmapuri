@@ -1,0 +1,108 @@
+{
+  "district": "Dharmapuri",
+  "state": "Tamil Nadu",
+  "lastUpdated": "2026-09-03",
+  "note": "Places verified as being within Dharmapuri district via web search; images are from Wikimedia Commons where available, credited and licensed as noted. Independently verify before relying on this for travel planning.",
+  "places": [
+    {
+      "name": "Hogenakkal Falls",
+      "taluk": "Pennagaram",
+      "description": "Waterfalls where the Cauvery river cascades over rocks near the Tamil Nadu-Karnataka border, nicknamed the 'Niagara of India'. Visitors take coracle (parisal) rides through the rapids and can get traditional oil massages by the riverside.",
+      "howToReach": "About 46 km from Dharmapuri town; nearest town is Hogenakkal itself, reachable by road via Pennagaram.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hogenakkal_Falls_(9034353464).jpg?width=800",
+        "credit": "Photo: Ashwin Kumar / Wikimedia Commons",
+        "license": "CC BY-SA 2.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Hogenakkal_Falls_(9034353464).jpg"
+      }
+    },
+    {
+      "name": "Adhiyamankottai Fort",
+      "taluk": "Dharmapuri",
+      "description": "Ruins of an oval-shaped mud fort built by the ancient Adhiyaman chieftains of Thagadur, one of the oldest forts in Tamil Nadu. The fort complex also contains a lake and historic temples, including the Chenraya Perumal Temple.",
+      "howToReach": "About 5-7 km from Dharmapuri town on the Salem-Dharmapuri road, in Adhiyamankottai village.",
+      "image": null
+    },
+    {
+      "name": "Chenraya Perumal Temple, Adhiyamankottai",
+      "taluk": "Dharmapuri",
+      "description": "A large Vishnu temple within the Adhiyamankottai fort complex, held as a protected monument and believed to have contributions from the Krishnadevaraya and Hoysala periods.",
+      "howToReach": "Located inside the Adhiyamankottai fort site, about 5-7 km from Dharmapuri town.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chenraya_perumal_temple.jpg?width=800",
+        "credit": "Photo: Jchetan / Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Chenraya_perumal_temple.jpg"
+      }
+    },
+    {
+      "name": "Adhiyamaan Kottai Mariyamman Temple",
+      "taluk": "Dharmapuri",
+      "description": "A Mariyamman (goddess) temple within the historic Adhiyamankottai fort premises, photographed as part of the Wiki Loves Monuments heritage documentation project.",
+      "howToReach": "Located within the Adhiyamankottai fort site, about 5-7 km from Dharmapuri town.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Adhiyamaan_Kottai_Maariyamman_temple1_(Q31372213).jpg?width=800",
+        "credit": "Photo: Ktmnandhu / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Adhiyamaan_Kottai_Maariyamman_temple1_(Q31372213).jpg"
+      }
+    },
+    {
+      "name": "Mallikarjunar Temple (Kottai Kovil)",
+      "taluk": "Dharmapuri",
+      "description": "An 8th-9th century Shiva temple on the northern side of Dharmapuri town, also called Kottai Kovil ('fort temple') because it resembles a fort and has no main tower. Famous for a carved stone pillar in the sanctum that appears to hang without touching its base.",
+      "howToReach": "On the Dharmapuri bus stand-Tiruppatur road, within Dharmapuri town.",
+      "image": null
+    },
+    {
+      "name": "Theerthamalai (Theerthagirishwarar Temple)",
+      "taluk": "Harur",
+      "description": "A hilltop Shiva temple reached by climbing about a kilometre up a hillock, dating from around the 7th century with later Chola and Pandya contributions. Known for five sacred springs and a small seasonal waterfall (Rama Theertham) near the temple.",
+      "howToReach": "Located in Theerthamalai village in Harur taluk.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Theerthamalai_Temple_Drone_Pic_10.jpg?width=800",
+        "credit": "Photo: Theerthamalai Temple (Wikimedia Commons uploader) / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Theerthamalai_Temple_Drone_Pic_10.jpg"
+      }
+    },
+    {
+      "name": "Vaniyar Dam",
+      "taluk": "Pappireddipatti",
+      "description": "An irrigation dam built across the Vaniyar river (a tributary of the Ponnaiyar) at the foothills of the Shevaroy Hills, popular as a picnic and scenic spot near Pappireddipatti.",
+      "howToReach": "About 5 km from Pappireddipatti town.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Vaniyar_Dam,_Pappireddipatti.jpg?width=800",
+        "credit": "Photo: Raj.sathiya / Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Vaniyar_Dam,_Pappireddipatti.jpg"
+      }
+    },
+    {
+      "name": "Cauvery North Wildlife Sanctuary (Melagiri Hills)",
+      "taluk": "Palacode",
+      "description": "A wildlife sanctuary declared in 2014, covering part of the Melagiri hill range in Palacode taluk (the rest lies in Krishnagiri district). Dry deciduous and shola forest that is home to elephants, leopards, sloth bears and gaur.",
+      "howToReach": "Forest areas accessible via Palacode; visits typically require Tamil Nadu Forest Department permission.",
+      "image": null
+    },
+    {
+      "name": "Modhur Archaeological Site",
+      "taluk": "Palacode",
+      "description": "A Neolithic and Megalithic habitation site excavated in 2004-2005, yielding stone tools, pottery, and a terracotta mother-goddess figurine; thought to have been linked to the ancient Adhiyaman kingdom's territory.",
+      "howToReach": "About 15 km from Dharmapuri town, in Palacode taluk.",
+      "image": null
+    },
+    {
+      "name": "Hero Stones Site Museum, Dharmapuri",
+      "taluk": "Dharmapuri",
+      "description": "An archaeological museum set up in 1979 near the Dharmapuri bus stand, displaying over 25 hero stones (memorial stones for those who died protecting their village) along with Neolithic tools, sculptures, coins and terracotta figurines from the district.",
+      "howToReach": "Near the main bus stand in the centre of Dharmapuri town.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Raja_Rani_Sculpture_at_Site_Museum_Dharmapuri.jpg?width=800",
+        "credit": "Photo: Thamizhpparithi Maari / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Raja_Rani_Sculpture_at_Site_Museum_Dharmapuri.jpg"
+      }
+    }
+  ]
+}

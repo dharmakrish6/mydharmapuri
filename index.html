@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dharmapuri — Govt offices, schools &amp; colleges directory</title>
-<meta name="description" content="Address and contact details for government offices, schools and colleges across Dharmapuri district. The Dharmapuri app is on the way.">
+<title>Dharmapuri — Directory &amp; places to visit</title>
+<meta name="description" content="Address and contact details for government offices, schools and colleges, plus sightseeing spots, across Dharmapuri district. The Dharmapuri app is on the way.">
 <meta name="theme-color" content="#f2f3ec">
-<meta property="og:title" content="Dharmapuri — Govt offices, schools & colleges directory">
-<meta property="og:description" content="Government offices, schools and colleges of Dharmapuri district, with address and contact — plus landmarks, markets and local shops coming soon in the app.">
+<meta property="og:title" content="Dharmapuri — Directory & places to visit">
+<meta property="og:description" content="Government offices, schools, colleges and sightseeing spots of Dharmapuri district, with address, contact and photos — plus markets and local shops coming soon in the app.">
 <meta property="og:image" content="icon-512.png">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="icon-512.png">
@@ -24,6 +24,7 @@
     --orange:#e4711f;
     --leaf:#3e8e2f;
     --teal:#2c8781;
+    --gold:#b8862c;
     --muted:#5f7268;
     --line:#e2e2d4;
     --shadow:0 1px 2px rgba(19,58,43,.05), 0 8px 24px -12px rgba(19,58,43,.18);
@@ -41,6 +42,7 @@
       --orange:#f0955a;
       --leaf:#6dc860;
       --teal:#4fc2ba;
+      --gold:#e0ac4c;
       --muted:#8fa599;
       --line:#243128;
       --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
@@ -216,8 +218,9 @@
   }
   .finder-icons{
     display:flex;
+    flex-wrap:wrap;
     justify-content:center;
-    gap:clamp(1rem,4vw,1.6rem);
+    gap:clamp(.85rem,4vw,1.6rem);
     margin-bottom:1.3rem;
   }
   .finder-icon-btn{
@@ -241,6 +244,7 @@
   .finder-icon-btn[data-cat="government_offices"] .finder-icon-circle{background:linear-gradient(135deg,var(--leaf),color-mix(in srgb,var(--leaf) 65%,black))}
   .finder-icon-btn[data-cat="schools"] .finder-icon-circle{background:linear-gradient(135deg,var(--orange),color-mix(in srgb,var(--orange) 65%,black))}
   .finder-icon-btn[data-cat="colleges"] .finder-icon-circle{background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black))}
+  .finder-icon-btn[data-cat="sightseeing"] .finder-icon-circle{background:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 65%,black))}
   .finder-icon-btn .finder-icon-circle svg{width:1.3rem;height:1.3rem}
   .finder-icon-btn[aria-selected="true"] .finder-icon-circle{transform:translateY(-3px) scale(1.06);box-shadow:var(--shadow-hover)}
   .finder-icon-btn[aria-selected="true"]{color:var(--ink);font-weight:700}
@@ -511,11 +515,22 @@
     position:relative;
     height:5rem;
     display:grid;place-items:center;
+    overflow:hidden;
   }
   .card-media svg{width:2rem;height:2rem;color:#fff;opacity:.92}
   .cat-government_offices{background:linear-gradient(135deg,var(--leaf),color-mix(in srgb,var(--leaf) 65%,black))}
   .cat-schools{background:linear-gradient(135deg,var(--orange),color-mix(in srgb,var(--orange) 65%,black))}
   .cat-colleges{background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black))}
+  .cat-sightseeing{background:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 65%,black))}
+
+  .card-media.has-photo{height:9.5rem}
+  .card-media.has-photo img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
 
   .media-badge{
     position:absolute;
@@ -543,6 +558,11 @@
   .card-phone a{display:inline-flex;align-items:center;gap:.35rem;color:var(--leaf);font-weight:700}
   .card-phone a:hover{text-decoration:underline}
   .card-phone .muted{color:var(--muted);font-weight:400;display:inline-flex;align-items:center;gap:.35rem}
+  .card-desc{margin:0;font-size:.85rem;line-height:1.5;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .card-reach{margin:0;display:flex;gap:.4rem;font-size:.8rem;line-height:1.4;color:var(--muted)}
+  .card-reach svg{margin-top:.15rem;color:color-mix(in srgb,var(--gold) 80%,transparent)}
+  .img-credit{margin:.1rem 0 0;font-size:.68rem;color:color-mix(in srgb,var(--muted) 80%,transparent)}
+  .img-credit a{text-decoration:underline}
 
   .empty{color:var(--muted);font-size:.95rem;padding:2.5rem 0;text-align:center}
 
@@ -638,6 +658,7 @@
         <a href="#directory" data-cat="government_offices">Government</a>
         <a href="#directory" data-cat="schools">Schools</a>
         <a href="#directory" data-cat="colleges">Colleges</a>
+        <a href="#directory" data-cat="sightseeing">Places to visit</a>
         <a href="#app">App</a>
       </nav>
       <a class="nav-cta" href="#app">Coming soon</a>
@@ -671,6 +692,12 @@
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
             </span>
             <span class="label">Colleges</span>
+          </button>
+          <button type="button" class="finder-icon-btn" role="tab" data-cat="sightseeing">
+            <span class="finder-icon-circle">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 5.5-6L13 16l3-4 5 6"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/></svg>
+            </span>
+            <span class="label">Places</span>
           </button>
         </div>
 
@@ -710,7 +737,7 @@
     <section class="block wrap" id="directory">
       <div class="block-head">
         <h2>Browse the directory</h2>
-        <p>Government offices, schools and colleges across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
+        <p>Government offices, schools, colleges and sightseeing spots across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
       </div>
 
       <div class="browse-layout">
@@ -724,6 +751,7 @@
             <button type="button" class="tab" role="tab" data-cat="government_offices">Government offices <span class="n" data-n="government_offices">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="schools">Schools <span class="n" data-n="schools">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="colleges">Colleges <span class="n" data-n="colleges">0</span></button>
+            <button type="button" class="tab" role="tab" data-cat="sightseeing">Places to visit <span class="n" data-n="sightseeing">0</span></button>
           </div>
 
           <div class="controls">
@@ -746,7 +774,7 @@
       <div class="cta-inner">
         <div>
           <p class="cta-eyebrow" lang="ta">விரைவில்</p>
-          <h2>Mobile app coming soon —<br>landmarks, markets &amp; shops too.</h2>
+          <h2>Mobile app coming soon —<br>markets &amp; local shops too.</h2>
         </div>
         <span class="cta-badge">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -763,13 +791,14 @@
           <span class="brand-mark">D</span>
           <span class="brand-name">DHARMAPURI</span>
         </a>
-        <p>Government offices, schools and colleges of Dharmapuri district — address and contact, in one place.</p>
+        <p>Government offices, schools, colleges and sightseeing spots of Dharmapuri district — address, contact and photos, in one place.</p>
       </div>
       <div class="footer-col">
         <h4>Directory</h4>
         <a href="#directory" data-cat="government_offices">Government offices</a>
         <a href="#directory" data-cat="schools">Schools</a>
         <a href="#directory" data-cat="colleges">Colleges</a>
+        <a href="#directory" data-cat="sightseeing">Places to visit</a>
       </div>
       <div class="footer-col" id="footerTaluks">
         <h4>Areas</h4>
@@ -793,6 +822,7 @@
   "country": "India",
   "lastUpdated": "2026-09-03",
   "note": "Compiled from publicly available sources (official Dharmapuri district administration website dharmapuri.nic.in, Periyar University, Wikipedia, and institution websites); addresses and contact numbers should be independently verified. Phone numbers are office/institution landlines where found; personal mobile numbers of individual officers were intentionally excluded. Some source pages listed a few numbers with an apparently mismatched STD code (e.g. Palacode-area schools listed under Dharmapuri's 04342 code) — these are reproduced as published, not corrected.",
+  "imageNote": "Sightseeing places were checked against official/Wikipedia sources to confirm they lie within Dharmapuri district; photos are from Wikimedia Commons, credited and licensed as shown on each card, and were left out entirely (rather than guessed) where no verified photo of that specific place could be found.",
   "categories": {
     "government_offices": [
       { "name": "District Collectorate, Dharmapuri", "type": "Collectorate", "taluk": "Dharmapuri", "address": "Collectorate, Dharmapuri - 636705", "phone": "04342-231500" },
@@ -868,6 +898,18 @@
       { "name": "S.M Arumugam Polytechnic College", "type": "Private", "stream": "Polytechnic", "taluk": "Dharmapuri", "address": "Papinayakanahalli, Dharmapuri - 636705", "phone": "04342-264609" },
       { "name": "Sakthi I.T.I. College", "type": "Private", "stream": "ITI / Vocational", "taluk": "Dharmapuri", "address": "Kadagathur Village, Chelliyampatti Post, Dharmapuri - 636809", "phone": "04342-264967" },
       { "name": "ERK Arts and Science College", "type": "Private", "stream": "Arts & Science", "taluk": "Pappireddipatti", "address": "Erumiyampatti, Kokkarapatti (PO), Pappireddipatti (Taluk), Dharmapuri - 636905", "phone": "04346-251290" }
+    ],
+    "sightseeing": [
+      { "name": "Hogenakkal Falls", "taluk": "Pennagaram", "description": "Waterfalls where the Cauvery river cascades over rocks near the Tamil Nadu-Karnataka border, nicknamed the 'Niagara of India'. Visitors take coracle (parisal) rides through the rapids and can get traditional oil massages by the riverside.", "howToReach": "About 46 km from Dharmapuri town; nearest town is Hogenakkal itself, reachable by road via Pennagaram.", "image": { "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hogenakkal_Falls_(9034353464).jpg?width=800", "credit": "Photo: Ashwin Kumar / Wikimedia Commons", "license": "CC BY-SA 2.0", "sourcePage": "https://commons.wikimedia.org/wiki/File:Hogenakkal_Falls_(9034353464).jpg" } },
+      { "name": "Adhiyamankottai Fort", "taluk": "Dharmapuri", "description": "Ruins of an oval-shaped mud fort built by the ancient Adhiyaman chieftains of Thagadur, one of the oldest forts in Tamil Nadu. The fort complex also contains a lake and historic temples, including the Chenraya Perumal Temple.", "howToReach": "About 5-7 km from Dharmapuri town on the Salem-Dharmapuri road, in Adhiyamankottai village.", "image": null },
+      { "name": "Chenraya Perumal Temple, Adhiyamankottai", "taluk": "Dharmapuri", "description": "A large Vishnu temple within the Adhiyamankottai fort complex, held as a protected monument and believed to have contributions from the Krishnadevaraya and Hoysala periods.", "howToReach": "Located inside the Adhiyamankottai fort site, about 5-7 km from Dharmapuri town.", "image": { "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chenraya_perumal_temple.jpg?width=800", "credit": "Photo: Jchetan / Wikimedia Commons", "license": "CC BY-SA 3.0", "sourcePage": "https://commons.wikimedia.org/wiki/File:Chenraya_perumal_temple.jpg" } },
+      { "name": "Adhiyamaan Kottai Mariyamman Temple", "taluk": "Dharmapuri", "description": "A Mariyamman (goddess) temple within the historic Adhiyamankottai fort premises, photographed as part of the Wiki Loves Monuments heritage documentation project.", "howToReach": "Located within the Adhiyamankottai fort site, about 5-7 km from Dharmapuri town.", "image": { "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Adhiyamaan_Kottai_Maariyamman_temple1_(Q31372213).jpg?width=800", "credit": "Photo: Ktmnandhu / Wikimedia Commons", "license": "CC BY-SA 4.0", "sourcePage": "https://commons.wikimedia.org/wiki/File:Adhiyamaan_Kottai_Maariyamman_temple1_(Q31372213).jpg" } },
+      { "name": "Mallikarjunar Temple (Kottai Kovil)", "taluk": "Dharmapuri", "description": "An 8th-9th century Shiva temple on the northern side of Dharmapuri town, also called Kottai Kovil ('fort temple') because it resembles a fort and has no main tower. Famous for a carved stone pillar in the sanctum that appears to hang without touching its base.", "howToReach": "On the Dharmapuri bus stand-Tiruppatur road, within Dharmapuri town.", "image": null },
+      { "name": "Theerthamalai (Theerthagirishwarar Temple)", "taluk": "Harur", "description": "A hilltop Shiva temple reached by climbing about a kilometre up a hillock, dating from around the 7th century with later Chola and Pandya contributions. Known for five sacred springs and a small seasonal waterfall (Rama Theertham) near the temple.", "howToReach": "Located in Theerthamalai village in Harur taluk.", "image": { "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Theerthamalai_Temple_Drone_Pic_10.jpg?width=800", "credit": "Photo: Theerthamalai Temple (Wikimedia Commons uploader) / Wikimedia Commons", "license": "CC BY-SA 4.0", "sourcePage": "https://commons.wikimedia.org/wiki/File:Theerthamalai_Temple_Drone_Pic_10.jpg" } },
+      { "name": "Vaniyar Dam", "taluk": "Pappireddipatti", "description": "An irrigation dam built across the Vaniyar river (a tributary of the Ponnaiyar) at the foothills of the Shevaroy Hills, popular as a picnic and scenic spot near Pappireddipatti.", "howToReach": "About 5 km from Pappireddipatti town.", "image": { "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Vaniyar_Dam,_Pappireddipatti.jpg?width=800", "credit": "Photo: Raj.sathiya / Wikimedia Commons", "license": "CC BY-SA 3.0", "sourcePage": "https://commons.wikimedia.org/wiki/File:Vaniyar_Dam,_Pappireddipatti.jpg" } },
+      { "name": "Cauvery North Wildlife Sanctuary (Melagiri Hills)", "taluk": "Palacode", "description": "A wildlife sanctuary declared in 2014, covering part of the Melagiri hill range in Palacode taluk (the rest lies in Krishnagiri district). Dry deciduous and shola forest that is home to elephants, leopards, sloth bears and gaur.", "howToReach": "Forest areas accessible via Palacode; visits typically require Tamil Nadu Forest Department permission.", "image": null },
+      { "name": "Modhur Archaeological Site", "taluk": "Palacode", "description": "A Neolithic and Megalithic habitation site excavated in 2004-2005, yielding stone tools, pottery, and a terracotta mother-goddess figurine; thought to have been linked to the ancient Adhiyaman kingdom's territory.", "howToReach": "About 15 km from Dharmapuri town, in Palacode taluk.", "image": null },
+      { "name": "Hero Stones Site Museum, Dharmapuri", "taluk": "Dharmapuri", "description": "An archaeological museum set up in 1979 near the Dharmapuri bus stand, displaying over 25 hero stones (memorial stones for those who died protecting their village) along with Neolithic tools, sculptures, coins and terracotta figurines from the district.", "howToReach": "Near the main bus stand in the centre of Dharmapuri town.", "image": { "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Raja_Rani_Sculpture_at_Site_Museum_Dharmapuri.jpg?width=800", "credit": "Photo: Thamizhpparithi Maari / Wikimedia Commons", "license": "CC BY-SA 4.0", "sourcePage": "https://commons.wikimedia.org/wiki/File:Raja_Rani_Sculpture_at_Site_Museum_Dharmapuri.jpg" } }
     ]
   }
 }
@@ -876,16 +918,18 @@
   <script>
   (function(){
     var data = JSON.parse(document.getElementById('directory-data').textContent);
-    var cats = ['government_offices','schools','colleges'];
-    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges' };
+    var cats = ['government_offices','schools','colleges','sightseeing'];
+    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges', sightseeing: 'places to visit' };
 
     var pinIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
     var phoneIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
     var categoryIcons = {
       government_offices: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>',
       schools: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
-      colleges: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>'
+      colleges: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>',
+      sightseeing: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 5.5-6L13 16l3-4 5 6"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/></svg>'
     };
+    var reachIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 20l-5.5-2V4L9 6m0 14l6-2m-6 2V6m6 12l5.5 2V6L15 4m0 14V4m0 0L9 6"/></svg>';
 
     var quickNames = [
       'District Collectorate, Dharmapuri',
@@ -918,7 +962,7 @@
     var state = { cat: 'government_offices', taluk: 'all', q: '' };
 
     sourceNote.id = 'note';
-    sourceNote.textContent = data.note + ' Last updated ' + data.lastUpdated + '.';
+    sourceNote.textContent = data.note + ' ' + data.imageNote + ' Last updated ' + data.lastUpdated + '.';
     heroStats.textContent = totalCount + ' verified listings · ' + allTaluks.length + ' areas · updated ' + data.lastUpdated;
 
     allTaluks.forEach(function(t){
@@ -948,7 +992,31 @@
       return 'gov';
     }
 
+    function sightseeingCardHTML(e){
+      var img = e.image
+        ? '<img src="' + esc(e.image.url) + '" alt="' + esc(e.name) + '" loading="lazy" decoding="async" onerror="this.remove()">'
+        : '';
+      var credit = e.image
+        ? '<p class="img-credit">' + esc(e.image.credit) + ' · ' + esc(e.image.license) + '</p>'
+        : '';
+      var reach = e.howToReach
+        ? '<p class="card-reach">' + reachIcon + '<span>' + esc(e.howToReach) + '</span></p>'
+        : '';
+      return '<li class="card">' +
+        '<div class="card-media cat-sightseeing' + (e.image ? ' has-photo' : '') + '">' +
+          categoryIcons.sightseeing + img +
+          '<span class="media-badge">' + esc(e.taluk) + '</span>' +
+        '</div>' +
+        '<div class="card-body">' +
+        '<p class="card-name">' + esc(e.name) + '</p>' +
+        '<p class="card-desc">' + esc(e.description) + '</p>' +
+        reach +
+        credit +
+        '</div></li>';
+    }
+
     function cardHTML(e, cat){
+      if (cat === 'sightseeing') return sightseeingCardHTML(e);
       var phone = e.phone
         ? '<a href="tel:' + esc(e.phone.replace(/[^0-9+]/g,'')) + '">' + phoneIcon + esc(e.phone) + '</a>'
         : '<span class="muted">' + phoneIcon + 'Not listed</span>';
@@ -1028,7 +1096,7 @@
 
       var q = state.q.trim().toLowerCase();
       var filtered = q ? entries.filter(function(e){
-        return [e.name, e.address, e.taluk, e.type, e.stream].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
+        return [e.name, e.address, e.taluk, e.type, e.stream, e.description].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
       }) : entries;
 
       count.textContent = filtered.length + ' of ' + (data.categories[cat] || []).length + ' ' + labels[cat];
