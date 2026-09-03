@@ -3,80 +3,453 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dharmapuri — coming soon</title>
-<meta name="description" content="The Dharmapuri app is on the way: government offices, landmarks, markets and local shops in one place.">
+<title>Dharmapuri — Govt offices, schools &amp; colleges directory</title>
+<meta name="description" content="Address and contact details for government offices, schools and colleges across Dharmapuri district. The Dharmapuri app is on the way.">
 <meta name="theme-color" content="#fbfaf6">
-<meta property="og:title" content="Dharmapuri — coming soon">
-<meta property="og:description" content="Government offices, landmarks, markets and local shops of Dharmapuri, in one app.">
+<meta property="og:title" content="Dharmapuri — Govt offices, schools & colleges directory">
+<meta property="og:description" content="Government offices, schools and colleges of Dharmapuri district, with address and contact — plus landmarks, markets and local shops coming soon in the app.">
 <meta property="og:image" content="icon-512.png">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="icon-512.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#fbfaf6;
-    --ink:#133a2b;
+    --paper:#f2f3ec;
+    --card:#ffffff;
+    --card-hover:#fffdf7;
+    --ink:#122a20;
     --orange:#e4711f;
     --leaf:#3e8e2f;
+    --teal:#2c8781;
     --muted:#5f7268;
+    --line:#e2e2d4;
+    --shadow:0 1px 2px rgba(19,58,43,.05), 0 8px 24px -12px rgba(19,58,43,.18);
+    --shadow-hover:0 2px 4px rgba(19,58,43,.07), 0 16px 32px -14px rgba(19,58,43,.24);
+    --grain-opacity:.05;
+    color-scheme:light;
+  }
+
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0c1512;
+      --card:#151f1a;
+      --card-hover:#1a251f;
+      --ink:#eef3ec;
+      --orange:#f0955a;
+      --leaf:#6dc860;
+      --teal:#4fc2ba;
+      --muted:#8fa599;
+      --line:#243128;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      --shadow-hover:0 2px 4px rgba(0,0,0,.35), 0 16px 32px -14px rgba(0,0,0,.6);
+      --grain-opacity:.06;
+      color-scheme:dark;
+    }
   }
 
   *{box-sizing:border-box}
 
+  html{background:var(--paper)}
+
   body{
     margin:0;
     min-height:100svh;
-    background:
-      radial-gradient(120% 62% at 50% 6%, #fff6e6 0%, rgba(255,246,230,0) 62%),
-      var(--paper);
+    background:var(--paper);
     color:var(--ink);
     font-family:"Anek Tamil",system-ui,sans-serif;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    padding:clamp(2rem,6vh,4.5rem) 1.25rem 1.5rem;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    isolation:isolate;
   }
 
-  .stage{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:0;
-    max-width:33rem;
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(38% 32% at 10% 0%, color-mix(in srgb,var(--leaf) 26%,transparent), transparent 70%),
+      radial-gradient(34% 30% at 88% 8%, color-mix(in srgb,var(--orange) 22%,transparent), transparent 70%),
+      radial-gradient(46% 38% at 78% 92%, color-mix(in srgb,var(--teal) 20%,transparent), transparent 70%),
+      radial-gradient(40% 34% at 4% 88%, color-mix(in srgb,var(--leaf) 14%,transparent), transparent 70%),
+      var(--paper);
   }
 
-  .logo{
-    width:min(21rem,76vw);
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:var(--grain-opacity);
+    mix-blend-mode:overlay;
+    pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{
+    max-width:72rem;
+    margin:0 auto;
+    padding:clamp(1.5rem,5vw,3rem) 1.25rem 3rem;
+    display:grid;
+    gap:clamp(2rem,5vw,3rem);
+  }
+
+  a{color:inherit}
+  svg.icon{width:1em;height:1em;flex:none;vertical-align:-.15em}
+
+  /* header */
+  header.site-header{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    align-items:center;
+    gap:1.1rem;
+    animation:rise .7s cubic-bezier(.2,.7,.25,1) both;
+  }
+  header.site-header img{
+    width:3.6rem;
     height:auto;
-    display:block;
+    flex:none;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--leaf);
+    background:color-mix(in srgb,var(--leaf) 12%,transparent);
+    padding:.2rem .6rem;
+    border-radius:999px;
+    margin-bottom:.4rem;
+  }
+  header.site-header h1{
+    margin:0;
+    font-size:clamp(1.6rem,4.4vw,2.1rem);
+    font-weight:800;
+    letter-spacing:-.02em;
+    background:linear-gradient(90deg,var(--ink),var(--leaf) 130%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  header.site-header p{
+    margin:.3rem 0 0;
+    font-size:.98rem;
+    color:var(--muted);
   }
 
+  /* directory */
+  .directory{
+    display:grid;
+    gap:1.25rem;
+    animation:rise .7s cubic-bezier(.2,.7,.25,1) .06s both;
+  }
+  .directory > .lead{
+    margin:0;
+    color:var(--muted);
+    font-size:.98rem;
+    line-height:1.55;
+    max-width:44rem;
+  }
+
+  /* stat grid / category picker */
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));
+    gap:.85rem;
+  }
+  .stat-tile{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    align-items:center;
+    column-gap:.75rem;
+    row-gap:0;
+    text-align:left;
+    font:inherit;
+    color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1.1rem;
+    padding:1rem 1.1rem;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .stat-tile:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--shadow-hover);
+    background:var(--card-hover);
+  }
+  .stat-tile[aria-selected="true"]{
+    border-color:var(--leaf);
+    background:color-mix(in srgb,var(--leaf) 9%,var(--card));
+    box-shadow:0 0 0 1.5px var(--leaf), var(--shadow);
+  }
+  .stat-tile .stat-icon{
+    grid-row:1 / 3;
+    display:grid;
+    place-items:center;
+    width:2.6rem;
+    height:2.6rem;
+    border-radius:.8rem;
+    background:color-mix(in srgb,var(--leaf) 14%,transparent);
+    color:var(--leaf);
+  }
+  .stat-tile[aria-selected="true"] .stat-icon{
+    background:var(--leaf);
+    color:#fff;
+  }
+  .stat-tile .stat-icon svg{width:1.3rem;height:1.3rem}
+  .stat-num{
+    font-size:1.55rem;
+    font-weight:800;
+    line-height:1.1;
+    letter-spacing:-.01em;
+  }
+  .stat-label{
+    font-size:.82rem;
+    color:var(--muted);
+    font-weight:500;
+  }
+
+  /* controls */
+  .controls{
+    position:sticky;
+    top:0;
+    z-index:5;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.75rem .9rem;
+    padding:.85rem .9rem;
+    margin:0 -.9rem;
+    background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(10px) saturate(1.4);
+    -webkit-backdrop-filter:blur(10px) saturate(1.4);
+    border-radius:1rem;
+  }
+  .search{
+    flex:1 1 16rem;
+    position:relative;
+    display:flex;
+    align-items:center;
+  }
+  .search svg.icon{
+    position:absolute;
+    left:.9rem;
+    color:var(--muted);
+    width:1.05rem;
+    height:1.05rem;
+  }
+  .search input{
+    width:100%;
+    font:inherit;
+    font-size:.95rem;
+    color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:.62rem 2.4rem;
+    box-shadow:var(--shadow);
+  }
+  .search input:focus-visible{outline:2px solid var(--leaf);outline-offset:2px}
+  .search button{
+    position:absolute;
+    right:.5rem;
+    width:1.7rem;
+    height:1.7rem;
+    display:grid;
+    place-items:center;
+    border:0;
+    border-radius:999px;
+    background:transparent;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:1.1rem;
+    line-height:1;
+  }
+  .search button:hover{background:color-mix(in srgb,var(--muted) 16%,transparent)}
+  .count{
+    margin:0;
+    font-size:.85rem;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+
+  /* results */
+  .results{
+    display:grid;
+    gap:1.75rem;
+  }
+  .taluk-group{
+    display:grid;
+    gap:.75rem;
+    animation:rise .45s ease both;
+  }
+  .taluk-group h3{
+    margin:0;
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    font-size:.76rem;
+    font-weight:700;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    color:var(--leaf);
+  }
+  .taluk-group h3::before{
+    content:"";
+    width:.5rem;
+    height:.5rem;
+    border-radius:999px;
+    background:var(--orange);
+    flex:none;
+  }
+
+  .cards{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));
+    gap:.9rem;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1rem;
+    padding:1rem 1.1rem;
+    box-shadow:var(--shadow);
+    display:grid;
+    gap:.5rem;
+    align-content:start;
+    transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow-hover);
+    border-color:color-mix(in srgb,var(--leaf) 40%,var(--line));
+  }
+  .card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.5rem;
+  }
+  .card-icon{
+    width:2.1rem;
+    height:2.1rem;
+    display:grid;
+    place-items:center;
+    border-radius:.65rem;
+    background:color-mix(in srgb,var(--leaf) 12%,transparent);
+    color:var(--leaf);
+  }
+  .card-icon svg{width:1.1rem;height:1.1rem}
+  .badge{
+    font-size:.68rem;
+    font-weight:700;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:.22rem .55rem;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .badge.gov{color:var(--leaf);background:color-mix(in srgb,var(--leaf) 15%,transparent)}
+  .badge.aided{color:var(--orange);background:color-mix(in srgb,var(--orange) 16%,transparent)}
+  .badge.private{color:var(--muted);background:color-mix(in srgb,var(--muted) 16%,transparent)}
+
+  .card-name{
+    margin:0;
+    font-size:.98rem;
+    font-weight:700;
+    line-height:1.32;
+  }
+  .card-stream{
+    margin:-.3rem 0 0;
+    font-size:.78rem;
+    font-weight:600;
+    color:var(--orange);
+  }
+  .card-address{
+    margin:0;
+    display:flex;
+    gap:.4rem;
+    font-size:.87rem;
+    line-height:1.45;
+    color:var(--muted);
+    font-style:normal;
+  }
+  .card-address svg{margin-top:.2rem;color:color-mix(in srgb,var(--muted) 80%,transparent)}
+  .card-phone{
+    margin:.1rem 0 0;
+    display:flex;
+    align-items:center;
+    gap:.4rem;
+    font-size:.9rem;
+  }
+  .card-phone a{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    color:var(--leaf);
+    font-weight:700;
+    text-decoration:none;
+  }
+  .card-phone a:hover{text-decoration:underline}
+  .card-phone .muted{color:var(--muted);font-weight:400}
+
+  .empty{
+    color:var(--muted);
+    font-size:.95rem;
+    padding:2rem 0;
+    text-align:center;
+  }
+
+  .source-note{
+    margin:0;
+    font-size:.78rem;
+    line-height:1.6;
+    color:color-mix(in srgb,var(--muted) 85%,var(--paper));
+    border-top:1px solid var(--line);
+    padding-top:1rem;
+  }
+
+  /* app promo (coming soon) */
+  .app-promo{
+    padding:clamp(1.75rem,5vw,2.5rem);
+    background:
+      radial-gradient(80% 120% at 15% 0%, color-mix(in srgb,var(--orange) 12%,transparent), transparent 60%),
+      var(--card);
+    border:1px solid var(--line);
+    border-radius:1.4rem;
+    text-align:center;
+    box-shadow:var(--shadow);
+    animation:rise .7s cubic-bezier(.2,.7,.25,1) .12s both;
+  }
   .soon-ta{
-    margin:clamp(1.5rem,4vh,2.5rem) 0 .1rem;
-    font-size:clamp(1.15rem,4vw,1.4rem);
+    margin:0 0 .2rem;
+    font-size:1.05rem;
     font-weight:500;
     color:var(--orange);
     line-height:1.2;
   }
-
-  h1{
+  .app-promo h2{
     margin:0;
-    font-size:clamp(2rem,7.5vw,2.9rem);
-    font-weight:600;
+    font-size:clamp(1.5rem,5vw,2rem);
+    font-weight:800;
     letter-spacing:-.02em;
-    line-height:1.05;
   }
-
   .arc{
-    width:min(15rem,60vw);
-    height:14px;
-    margin:1.4rem 0 0;
+    width:min(12rem,50vw);
+    height:12px;
+    margin:1rem auto 0;
+    display:block;
   }
   .arc path{
     fill:none;
@@ -85,24 +458,22 @@
     stroke-linecap:round;
     opacity:.55;
   }
-
-  .lede{
-    margin:1.5rem 0 0;
+  .app-promo .lede{
+    margin:1.1rem auto 0;
     max-width:29rem;
-    font-size:clamp(1.02rem,2.6vw,1.14rem);
+    font-size:1rem;
     line-height:1.6;
     color:var(--muted);
   }
-
-  .store{
-    margin:1.6rem 0 0;
-    font-size:.98rem;
-    font-weight:500;
+  .app-promo .store{
+    margin:1.2rem 0 0;
+    font-size:.96rem;
+    font-weight:600;
     color:var(--leaf);
   }
 
   footer{
-    margin-top:2.5rem;
+    text-align:center;
     font-size:.9rem;
     color:color-mix(in srgb,var(--muted) 82%,var(--paper));
   }
@@ -113,20 +484,12 @@
   }
   footer a:hover{color:var(--ink)}
 
-  .logo,.soon-ta,h1,.arc,.lede,.store{
-    animation:rise .85s cubic-bezier(.2,.7,.25,1) both;
-  }
-  .soon-ta{animation-delay:.12s}
-  h1{animation-delay:.18s}
-  .arc{animation-delay:.26s}
-  .lede{animation-delay:.32s}
-  .store{animation-delay:.38s}
   @keyframes rise{
     from{opacity:0;transform:translateY(.6rem)}
     to{opacity:1;transform:none}
   }
   @media (prefers-reduced-motion:reduce){
-    *{animation:none !important}
+    *{animation:none !important;transition:none !important}
   }
 
   :focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
@@ -134,29 +497,284 @@
 </head>
 <body>
 
-  <main class="stage">
-    <img class="logo" src="dpi-logo.png" width="760" height="964"
-         alt="Dharmapuri — Hogenakkal falls, the hill fort and the temple gopuram inside a leaf emblem">
+  <div class="wrap">
 
-    <p class="soon-ta" lang="ta">விரைவில்</p>
-    <h1>Coming soon</h1>
+    <header class="site-header">
+      <img src="dpi-logo.png" width="760" height="964"
+           alt="Dharmapuri — Hogenakkal falls, the hill fort and the temple gopuram inside a leaf emblem">
+      <div>
+        <span class="eyebrow">District Directory</span>
+        <h1>Dharmapuri</h1>
+        <p>Government offices, schools &amp; colleges — address and contact, in one place.</p>
+      </div>
+    </header>
 
-    <svg class="arc" viewBox="0 0 240 14" aria-hidden="true">
-      <path d="M4 10C60 2 180 2 236 10"/>
-    </svg>
+    <main class="directory">
+      <p class="lead">
+        Browse verified addresses and contact numbers for government offices,
+        schools and colleges across Dharmapuri district — Dharmapuri, Palacode,
+        Pennagaram, Harur and Pappireddipatti taluks.
+      </p>
 
-    <p class="lede">
-      Government offices, landmarks, markets, repair shops and wholesale
-      traders across the district — all in one app.
-    </p>
+      <div class="stat-grid" role="tablist" aria-label="Directory category">
+        <button type="button" class="stat-tile" role="tab" data-cat="government_offices">
+          <span class="stat-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/><path d="M9 12h.01M15 12h.01M12 12h.01M9 9h.01M15 9h.01M12 9h.01"/></svg>
+          </span>
+          <span class="stat-num" data-num>0</span>
+          <span class="stat-label">Government offices</span>
+        </button>
+        <button type="button" class="stat-tile" role="tab" data-cat="schools">
+          <span class="stat-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </span>
+          <span class="stat-num" data-num>0</span>
+          <span class="stat-label">Schools</span>
+        </button>
+        <button type="button" class="stat-tile" role="tab" data-cat="colleges">
+          <span class="stat-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 10v6"/></svg>
+          </span>
+          <span class="stat-num" data-num>0</span>
+          <span class="stat-label">Colleges</span>
+        </button>
+      </div>
 
-    <p class="store">Launching on Google Play</p>
-  </main>
+      <div class="controls">
+        <div class="search">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" id="q" placeholder="Search by name or place…" aria-label="Search the directory">
+          <button type="button" id="clearSearch" hidden aria-label="Clear search">×</button>
+        </div>
+        <p class="count" id="count"></p>
+      </div>
 
-  <footer>
-    Dharmapuri, Tamil Nadu &nbsp;·&nbsp;
-    <a href="mailto:admin@techieqa.com">admin@techieqa.com</a>
-  </footer>
+      <div id="results" class="results"></div>
+
+      <p class="source-note" id="sourceNote"></p>
+    </main>
+
+    <section class="app-promo">
+      <p class="soon-ta" lang="ta">விரைவில்</p>
+      <h2>Mobile app coming soon</h2>
+
+      <svg class="arc" viewBox="0 0 240 14" aria-hidden="true">
+        <path d="M4 10C60 2 180 2 236 10"/>
+      </svg>
+
+      <p class="lede">
+        Landmarks, markets, repair shops and wholesale traders across the
+        district — joining this directory in one app.
+      </p>
+
+      <p class="store">Launching on Google Play</p>
+    </section>
+
+    <footer>
+      Dharmapuri, Tamil Nadu &nbsp;·&nbsp;
+      <a href="mailto:admin@techieqa.com">admin@techieqa.com</a>
+    </footer>
+
+  </div>
+
+  <script type="application/json" id="directory-data">
+{
+  "district": "Dharmapuri",
+  "state": "Tamil Nadu",
+  "country": "India",
+  "lastUpdated": "2026-09-03",
+  "note": "Compiled from publicly available sources (official Dharmapuri district administration website dharmapuri.nic.in, Periyar University, Wikipedia, and institution websites); addresses and contact numbers should be independently verified. Phone numbers are office/institution landlines where found; personal mobile numbers of individual officers were intentionally excluded. Some source pages listed a few numbers with an apparently mismatched STD code (e.g. Palacode-area schools listed under Dharmapuri's 04342 code) — these are reproduced as published, not corrected.",
+  "categories": {
+    "government_offices": [
+      { "name": "District Collectorate, Dharmapuri", "type": "Collectorate", "taluk": "Dharmapuri", "address": "Collectorate, Dharmapuri - 636705", "phone": "04342-231500" },
+      { "name": "District Revenue Officer (DRO) Office", "type": "Revenue Office", "taluk": "Dharmapuri", "address": "Collectorate, Dharmapuri - 636705", "phone": "04342-230896" },
+      { "name": "Superintendent of Police Office, Dharmapuri", "type": "Police Office (SP Office)", "taluk": "Dharmapuri", "address": "District Police Office, Near Collectorate, Dharmapuri - 636705", "phone": "04342-230000" },
+      { "name": "Regional Transport Office, Dharmapuri (TN-29)", "type": "RTO", "taluk": "Dharmapuri", "address": "Collectorate, Dharmapuri - 636705", "phone": "04342-230907" },
+      { "name": "Dharmapuri District Court", "type": "District Court", "taluk": "Dharmapuri", "address": "Combined Court Buildings, Thadangam, Thokkampatti (Post), Dharmapuri - 636705", "phone": null },
+      { "name": "Government Dharmapuri Medical College Hospital", "type": "Government Medical College Hospital", "taluk": "Dharmapuri", "address": "Salem Main Road, Dharmapuri - 636701", "phone": "04342-233600" },
+      { "name": "Dharmapuri Municipality Office", "type": "Municipality Office", "taluk": "Dharmapuri", "address": "Municipal Office, Kandasamy Vathiyar Street, Dharmapuri - 636701", "phone": "04342-260910" },
+      { "name": "TANGEDCO Electricity Distribution Circle Office, Dharmapuri", "type": "Electricity Board (TANGEDCO) Office", "taluk": "Dharmapuri", "address": "Dharmapuri - 636701", "phone": "04342-230738" },
+      { "name": "District Employment Office, Dharmapuri", "type": "Employment Office", "taluk": "Dharmapuri", "address": "Near Government ITI, Palacode Main Road, Kadakathur, Dharmapuri - 636809", "phone": "04348-235006" },
+      { "name": "Chief Educational Office, Dharmapuri", "type": "District Education Office", "taluk": "Dharmapuri", "address": "Chief Educational Office, Dharmapuri", "phone": "04342-260085" },
+      { "name": "Dharmapuri Town Police Station", "type": "Police Station", "taluk": "Dharmapuri", "address": "Dharmapuri Town, Dharmapuri - 636701", "phone": "04342-260026" },
+      { "name": "Taluk Office (Tahsildar Office), Dharmapuri", "type": "Taluk Office", "taluk": "Dharmapuri", "address": "Dharmapuri - 636705", "phone": "04342-260927" },
+      { "name": "Taluk Office (Tahsildar Office), Palacode", "type": "Taluk Office", "taluk": "Palacode", "address": "Palacode - 636808", "phone": "04348-222045" },
+      { "name": "Deputy Superintendent of Police Office, Palacode Sub-Division", "type": "Police Office (DSP Office)", "taluk": "Palacode", "address": "Palacode - 636808", "phone": "04348-223000" },
+      { "name": "Government Hospital, Palacode", "type": "Government Hospital", "taluk": "Palacode", "address": "Thiruvalluvar Nagar, Palacode, Dharmapuri - 636808", "phone": null },
+      { "name": "Taluk Office (Tahsildar Office), Pennagaram", "type": "Taluk Office", "taluk": "Pennagaram", "address": "Pennagaram, Dharmapuri - 636810", "phone": "04342-255636" },
+      { "name": "Deputy Superintendent of Police Office, Pennagaram Sub-Division", "type": "Police Office (DSP Office)", "taluk": "Pennagaram", "address": "Pennagaram, Dharmapuri - 636810", "phone": "04342-255771" },
+      { "name": "Pennagaram Police Station", "type": "Police Station", "taluk": "Pennagaram", "address": "Pennagaram, Dharmapuri - 636810", "phone": "04342-255641" },
+      { "name": "Government Headquarters Hospital, Pennagaram", "type": "Government Hospital", "taluk": "Pennagaram", "address": "Pennagaram, Dharmapuri - 636810", "phone": null },
+      { "name": "Taluk Office (Tahsildar Office), Harur", "type": "Taluk Office", "taluk": "Harur", "address": "Harur, Dharmapuri - 636903", "phone": "04346-222023" },
+      { "name": "Deputy Superintendent of Police Office, Harur Sub-Division", "type": "Police Office (DSP Office)", "taluk": "Harur", "address": "Harur, Dharmapuri - 636903", "phone": "04346-223344" },
+      { "name": "Harur Police Station", "type": "Police Station", "taluk": "Harur", "address": "Harur, Dharmapuri - 636903", "phone": "04346-222034" },
+      { "name": "Government Hospital, Harur", "type": "Government Hospital", "taluk": "Harur", "address": "Harur, Dharmapuri - 636903", "phone": null },
+      { "name": "Taluk Office (Tahsildar Office), Pappireddipatti", "type": "Taluk Office", "taluk": "Pappireddipatti", "address": "Pappireddipatti, Dharmapuri - 636905", "phone": "04346-246544" },
+      { "name": "Taluk Office (Tahsildar Office), Karimangalam", "type": "Taluk Office", "taluk": "Karimangalam", "address": "Karimangalam, Dharmapuri - 635111", "phone": "04348-242411" },
+      { "name": "Taluk Office (Tahsildar Office), Nallampalli", "type": "Taluk Office", "taluk": "Nallampalli", "address": "Nallampalli, Dharmapuri - 636807", "phone": "04342-244456" }
+    ],
+    "schools": [
+      { "name": "Adhiyaman Government Boys Higher Secondary School", "type": "Government", "taluk": "Dharmapuri", "address": "Appavu Nagar, Dharmapuri - 636701", "phone": "04342-261075" },
+      { "name": "Avvaiyar Government Girls Higher Secondary School", "type": "Government", "taluk": "Dharmapuri", "address": "Dharmapuri - 636702", "phone": "04342-264057" },
+      { "name": "DAWN Metric Higher Secondary School", "type": "Private", "taluk": "Dharmapuri", "address": "No. 68, S.V. Road, Dharmapuri - 636701", "phone": "04342-266516" },
+      { "name": "Government Boys Higher Secondary School, Palacode", "type": "Government", "taluk": "Palacode", "address": "Palacode - 636808", "phone": "04342-222089" },
+      { "name": "Government Girls Higher Secondary School, Palacode", "type": "Government", "taluk": "Palacode", "address": "Palacode - 636808", "phone": "04342-222711" },
+      { "name": "Government Higher Secondary School, Adhiyamankottai", "type": "Government", "taluk": "Nallampalli", "address": "Adhiyamankottai, Dharmapuri - 636807", "phone": "04342-244599" },
+      { "name": "Government Higher Secondary School, Lakkiyampatti", "type": "Government", "taluk": "Dharmapuri", "address": "Lakkiyampatti, Dharmapuri - 636705", "phone": "04342-236082" },
+      { "name": "Jack and Jill Metric School", "type": "Private", "taluk": "Dharmapuri", "address": "No. 4/1335, Bharathi Puram, Dharmapuri - 636705", "phone": "04342-270606" },
+      { "name": "Kendriya Vidyalaya, Dharmapuri", "type": "Government", "taluk": "Dharmapuri", "address": "Pallakolai Village (Morappur Main Road), Dharmapuri - 636704", "phone": "04342-293221" },
+      { "name": "Pachamuthu Metric Higher Secondary School", "type": "Private", "taluk": "Dharmapuri", "address": "26-C, Salem Main Road, Dharmapuri - 636705", "phone": "04342-230604" },
+      { "name": "Paramveer Banasingh Matric School", "type": "Private", "taluk": "Dharmapuri", "address": "Attukaranpatti, Dharmapuri - 636809", "phone": null },
+      { "name": "Senthil Metric Higher Secondary School", "type": "Private", "taluk": "Dharmapuri", "address": "2nd Narasimachari Street, Dharmapuri - 636701", "phone": "04342-268842" },
+      { "name": "Seventh Day Metric Higher Secondary School", "type": "Private", "taluk": "Dharmapuri", "address": "Opposite Collectorate, Dharmapuri - 636705", "phone": "04342-230288" },
+      { "name": "Sri Vidya Mandir Matriculation Higher Secondary School", "type": "Private", "taluk": "Palacode", "address": "Vidya Nagar, Palacode, Dharmapuri - 636808", "phone": "04342-261042" },
+      { "name": "Vijay Vidyalaya Boys Higher Secondary School", "type": "Private", "taluk": "Dharmapuri", "address": "DNC Compound, Gandhi Nagar, Dharmapuri - 636701", "phone": "04342-261166" },
+      { "name": "Vijay Vidyalaya Girls Higher Secondary School", "type": "Private", "taluk": "Dharmapuri", "address": "DNC Compound, Gandhi Nagar, Dharmapuri - 636701", "phone": "04342-260922" },
+      { "name": "Government Higher Secondary School, Harur (Boys)", "type": "Government", "taluk": "Harur", "address": "Harur Town, Harur, Dharmapuri - 636903", "phone": null },
+      { "name": "Government Higher Secondary School, Harur (Girls)", "type": "Government", "taluk": "Harur", "address": "Harur Town, Harur, Dharmapuri - 636903", "phone": null },
+      { "name": "Government Boys Higher Secondary School, Pennagaram", "type": "Government", "taluk": "Pennagaram", "address": "Dharmapuri-Hogenakkal Road, Pennagaram, Dharmapuri - 636810", "phone": null },
+      { "name": "Pennagaram Government Girls Higher Secondary School", "type": "Government", "taluk": "Pennagaram", "address": "Near Taluk Office, Hogenakkal Main Road, Pennagaram, Dharmapuri - 636810", "phone": null },
+      { "name": "Government Higher Secondary School, Perumbalai", "type": "Government", "taluk": "Pennagaram", "address": "Perumbalai, Pennagaram Taluk, Dharmapuri - 636810", "phone": null },
+      { "name": "Government Higher Secondary School, Pappireddipatti", "type": "Government", "taluk": "Pappireddipatti", "address": "NH 179A, Pappireddipatti, Dharmapuri - 636905", "phone": null },
+      { "name": "Adhikarapatti Government Higher Secondary School", "type": "Government", "taluk": "Pappireddipatti", "address": "Athikarapatti, Pappireddipatti, Dharmapuri - 636905", "phone": null },
+      { "name": "Government Higher Secondary School, Karimangalam (Boys)", "type": "Government", "taluk": "Karimangalam", "address": "Karimangalam North, Karimangalam, Dharmapuri", "phone": null },
+      { "name": "Government Higher Secondary School, Nallampalli", "type": "Government", "taluk": "Nallampalli", "address": "Nallampalli, Dharmapuri - 636807", "phone": null },
+      { "name": "Sacred Heart Higher Secondary School, Selliyampatti", "type": "Private", "taluk": "Palacode", "address": "Irudhayapuram, Selliyampatti, Dharmapuri - 636809", "phone": null }
+    ],
+    "colleges": [
+      { "name": "Government Arts College, Dharmapuri", "type": "Government", "stream": "Arts & Science", "taluk": "Dharmapuri", "address": "Salem Main Road, Dharmapuri - 636705", "phone": "04342-230008" },
+      { "name": "Government College of Engineering, Dharmapuri", "type": "Government", "stream": "Engineering", "taluk": "Dharmapuri", "address": "Chettikarai, Dharmapuri - 636704", "phone": "04342-290090" },
+      { "name": "Government Law College, Dharmapuri", "type": "Government", "stream": "Law", "taluk": "Karimangalam", "address": "NH-44, Baisuhalli Maatlampatti Cross Road, Karimangalam Taluk, Dharmapuri - 635205", "phone": "04348-291292" },
+      { "name": "Government Dharmapuri Medical College and Hospital", "type": "Government", "stream": "Medical", "taluk": "Dharmapuri", "address": "Salem Main Road, Dharmapuri - 636701", "phone": "04342-233600" },
+      { "name": "Government I.T.I. College, Chelliyampatti", "type": "Government", "stream": "ITI / Vocational", "taluk": "Dharmapuri", "address": "Chelliyampatti, Dharmapuri - 636703", "phone": "04348-235323" },
+      { "name": "Government Arts College for Women, Karimangalam", "type": "Government", "stream": "Arts & Science", "taluk": "Karimangalam", "address": "Karimangalam, Dharmapuri - 635111", "phone": "04348-241399" },
+      { "name": "Co-op Sugar Mills Polytechnic College, Palacode", "type": "Government-Aided", "stream": "Polytechnic", "taluk": "Palacode", "address": "Dandukaranahalli, Palacode, Dharmapuri - 636808", "phone": "9442222102" },
+      { "name": "Jayam College of Engineering and Technology", "type": "Private", "stream": "Engineering", "taluk": "Dharmapuri", "address": "Hogenakkal Road, Nallanur, Dharmapuri - 636813", "phone": "9942277777" },
+      { "name": "Lakshmi Narayana Polytechnic College, Nallampalli", "type": "Private", "stream": "Polytechnic", "taluk": "Nallampalli", "address": "Savulur Bus Stop, Nallampalli, Dharmapuri - 636807", "phone": "04342-244274" },
+      { "name": "Pee Gee Arts and Science College, Palacode", "type": "Private", "stream": "Arts & Science", "taluk": "Palacode", "address": "NH-7, Krishnagiri Main Road, Periyanahalli, Palacode, Dharmapuri - 636808", "phone": "9443346221" },
+      { "name": "Government Arts and Science College, Eriyur", "type": "Government", "stream": "Arts & Science", "taluk": "Pennagaram", "address": "Eriyur, Pennagaram Taluk, Dharmapuri - 636810", "phone": "04342-291861" },
+      { "name": "Periyar University College of Arts and Science, Harur", "type": "Government", "stream": "Arts & Science", "taluk": "Harur", "address": "Next to Harur Government Hospital, Morappur Main Road, Harur, Dharmapuri - 636903", "phone": "04346-222212" },
+      { "name": "Periyar University College of Arts and Science, Pappireddipatti", "type": "Government", "stream": "Arts & Science", "taluk": "Pappireddipatti", "address": "Pappireddipatti, Dharmapuri - 636905", "phone": "04346-246212" },
+      { "name": "Periyar University College of Arts and Science, Pennagaram", "type": "Government", "stream": "Arts & Science", "taluk": "Pennagaram", "address": "Pennagaram, Dharmapuri - 636803", "phone": "9442821455" },
+      { "name": "S.M Arumugam Polytechnic College", "type": "Private", "stream": "Polytechnic", "taluk": "Dharmapuri", "address": "Papinayakanahalli, Dharmapuri - 636705", "phone": "04342-264609" },
+      { "name": "Sakthi I.T.I. College", "type": "Private", "stream": "ITI / Vocational", "taluk": "Dharmapuri", "address": "Kadagathur Village, Chelliyampatti Post, Dharmapuri - 636809", "phone": "04342-264967" },
+      { "name": "ERK Arts and Science College", "type": "Private", "stream": "Arts & Science", "taluk": "Pappireddipatti", "address": "Erumiyampatti, Kokkarapatti (PO), Pappireddipatti (Taluk), Dharmapuri - 636905", "phone": "04346-251290" }
+    ]
+  }
+}
+  </script>
+
+  <script>
+  (function(){
+    var data = JSON.parse(document.getElementById('directory-data').textContent);
+    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges' };
+
+    var pinIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    var phoneIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+    var categoryIcons = {
+      government_offices: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>',
+      schools: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+      colleges: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>'
+    };
+
+    var tiles = Array.prototype.slice.call(document.querySelectorAll('.stat-tile'));
+    var searchInput = document.getElementById('q');
+    var clearBtn = document.getElementById('clearSearch');
+    var results = document.getElementById('results');
+    var count = document.getElementById('count');
+    var sourceNote = document.getElementById('sourceNote');
+    var state = { cat: 'government_offices', q: '' };
+
+    sourceNote.textContent = data.note + ' Last updated ' + data.lastUpdated + '.';
+
+    tiles.forEach(function(tile){
+      var cat = tile.getAttribute('data-cat');
+      tile.querySelector('[data-num]').textContent = (data.categories[cat] || []).length;
+    });
+
+    function esc(s){
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+        return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+      });
+    }
+
+    function typeClass(type){
+      var t = (type || '').toLowerCase();
+      if (t.indexOf('private') !== -1) return 'private';
+      if (t.indexOf('aided') !== -1) return 'aided';
+      return 'gov';
+    }
+
+    function cardHTML(e, cat){
+      var meta = esc(e.type);
+      var phone = e.phone
+        ? '<a href="tel:' + esc(e.phone.replace(/[^0-9+]/g,'')) + '">' + phoneIcon + esc(e.phone) + '</a>'
+        : '<span class="muted">' + phoneIcon + 'Not listed</span>';
+      return '<li class="card">' +
+        '<div class="card-top">' +
+          '<span class="card-icon">' + categoryIcons[cat] + '</span>' +
+          '<span class="badge ' + typeClass(e.type) + '">' + meta + '</span>' +
+        '</div>' +
+        '<p class="card-name">' + esc(e.name) + '</p>' +
+        (e.stream ? '<p class="card-stream">' + esc(e.stream) + '</p>' : '') +
+        '<address class="card-address">' + pinIcon + '<span>' + esc(e.address) + '</span></address>' +
+        '<p class="card-phone">' + phone + '</p>' +
+        '</li>';
+    }
+
+    function render(){
+      var cat = state.cat;
+      var entries = data.categories[cat] || [];
+      var q = state.q.trim().toLowerCase();
+      var filtered = q ? entries.filter(function(e){
+        return [e.name, e.address, e.taluk, e.type, e.stream].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
+      }) : entries;
+
+      count.textContent = filtered.length + ' of ' + entries.length + ' ' + labels[cat];
+
+      if (!filtered.length){
+        results.innerHTML = '<p class="empty">No matches found.</p>';
+        return;
+      }
+
+      var groups = {};
+      filtered.forEach(function(e){
+        (groups[e.taluk] = groups[e.taluk] || []).push(e);
+      });
+      var taluks = Object.keys(groups).sort();
+
+      results.innerHTML = taluks.map(function(taluk){
+        return '<section class="taluk-group"><h3>' + esc(taluk) + ' taluk</h3><ul class="cards">' +
+          groups[taluk].map(function(e){ return cardHTML(e, cat); }).join('') + '</ul></section>';
+      }).join('');
+    }
+
+    tiles.forEach(function(tile){
+      tile.addEventListener('click', function(){
+        tiles.forEach(function(t){ t.setAttribute('aria-selected', t === tile ? 'true' : 'false'); });
+        state.cat = tile.getAttribute('data-cat');
+        render();
+      });
+    });
+    tiles[0].setAttribute('aria-selected', 'true');
+    tiles.slice(1).forEach(function(t){ t.setAttribute('aria-selected', 'false'); });
+
+    searchInput.addEventListener('input', function(){
+      state.q = searchInput.value;
+      clearBtn.hidden = !searchInput.value;
+      render();
+    });
+    clearBtn.addEventListener('click', function(){
+      searchInput.value = '';
+      state.q = '';
+      clearBtn.hidden = true;
+      render();
+      searchInput.focus();
+    });
+
+    render();
+  })();
+  </script>
 
 </body>
 </html>

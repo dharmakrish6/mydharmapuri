@@ -1,0 +1,515 @@
+{
+  "district": "Dharmapuri",
+  "state": "Tamil Nadu",
+  "country": "India",
+  "lastUpdated": "2026-09-03",
+  "note": "Compiled from publicly available sources (official Dharmapuri district administration website dharmapuri.nic.in, Periyar University, Wikipedia, and institution websites); addresses and contact numbers should be independently verified before publishing to end users. Phone numbers are office/institution landlines where found; personal mobile numbers of individual officers were intentionally excluded. Some source pages listed a few numbers with an apparently mismatched STD code (e.g. Palacode-area schools listed under Dharmapuri's 04342 code) — these are reproduced as published, not corrected.",
+  "categories": {
+    "government_offices": [
+      {
+        "name": "District Collectorate, Dharmapuri",
+        "type": "Collectorate",
+        "taluk": "Dharmapuri",
+        "address": "Collectorate, Dharmapuri - 636705",
+        "phone": "04342-231500"
+      },
+      {
+        "name": "District Revenue Officer (DRO) Office",
+        "type": "Revenue Office",
+        "taluk": "Dharmapuri",
+        "address": "Collectorate, Dharmapuri - 636705",
+        "phone": "04342-230896"
+      },
+      {
+        "name": "Superintendent of Police Office, Dharmapuri",
+        "type": "Police Office (SP Office)",
+        "taluk": "Dharmapuri",
+        "address": "District Police Office, Near Collectorate, Dharmapuri - 636705",
+        "phone": "04342-230000"
+      },
+      {
+        "name": "Regional Transport Office, Dharmapuri (TN-29)",
+        "type": "RTO",
+        "taluk": "Dharmapuri",
+        "address": "Collectorate, Dharmapuri - 636705",
+        "phone": "04342-230907"
+      },
+      {
+        "name": "Dharmapuri District Court",
+        "type": "District Court",
+        "taluk": "Dharmapuri",
+        "address": "Combined Court Buildings, Thadangam, Thokkampatti (Post), Dharmapuri - 636705",
+        "phone": null
+      },
+      {
+        "name": "Government Dharmapuri Medical College Hospital",
+        "type": "Government Medical College Hospital",
+        "taluk": "Dharmapuri",
+        "address": "Salem Main Road, Dharmapuri - 636701",
+        "phone": "04342-233600"
+      },
+      {
+        "name": "Dharmapuri Municipality Office",
+        "type": "Municipality Office",
+        "taluk": "Dharmapuri",
+        "address": "Municipal Office, Kandasamy Vathiyar Street, Dharmapuri - 636701",
+        "phone": "04342-260910"
+      },
+      {
+        "name": "TANGEDCO Electricity Distribution Circle Office, Dharmapuri",
+        "type": "Electricity Board (TANGEDCO) Office",
+        "taluk": "Dharmapuri",
+        "address": "Dharmapuri - 636701",
+        "phone": "04342-230738"
+      },
+      {
+        "name": "District Employment Office, Dharmapuri",
+        "type": "Employment Office",
+        "taluk": "Dharmapuri",
+        "address": "Near Government ITI, Palacode Main Road, Kadakathur, Dharmapuri - 636809",
+        "phone": "04348-235006"
+      },
+      {
+        "name": "Chief Educational Office, Dharmapuri",
+        "type": "District Education Office",
+        "taluk": "Dharmapuri",
+        "address": "Chief Educational Office, Dharmapuri",
+        "phone": "04342-260085"
+      },
+      {
+        "name": "Dharmapuri Town Police Station",
+        "type": "Police Station",
+        "taluk": "Dharmapuri",
+        "address": "Dharmapuri Town, Dharmapuri - 636701",
+        "phone": "04342-260026"
+      },
+      {
+        "name": "Taluk Office (Tahsildar Office), Dharmapuri",
+        "type": "Taluk Office",
+        "taluk": "Dharmapuri",
+        "address": "Dharmapuri - 636705",
+        "phone": "04342-260927"
+      },
+      {
+        "name": "Taluk Office (Tahsildar Office), Palacode",
+        "type": "Taluk Office",
+        "taluk": "Palacode",
+        "address": "Palacode - 636808",
+        "phone": "04348-222045"
+      },
+      {
+        "name": "Deputy Superintendent of Police Office, Palacode Sub-Division",
+        "type": "Police Office (DSP Office)",
+        "taluk": "Palacode",
+        "address": "Palacode - 636808",
+        "phone": "04348-223000"
+      },
+      {
+        "name": "Government Hospital, Palacode",
+        "type": "Government Hospital",
+        "taluk": "Palacode",
+        "address": "Thiruvalluvar Nagar, Palacode, Dharmapuri - 636808",
+        "phone": null
+      },
+      {
+        "name": "Taluk Office (Tahsildar Office), Pennagaram",
+        "type": "Taluk Office",
+        "taluk": "Pennagaram",
+        "address": "Pennagaram, Dharmapuri - 636810",
+        "phone": "04342-255636"
+      },
+      {
+        "name": "Deputy Superintendent of Police Office, Pennagaram Sub-Division",
+        "type": "Police Office (DSP Office)",
+        "taluk": "Pennagaram",
+        "address": "Pennagaram, Dharmapuri - 636810",
+        "phone": "04342-255771"
+      },
+      {
+        "name": "Pennagaram Police Station",
+        "type": "Police Station",
+        "taluk": "Pennagaram",
+        "address": "Pennagaram, Dharmapuri - 636810",
+        "phone": "04342-255641"
+      },
+      {
+        "name": "Government Headquarters Hospital, Pennagaram",
+        "type": "Government Hospital",
+        "taluk": "Pennagaram",
+        "address": "Pennagaram, Dharmapuri - 636810",
+        "phone": null
+      },
+      {
+        "name": "Taluk Office (Tahsildar Office), Harur",
+        "type": "Taluk Office",
+        "taluk": "Harur",
+        "address": "Harur, Dharmapuri - 636903",
+        "phone": "04346-222023"
+      },
+      {
+        "name": "Deputy Superintendent of Police Office, Harur Sub-Division",
+        "type": "Police Office (DSP Office)",
+        "taluk": "Harur",
+        "address": "Harur, Dharmapuri - 636903",
+        "phone": "04346-223344"
+      },
+      {
+        "name": "Harur Police Station",
+        "type": "Police Station",
+        "taluk": "Harur",
+        "address": "Harur, Dharmapuri - 636903",
+        "phone": "04346-222034"
+      },
+      {
+        "name": "Government Hospital, Harur",
+        "type": "Government Hospital",
+        "taluk": "Harur",
+        "address": "Harur, Dharmapuri - 636903",
+        "phone": null
+      },
+      {
+        "name": "Taluk Office (Tahsildar Office), Pappireddipatti",
+        "type": "Taluk Office",
+        "taluk": "Pappireddipatti",
+        "address": "Pappireddipatti, Dharmapuri - 636905",
+        "phone": "04346-246544"
+      },
+      {
+        "name": "Taluk Office (Tahsildar Office), Karimangalam",
+        "type": "Taluk Office",
+        "taluk": "Karimangalam",
+        "address": "Karimangalam, Dharmapuri - 635111",
+        "phone": "04348-242411"
+      },
+      {
+        "name": "Taluk Office (Tahsildar Office), Nallampalli",
+        "type": "Taluk Office",
+        "taluk": "Nallampalli",
+        "address": "Nallampalli, Dharmapuri - 636807",
+        "phone": "04342-244456"
+      }
+    ],
+    "schools": [
+      {
+        "name": "Adhiyaman Government Boys Higher Secondary School",
+        "type": "Government",
+        "taluk": "Dharmapuri",
+        "address": "Appavu Nagar, Dharmapuri - 636701",
+        "phone": "04342-261075"
+      },
+      {
+        "name": "Avvaiyar Government Girls Higher Secondary School",
+        "type": "Government",
+        "taluk": "Dharmapuri",
+        "address": "Dharmapuri - 636702",
+        "phone": "04342-264057"
+      },
+      {
+        "name": "DAWN Metric Higher Secondary School",
+        "type": "Private",
+        "taluk": "Dharmapuri",
+        "address": "No. 68, S.V. Road, Dharmapuri - 636701",
+        "phone": "04342-266516"
+      },
+      {
+        "name": "Government Boys Higher Secondary School, Palacode",
+        "type": "Government",
+        "taluk": "Palacode",
+        "address": "Palacode - 636808",
+        "phone": "04342-222089"
+      },
+      {
+        "name": "Government Girls Higher Secondary School, Palacode",
+        "type": "Government",
+        "taluk": "Palacode",
+        "address": "Palacode - 636808",
+        "phone": "04342-222711"
+      },
+      {
+        "name": "Government Higher Secondary School, Adhiyamankottai",
+        "type": "Government",
+        "taluk": "Nallampalli",
+        "address": "Adhiyamankottai, Dharmapuri - 636807",
+        "phone": "04342-244599"
+      },
+      {
+        "name": "Government Higher Secondary School, Lakkiyampatti",
+        "type": "Government",
+        "taluk": "Dharmapuri",
+        "address": "Lakkiyampatti, Dharmapuri - 636705",
+        "phone": "04342-236082"
+      },
+      {
+        "name": "Jack and Jill Metric School",
+        "type": "Private",
+        "taluk": "Dharmapuri",
+        "address": "No. 4/1335, Bharathi Puram, Dharmapuri - 636705",
+        "phone": "04342-270606"
+      },
+      {
+        "name": "Kendriya Vidyalaya, Dharmapuri",
+        "type": "Government",
+        "taluk": "Dharmapuri",
+        "address": "Pallakolai Village (Morappur Main Road), Dharmapuri - 636704",
+        "phone": "04342-293221"
+      },
+      {
+        "name": "Pachamuthu Metric Higher Secondary School",
+        "type": "Private",
+        "taluk": "Dharmapuri",
+        "address": "26-C, Salem Main Road, Dharmapuri - 636705",
+        "phone": "04342-230604"
+      },
+      {
+        "name": "Paramveer Banasingh Matric School",
+        "type": "Private",
+        "taluk": "Dharmapuri",
+        "address": "Attukaranpatti, Dharmapuri - 636809",
+        "phone": null
+      },
+      {
+        "name": "Senthil Metric Higher Secondary School",
+        "type": "Private",
+        "taluk": "Dharmapuri",
+        "address": "2nd Narasimachari Street, Dharmapuri - 636701",
+        "phone": "04342-268842"
+      },
+      {
+        "name": "Seventh Day Metric Higher Secondary School",
+        "type": "Private",
+        "taluk": "Dharmapuri",
+        "address": "Opposite Collectorate, Dharmapuri - 636705",
+        "phone": "04342-230288"
+      },
+      {
+        "name": "Sri Vidya Mandir Matriculation Higher Secondary School",
+        "type": "Private",
+        "taluk": "Palacode",
+        "address": "Vidya Nagar, Palacode, Dharmapuri - 636808",
+        "phone": "04342-261042"
+      },
+      {
+        "name": "Vijay Vidyalaya Boys Higher Secondary School",
+        "type": "Private",
+        "taluk": "Dharmapuri",
+        "address": "DNC Compound, Gandhi Nagar, Dharmapuri - 636701",
+        "phone": "04342-261166"
+      },
+      {
+        "name": "Vijay Vidyalaya Girls Higher Secondary School",
+        "type": "Private",
+        "taluk": "Dharmapuri",
+        "address": "DNC Compound, Gandhi Nagar, Dharmapuri - 636701",
+        "phone": "04342-260922"
+      },
+      {
+        "name": "Government Higher Secondary School, Harur (Boys)",
+        "type": "Government",
+        "taluk": "Harur",
+        "address": "Harur Town, Harur, Dharmapuri - 636903",
+        "phone": null
+      },
+      {
+        "name": "Government Higher Secondary School, Harur (Girls)",
+        "type": "Government",
+        "taluk": "Harur",
+        "address": "Harur Town, Harur, Dharmapuri - 636903",
+        "phone": null
+      },
+      {
+        "name": "Government Boys Higher Secondary School, Pennagaram",
+        "type": "Government",
+        "taluk": "Pennagaram",
+        "address": "Dharmapuri-Hogenakkal Road, Pennagaram, Dharmapuri - 636810",
+        "phone": null
+      },
+      {
+        "name": "Pennagaram Government Girls Higher Secondary School",
+        "type": "Government",
+        "taluk": "Pennagaram",
+        "address": "Near Taluk Office, Hogenakkal Main Road, Pennagaram, Dharmapuri - 636810",
+        "phone": null
+      },
+      {
+        "name": "Government Higher Secondary School, Perumbalai",
+        "type": "Government",
+        "taluk": "Pennagaram",
+        "address": "Perumbalai, Pennagaram Taluk, Dharmapuri - 636810",
+        "phone": null
+      },
+      {
+        "name": "Government Higher Secondary School, Pappireddipatti",
+        "type": "Government",
+        "taluk": "Pappireddipatti",
+        "address": "NH 179A, Pappireddipatti, Dharmapuri - 636905",
+        "phone": null
+      },
+      {
+        "name": "Adhikarapatti Government Higher Secondary School",
+        "type": "Government",
+        "taluk": "Pappireddipatti",
+        "address": "Athikarapatti, Pappireddipatti, Dharmapuri - 636905",
+        "phone": null
+      },
+      {
+        "name": "Government Higher Secondary School, Karimangalam (Boys)",
+        "type": "Government",
+        "taluk": "Karimangalam",
+        "address": "Karimangalam North, Karimangalam, Dharmapuri",
+        "phone": null
+      },
+      {
+        "name": "Government Higher Secondary School, Nallampalli",
+        "type": "Government",
+        "taluk": "Nallampalli",
+        "address": "Nallampalli, Dharmapuri - 636807",
+        "phone": null
+      },
+      {
+        "name": "Sacred Heart Higher Secondary School, Selliyampatti",
+        "type": "Private",
+        "taluk": "Palacode",
+        "address": "Irudhayapuram, Selliyampatti, Dharmapuri - 636809",
+        "phone": null
+      }
+    ],
+    "colleges": [
+      {
+        "name": "Government Arts College, Dharmapuri",
+        "type": "Government",
+        "stream": "Arts & Science",
+        "taluk": "Dharmapuri",
+        "address": "Salem Main Road, Dharmapuri - 636705",
+        "phone": "04342-230008"
+      },
+      {
+        "name": "Government College of Engineering, Dharmapuri",
+        "type": "Government",
+        "stream": "Engineering",
+        "taluk": "Dharmapuri",
+        "address": "Chettikarai, Dharmapuri - 636704",
+        "phone": "04342-290090"
+      },
+      {
+        "name": "Government Law College, Dharmapuri",
+        "type": "Government",
+        "stream": "Law",
+        "taluk": "Karimangalam",
+        "address": "NH-44, Baisuhalli Maatlampatti Cross Road, Karimangalam Taluk, Dharmapuri - 635205",
+        "phone": "04348-291292"
+      },
+      {
+        "name": "Government Dharmapuri Medical College and Hospital",
+        "type": "Government",
+        "stream": "Medical",
+        "taluk": "Dharmapuri",
+        "address": "Salem Main Road, Dharmapuri - 636701",
+        "phone": "04342-233600"
+      },
+      {
+        "name": "Government I.T.I. College, Chelliyampatti",
+        "type": "Government",
+        "stream": "ITI / Vocational",
+        "taluk": "Dharmapuri",
+        "address": "Chelliyampatti, Dharmapuri - 636703",
+        "phone": "04348-235323"
+      },
+      {
+        "name": "Government Arts College for Women, Karimangalam",
+        "type": "Government",
+        "stream": "Arts & Science",
+        "taluk": "Karimangalam",
+        "address": "Karimangalam, Dharmapuri - 635111",
+        "phone": "04348-241399"
+      },
+      {
+        "name": "Co-op Sugar Mills Polytechnic College, Palacode",
+        "type": "Government-Aided",
+        "stream": "Polytechnic",
+        "taluk": "Palacode",
+        "address": "Dandukaranahalli, Palacode, Dharmapuri - 636808",
+        "phone": "9442222102"
+      },
+      {
+        "name": "Jayam College of Engineering and Technology",
+        "type": "Private",
+        "stream": "Engineering",
+        "taluk": "Dharmapuri",
+        "address": "Hogenakkal Road, Nallanur, Dharmapuri - 636813",
+        "phone": "9942277777"
+      },
+      {
+        "name": "Lakshmi Narayana Polytechnic College, Nallampalli",
+        "type": "Private",
+        "stream": "Polytechnic",
+        "taluk": "Nallampalli",
+        "address": "Savulur Bus Stop, Nallampalli, Dharmapuri - 636807",
+        "phone": "04342-244274"
+      },
+      {
+        "name": "Pee Gee Arts and Science College, Palacode",
+        "type": "Private",
+        "stream": "Arts & Science",
+        "taluk": "Palacode",
+        "address": "NH-7, Krishnagiri Main Road, Periyanahalli, Palacode, Dharmapuri - 636808",
+        "phone": "9443346221"
+      },
+      {
+        "name": "Government Arts and Science College, Eriyur",
+        "type": "Government",
+        "stream": "Arts & Science",
+        "taluk": "Pennagaram",
+        "address": "Eriyur, Pennagaram Taluk, Dharmapuri - 636810",
+        "phone": "04342-291861"
+      },
+      {
+        "name": "Periyar University College of Arts and Science, Harur",
+        "type": "Government",
+        "stream": "Arts & Science",
+        "taluk": "Harur",
+        "address": "Next to Harur Government Hospital, Morappur Main Road, Harur, Dharmapuri - 636903",
+        "phone": "04346-222212"
+      },
+      {
+        "name": "Periyar University College of Arts and Science, Pappireddipatti",
+        "type": "Government",
+        "stream": "Arts & Science",
+        "taluk": "Pappireddipatti",
+        "address": "Pappireddipatti, Dharmapuri - 636905",
+        "phone": "04346-246212"
+      },
+      {
+        "name": "Periyar University College of Arts and Science, Pennagaram",
+        "type": "Government",
+        "stream": "Arts & Science",
+        "taluk": "Pennagaram",
+        "address": "Pennagaram, Dharmapuri - 636803",
+        "phone": "9442821455"
+      },
+      {
+        "name": "S.M Arumugam Polytechnic College",
+        "type": "Private",
+        "stream": "Polytechnic",
+        "taluk": "Dharmapuri",
+        "address": "Papinayakanahalli, Dharmapuri - 636705",
+        "phone": "04342-264609"
+      },
+      {
+        "name": "Sakthi I.T.I. College",
+        "type": "Private",
+        "stream": "ITI / Vocational",
+        "taluk": "Dharmapuri",
+        "address": "Kadagathur Village, Chelliyampatti Post, Dharmapuri - 636809",
+        "phone": "04342-264967"
+      },
+      {
+        "name": "ERK Arts and Science College",
+        "type": "Private",
+        "stream": "Arts & Science",
+        "taluk": "Pappireddipatti",
+        "address": "Erumiyampatti, Kokkarapatti (PO), Pappireddipatti (Taluk), Dharmapuri - 636905",
+        "phone": "04346-251290"
+      }
+    ]
+  }
+}
