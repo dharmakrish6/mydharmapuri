@@ -3,13 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dharmapuri — Directory &amp; places to visit</title>
-<meta name="description" content="Address and contact details for government offices, schools and colleges, plus sightseeing spots, across Dharmapuri district. The Dharmapuri app is on the way.">
+<title>Dharmapuri Directory: Offices, Schools, Colleges &amp; Tourist Places</title>
+<meta name="description" content="Find Dharmapuri district government offices, schools, colleges, hospitals, police stations, taluk offices and tourist places including Hogenakkal Falls, with addresses, phone numbers and travel details.">
+<meta name="keywords" content="Dharmapuri directory, Dharmapuri district, Dharmapuri government offices, Dharmapuri schools, Dharmapuri colleges, Dharmapuri hospitals, Dharmapuri police stations, Dharmapuri taluk offices, Dharmapuri tourist places, places to visit in Dharmapuri, Hogenakkal Falls, Tamil Nadu tourism">
 <meta name="theme-color" content="#f2f3ec">
-<meta property="og:title" content="Dharmapuri — Directory & places to visit">
-<meta property="og:description" content="Government offices, schools, colleges and sightseeing spots of Dharmapuri district, with address, contact and photos — plus markets and local shops coming soon in the app.">
-<meta property="og:image" content="icon-512.png">
+<link rel="canonical" href="https://dharmakrish6.github.io/mydharmapuri/">
+<meta property="og:title" content="Dharmapuri Directory: Offices, Schools, Colleges & Tourist Places">
+<meta property="og:description" content="Addresses, phone numbers and travel details for Dharmapuri government offices, schools, colleges and tourist places in Tamil Nadu.">
+<meta property="og:url" content="https://dharmakrish6.github.io/mydharmapuri/">
+<meta property="og:image" content="https://dharmakrish6.github.io/mydharmapuri/icon-512.png">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dharmapuri Directory: Offices, Schools, Colleges & Tourist Places">
+<meta name="twitter:description" content="Explore Dharmapuri district offices, educational institutions and sightseeing places with useful local details.">
+<meta name="twitter:image" content="https://dharmakrish6.github.io/mydharmapuri/icon-512.png">
 <link rel="icon" type="image/png" href="icon-512.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -643,8 +650,81 @@
     .footer-grid{grid-template-columns:1fr}
   }
 
+  @media (max-width:767px){
+    .wrap{padding-inline:1rem}
+    .nav-inner{gap:.65rem;padding-block:.65rem}
+    .brand-name{font-size:.92rem}
+    .nav-links{
+      order:3;
+      flex-basis:100%;
+      gap:1.15rem;
+      margin-inline:-.15rem;
+      padding-bottom:.15rem;
+    }
+    .nav-links a{font-size:.86rem}
+    .nav-cta{font-size:.8rem;padding:.5rem .8rem;margin-left:auto}
+    .hero{padding-top:1.5rem}
+    .hero-media{border-radius:1rem;padding:2.25rem 1rem 3.5rem}
+    .hero-media h1{font-size:clamp(2.25rem,13vw,3.25rem)}
+    .hero-media p{font-size:.95rem}
+    .finder-card{margin-top:-2.25rem;border-radius:1rem;padding:1rem .8rem 1.1rem}
+    .finder-icons{gap:.75rem 1rem;margin-bottom:1rem}
+    .finder-icon-circle{width:2.75rem;height:2.75rem}
+    .finder-fields{gap:.65rem}
+    .finder-field select,.finder-field input,.finder-go{min-height:2.8rem}
+    section.block{padding-top:2.75rem}
+    .block-head{display:block;margin-bottom:1rem}
+    .block-head p{font-size:.9rem}
+    .see-all{margin-top:.65rem}
+    .controls{position:static;margin-inline:0;padding-inline:0;background:transparent;backdrop-filter:none}
+    .search{flex-basis:100%}
+    .count{padding-left:.25rem}
+    .cards{grid-template-columns:repeat(auto-fill,minmax(13rem,1fr))}
+    .cta{border-radius:1rem;padding:2rem 1.25rem}
+    .cta-badge{font-size:.85rem;padding:.65rem 1rem}
+    .footer-bottom{align-items:flex-start;flex-direction:column}
+  }
+
+  @media (max-width:420px){
+    .brand-mark{width:1.9rem;height:1.9rem}
+    .brand-name{font-size:.86rem}
+    .nav-cta{font-size:.75rem}
+    .finder-icons{justify-content:space-between;gap:.4rem}
+    .finder-icon-btn span.label{font-size:.7rem}
+    .cards{grid-template-columns:1fr}
+  }
+
   @keyframes rise{from{opacity:0;transform:translateY(.6rem)}to{opacity:1;transform:none}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Dharmapuri Directory",
+  "url": "https://dharmakrish6.github.io/mydharmapuri/",
+  "description": "A local directory of Dharmapuri district government offices, schools, colleges and sightseeing places.",
+  "inLanguage": "en-IN",
+  "keywords": [
+    "Dharmapuri directory",
+    "Dharmapuri district government offices",
+    "Dharmapuri schools and colleges",
+    "Dharmapuri tourist places",
+    "Hogenakkal Falls",
+    "Tamil Nadu tourism"
+  ],
+  "about": {
+    "@type": "AdministrativeArea",
+    "name": "Dharmapuri district",
+    "containedInPlace": { "@type": "State", "name": "Tamil Nadu" }
+  },
+  "hasPart": [
+    { "@type": "CollectionPage", "name": "Dharmapuri government offices" },
+    { "@type": "CollectionPage", "name": "Schools in Dharmapuri district" },
+    { "@type": "CollectionPage", "name": "Colleges in Dharmapuri district" },
+    { "@type": "CollectionPage", "name": "Places to visit in Dharmapuri" }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1008,7 +1088,7 @@
           '<span class="media-badge">' + esc(e.taluk) + '</span>' +
         '</div>' +
         '<div class="card-body">' +
-        '<p class="card-name">' + esc(e.name) + '</p>' +
+        '<h3 class="card-name">' + esc(e.name) + '</h3>' +
         '<p class="card-desc">' + esc(e.description) + '</p>' +
         reach +
         credit +
@@ -1025,7 +1105,7 @@
           '<span class="media-badge">' + esc(e.type) + '</span>' +
         '</div>' +
         '<div class="card-body">' +
-        '<p class="card-name">' + esc(e.name) + '</p>' +
+        '<h3 class="card-name">' + esc(e.name) + '</h3>' +
         (e.stream ? '<p class="card-stream">' + esc(e.stream) + '</p>' : '') +
         '<address class="card-address">' + pinIcon + '<span>' + esc(e.address) + '</span></address>' +
         '<p class="card-phone">' + phone + '</p>' +
@@ -1039,7 +1119,7 @@
       return '<button type="button" class="quick-card" data-cat="government_offices" data-quick-name="' + esc(e.name) + '">' +
         '<div class="card-media cat-government_offices">' + categoryIcons.government_offices + '</div>' +
         '<div class="quick-card-body">' +
-        '<p class="quick-card-name">' + esc(e.name) + '</p>' +
+        '<h3 class="quick-card-name">' + esc(e.name) + '</h3>' +
         '<p class="quick-card-phone">' + phone + '</p>' +
         '</div></button>';
     }
