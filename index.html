@@ -6,8 +6,14 @@
 <title>Dharmapuri Directory: Offices, Schools, Colleges &amp; Tourist Places</title>
 <meta name="description" content="Find Dharmapuri district government offices, schools, colleges, hospitals, police stations, taluk offices and tourist places including Hogenakkal Falls, with addresses, phone numbers and travel details.">
 <meta name="keywords" content="Dharmapuri directory, Dharmapuri district, Dharmapuri government offices, Dharmapuri schools, Dharmapuri colleges, Dharmapuri hospitals, Dharmapuri police stations, Dharmapuri taluk offices, Dharmapuri tourist places, places to visit in Dharmapuri, Hogenakkal Falls, Tamil Nadu tourism">
+<meta name="author" content="Dharmapuri Directory">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#f2f3ec">
 <link rel="canonical" href="https://dharmakrish6.github.io/mydharmapuri/">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="AI-readable site summary">
+<link rel="alternate" type="application/json" href="data/directory.json" title="Dharmapuri directory data">
 <meta property="og:title" content="Dharmapuri Directory: Offices, Schools, Colleges & Tourist Places">
 <meta property="og:description" content="Addresses, phone numbers and travel details for Dharmapuri government offices, schools, colleges and tourist places in Tamil Nadu.">
 <meta property="og:url" content="https://dharmakrish6.github.io/mydharmapuri/">
@@ -699,11 +705,20 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
+  "@type": ["WebSite", "WebPage"],
   "name": "Dharmapuri Directory",
   "url": "https://dharmakrish6.github.io/mydharmapuri/",
   "description": "A local directory of Dharmapuri district government offices, schools, colleges and sightseeing places.",
   "inLanguage": "en-IN",
+  "dateModified": "2026-09-03",
+  "isPartOf": { "@type": "WebSite", "name": "Dharmapuri Directory", "url": "https://dharmakrish6.github.io/mydharmapuri/" },
+  "publisher": { "@type": "Organization", "name": "Dharmapuri Directory", "url": "https://dharmakrish6.github.io/mydharmapuri/" },
+  "mainEntityOfPage": "https://dharmakrish6.github.io/mydharmapuri/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://dharmakrish6.github.io/mydharmapuri/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
   "keywords": [
     "Dharmapuri directory",
     "Dharmapuri district government offices",
@@ -1039,7 +1054,8 @@
     var footerTaluks = document.getElementById('footerTaluks');
     var quickScroll = document.getElementById('quickScroll');
 
-    var state = { cat: 'government_offices', taluk: 'all', q: '' };
+    var initialQuery = new URLSearchParams(window.location.search).get('q') || '';
+    var state = { cat: 'government_offices', taluk: 'all', q: initialQuery };
 
     sourceNote.id = 'note';
     sourceNote.textContent = data.note + ' ' + data.imageNote + ' Last updated ' + data.lastUpdated + '.';

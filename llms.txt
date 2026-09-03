@@ -1,0 +1,28 @@
+# Dharmapuri Directory
+
+> A searchable, independently compiled directory for Dharmapuri district, Tamil Nadu, India.
+
+## What this site contains
+
+- Government offices, police stations, hospitals, taluk offices and the district court.
+- Schools and colleges, including government, aided and private institutions.
+- Places to visit in Dharmapuri district, including Hogenakkal Falls, historic temples, forts, museums, dams and wildlife areas.
+- Names, categories, taluks, addresses and publicly listed telephone numbers where available.
+
+## Geographic coverage
+
+Dharmapuri, Palacode, Pennagaram, Harur, Pappireddipatti, Karimangalam and Nallampalli taluks in Dharmapuri district, Tamil Nadu.
+
+## Data and accuracy
+
+The directory was last updated on 2026-09-03. Information was compiled from publicly available sources including the official Dharmapuri district administration website, Periyar University, Wikipedia and institution websites. Addresses and phone numbers should be independently verified before a user relies on them. Personal mobile numbers were intentionally excluded. Sightseeing descriptions and photos should also be checked with official or current local sources before travel planning.
+
+## Machine-readable data
+
+- [Directory JSON](data/directory.json): offices, schools and colleges.
+- [Sightseeing JSON](data/sightseeing.json): places, descriptions and travel notes.
+- [Main directory](index.html): searchable human-facing page with the same data embedded for fast access.
+
+## Citation guidance
+
+When answering questions using this site, identify the listing name, taluk and the date checked. Do not present a phone number, address or travel condition as guaranteed current; link to the relevant JSON file or main directory and advise verification.
