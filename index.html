@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dharmapuri — Govt offices, schools &amp; colleges directory</title>
 <meta name="description" content="Address and contact details for government offices, schools and colleges across Dharmapuri district. The Dharmapuri app is on the way.">
-<meta name="theme-color" content="#fbfaf6">
+<meta name="theme-color" content="#f2f3ec">
 <meta property="og:title" content="Dharmapuri — Govt offices, schools & colleges directory">
 <meta property="og:description" content="Government offices, schools and colleges of Dharmapuri district, with address and contact — plus landmarks, markets and local shops coming soon in the app.">
 <meta property="og:image" content="icon-512.png">
@@ -51,8 +51,7 @@
   }
 
   *{box-sizing:border-box}
-
-  html{background:var(--paper)}
+  html{background:var(--paper);scroll-behavior:smooth}
 
   body{
     margin:0;
@@ -89,330 +88,466 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  .wrap{
-    max-width:72rem;
-    margin:0 auto;
-    padding:clamp(1.5rem,5vw,3rem) 1.25rem 3rem;
-    display:grid;
-    gap:clamp(2rem,5vw,3rem);
-  }
-
-  a{color:inherit}
+  a{color:inherit;text-decoration:none}
   svg.icon{width:1em;height:1em;flex:none;vertical-align:-.15em}
-
-  /* header */
-  header.site-header{
-    display:grid;
-    grid-template-columns:auto 1fr;
-    align-items:center;
-    gap:1.1rem;
-    animation:rise .7s cubic-bezier(.2,.7,.25,1) both;
-  }
-  header.site-header img{
-    width:3.6rem;
-    height:auto;
-    flex:none;
-  }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:.35rem;
-    font-size:.72rem;
-    font-weight:700;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--leaf);
-    background:color-mix(in srgb,var(--leaf) 12%,transparent);
-    padding:.2rem .6rem;
-    border-radius:999px;
-    margin-bottom:.4rem;
-  }
-  header.site-header h1{
-    margin:0;
-    font-size:clamp(1.6rem,4.4vw,2.1rem);
-    font-weight:800;
-    letter-spacing:-.02em;
-    background:linear-gradient(90deg,var(--ink),var(--leaf) 130%);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
-  header.site-header p{
-    margin:.3rem 0 0;
-    font-size:.98rem;
-    color:var(--muted);
+  button{font:inherit}
+  ::selection{background:color-mix(in srgb,var(--leaf) 30%,transparent)}
+  :focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{animation:none !important;transition:none !important}
   }
 
-  /* directory */
-  .directory{
-    display:grid;
-    gap:1.25rem;
-    animation:rise .7s cubic-bezier(.2,.7,.25,1) .06s both;
-  }
-  .directory > .lead{
-    margin:0;
-    color:var(--muted);
-    font-size:.98rem;
-    line-height:1.55;
-    max-width:44rem;
-  }
+  .wrap{max-width:76rem;margin:0 auto;padding-inline:1.25rem}
 
-  /* stat grid / category picker */
-  .stat-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));
-    gap:.85rem;
-  }
-  .stat-tile{
-    display:grid;
-    grid-template-columns:auto 1fr;
-    align-items:center;
-    column-gap:.75rem;
-    row-gap:0;
-    text-align:left;
-    font:inherit;
-    color:var(--ink);
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:1.1rem;
-    padding:1rem 1.1rem;
-    cursor:pointer;
-    box-shadow:var(--shadow);
-    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-  }
-  .stat-tile:hover{
-    transform:translateY(-2px);
-    box-shadow:var(--shadow-hover);
-    background:var(--card-hover);
-  }
-  .stat-tile[aria-selected="true"]{
-    border-color:var(--leaf);
-    background:color-mix(in srgb,var(--leaf) 9%,var(--card));
-    box-shadow:0 0 0 1.5px var(--leaf), var(--shadow);
-  }
-  .stat-tile .stat-icon{
-    grid-row:1 / 3;
-    display:grid;
-    place-items:center;
-    width:2.6rem;
-    height:2.6rem;
-    border-radius:.8rem;
-    background:color-mix(in srgb,var(--leaf) 14%,transparent);
-    color:var(--leaf);
-  }
-  .stat-tile[aria-selected="true"] .stat-icon{
-    background:var(--leaf);
-    color:#fff;
-  }
-  .stat-tile .stat-icon svg{width:1.3rem;height:1.3rem}
-  .stat-num{
-    font-size:1.55rem;
-    font-weight:800;
-    line-height:1.1;
-    letter-spacing:-.01em;
-  }
-  .stat-label{
-    font-size:.82rem;
-    color:var(--muted);
-    font-weight:500;
-  }
-
-  /* controls */
-  .controls{
+  /* ===== nav ===== */
+  .navbar{
     position:sticky;
     top:0;
-    z-index:5;
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:.75rem .9rem;
-    padding:.85rem .9rem;
-    margin:0 -.9rem;
-    background:color-mix(in srgb,var(--paper) 88%,transparent);
-    backdrop-filter:blur(10px) saturate(1.4);
-    -webkit-backdrop-filter:blur(10px) saturate(1.4);
-    border-radius:1rem;
+    z-index:20;
+    background:color-mix(in srgb,var(--paper) 82%,transparent);
+    backdrop-filter:blur(12px) saturate(1.4);
+    -webkit-backdrop-filter:blur(12px) saturate(1.4);
+    border-bottom:1px solid var(--line);
   }
-  .search{
-    flex:1 1 16rem;
-    position:relative;
+  .nav-inner{
     display:flex;
     align-items:center;
+    gap:1.5rem;
+    padding-block:.85rem;
   }
-  .search svg.icon{
-    position:absolute;
-    left:.9rem;
+  .brand{display:flex;align-items:center;gap:.55rem;flex:none}
+  .brand-mark{
+    width:2.1rem;height:2.1rem;
+    display:grid;place-items:center;
+    border-radius:.65rem;
+    background:linear-gradient(135deg,var(--leaf),color-mix(in srgb,var(--leaf) 65%,black));
+    color:#fff;font-weight:800;font-size:.95rem;
+  }
+  .brand-name{font-weight:800;letter-spacing:.02em;font-size:1rem}
+  .nav-links{
+    display:flex;
+    gap:1.4rem;
+    overflow-x:auto;
+    scrollbar-width:none;
+    flex:1;
+  }
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{
+    font-size:.92rem;
+    font-weight:600;
     color:var(--muted);
-    width:1.05rem;
-    height:1.05rem;
+    white-space:nowrap;
+    padding:.3rem 0;
+    border-bottom:2px solid transparent;
+    transition:color .15s ease,border-color .15s ease;
   }
-  .search input{
-    width:100%;
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.is-active{color:var(--ink);border-color:var(--leaf)}
+  .nav-cta{
+    flex:none;
+    font-size:.85rem;
+    font-weight:700;
+    background:var(--ink);
+    color:var(--paper);
+    padding:.55rem 1.05rem;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:transform .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px)}
+
+  /* ===== hero ===== */
+  .hero{padding-top:clamp(2.5rem,6vw,4rem)}
+  .hero-media{
+    border-radius:1.75rem;
+    padding:clamp(2.5rem,8vw,4.5rem) clamp(1.5rem,6vw,3rem);
+    background:
+      radial-gradient(60% 90% at 15% 20%, color-mix(in srgb,var(--leaf) 55%,transparent), transparent 70%),
+      radial-gradient(55% 80% at 85% 0%, color-mix(in srgb,var(--orange) 45%,transparent), transparent 70%),
+      radial-gradient(70% 90% at 80% 100%, color-mix(in srgb,var(--teal) 45%,transparent), transparent 70%),
+      linear-gradient(160deg,#0e2019,#122a20 55%,#0c1e17);
+    color:#fff;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    animation:rise .7s cubic-bezier(.2,.7,.25,1) both;
+  }
+  .hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#fff;
+    background:rgba(255,255,255,.14);
+    padding:.3rem .8rem;
+    border-radius:999px;
+    margin-bottom:1rem;
+  }
+  .hero-media h1{
+    margin:0;
+    font-size:clamp(2.4rem,8vw,4rem);
+    font-weight:800;
+    letter-spacing:-.02em;
+    line-height:1;
+  }
+  .hero-media p{
+    margin:1rem auto 0;
+    max-width:34rem;
+    font-size:clamp(1rem,2.4vw,1.1rem);
+    color:rgba(255,255,255,.82);
+  }
+
+  .finder-card{
+    max-width:52rem;
+    margin:0 auto;
+    margin-top:-3rem;
+    position:relative;
+    z-index:3;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1.4rem;
+    padding:1.4rem clamp(1.1rem,4vw,1.75rem) 1.6rem;
+    box-shadow:var(--shadow-hover);
+    animation:rise .7s cubic-bezier(.2,.7,.25,1) .1s both;
+  }
+  .finder-icons{
+    display:flex;
+    justify-content:center;
+    gap:clamp(1rem,4vw,1.6rem);
+    margin-bottom:1.3rem;
+  }
+  .finder-icon-btn{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.4rem;
+    background:none;
+    border:0;
+    cursor:pointer;
+    color:var(--muted);
+  }
+  .finder-icon-circle{
+    width:3rem;height:3rem;
+    display:grid;place-items:center;
+    border-radius:999px;
+    color:#fff;
+    transition:transform .15s ease,box-shadow .15s ease;
+    box-shadow:var(--shadow);
+  }
+  .finder-icon-btn[data-cat="government_offices"] .finder-icon-circle{background:linear-gradient(135deg,var(--leaf),color-mix(in srgb,var(--leaf) 65%,black))}
+  .finder-icon-btn[data-cat="schools"] .finder-icon-circle{background:linear-gradient(135deg,var(--orange),color-mix(in srgb,var(--orange) 65%,black))}
+  .finder-icon-btn[data-cat="colleges"] .finder-icon-circle{background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black))}
+  .finder-icon-btn .finder-icon-circle svg{width:1.3rem;height:1.3rem}
+  .finder-icon-btn[aria-selected="true"] .finder-icon-circle{transform:translateY(-3px) scale(1.06);box-shadow:var(--shadow-hover)}
+  .finder-icon-btn[aria-selected="true"]{color:var(--ink);font-weight:700}
+  .finder-icon-btn span.label{font-size:.76rem}
+
+  .finder-fields{
+    display:grid;
+    grid-template-columns:repeat(2,1fr) auto;
+    gap:.75rem;
+    align-items:end;
+  }
+  .finder-field{display:flex;flex-direction:column;gap:.3rem;text-align:left}
+  .finder-field label{font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+  .finder-field select,
+  .finder-field input{
     font:inherit;
     font-size:.95rem;
     color:var(--ink);
-    background:var(--card);
+    background:var(--paper);
     border:1px solid var(--line);
-    border-radius:999px;
-    padding:.62rem 2.4rem;
-    box-shadow:var(--shadow);
+    border-radius:.75rem;
+    padding:.6rem .8rem;
   }
-  .search input:focus-visible{outline:2px solid var(--leaf);outline-offset:2px}
-  .search button{
-    position:absolute;
-    right:.5rem;
-    width:1.7rem;
-    height:1.7rem;
-    display:grid;
-    place-items:center;
-    border:0;
-    border-radius:999px;
-    background:transparent;
-    color:var(--muted);
-    cursor:pointer;
-    font-size:1.1rem;
-    line-height:1;
-  }
-  .search button:hover{background:color-mix(in srgb,var(--muted) 16%,transparent)}
-  .count{
-    margin:0;
-    font-size:.85rem;
-    color:var(--muted);
-    white-space:nowrap;
-  }
-
-  /* results */
-  .results{
-    display:grid;
-    gap:1.75rem;
-  }
-  .taluk-group{
-    display:grid;
-    gap:.75rem;
-    animation:rise .45s ease both;
-  }
-  .taluk-group h3{
-    margin:0;
-    display:flex;
-    align-items:center;
-    gap:.5rem;
-    font-size:.76rem;
+  .finder-go{
+    background:var(--leaf);
+    color:#fff;
     font-weight:700;
-    letter-spacing:.07em;
-    text-transform:uppercase;
-    color:var(--leaf);
+    font-size:.95rem;
+    border:0;
+    border-radius:.75rem;
+    padding:.65rem 1.4rem;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:transform .15s ease,background .15s ease;
   }
-  .taluk-group h3::before{
-    content:"";
-    width:.5rem;
-    height:.5rem;
-    border-radius:999px;
-    background:var(--orange);
-    flex:none;
+  .finder-go:hover{transform:translateY(-1px);background:color-mix(in srgb,var(--leaf) 85%,black)}
+
+  @media (max-width:640px){
+    .finder-fields{grid-template-columns:1fr}
+    .finder-go{width:100%}
   }
 
-  .cards{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));
-    gap:.9rem;
+  /* ===== section shells ===== */
+  section.block{padding-top:clamp(3rem,7vw,4.5rem)}
+  .block-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:1rem;
+    margin-bottom:1.25rem;
   }
-  .card{
+  .block-head h2{margin:0;font-size:clamp(1.3rem,3.6vw,1.65rem);font-weight:800;letter-spacing:-.01em}
+  .block-head p{margin:.35rem 0 0;color:var(--muted);font-size:.95rem;max-width:38rem}
+  .see-all{
+    flex:none;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--leaf);
+    display:inline-flex;
+    align-items:center;
+    gap:.3rem;
+  }
+  .see-all:hover{text-decoration:underline}
+
+  /* ===== quick row ===== */
+  .quick-layout{
+    display:grid;
+    grid-template-columns:1fr 17rem;
+    gap:1.25rem;
+    align-items:stretch;
+  }
+  .quick-scroll{
+    display:flex;
+    gap:.9rem;
+    overflow-x:auto;
+    padding-bottom:.35rem;
+    scroll-snap-type:x proximity;
+  }
+  .quick-card{
+    scroll-snap-align:start;
+    flex:0 0 12.5rem;
     background:var(--card);
     border:1px solid var(--line);
     border-radius:1rem;
-    padding:1rem 1.1rem;
+    overflow:hidden;
     box-shadow:var(--shadow);
+    cursor:pointer;
+    text-align:left;
+    transition:transform .16s ease,box-shadow .16s ease;
+  }
+  .quick-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+  .quick-card .card-media{height:4rem}
+  .quick-card .card-media svg{width:1.5rem;height:1.5rem}
+  .quick-card-body{padding:.75rem .85rem .9rem}
+  .quick-card-name{margin:0 0 .3rem;font-size:.85rem;font-weight:700;line-height:1.3}
+  .quick-card-phone{margin:0;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.3rem}
+
+  .quick-promo{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1rem;
+    padding:1.2rem 1.3rem;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    gap:.75rem;
+  }
+  .quick-promo h3{margin:0;font-size:1rem;font-weight:800}
+  .quick-promo ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.55rem}
+  .quick-promo li{
+    display:flex;
+    gap:.55rem;
+    font-size:.85rem;
+    color:var(--muted);
+    line-height:1.4;
+  }
+  .quick-promo li svg{flex:none;margin-top:.2rem;color:var(--leaf)}
+  .btn-outline{
+    margin-top:auto;
+    text-align:center;
+    border:1px solid var(--line);
+    border-radius:.7rem;
+    padding:.6rem 1rem;
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--ink);
+    transition:border-color .15s ease,background .15s ease;
+  }
+  .btn-outline:hover{border-color:var(--leaf);background:color-mix(in srgb,var(--leaf) 8%,transparent)}
+
+  @media (max-width:900px){
+    .quick-layout{grid-template-columns:1fr}
+  }
+
+  /* ===== browse layout ===== */
+  .browse-layout{
     display:grid;
-    gap:.5rem;
-    align-content:start;
-    transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    grid-template-columns:14rem 1fr;
+    gap:1.75rem;
+    align-items:start;
   }
-  .card:hover{
-    transform:translateY(-3px);
-    box-shadow:var(--shadow-hover);
-    border-color:color-mix(in srgb,var(--leaf) 40%,var(--line));
+  .taluk-nav{
+    position:sticky;
+    top:4.5rem;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1rem;
+    padding:1rem;
+    box-shadow:var(--shadow);
   }
-  .card-top{
+  .taluk-nav h3{margin:0 0 .6rem;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .taluk-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.15rem}
+  .taluk-item{
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:.5rem;
-  }
-  .card-icon{
-    width:2.1rem;
-    height:2.1rem;
-    display:grid;
-    place-items:center;
-    border-radius:.65rem;
-    background:color-mix(in srgb,var(--leaf) 12%,transparent);
-    color:var(--leaf);
-  }
-  .card-icon svg{width:1.1rem;height:1.1rem}
-  .badge{
-    font-size:.68rem;
-    font-weight:700;
-    letter-spacing:.03em;
-    text-transform:uppercase;
-    padding:.22rem .55rem;
-    border-radius:999px;
-    white-space:nowrap;
-  }
-  .badge.gov{color:var(--leaf);background:color-mix(in srgb,var(--leaf) 15%,transparent)}
-  .badge.aided{color:var(--orange);background:color-mix(in srgb,var(--orange) 16%,transparent)}
-  .badge.private{color:var(--muted);background:color-mix(in srgb,var(--muted) 16%,transparent)}
-
-  .card-name{
-    margin:0;
-    font-size:.98rem;
-    font-weight:700;
-    line-height:1.32;
-  }
-  .card-stream{
-    margin:-.3rem 0 0;
-    font-size:.78rem;
+    width:100%;
+    background:none;
+    border:0;
+    border-radius:.6rem;
+    padding:.5rem .6rem;
+    font-size:.88rem;
     font-weight:600;
-    color:var(--orange);
-  }
-  .card-address{
-    margin:0;
-    display:flex;
-    gap:.4rem;
-    font-size:.87rem;
-    line-height:1.45;
     color:var(--muted);
-    font-style:normal;
+    cursor:pointer;
+    text-align:left;
+    transition:background .15s ease,color .15s ease;
   }
-  .card-address svg{margin-top:.2rem;color:color-mix(in srgb,var(--muted) 80%,transparent)}
-  .card-phone{
-    margin:.1rem 0 0;
-    display:flex;
-    align-items:center;
-    gap:.4rem;
-    font-size:.9rem;
-  }
-  .card-phone a{
-    display:inline-flex;
-    align-items:center;
-    gap:.4rem;
-    color:var(--leaf);
-    font-weight:700;
-    text-decoration:none;
-  }
-  .card-phone a:hover{text-decoration:underline}
-  .card-phone .muted{color:var(--muted);font-weight:400}
+  .taluk-item:hover{background:color-mix(in srgb,var(--leaf) 8%,transparent);color:var(--ink)}
+  .taluk-item.is-active{background:color-mix(in srgb,var(--leaf) 14%,transparent);color:var(--leaf)}
+  .taluk-item .count{font-size:.75rem;font-weight:700;color:inherit;opacity:.7}
 
-  .empty{
-    color:var(--muted);
-    font-size:.95rem;
-    padding:2rem 0;
-    text-align:center;
+  @media (max-width:800px){
+    .browse-layout{grid-template-columns:1fr}
+    .taluk-nav{position:static}
+    .taluk-list{flex-direction:row;overflow-x:auto;gap:.4rem}
+    .taluk-item{flex:none}
   }
+
+  .tabs-row{
+    display:flex;
+    gap:1.6rem;
+    overflow-x:auto;
+    border-bottom:1px solid var(--line);
+    margin-bottom:1.1rem;
+  }
+  .tab{
+    background:none;
+    border:0;
+    padding:.15rem 0 .85rem;
+    font-size:.95rem;
+    font-weight:700;
+    color:var(--muted);
+    white-space:nowrap;
+    border-bottom:2px solid transparent;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:.4rem;
+    transition:color .15s ease,border-color .15s ease;
+  }
+  .tab .n{font-size:.72rem;font-weight:700;color:inherit;opacity:.65;background:color-mix(in srgb,var(--muted) 16%,transparent);padding:.05rem .4rem;border-radius:999px}
+  .tab:hover{color:var(--ink)}
+  .tab[aria-selected="true"]{color:var(--ink);border-color:var(--leaf)}
+  .tab[aria-selected="true"] .n{background:color-mix(in srgb,var(--leaf) 18%,transparent);color:var(--leaf)}
+
+  .controls{
+    position:sticky;
+    top:3.9rem;
+    z-index:5;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.6rem .9rem;
+    padding:.7rem .8rem;
+    margin:0 -.8rem 1rem;
+    background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(10px) saturate(1.4);
+    -webkit-backdrop-filter:blur(10px) saturate(1.4);
+    border-radius:.9rem;
+  }
+  .search{flex:1 1 14rem;position:relative;display:flex;align-items:center}
+  .search svg.icon{position:absolute;left:.85rem;color:var(--muted);width:1rem;height:1rem}
+  .search input{
+    width:100%;
+    font:inherit;
+    font-size:.92rem;
+    color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:.55rem 2.2rem;
+    box-shadow:var(--shadow);
+  }
+  .search button{
+    position:absolute;right:.45rem;
+    width:1.6rem;height:1.6rem;
+    display:grid;place-items:center;
+    border:0;border-radius:999px;
+    background:transparent;color:var(--muted);
+    cursor:pointer;font-size:1.05rem;line-height:1;
+  }
+  .search button:hover{background:color-mix(in srgb,var(--muted) 16%,transparent)}
+  .count{margin:0;font-size:.82rem;color:var(--muted);white-space:nowrap}
+
+  /* ===== results ===== */
+  .results{display:grid;gap:1.6rem}
+  .taluk-group{display:grid;gap:.7rem}
+  .taluk-group h4{
+    margin:0;display:flex;align-items:center;gap:.5rem;
+    font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--leaf);
+  }
+  .taluk-group h4::before{content:"";width:.45rem;height:.45rem;border-radius:999px;background:var(--orange);flex:none}
+
+  .cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr));gap:.9rem}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1rem;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:color-mix(in srgb,var(--leaf) 40%,var(--line))}
+
+  .card-media{
+    position:relative;
+    height:5rem;
+    display:grid;place-items:center;
+  }
+  .card-media svg{width:2rem;height:2rem;color:#fff;opacity:.92}
+  .cat-government_offices{background:linear-gradient(135deg,var(--leaf),color-mix(in srgb,var(--leaf) 65%,black))}
+  .cat-schools{background:linear-gradient(135deg,var(--orange),color-mix(in srgb,var(--orange) 65%,black))}
+  .cat-colleges{background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black))}
+
+  .media-badge{
+    position:absolute;
+    top:.5rem;right:.5rem;
+    max-width:calc(100% - 1rem);
+    font-size:.62rem;
+    font-weight:700;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    line-height:1.25;
+    text-align:right;
+    padding:.22rem .5rem;
+    border-radius:.5rem;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(4px);
+    color:var(--ink);
+  }
+
+  .card-body{padding:.85rem .95rem 1rem;display:grid;gap:.4rem;align-content:start}
+  .card-name{margin:0;font-size:.94rem;font-weight:700;line-height:1.3}
+  .card-stream{margin:-.25rem 0 0;font-size:.75rem;font-weight:700;color:var(--orange)}
+  .card-address{margin:0;display:flex;gap:.4rem;font-size:.83rem;line-height:1.4;color:var(--muted);font-style:normal}
+  .card-address svg{margin-top:.18rem;color:color-mix(in srgb,var(--muted) 80%,transparent)}
+  .card-phone{margin:.05rem 0 0;display:flex;align-items:center;gap:.35rem;font-size:.86rem}
+  .card-phone a{display:inline-flex;align-items:center;gap:.35rem;color:var(--leaf);font-weight:700}
+  .card-phone a:hover{text-decoration:underline}
+  .card-phone .muted{color:var(--muted);font-weight:400;display:inline-flex;align-items:center;gap:.35rem}
+
+  .empty{color:var(--muted);font-size:.95rem;padding:2.5rem 0;text-align:center}
 
   .source-note{
-    margin:0;
+    margin:1.75rem 0 0;
     font-size:.78rem;
     line-height:1.6;
     color:color-mix(in srgb,var(--muted) 85%,var(--paper));
@@ -420,162 +555,236 @@
     padding-top:1rem;
   }
 
-  /* app promo (coming soon) */
-  .app-promo{
-    padding:clamp(1.75rem,5vw,2.5rem);
+  /* ===== cta ===== */
+  .cta{
+    margin-top:clamp(3rem,7vw,4.5rem);
+    border-radius:1.75rem;
+    padding:clamp(2rem,6vw,3rem) clamp(1.5rem,6vw,3rem);
     background:
-      radial-gradient(80% 120% at 15% 0%, color-mix(in srgb,var(--orange) 12%,transparent), transparent 60%),
-      var(--card);
-    border:1px solid var(--line);
-    border-radius:1.4rem;
-    text-align:center;
-    box-shadow:var(--shadow);
-    animation:rise .7s cubic-bezier(.2,.7,.25,1) .12s both;
+      radial-gradient(60% 90% at 90% 10%, color-mix(in srgb,var(--orange) 40%,transparent), transparent 70%),
+      radial-gradient(60% 90% at 5% 100%, color-mix(in srgb,var(--teal) 40%,transparent), transparent 70%),
+      linear-gradient(160deg,#0e2019,#122a20 60%,#0c1e17);
+    color:#fff;
   }
-  .soon-ta{
-    margin:0 0 .2rem;
-    font-size:1.05rem;
-    font-weight:500;
-    color:var(--orange);
-    line-height:1.2;
+  .cta-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1.5rem;
+    flex-wrap:wrap;
   }
-  .app-promo h2{
-    margin:0;
-    font-size:clamp(1.5rem,5vw,2rem);
-    font-weight:800;
-    letter-spacing:-.02em;
+  .cta-eyebrow{margin:0 0 .3rem;font-size:1rem;font-weight:600;color:var(--orange)}
+  .cta h2{margin:0;font-size:clamp(1.4rem,4vw,1.9rem);font-weight:800;line-height:1.3;letter-spacing:-.01em}
+  .cta-badge{
+    flex:none;
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    color:#fff;
+    font-weight:700;
+    font-size:.92rem;
+    padding:.75rem 1.3rem;
+    border-radius:999px;
   }
-  .arc{
-    width:min(12rem,50vw);
-    height:12px;
-    margin:1rem auto 0;
-    display:block;
+  .cta-badge svg{color:var(--leaf)}
+
+  /* ===== footer ===== */
+  footer.site-footer{margin-top:clamp(3rem,7vw,4.5rem);padding-bottom:2.5rem}
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr repeat(3,1fr);
+    gap:2rem;
+    padding-block:2.5rem;
+    border-top:1px solid var(--line);
   }
-  .arc path{
-    fill:none;
-    stroke:var(--orange);
-    stroke-width:2.5;
-    stroke-linecap:round;
-    opacity:.55;
-  }
-  .app-promo .lede{
-    margin:1.1rem auto 0;
-    max-width:29rem;
-    font-size:1rem;
-    line-height:1.6;
+  .footer-brand p{margin:.7rem 0 0;font-size:.88rem;color:var(--muted);line-height:1.55;max-width:20rem}
+  .footer-col h4{margin:0 0 .8rem;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .footer-col{display:flex;flex-direction:column;gap:.55rem}
+  .footer-col a,.footer-col p{font-size:.88rem;color:var(--ink);margin:0}
+  .footer-col a:hover{color:var(--leaf)}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    flex-wrap:wrap;
+    padding-top:1.5rem;
+    border-top:1px solid var(--line);
+    font-size:.8rem;
     color:var(--muted);
   }
-  .app-promo .store{
-    margin:1.2rem 0 0;
-    font-size:.96rem;
-    font-weight:600;
-    color:var(--leaf);
+
+  @media (max-width:800px){
+    .footer-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:480px){
+    .footer-grid{grid-template-columns:1fr}
   }
 
-  footer{
-    text-align:center;
-    font-size:.9rem;
-    color:color-mix(in srgb,var(--muted) 82%,var(--paper));
-  }
-  footer a{
-    color:inherit;
-    text-decoration:none;
-    border-bottom:1px solid color-mix(in srgb,var(--orange) 60%,transparent);
-  }
-  footer a:hover{color:var(--ink)}
-
-  @keyframes rise{
-    from{opacity:0;transform:translateY(.6rem)}
-    to{opacity:1;transform:none}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none !important;transition:none !important}
-  }
-
-  :focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
+  @keyframes rise{from{opacity:0;transform:translateY(.6rem)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-  <div class="wrap">
+  <header class="navbar">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">DHARMAPURI</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#directory" data-cat="government_offices">Government</a>
+        <a href="#directory" data-cat="schools">Schools</a>
+        <a href="#directory" data-cat="colleges">Colleges</a>
+        <a href="#app">App</a>
+      </nav>
+      <a class="nav-cta" href="#app">Coming soon</a>
+    </div>
+  </header>
 
-    <header class="site-header">
-      <img src="dpi-logo.png" width="760" height="964"
-           alt="Dharmapuri — Hogenakkal falls, the hill fort and the temple gopuram inside a leaf emblem">
-      <div>
-        <span class="eyebrow">District Directory</span>
+  <main>
+    <section class="hero wrap" id="top">
+      <div class="hero-media">
+        <span class="hero-eyebrow">District Directory · Tamil Nadu</span>
         <h1>Dharmapuri</h1>
-        <p>Government offices, schools &amp; colleges — address and contact, in one place.</p>
-      </div>
-    </header>
-
-    <main class="directory">
-      <p class="lead">
-        Browse verified addresses and contact numbers for government offices,
-        schools and colleges across Dharmapuri district — Dharmapuri, Palacode,
-        Pennagaram, Harur and Pappireddipatti taluks.
-      </p>
-
-      <div class="stat-grid" role="tablist" aria-label="Directory category">
-        <button type="button" class="stat-tile" role="tab" data-cat="government_offices">
-          <span class="stat-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/><path d="M9 12h.01M15 12h.01M12 12h.01M9 9h.01M15 9h.01M12 9h.01"/></svg>
-          </span>
-          <span class="stat-num" data-num>0</span>
-          <span class="stat-label">Government offices</span>
-        </button>
-        <button type="button" class="stat-tile" role="tab" data-cat="schools">
-          <span class="stat-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </span>
-          <span class="stat-num" data-num>0</span>
-          <span class="stat-label">Schools</span>
-        </button>
-        <button type="button" class="stat-tile" role="tab" data-cat="colleges">
-          <span class="stat-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 10v6"/></svg>
-          </span>
-          <span class="stat-num" data-num>0</span>
-          <span class="stat-label">Colleges</span>
-        </button>
+        <p id="heroStats">Loading directory…</p>
       </div>
 
-      <div class="controls">
-        <div class="search">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="search" id="q" placeholder="Search by name or place…" aria-label="Search the directory">
-          <button type="button" id="clearSearch" hidden aria-label="Clear search">×</button>
+      <div class="finder-card">
+        <div class="finder-icons" role="tablist" aria-label="Directory category">
+          <button type="button" class="finder-icon-btn" role="tab" data-cat="government_offices">
+            <span class="finder-icon-circle">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+            </span>
+            <span class="label">Govt</span>
+          </button>
+          <button type="button" class="finder-icon-btn" role="tab" data-cat="schools">
+            <span class="finder-icon-circle">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </span>
+            <span class="label">Schools</span>
+          </button>
+          <button type="button" class="finder-icon-btn" role="tab" data-cat="colleges">
+            <span class="finder-icon-circle">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+            </span>
+            <span class="label">Colleges</span>
+          </button>
         </div>
-        <p class="count" id="count"></p>
+
+        <div class="finder-fields">
+          <div class="finder-field">
+            <label for="heroTaluk">Area</label>
+            <select id="heroTaluk"><option value="all">All areas</option></select>
+          </div>
+          <div class="finder-field">
+            <label for="heroQ">Search</label>
+            <input type="search" id="heroQ" placeholder="Name or place…">
+          </div>
+          <button type="button" class="finder-go" id="heroGo">Search</button>
+        </div>
       </div>
-
-      <div id="results" class="results"></div>
-
-      <p class="source-note" id="sourceNote"></p>
-    </main>
-
-    <section class="app-promo">
-      <p class="soon-ta" lang="ta">விரைவில்</p>
-      <h2>Mobile app coming soon</h2>
-
-      <svg class="arc" viewBox="0 0 240 14" aria-hidden="true">
-        <path d="M4 10C60 2 180 2 236 10"/>
-      </svg>
-
-      <p class="lede">
-        Landmarks, markets, repair shops and wholesale traders across the
-        district — joining this directory in one app.
-      </p>
-
-      <p class="store">Launching on Google Play</p>
     </section>
 
-    <footer>
-      Dharmapuri, Tamil Nadu &nbsp;·&nbsp;
-      <a href="mailto:admin@techieqa.com">admin@techieqa.com</a>
-    </footer>
+    <section class="block wrap" id="quick">
+      <div class="block-head">
+        <h2>Frequently looked up</h2>
+        <a class="see-all" href="#directory">See all →</a>
+      </div>
+      <div class="quick-layout">
+        <div class="quick-scroll" id="quickScroll"></div>
+        <aside class="quick-promo">
+          <h3>Verified &amp; up to date</h3>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sourced from official district records</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Office landlines only — no guessed numbers</li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Grouped by area for quick browsing</li>
+          </ul>
+          <a class="btn-outline" href="#note">Read the source note</a>
+        </aside>
+      </div>
+    </section>
 
-  </div>
+    <section class="block wrap" id="directory">
+      <div class="block-head">
+        <h2>Browse the directory</h2>
+        <p>Government offices, schools and colleges across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
+      </div>
+
+      <div class="browse-layout">
+        <aside class="taluk-nav">
+          <h3>Browse by area</h3>
+          <ul class="taluk-list" id="talukList"></ul>
+        </aside>
+
+        <div>
+          <div class="tabs-row" role="tablist" aria-label="Directory category">
+            <button type="button" class="tab" role="tab" data-cat="government_offices">Government offices <span class="n" data-n="government_offices">0</span></button>
+            <button type="button" class="tab" role="tab" data-cat="schools">Schools <span class="n" data-n="schools">0</span></button>
+            <button type="button" class="tab" role="tab" data-cat="colleges">Colleges <span class="n" data-n="colleges">0</span></button>
+          </div>
+
+          <div class="controls">
+            <div class="search">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="search" id="mainQ" placeholder="Search by name or place…" aria-label="Search the directory">
+              <button type="button" id="clearSearch" hidden aria-label="Clear search">×</button>
+            </div>
+            <p class="count" id="count"></p>
+          </div>
+
+          <div id="results" class="results"></div>
+
+          <p class="source-note" id="sourceNote"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta wrap" id="app">
+      <div class="cta-inner">
+        <div>
+          <p class="cta-eyebrow" lang="ta">விரைவில்</p>
+          <h2>Mobile app coming soon —<br>landmarks, markets &amp; shops too.</h2>
+        </div>
+        <span class="cta-badge">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Launching on Google Play
+        </span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark">D</span>
+          <span class="brand-name">DHARMAPURI</span>
+        </a>
+        <p>Government offices, schools and colleges of Dharmapuri district — address and contact, in one place.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Directory</h4>
+        <a href="#directory" data-cat="government_offices">Government offices</a>
+        <a href="#directory" data-cat="schools">Schools</a>
+        <a href="#directory" data-cat="colleges">Colleges</a>
+      </div>
+      <div class="footer-col" id="footerTaluks">
+        <h4>Areas</h4>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Dharmapuri, Tamil Nadu</p>
+        <a href="mailto:admin@techieqa.com">admin@techieqa.com</a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Dharmapuri Directory</span>
+      <span>Independently compiled from public sources — please verify before relying on it.</span>
+    </div>
+  </footer>
 
   <script type="application/json" id="directory-data">
 {
@@ -667,6 +876,7 @@
   <script>
   (function(){
     var data = JSON.parse(document.getElementById('directory-data').textContent);
+    var cats = ['government_offices','schools','colleges'];
     var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges' };
 
     var pinIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
@@ -677,19 +887,52 @@
       colleges: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>'
     };
 
-    var tiles = Array.prototype.slice.call(document.querySelectorAll('.stat-tile'));
-    var searchInput = document.getElementById('q');
+    var quickNames = [
+      'District Collectorate, Dharmapuri',
+      'Superintendent of Police Office, Dharmapuri',
+      'Regional Transport Office, Dharmapuri (TN-29)',
+      'Dharmapuri District Court',
+      'Government Dharmapuri Medical College Hospital',
+      'Dharmapuri Municipality Office'
+    ];
+
+    var allTaluks = Array.from(new Set(
+      cats.reduce(function(acc, c){ return acc.concat(data.categories[c].map(function(e){ return e.taluk; })); }, [])
+    )).sort();
+
+    var totalCount = cats.reduce(function(sum, c){ return sum + data.categories[c].length; }, 0);
+
+    var heroTaluk = document.getElementById('heroTaluk');
+    var heroQ = document.getElementById('heroQ');
+    var heroGo = document.getElementById('heroGo');
+    var heroStats = document.getElementById('heroStats');
+    var mainQ = document.getElementById('mainQ');
     var clearBtn = document.getElementById('clearSearch');
     var results = document.getElementById('results');
     var count = document.getElementById('count');
     var sourceNote = document.getElementById('sourceNote');
-    var state = { cat: 'government_offices', q: '' };
+    var talukList = document.getElementById('talukList');
+    var footerTaluks = document.getElementById('footerTaluks');
+    var quickScroll = document.getElementById('quickScroll');
 
+    var state = { cat: 'government_offices', taluk: 'all', q: '' };
+
+    sourceNote.id = 'note';
     sourceNote.textContent = data.note + ' Last updated ' + data.lastUpdated + '.';
+    heroStats.textContent = totalCount + ' verified listings · ' + allTaluks.length + ' areas · updated ' + data.lastUpdated;
 
-    tiles.forEach(function(tile){
-      var cat = tile.getAttribute('data-cat');
-      tile.querySelector('[data-num]').textContent = (data.categories[cat] || []).length;
+    allTaluks.forEach(function(t){
+      var opt = document.createElement('option');
+      opt.value = t; opt.textContent = t;
+      heroTaluk.appendChild(opt);
+    });
+
+    allTaluks.forEach(function(t){
+      var a = document.createElement('a');
+      a.href = '#directory';
+      a.setAttribute('data-taluk', t);
+      a.textContent = t;
+      footerTaluks.appendChild(a);
     });
 
     function esc(s){
@@ -706,72 +949,153 @@
     }
 
     function cardHTML(e, cat){
-      var meta = esc(e.type);
       var phone = e.phone
         ? '<a href="tel:' + esc(e.phone.replace(/[^0-9+]/g,'')) + '">' + phoneIcon + esc(e.phone) + '</a>'
         : '<span class="muted">' + phoneIcon + 'Not listed</span>';
       return '<li class="card">' +
-        '<div class="card-top">' +
-          '<span class="card-icon">' + categoryIcons[cat] + '</span>' +
-          '<span class="badge ' + typeClass(e.type) + '">' + meta + '</span>' +
+        '<div class="card-media cat-' + cat + '">' + categoryIcons[cat] +
+          '<span class="media-badge">' + esc(e.type) + '</span>' +
         '</div>' +
+        '<div class="card-body">' +
         '<p class="card-name">' + esc(e.name) + '</p>' +
         (e.stream ? '<p class="card-stream">' + esc(e.stream) + '</p>' : '') +
         '<address class="card-address">' + pinIcon + '<span>' + esc(e.address) + '</span></address>' +
         '<p class="card-phone">' + phone + '</p>' +
-        '</li>';
+        '</div></li>';
+    }
+
+    function quickCardHTML(e){
+      var phone = e.phone
+        ? phoneIcon + esc(e.phone)
+        : phoneIcon + 'Not listed';
+      return '<button type="button" class="quick-card" data-cat="government_offices" data-quick-name="' + esc(e.name) + '">' +
+        '<div class="card-media cat-government_offices">' + categoryIcons.government_offices + '</div>' +
+        '<div class="quick-card-body">' +
+        '<p class="quick-card-name">' + esc(e.name) + '</p>' +
+        '<p class="quick-card-phone">' + phone + '</p>' +
+        '</div></button>';
+    }
+
+    function renderQuick(){
+      var entries = quickNames
+        .map(function(n){ return data.categories.government_offices.find(function(e){ return e.name === n; }); })
+        .filter(Boolean);
+      quickScroll.innerHTML = entries.map(quickCardHTML).join('');
+    }
+
+    function renderTalukNav(entries){
+      var byTaluk = {};
+      entries.forEach(function(e){ byTaluk[e.taluk] = (byTaluk[e.taluk] || 0) + 1; });
+      var html = '<li><button type="button" class="taluk-item" data-taluk="all"><span>All areas</span><span class="count">' + entries.length + '</span></button></li>';
+      html += allTaluks.map(function(t){
+        return '<li><button type="button" class="taluk-item" data-taluk="' + esc(t) + '"><span>' + esc(t) + '</span><span class="count">' + (byTaluk[t] || 0) + '</span></button></li>';
+      }).join('');
+      talukList.innerHTML = html;
+    }
+
+    function syncUI(){
+      document.querySelectorAll('[data-cat]').forEach(function(el){
+        var active = el.getAttribute('data-cat') === state.cat;
+        if (el.classList.contains('tab') || el.classList.contains('finder-icon-btn')) {
+          el.setAttribute('aria-selected', active ? 'true' : 'false');
+        }
+        if (el.classList.contains('nav-links') || el.tagName === 'A') {
+          el.classList.toggle('is-active', active && el.closest('.nav-links'));
+        }
+      });
+      document.querySelectorAll('[data-taluk]').forEach(function(el){
+        el.classList.toggle('is-active', el.getAttribute('data-taluk') === state.taluk);
+      });
+      document.querySelectorAll('.tab').forEach(function(el){
+        var n = el.querySelector('[data-n]');
+        if (n) n.textContent = (data.categories[el.getAttribute('data-cat')] || []).length;
+      });
+      heroTaluk.value = state.taluk;
+      heroQ.value = state.q;
+      mainQ.value = state.q;
+      clearBtn.hidden = !state.q;
     }
 
     function render(){
       var cat = state.cat;
       var entries = data.categories[cat] || [];
+
+      if (state.taluk !== 'all') {
+        entries = entries.filter(function(e){ return e.taluk === state.taluk; });
+      }
+
+      renderTalukNav(data.categories[cat] || []);
+
       var q = state.q.trim().toLowerCase();
       var filtered = q ? entries.filter(function(e){
         return [e.name, e.address, e.taluk, e.type, e.stream].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
       }) : entries;
 
-      count.textContent = filtered.length + ' of ' + entries.length + ' ' + labels[cat];
+      count.textContent = filtered.length + ' of ' + (data.categories[cat] || []).length + ' ' + labels[cat];
 
       if (!filtered.length){
         results.innerHTML = '<p class="empty">No matches found.</p>';
-        return;
+      } else {
+        var groups = {};
+        filtered.forEach(function(e){ (groups[e.taluk] = groups[e.taluk] || []).push(e); });
+        var taluks = Object.keys(groups).sort();
+        results.innerHTML = taluks.map(function(taluk){
+          return '<section class="taluk-group"><h4>' + esc(taluk) + ' taluk</h4><ul class="cards">' +
+            groups[taluk].map(function(e){ return cardHTML(e, cat); }).join('') + '</ul></section>';
+        }).join('');
       }
 
-      var groups = {};
-      filtered.forEach(function(e){
-        (groups[e.taluk] = groups[e.taluk] || []).push(e);
-      });
-      var taluks = Object.keys(groups).sort();
-
-      results.innerHTML = taluks.map(function(taluk){
-        return '<section class="taluk-group"><h3>' + esc(taluk) + ' taluk</h3><ul class="cards">' +
-          groups[taluk].map(function(e){ return cardHTML(e, cat); }).join('') + '</ul></section>';
-      }).join('');
+      syncUI();
     }
 
-    tiles.forEach(function(tile){
-      tile.addEventListener('click', function(){
-        tiles.forEach(function(t){ t.setAttribute('aria-selected', t === tile ? 'true' : 'false'); });
-        state.cat = tile.getAttribute('data-cat');
+    function selectCategory(cat){ state.cat = cat; render(); }
+    function selectTaluk(taluk){ state.taluk = taluk; render(); }
+    function selectQuery(q){ state.q = q; render(); }
+
+    document.addEventListener('click', function(e){
+      var quick = e.target.closest('[data-quick-name]');
+      if (quick){
+        e.preventDefault();
+        state.cat = 'government_offices';
+        state.taluk = 'all';
+        state.q = quick.getAttribute('data-quick-name');
         render();
-      });
+        document.getElementById('directory').scrollIntoView({ behavior:'smooth', block:'start' });
+        return;
+      }
+      var catEl = e.target.closest('[data-cat]');
+      if (catEl){
+        e.preventDefault();
+        selectCategory(catEl.getAttribute('data-cat'));
+        if (catEl.closest('.nav-links') || catEl.closest('.footer-col') || catEl.closest('.finder-icons')) {
+          document.getElementById('directory').scrollIntoView({ behavior:'smooth', block:'start' });
+        }
+        return;
+      }
+      var talukEl = e.target.closest('[data-taluk]');
+      if (talukEl){
+        e.preventDefault();
+        selectTaluk(talukEl.getAttribute('data-taluk'));
+        if (talukEl.closest('#footerTaluks')) {
+          document.getElementById('directory').scrollIntoView({ behavior:'smooth', block:'start' });
+        }
+      }
     });
-    tiles[0].setAttribute('aria-selected', 'true');
-    tiles.slice(1).forEach(function(t){ t.setAttribute('aria-selected', 'false'); });
 
-    searchInput.addEventListener('input', function(){
-      state.q = searchInput.value;
-      clearBtn.hidden = !searchInput.value;
-      render();
+    heroTaluk.addEventListener('change', function(){ selectTaluk(heroTaluk.value); });
+    heroQ.addEventListener('input', function(){ selectQuery(heroQ.value); });
+    heroGo.addEventListener('click', function(){
+      document.getElementById('directory').scrollIntoView({ behavior:'smooth', block:'start' });
     });
+
+    mainQ.addEventListener('input', function(){ selectQuery(mainQ.value); });
     clearBtn.addEventListener('click', function(){
-      searchInput.value = '';
       state.q = '';
-      clearBtn.hidden = true;
       render();
-      searchInput.focus();
+      mainQ.focus();
     });
 
+    renderQuick();
     render();
   })();
   </script>
