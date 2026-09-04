@@ -395,10 +395,11 @@
   /* ===== browse layout ===== */
   .browse-layout{
     display:grid;
-    grid-template-columns:14rem 1fr;
+    grid-template-columns:14rem minmax(0,1fr);
     gap:1.75rem;
     align-items:start;
   }
+  .browse-layout > *{min-width:0}
   .taluk-nav{
     position:sticky;
     top:4.5rem;
@@ -658,11 +659,12 @@
 
   @media (max-width:767px){
     .wrap{padding-inline:1rem}
-    .nav-inner{gap:.65rem;padding-block:.65rem}
+    .nav-inner{gap:.65rem;padding-block:.65rem;flex-wrap:wrap}
     .brand-name{font-size:.92rem}
     .nav-links{
       order:3;
       flex-basis:100%;
+      min-width:0;
       gap:1.15rem;
       margin-inline:-.15rem;
       padding-bottom:.15rem;
