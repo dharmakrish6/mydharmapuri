@@ -1,0 +1,200 @@
+{
+  "district": "Dharmapuri",
+  "state": "Tamil Nadu",
+  "lastUpdated": "2026-09-04",
+  "note": "Compiled from official brand dealer/store locators and public business listings; addresses and contact numbers should be independently verified before visiting.",
+  "showrooms": [
+    {
+      "name": "DNC TVS",
+      "brand": "TVS",
+      "category": "Two-wheelers",
+      "taluk": "Dharmapuri",
+      "address": "74/41-A, Vijay Gardens, Salem Main Road, Dharmapuri, Tamil Nadu 636705",
+      "phone": "04342-232266"
+    },
+    {
+      "name": "TVS - AVC Motors",
+      "brand": "TVS",
+      "category": "Two-wheelers",
+      "taluk": "Pappireddipatti",
+      "address": "No 31/4A/1A, Saraswathi Plaza, Salem Main Road, Near Bus Stand, Pappireddipatti, Dharmapuri, Tamil Nadu 636905",
+      "phone": null
+    },
+    {
+      "name": "TVS - Isha Agencies",
+      "brand": "TVS",
+      "category": "Two-wheelers",
+      "taluk": "Pennagaram",
+      "address": "Dharmapuri Main Road, Papparapatti, Pennagaram Taluk, Dharmapuri, Tamil Nadu 636809",
+      "phone": null
+    },
+    {
+      "name": "TVS - Mahalakshmi Agencies",
+      "brand": "TVS",
+      "category": "Two-wheelers",
+      "taluk": "Palacode",
+      "address": "Dharmapuri Main Road, Bazaar Street, Thiruvalluvar Nagar, Palacode, Dharmapuri, Tamil Nadu",
+      "phone": null
+    },
+    {
+      "name": "SS Premier Honda",
+      "brand": "Honda",
+      "category": "Two-wheelers",
+      "taluk": "Dharmapuri",
+      "address": "105/30-B1, Vattara Valarchi Colony, Near Ulavar Santhai, Krishnagiri Main Road, Dharmapuri, Tamil Nadu",
+      "phone": "96777-16161"
+    },
+    {
+      "name": "Sri Venkateshwara Honda",
+      "brand": "Honda",
+      "category": "Two-wheelers",
+      "taluk": "Dharmapuri",
+      "address": "111G, Salem Main Road, Bharathipuram, Dharmapuri, Tamil Nadu",
+      "phone": null
+    },
+    {
+      "name": "DNV Bajaj",
+      "brand": "Bajaj",
+      "category": "Two-wheelers",
+      "taluk": "Dharmapuri",
+      "address": "Shop No 40 & 41B, Salem Main Road, Dharmapuri Collectorate, Bharathipuram, Dharmapuri, Tamil Nadu 636705",
+      "phone": null
+    },
+    {
+      "name": "Sm Motors (Nallanahalli)",
+      "brand": "Royal Enfield",
+      "category": "Two-wheelers",
+      "taluk": "Dharmapuri",
+      "address": "No 191/9, Old NH 7, Krishnagiri Main Road, Nallanahalli, Dharmapuri, Tamil Nadu",
+      "phone": "9619973717"
+    },
+    {
+      "name": "Muthu Agencies Yamaha",
+      "brand": "Yamaha",
+      "category": "Two-wheelers",
+      "taluk": "Dharmapuri",
+      "address": "Lakkiampatty, Dharmapuri, Tamil Nadu 636704",
+      "phone": "8925807340"
+    },
+    {
+      "name": "Muthu Auto Agency",
+      "brand": "Yamaha",
+      "category": "Two-wheelers",
+      "taluk": "Harur",
+      "address": "Salem Main Road, Harur, Dharmapuri, Tamil Nadu 636903",
+      "phone": "9751440050"
+    },
+    {
+      "name": "Sri Rajendra Auto Agency",
+      "brand": "Hero MotoCorp",
+      "category": "Two-wheelers",
+      "taluk": "Dharmapuri",
+      "address": "Near EB Office, Dharmapuri Main Road, Dharmapuri, Tamil Nadu 636810",
+      "phone": "04342-255129"
+    },
+    {
+      "name": "Amman Motors (Jettihalli) - Maruti Suzuki Arena",
+      "brand": "Maruti Suzuki",
+      "category": "Cars",
+      "taluk": "Dharmapuri",
+      "address": "Collector's Bunglow Road, Near SVT Rice Mill, A.Jettihalli, Dharmapuri, Tamil Nadu 636807",
+      "phone": "08037460639"
+    },
+    {
+      "name": "Himavasini Hyundai",
+      "brand": "Hyundai",
+      "category": "Cars",
+      "taluk": "Dharmapuri",
+      "address": "No 20/4-K, Naduhalli Village, Salem By Pass Road, Near Sowloor Junction, Dharmapuri, Tamil Nadu 636703",
+      "phone": null
+    },
+    {
+      "name": "The True Saai Works",
+      "brand": "Tata Motors",
+      "category": "Cars",
+      "taluk": "Dharmapuri",
+      "address": "7/234 D, Old Hosur By-pass Road, Jettihalli, Dharmapuri, Tamil Nadu 636807",
+      "phone": null
+    },
+    {
+      "name": "Siri Motor Ventures Pvt Ltd",
+      "brand": "Mahindra",
+      "category": "Cars",
+      "taluk": "Dharmapuri",
+      "address": "Opp Pachumuthu College of Arts and Science, NH47, Gundalapatti, Dharmapuri, Tamil Nadu 636701",
+      "phone": "08925965342"
+    },
+    {
+      "name": "Amman Motors (Pennagaram) - Maruti Suzuki Arena",
+      "brand": "Maruti Suzuki",
+      "category": "Cars",
+      "taluk": "Pennagaram",
+      "address": "Thiruvallur Nagar, Pennagaram, Dharmapuri, Tamil Nadu",
+      "phone": null
+    },
+    {
+      "name": "Reliance Digital",
+      "brand": "Reliance Digital",
+      "category": "Electronics",
+      "taluk": "Dharmapuri",
+      "address": "PS No 4/2A1, Ground & 1st Floor, Salem Main Road, Bharathipuram, Dharmapuri, Tamil Nadu 636705",
+      "phone": "08071889828"
+    },
+    {
+      "name": "LG Best Shop",
+      "brand": "LG",
+      "category": "Electronics",
+      "taluk": "Dharmapuri",
+      "address": "Opp Thangam Hospital, Salem Main Road, Indhira Nagar, Dharmapuri, Tamil Nadu 636705",
+      "phone": "07373048733"
+    },
+    {
+      "name": "Vivo Exclusive Store",
+      "brand": "Vivo",
+      "category": "Mobile Phones",
+      "taluk": "Dharmapuri",
+      "address": "No.1, Municipal Complex, Mohammed Ali Club Road, Dharmapuri, Tamil Nadu",
+      "phone": null
+    },
+    {
+      "name": "GRT Jewellers",
+      "brand": "GRT Jewellers",
+      "category": "Jewellery",
+      "taluk": "Dharmapuri",
+      "address": "92, Adhiyamaan Bypass Road, Ganesa Colony, Near HDFC Bank, Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-265515"
+    },
+    {
+      "name": "Malabar Gold & Diamonds",
+      "brand": "Malabar Gold & Diamonds",
+      "category": "Jewellery",
+      "taluk": "Dharmapuri",
+      "address": "Ground, First and Second Floor, Door No.124/86, Ward No.16, Adhiyaman Bypass Road, Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-260916"
+    },
+    {
+      "name": "Kalyan Jewellers (My Kalyan Mini Store)",
+      "brand": "Kalyan Jewellers",
+      "category": "Jewellery",
+      "taluk": "Dharmapuri",
+      "address": "Senthil Nagar, Dharmapuri, Tamil Nadu",
+      "phone": null
+    },
+    {
+      "name": "Reliance Trends",
+      "brand": "Reliance Trends",
+      "category": "Apparel",
+      "taluk": "Dharmapuri",
+      "address": "Salem Main Road, Indhira Nagar, Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-292150"
+    },
+    {
+      "name": "Max Fashion",
+      "brand": "Max Fashion",
+      "category": "Apparel",
+      "taluk": "Dharmapuri",
+      "address": "No 74/41A, Salem Main Road, Virupatchipuram, Near Thangam Hospital, Dharmapuri, Tamil Nadu 636701",
+      "phone": "09150046770"
+    }
+  ]
+}
