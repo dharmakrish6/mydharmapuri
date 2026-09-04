@@ -1,0 +1,155 @@
+{
+  "district": "Dharmapuri",
+  "state": "Tamil Nadu",
+  "lastUpdated": "2026-09-04",
+  "note": "Compiled from public hotel listings and booking sites; addresses, phone numbers and current operating status should be independently verified before booking.",
+  "hotels": [
+    {
+      "name": "Adhiyaman Palace Hotel & Lodging",
+      "tier": "Business",
+      "taluk": "Dharmapuri",
+      "address": "#69/4, Adhiyamaan Bye Pass Road, Dharmapuri, Tamil Nadu 636701",
+      "phone": "9443865353"
+    },
+    {
+      "name": "Dharmapuri Lodge",
+      "tier": "Budget",
+      "taluk": "Dharmapuri",
+      "address": "Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-261340"
+    },
+    {
+      "name": "DNC Lodge",
+      "tier": "Budget",
+      "taluk": "Dharmapuri",
+      "address": "Dharmapuri, Tamil Nadu 636705",
+      "phone": "04342-260199"
+    },
+    {
+      "name": "Kumaran Lodge",
+      "tier": "Budget",
+      "taluk": "Dharmapuri",
+      "address": "105, Thenavaram Road, Near R C Church, Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-262215"
+    },
+    {
+      "name": "Madheswara Lodge",
+      "tier": "Budget",
+      "taluk": "Dharmapuri",
+      "address": "103, Adhiyamman Bye-Pass Road, Near Four Roads, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "MK Lodge",
+      "tier": "Budget",
+      "taluk": "Dharmapuri",
+      "address": "Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-262310"
+    },
+    {
+      "name": "Sri Rama Lodge",
+      "tier": "Budget",
+      "taluk": "Dharmapuri",
+      "address": "165/11-M, Salem Main Road, Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-261641"
+    },
+    {
+      "name": "Vijay Lodge",
+      "tier": "Budget",
+      "taluk": "Dharmapuri",
+      "address": "Nethaji Bypass Road, Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-260199"
+    },
+    {
+      "name": "Chandra Residency",
+      "tier": "Business",
+      "taluk": "Dharmapuri",
+      "address": "No 3/204, Soogathoor Koot Road, Pappinaickanahalli, Dharmapuri, Tamil Nadu 636701",
+      "phone": "7200731676"
+    },
+    {
+      "name": "Hotel Sri Saravana Inn",
+      "tier": "Business",
+      "taluk": "Dharmapuri",
+      "address": "102, Bye Pass Road, Near Four Roads, Dharmapuri, Tamil Nadu 636701",
+      "phone": "9789497722"
+    },
+    {
+      "name": "Hotel PKP Grand",
+      "tier": "Business",
+      "taluk": "Dharmapuri",
+      "address": "No 2/64B, Sengodipuram, Near Bus Stand, Dharmapuri, Tamil Nadu 636701",
+      "phone": "04342-269888"
+    },
+    {
+      "name": "Grand D Gala",
+      "tier": "Business",
+      "taluk": "Dharmapuri",
+      "address": "Railway Station Road, Indhira Nagar, Dharmapuri, Tamil Nadu 636701",
+      "phone": "9080731865"
+    },
+    {
+      "name": "DNG Residency",
+      "tier": "Business",
+      "taluk": "Dharmapuri",
+      "address": "2/234A, Dharmapuri-Krishnagiri Main Road, Gundalapatti, Dharmapuri, Tamil Nadu 636704",
+      "phone": "04342-288355"
+    },
+    {
+      "name": "Sathyam Resorts",
+      "tier": "Resort",
+      "taluk": "Pennagaram",
+      "address": "1/329E, Bangalore Road, Koothapadi, Pennagaram, Near Hogenakkal, Dharmapuri, Tamil Nadu 636810",
+      "phone": null
+    },
+    {
+      "name": "TTDC Hotel Tamilnadu - Hogenakkal",
+      "tier": "Resort",
+      "taluk": "Pennagaram",
+      "address": "Hogenakkal, Pennagaram, Dharmapuri, Tamil Nadu 636810",
+      "phone": "9943332736"
+    },
+    {
+      "name": "The Savoy Farmstay",
+      "tier": "Resort",
+      "taluk": "Palacode",
+      "address": "Budihalli, Kotoor Village, Palacode, Dharmapuri District, Tamil Nadu 636806",
+      "phone": null
+    },
+    {
+      "name": "Hotel Mayura Grand",
+      "tier": "Business",
+      "taluk": "Palacode",
+      "address": "Theerthagiri Nagar, Karagathahalli, Palacode, Dharmapuri, Tamil Nadu 636808",
+      "phone": "04348-223880"
+    },
+    {
+      "name": "Hotel Sai Sangeet",
+      "tier": "Budget",
+      "taluk": "Harur",
+      "address": "Harur, Dharmapuri District, Tamil Nadu 636903",
+      "phone": "9942090008"
+    },
+    {
+      "name": "Hotel Sri Mahalakshmi Lodge & Party Hall",
+      "tier": "Budget",
+      "taluk": "Harur",
+      "address": "T V K Nagar, Harur, Dharmapuri, Tamil Nadu 636903",
+      "phone": "04346-223322"
+    },
+    {
+      "name": "N.V.K Lodge",
+      "tier": "Budget",
+      "taluk": "Harur",
+      "address": "Salem Bypass, Harur, Dharmapuri, Tamil Nadu 636903",
+      "phone": null
+    },
+    {
+      "name": "MVR Lodge",
+      "tier": "Budget",
+      "taluk": "Pappireddipatti",
+      "address": "Pappireddipatti Bus Stand, Pappireddipatti, Dharmapuri, Tamil Nadu 636905",
+      "phone": null
+    }
+  ]
+}

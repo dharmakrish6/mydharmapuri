@@ -39,6 +39,7 @@
     --teal:#2c8781;
     --gold:#b8862c;
     --violet:#6b5fc7;
+    --sky:#2f6fb0;
     --muted:#5f7268;
     --line:#e2e2d4;
     --shadow:0 1px 2px rgba(19,58,43,.05), 0 8px 24px -12px rgba(19,58,43,.18);
@@ -58,6 +59,7 @@
       --teal:#4fc2ba;
       --gold:#e0ac4c;
       --violet:#9d94e8;
+      --sky:#6fb3e8;
       --muted:#8fa599;
       --line:#243128;
       --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
@@ -261,6 +263,7 @@
   .finder-icon-btn[data-cat="colleges"] .finder-icon-circle{background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black))}
   .finder-icon-btn[data-cat="sightseeing"] .finder-icon-circle{background:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 65%,black))}
   .finder-icon-btn[data-cat="showrooms"] .finder-icon-circle{background:linear-gradient(135deg,var(--violet),color-mix(in srgb,var(--violet) 65%,black))}
+  .finder-icon-btn[data-cat="hotels"] .finder-icon-circle{background:linear-gradient(135deg,var(--sky),color-mix(in srgb,var(--sky) 65%,black))}
   .finder-icon-btn .finder-icon-circle svg{width:1.3rem;height:1.3rem}
   .finder-icon-btn[aria-selected="true"] .finder-icon-circle{transform:translateY(-3px) scale(1.06);box-shadow:var(--shadow-hover)}
   .finder-icon-btn[aria-selected="true"]{color:var(--ink);font-weight:700}
@@ -540,6 +543,7 @@
   .cat-colleges{background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black))}
   .cat-sightseeing{background:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 65%,black))}
   .cat-showrooms{background:linear-gradient(135deg,var(--violet),color-mix(in srgb,var(--violet) 65%,black))}
+  .cat-hotels{background:linear-gradient(135deg,var(--sky),color-mix(in srgb,var(--sky) 65%,black))}
 
   .card-media.has-photo{height:9.5rem}
   .card-media.has-photo img{
@@ -766,6 +770,7 @@
         <a href="#directory" data-cat="colleges">Colleges</a>
         <a href="#directory" data-cat="sightseeing">Places to visit</a>
         <a href="#directory" data-cat="showrooms">Showrooms</a>
+        <a href="#directory" data-cat="hotels">Hotels</a>
         <a href="#app">App</a>
       </nav>
       <a class="nav-cta" href="#app">Coming soon</a>
@@ -812,6 +817,12 @@
             </span>
             <span class="label">Shops</span>
           </button>
+          <button type="button" class="finder-icon-btn" role="tab" data-cat="hotels">
+            <span class="finder-icon-circle">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M7 10V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/></svg>
+            </span>
+            <span class="label">Hotels</span>
+          </button>
         </div>
 
         <div class="finder-fields">
@@ -850,7 +861,7 @@
     <section class="block wrap" id="directory">
       <div class="block-head">
         <h2>Browse the directory</h2>
-        <p>Government offices, schools, colleges, sightseeing spots and branded showrooms across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
+        <p>Government offices, schools, colleges, sightseeing spots, shops and hotels across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
       </div>
 
       <div class="browse-layout">
@@ -866,6 +877,7 @@
             <button type="button" class="tab" role="tab" data-cat="colleges">Colleges <span class="n" data-n="colleges">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="sightseeing">Places to visit <span class="n" data-n="sightseeing">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="showrooms">Showrooms <span class="n" data-n="showrooms">0</span></button>
+            <button type="button" class="tab" role="tab" data-cat="hotels">Hotels <span class="n" data-n="hotels">0</span></button>
           </div>
 
           <div class="controls">
@@ -905,7 +917,7 @@
           <span class="brand-mark">D</span>
           <span class="brand-name">DHARMAPURI</span>
         </a>
-        <p>Government offices, schools, colleges, sightseeing spots and branded showrooms of Dharmapuri district — address, contact and photos, in one place.</p>
+        <p>Government offices, schools, colleges, sightseeing spots, shops and hotels of Dharmapuri district — address, contact and photos, in one place.</p>
         <p class="visit-counter">
           <img src="https://hits.sh/dharmakrish6.github.io/mydharmapuri.svg?style=flat-square&label=site%20views&color=3e8e2f&labelColor=122a20" alt="Site view count" height="20" loading="lazy">
         </p>
@@ -917,6 +929,7 @@
         <a href="#directory" data-cat="colleges">Colleges</a>
         <a href="#directory" data-cat="sightseeing">Places to visit</a>
         <a href="#directory" data-cat="showrooms">Showrooms</a>
+        <a href="#directory" data-cat="hotels">Hotels</a>
       </div>
       <div class="footer-col" id="footerTaluks">
         <h4>Areas</h4>
@@ -941,7 +954,8 @@
   "lastUpdated": "2026-09-03",
   "note": "Compiled from publicly available sources (official Dharmapuri district administration website dharmapuri.nic.in, Periyar University, Wikipedia, and institution websites); addresses and contact numbers should be independently verified. Phone numbers are office/institution landlines where found; personal mobile numbers of individual officers were intentionally excluded. Some source pages listed a few numbers with an apparently mismatched STD code (e.g. Palacode-area schools listed under Dharmapuri's 04342 code) — these are reproduced as published, not corrected.",
   "imageNote": "Sightseeing places were checked against official/Wikipedia sources to confirm they lie within Dharmapuri district; photos are from Wikimedia Commons, credited and licensed as shown on each card, and were left out entirely (rather than guessed) where no verified photo of that specific place could be found.",
-  "showroomsNote": "Branded showrooms were compiled from official brand dealer/store locators and public business listings; addresses and phone numbers should be independently verified before visiting, and this is not an exhaustive list of every shop in the district.",
+  "showroomsNote": "Shops and showrooms were compiled from official brand dealer/store locators and public business listings (Justdial, Sulekha, magicpin and others); addresses and phone numbers should be independently verified before visiting, and this is not an exhaustive list of every shop in the district.",
+  "hotelsNote": "Hotels and lodges were compiled from public listings and booking sites; addresses, phone numbers and current operating status should be independently verified before booking.",
   "categories": {
     "government_offices": [
       { "name": "District Collectorate, Dharmapuri", "type": "Collectorate", "taluk": "Dharmapuri", "address": "Collectorate, Dharmapuri - 636705", "phone": "04342-231500" },
@@ -1054,7 +1068,53 @@
       { "name": "Malabar Gold & Diamonds", "brand": "Malabar Gold & Diamonds", "category": "Jewellery", "taluk": "Dharmapuri", "address": "Ground, First and Second Floor, Door No.124/86, Ward No.16, Adhiyaman Bypass Road, Dharmapuri, Tamil Nadu 636701", "phone": "04342-260916" },
       { "name": "Kalyan Jewellers (My Kalyan Mini Store)", "brand": "Kalyan Jewellers", "category": "Jewellery", "taluk": "Dharmapuri", "address": "Senthil Nagar, Dharmapuri, Tamil Nadu", "phone": null },
       { "name": "Reliance Trends", "brand": "Reliance Trends", "category": "Apparel", "taluk": "Dharmapuri", "address": "Salem Main Road, Indhira Nagar, Dharmapuri, Tamil Nadu 636701", "phone": "04342-292150" },
-      { "name": "Max Fashion", "brand": "Max Fashion", "category": "Apparel", "taluk": "Dharmapuri", "address": "No 74/41A, Salem Main Road, Virupatchipuram, Near Thangam Hospital, Dharmapuri, Tamil Nadu 636701", "phone": "09150046770" }
+      { "name": "Max Fashion", "brand": "Max Fashion", "category": "Apparel", "taluk": "Dharmapuri", "address": "No 74/41A, Salem Main Road, Virupatchipuram, Near Thangam Hospital, Dharmapuri, Tamil Nadu 636701", "phone": "09150046770" },
+      { "name": "Sathya Agencies", "brand": "Sathya", "category": "Electronics", "taluk": "Dharmapuri", "address": "4A/1, Rajagopal Street, Near Old Bus Stand, Dharmapuri, Tamil Nadu 636701", "phone": "8754046985" },
+      { "name": "Vasanth & Co (Bharathipuram)", "brand": "Vasanth & Co", "category": "Electronics", "taluk": "Dharmapuri", "address": "No 413, Kumaran Tower, Salem Main Road, Bharathipuram, Dharmapuri, Tamil Nadu 636705", "phone": "8939884535" },
+      { "name": "Vasanth & Co (Indhira Nagar)", "brand": "Vasanth & Co", "category": "Electronics", "taluk": "Dharmapuri", "address": "41B, Salem Main Road, Near DNV Bajaj Showroom, Indhira Nagar, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Vasanth & Co (Harur)", "brand": "Vasanth & Co", "category": "Electronics", "taluk": "Harur", "address": "Harur, Dharmapuri District, Tamil Nadu 636903", "phone": null },
+      { "name": "Poorvika Mobiles (Nethaji Road)", "brand": "Poorvika", "category": "Mobile Phones", "taluk": "Dharmapuri", "address": "Lakshmi Complex, No.231, Nethaji Bypass, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Poorvika Mobiles (Harur)", "brand": "Poorvika", "category": "Mobile Phones", "taluk": "Harur", "address": "Harur, Dharmapuri, Tamil Nadu 636903", "phone": null },
+      { "name": "Samsung Smart Plaza", "brand": "Samsung", "category": "Electronics", "taluk": "Dharmapuri", "address": "Salem Main Road, Opposite Hero Show Room, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Gowtham Electronics", "brand": null, "category": "Electronics", "taluk": "Dharmapuri", "address": "No 09, Achariya Street, Main Road, 7th Street, Dharmapuri Fort, Near Bus Stand, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Thangamayil Jewellery", "brand": "Thangamayil Jewellery", "category": "Jewellery", "taluk": "Dharmapuri", "address": "Four Road, Adhiyamaan Bypass Road, Dharmapuri Bazaar, Opposite Adhiyamaan Palace, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "R.V. Raja Gold Jewellers", "brand": null, "category": "Jewellery", "taluk": "Dharmapuri", "address": "Bazaar Street, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Sumangali Nagai Maligai", "brand": null, "category": "Jewellery", "taluk": "Pennagaram", "address": "D.D.D.C Building, Bazaar Street, Pennagaram, Dharmapuri, Tamil Nadu", "phone": null },
+      { "name": "Dhanapal Jewellers", "brand": null, "category": "Jewellery", "taluk": "Dharmapuri", "address": "Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Govindan Jewellers", "brand": null, "category": "Jewellery", "taluk": "Dharmapuri", "address": "Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "S N S Thangamaligai", "brand": null, "category": "Jewellery", "taluk": "Dharmapuri", "address": "Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Bata", "brand": "Bata", "category": "Footwear", "taluk": "Dharmapuri", "address": "No.83, Salem Main Road, Next to Max Showroom, Dharmapuri, Tamil Nadu 636701", "phone": "9840649253" },
+      { "name": "KPM Footwear", "brand": null, "category": "Footwear", "taluk": "Dharmapuri", "address": "Kandasamy Vathiyar Street, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Titan Eye+", "brand": "Titan Eye+", "category": "Optical", "taluk": "Dharmapuri", "address": "Salem Main Road, Dharmapuri Collectorate, Near Thangam Hospital, Next to Dharmapuri Medical College, Dharmapuri, Tamil Nadu", "phone": null },
+      { "name": "Vetri Enterprises", "brand": null, "category": "Stationery", "taluk": "Dharmapuri", "address": "28, P R Srinivasa Rao Street, Bazaar, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Royal Stationers", "brand": null, "category": "Stationery", "taluk": "Dharmapuri", "address": "Harur Main Road, Opposite Avvaiyar Girl School, Dharmapuri, Tamil Nadu", "phone": "9952680164" },
+      { "name": "Sri Sathiyaa SAI Book Shop", "brand": null, "category": "Stationery", "taluk": "Dharmapuri", "address": "Main Market, Mohammed Ali Club Road, Dharmapuri, Tamil Nadu", "phone": "9443267210" },
+      { "name": "Adyar Ananda Bhavan", "brand": "Adyar Ananda Bhavan (A2B)", "category": "Bakery & Sweets", "taluk": "Nallampalli", "address": "NH 44, Dharmapuri-Bengaluru Road, Nallampalli, Dharmapuri District, Tamil Nadu 636807", "phone": null },
+      { "name": "Fairose", "brand": null, "category": "Furniture", "taluk": "Dharmapuri", "address": "Virupakshipuram, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "Royaloak Furniture", "brand": "Royaloak", "category": "Furniture", "taluk": "Dharmapuri", "address": "Salem Main Road, Bharathipuram, Lakkiampatty, Dharmapuri, Tamil Nadu", "phone": null }
+    ],
+    "hotels": [
+      { "name": "Adhiyaman Palace Hotel & Lodging", "tier": "Business", "taluk": "Dharmapuri", "address": "#69/4, Adhiyamaan Bye Pass Road, Dharmapuri, Tamil Nadu 636701", "phone": "9443865353" },
+      { "name": "Dharmapuri Lodge", "tier": "Budget", "taluk": "Dharmapuri", "address": "Dharmapuri, Tamil Nadu 636701", "phone": "04342-261340" },
+      { "name": "DNC Lodge", "tier": "Budget", "taluk": "Dharmapuri", "address": "Dharmapuri, Tamil Nadu 636705", "phone": "04342-260199" },
+      { "name": "Kumaran Lodge", "tier": "Budget", "taluk": "Dharmapuri", "address": "105, Thenavaram Road, Near R C Church, Dharmapuri, Tamil Nadu 636701", "phone": "04342-262215" },
+      { "name": "Madheswara Lodge", "tier": "Budget", "taluk": "Dharmapuri", "address": "103, Adhiyamman Bye-Pass Road, Near Four Roads, Dharmapuri, Tamil Nadu 636701", "phone": null },
+      { "name": "MK Lodge", "tier": "Budget", "taluk": "Dharmapuri", "address": "Dharmapuri, Tamil Nadu 636701", "phone": "04342-262310" },
+      { "name": "Sri Rama Lodge", "tier": "Budget", "taluk": "Dharmapuri", "address": "165/11-M, Salem Main Road, Dharmapuri, Tamil Nadu 636701", "phone": "04342-261641" },
+      { "name": "Vijay Lodge", "tier": "Budget", "taluk": "Dharmapuri", "address": "Nethaji Bypass Road, Dharmapuri, Tamil Nadu 636701", "phone": "04342-260199" },
+      { "name": "Chandra Residency", "tier": "Business", "taluk": "Dharmapuri", "address": "No 3/204, Soogathoor Koot Road, Pappinaickanahalli, Dharmapuri, Tamil Nadu 636701", "phone": "7200731676" },
+      { "name": "Hotel Sri Saravana Inn", "tier": "Business", "taluk": "Dharmapuri", "address": "102, Bye Pass Road, Near Four Roads, Dharmapuri, Tamil Nadu 636701", "phone": "9789497722" },
+      { "name": "Hotel PKP Grand", "tier": "Business", "taluk": "Dharmapuri", "address": "No 2/64B, Sengodipuram, Near Bus Stand, Dharmapuri, Tamil Nadu 636701", "phone": "04342-269888" },
+      { "name": "Grand D Gala", "tier": "Business", "taluk": "Dharmapuri", "address": "Railway Station Road, Indhira Nagar, Dharmapuri, Tamil Nadu 636701", "phone": "9080731865" },
+      { "name": "DNG Residency", "tier": "Business", "taluk": "Dharmapuri", "address": "2/234A, Dharmapuri-Krishnagiri Main Road, Gundalapatti, Dharmapuri, Tamil Nadu 636704", "phone": "04342-288355" },
+      { "name": "Sathyam Resorts", "tier": "Resort", "taluk": "Pennagaram", "address": "1/329E, Bangalore Road, Koothapadi, Pennagaram, Near Hogenakkal, Dharmapuri, Tamil Nadu 636810", "phone": null },
+      { "name": "TTDC Hotel Tamilnadu - Hogenakkal", "tier": "Resort", "taluk": "Pennagaram", "address": "Hogenakkal, Pennagaram, Dharmapuri, Tamil Nadu 636810", "phone": "9943332736" },
+      { "name": "The Savoy Farmstay", "tier": "Resort", "taluk": "Palacode", "address": "Budihalli, Kotoor Village, Palacode, Dharmapuri District, Tamil Nadu 636806", "phone": null },
+      { "name": "Hotel Mayura Grand", "tier": "Business", "taluk": "Palacode", "address": "Theerthagiri Nagar, Karagathahalli, Palacode, Dharmapuri, Tamil Nadu 636808", "phone": "04348-223880" },
+      { "name": "Hotel Sai Sangeet", "tier": "Budget", "taluk": "Harur", "address": "Harur, Dharmapuri District, Tamil Nadu 636903", "phone": "9942090008" },
+      { "name": "Hotel Sri Mahalakshmi Lodge & Party Hall", "tier": "Budget", "taluk": "Harur", "address": "T V K Nagar, Harur, Dharmapuri, Tamil Nadu 636903", "phone": "04346-223322" },
+      { "name": "N.V.K Lodge", "tier": "Budget", "taluk": "Harur", "address": "Salem Bypass, Harur, Dharmapuri, Tamil Nadu 636903", "phone": null },
+      { "name": "MVR Lodge", "tier": "Budget", "taluk": "Pappireddipatti", "address": "Pappireddipatti Bus Stand, Pappireddipatti, Dharmapuri, Tamil Nadu 636905", "phone": null }
     ]
   }
 }
@@ -1063,8 +1123,8 @@
   <script>
   (function(){
     var data = JSON.parse(document.getElementById('directory-data').textContent);
-    var cats = ['government_offices','schools','colleges','sightseeing','showrooms'];
-    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges', sightseeing: 'places to visit', showrooms: 'branded showrooms' };
+    var cats = ['government_offices','schools','colleges','sightseeing','showrooms','hotels'];
+    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges', sightseeing: 'places to visit', showrooms: 'shops', hotels: 'hotels' };
 
     var pinIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
     var phoneIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
@@ -1073,7 +1133,8 @@
       schools: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
       colleges: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>',
       sightseeing: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 5.5-6L13 16l3-4 5 6"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/></svg>',
-      showrooms: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>'
+      showrooms: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+      hotels: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M7 10V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/></svg>'
     };
     var reachIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 20l-5.5-2V4L9 6m0 14l6-2m-6 2V6m6 12l5.5 2V6L15 4m0 14V4m0 0L9 6"/></svg>';
 
@@ -1109,7 +1170,7 @@
     var state = { cat: 'government_offices', taluk: 'all', q: initialQuery };
 
     sourceNote.id = 'note';
-    sourceNote.textContent = data.note + ' ' + data.imageNote + ' ' + data.showroomsNote + ' Last updated ' + data.lastUpdated + '.';
+    sourceNote.textContent = data.note + ' ' + data.imageNote + ' ' + data.showroomsNote + ' ' + data.hotelsNote + ' Last updated ' + data.lastUpdated + '.';
     heroStats.textContent = totalCount + ' verified listings · ' + allTaluks.length + ' areas · updated ' + data.lastUpdated;
 
     allTaluks.forEach(function(t){
@@ -1167,11 +1228,11 @@
       var phone = e.phone
         ? '<a href="tel:' + esc(e.phone.replace(/[^0-9+]/g,'')) + '">' + phoneIcon + esc(e.phone) + '</a>'
         : '<span class="muted">' + phoneIcon + 'Not listed</span>';
-      var badgeText = e.type || e.category;
+      var badgeText = e.type || e.category || e.tier;
       var subLine = e.stream || e.brand;
       return '<li class="card">' +
         '<div class="card-media cat-' + cat + '">' + categoryIcons[cat] +
-          '<span class="media-badge">' + esc(badgeText) + '</span>' +
+          (badgeText ? '<span class="media-badge">' + esc(badgeText) + '</span>' : '') +
         '</div>' +
         '<div class="card-body">' +
         '<h3 class="card-name">' + esc(e.name) + '</h3>' +
@@ -1245,7 +1306,7 @@
 
       var q = state.q.trim().toLowerCase();
       var filtered = q ? entries.filter(function(e){
-        return [e.name, e.address, e.taluk, e.type, e.stream, e.description, e.category, e.brand].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
+        return [e.name, e.address, e.taluk, e.type, e.stream, e.description, e.category, e.brand, e.tier].filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
       }) : entries;
 
       count.textContent = filtered.length + ' of ' + (data.categories[cat] || []).length + ' ' + labels[cat];

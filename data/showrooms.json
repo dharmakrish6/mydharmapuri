@@ -2,7 +2,7 @@
   "district": "Dharmapuri",
   "state": "Tamil Nadu",
   "lastUpdated": "2026-09-04",
-  "note": "Compiled from official brand dealer/store locators and public business listings; addresses and contact numbers should be independently verified before visiting.",
+  "note": "Compiled from official brand dealer/store locators and public business listings (including Justdial, Sulekha, magicpin and government sources); addresses and contact numbers should be independently verified before visiting.",
   "showrooms": [
     {
       "name": "DNC TVS",
@@ -195,6 +195,190 @@
       "taluk": "Dharmapuri",
       "address": "No 74/41A, Salem Main Road, Virupatchipuram, Near Thangam Hospital, Dharmapuri, Tamil Nadu 636701",
       "phone": "09150046770"
+    },
+    {
+      "name": "Sathya Agencies",
+      "brand": "Sathya",
+      "category": "Electronics",
+      "taluk": "Dharmapuri",
+      "address": "4A/1, Rajagopal Street, Near Old Bus Stand, Dharmapuri, Tamil Nadu 636701",
+      "phone": "8754046985"
+    },
+    {
+      "name": "Vasanth & Co (Bharathipuram)",
+      "brand": "Vasanth & Co",
+      "category": "Electronics",
+      "taluk": "Dharmapuri",
+      "address": "No 413, Kumaran Tower, Salem Main Road, Bharathipuram, Dharmapuri, Tamil Nadu 636705",
+      "phone": "8939884535"
+    },
+    {
+      "name": "Vasanth & Co (Indhira Nagar)",
+      "brand": "Vasanth & Co",
+      "category": "Electronics",
+      "taluk": "Dharmapuri",
+      "address": "41B, Salem Main Road, Near DNV Bajaj Showroom, Indhira Nagar, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Vasanth & Co (Harur)",
+      "brand": "Vasanth & Co",
+      "category": "Electronics",
+      "taluk": "Harur",
+      "address": "Harur, Dharmapuri District, Tamil Nadu 636903",
+      "phone": null
+    },
+    {
+      "name": "Poorvika Mobiles (Nethaji Road)",
+      "brand": "Poorvika",
+      "category": "Mobile Phones",
+      "taluk": "Dharmapuri",
+      "address": "Lakshmi Complex, No.231, Nethaji Bypass, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Poorvika Mobiles (Harur)",
+      "brand": "Poorvika",
+      "category": "Mobile Phones",
+      "taluk": "Harur",
+      "address": "Harur, Dharmapuri, Tamil Nadu 636903",
+      "phone": null
+    },
+    {
+      "name": "Samsung Smart Plaza",
+      "brand": "Samsung",
+      "category": "Electronics",
+      "taluk": "Dharmapuri",
+      "address": "Salem Main Road, Opposite Hero Show Room, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Gowtham Electronics",
+      "brand": null,
+      "category": "Electronics",
+      "taluk": "Dharmapuri",
+      "address": "No 09, Achariya Street, Main Road, 7th Street, Dharmapuri Fort, Near Bus Stand, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Thangamayil Jewellery",
+      "brand": "Thangamayil Jewellery",
+      "category": "Jewellery",
+      "taluk": "Dharmapuri",
+      "address": "Four Road, Adhiyamaan Bypass Road, Dharmapuri Bazaar, Opposite Adhiyamaan Palace, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "R.V. Raja Gold Jewellers",
+      "brand": null,
+      "category": "Jewellery",
+      "taluk": "Dharmapuri",
+      "address": "Bazaar Street, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Sumangali Nagai Maligai",
+      "brand": null,
+      "category": "Jewellery",
+      "taluk": "Pennagaram",
+      "address": "D.D.D.C Building, Bazaar Street, Pennagaram, Dharmapuri, Tamil Nadu",
+      "phone": null
+    },
+    {
+      "name": "Dhanapal Jewellers",
+      "brand": null,
+      "category": "Jewellery",
+      "taluk": "Dharmapuri",
+      "address": "Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Govindan Jewellers",
+      "brand": null,
+      "category": "Jewellery",
+      "taluk": "Dharmapuri",
+      "address": "Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "S N S Thangamaligai",
+      "brand": null,
+      "category": "Jewellery",
+      "taluk": "Dharmapuri",
+      "address": "Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Bata",
+      "brand": "Bata",
+      "category": "Footwear",
+      "taluk": "Dharmapuri",
+      "address": "No.83, Salem Main Road, Next to Max Showroom, Dharmapuri, Tamil Nadu 636701",
+      "phone": "9840649253"
+    },
+    {
+      "name": "KPM Footwear",
+      "brand": null,
+      "category": "Footwear",
+      "taluk": "Dharmapuri",
+      "address": "Kandasamy Vathiyar Street, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Titan Eye+",
+      "brand": "Titan Eye+",
+      "category": "Optical",
+      "taluk": "Dharmapuri",
+      "address": "Salem Main Road, Dharmapuri Collectorate, Near Thangam Hospital, Next to Dharmapuri Medical College, Dharmapuri, Tamil Nadu",
+      "phone": null
+    },
+    {
+      "name": "Vetri Enterprises",
+      "brand": null,
+      "category": "Stationery",
+      "taluk": "Dharmapuri",
+      "address": "28, P R Srinivasa Rao Street, Bazaar, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Royal Stationers",
+      "brand": null,
+      "category": "Stationery",
+      "taluk": "Dharmapuri",
+      "address": "Harur Main Road, Opposite Avvaiyar Girl School, Dharmapuri, Tamil Nadu",
+      "phone": "9952680164"
+    },
+    {
+      "name": "Sri Sathiyaa SAI Book Shop",
+      "brand": null,
+      "category": "Stationery",
+      "taluk": "Dharmapuri",
+      "address": "Main Market, Mohammed Ali Club Road, Dharmapuri, Tamil Nadu",
+      "phone": "9443267210"
+    },
+    {
+      "name": "Adyar Ananda Bhavan",
+      "brand": "Adyar Ananda Bhavan (A2B)",
+      "category": "Bakery & Sweets",
+      "taluk": "Nallampalli",
+      "address": "NH 44, Dharmapuri-Bengaluru Road, Nallampalli, Dharmapuri District, Tamil Nadu 636807",
+      "phone": null
+    },
+    {
+      "name": "Fairose",
+      "brand": null,
+      "category": "Furniture",
+      "taluk": "Dharmapuri",
+      "address": "Virupakshipuram, Dharmapuri, Tamil Nadu 636701",
+      "phone": null
+    },
+    {
+      "name": "Royaloak Furniture",
+      "brand": "Royaloak",
+      "category": "Furniture",
+      "taluk": "Dharmapuri",
+      "address": "Salem Main Road, Bharathipuram, Lakkiampatty, Dharmapuri, Tamil Nadu",
+      "phone": null
     }
   ]
 }
