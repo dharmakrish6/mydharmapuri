@@ -45,6 +45,7 @@
     --gold:#b8862c;
     --violet:#6b5fc7;
     --sky:#2f6fb0;
+    --crimson:#bf3b3b;
     --muted:#5f7268;
     --line:#e2e2d4;
     --shadow:0 1px 2px rgba(19,58,43,.05), 0 8px 24px -12px rgba(19,58,43,.18);
@@ -65,6 +66,7 @@
       --gold:#e0ac4c;
       --violet:#9d94e8;
       --sky:#6fb3e8;
+      --crimson:#e07070;
       --muted:#8fa599;
       --line:#243128;
       --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
@@ -269,6 +271,7 @@
   .finder-icon-btn[data-cat="sightseeing"] .finder-icon-circle{background:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 65%,black))}
   .finder-icon-btn[data-cat="showrooms"] .finder-icon-circle{background:linear-gradient(135deg,var(--violet),color-mix(in srgb,var(--violet) 65%,black))}
   .finder-icon-btn[data-cat="hotels"] .finder-icon-circle{background:linear-gradient(135deg,var(--sky),color-mix(in srgb,var(--sky) 65%,black))}
+  .finder-icon-btn[data-cat="restaurants"] .finder-icon-circle{background:linear-gradient(135deg,var(--crimson),color-mix(in srgb,var(--crimson) 65%,black))}
   .finder-icon-btn .finder-icon-circle svg{width:1.3rem;height:1.3rem}
   .finder-icon-btn[aria-selected="true"] .finder-icon-circle{transform:translateY(-3px) scale(1.06);box-shadow:var(--shadow-hover)}
   .finder-icon-btn[aria-selected="true"]{color:var(--ink);font-weight:700}
@@ -574,6 +577,7 @@
   .cat-sightseeing{background:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 65%,black))}
   .cat-showrooms{background:linear-gradient(135deg,var(--violet),color-mix(in srgb,var(--violet) 65%,black))}
   .cat-hotels{background:linear-gradient(135deg,var(--sky),color-mix(in srgb,var(--sky) 65%,black))}
+  .cat-restaurants{background:linear-gradient(135deg,var(--crimson),color-mix(in srgb,var(--crimson) 65%,black))}
 
   .card-media.has-photo{height:9.5rem}
   .card-media.has-photo img{
@@ -801,6 +805,7 @@
         <a href="#directory" data-cat="sightseeing">Places to visit</a>
         <a href="#directory" data-cat="showrooms">Showrooms</a>
         <a href="#directory" data-cat="hotels">Hotels</a>
+        <a href="#directory" data-cat="restaurants">Restaurants</a>
         <a href="#app">App</a>
       </nav>
       <a class="nav-cta" href="#app">Coming soon</a>
@@ -853,6 +858,12 @@
             </span>
             <span class="label">Hotels</span>
           </button>
+          <button type="button" class="finder-icon-btn" role="tab" data-cat="restaurants">
+            <span class="finder-icon-circle">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M5 2v20"/><path d="M19 2c-1.5 3-1.5 7 0 9 .5.5 1 .7 1 1.3V22"/></svg>
+            </span>
+            <span class="label">Food</span>
+          </button>
         </div>
 
         <div class="finder-fields">
@@ -891,7 +902,7 @@
     <section class="block wrap" id="directory">
       <div class="block-head">
         <h2>Browse the directory</h2>
-        <p>Government offices, schools, colleges, sightseeing spots, shops and hotels across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
+        <p>Government offices, schools, colleges, sightseeing spots, shops, hotels and restaurants across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
       </div>
 
       <div class="browse-layout">
@@ -908,6 +919,7 @@
             <button type="button" class="tab" role="tab" data-cat="sightseeing">Places to visit <span class="n" data-n="sightseeing">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="showrooms">Showrooms <span class="n" data-n="showrooms">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="hotels">Hotels <span class="n" data-n="hotels">0</span></button>
+            <button type="button" class="tab" role="tab" data-cat="restaurants">Restaurants <span class="n" data-n="restaurants">0</span></button>
           </div>
 
           <div class="subcat-row" id="subcatRow" hidden></div>
@@ -949,7 +961,7 @@
           <span class="brand-mark">D</span>
           <span class="brand-name">DHARMAPURI</span>
         </a>
-        <p>Government offices, schools, colleges, sightseeing spots, shops and hotels of Dharmapuri district — address, contact and photos, in one place.</p>
+        <p>Government offices, schools, colleges, sightseeing spots, shops, hotels and restaurants of Dharmapuri district — address, contact and photos, in one place.</p>
         <p class="visit-counter">
           <img src="https://hits.sh/dharmakrish6.github.io/mydharmapuri.svg?style=flat-square&label=site%20views&color=3e8e2f&labelColor=122a20" alt="Site view count" height="20" loading="lazy">
         </p>
@@ -962,6 +974,7 @@
         <a href="#directory" data-cat="sightseeing">Places to visit</a>
         <a href="#directory" data-cat="showrooms">Showrooms</a>
         <a href="#directory" data-cat="hotels">Hotels</a>
+        <a href="#directory" data-cat="restaurants">Restaurants</a>
       </div>
       <div class="footer-col" id="footerTaluks">
         <h4>Areas</h4>
@@ -988,6 +1001,7 @@
   "imageNote": "Sightseeing places were checked against official/Wikipedia sources to confirm they lie within Dharmapuri district; photos are from Wikimedia Commons, credited and licensed as shown on each card, and were left out entirely (rather than guessed) where no verified photo of that specific place could be found.",
   "showroomsNote": "Shops and showrooms were compiled from official brand dealer/store locators and public business listings (Justdial, Sulekha, magicpin and others); addresses and phone numbers should be independently verified before visiting, and this is not an exhaustive list of every shop in the district.",
   "hotelsNote": "Hotels and lodges were compiled from public listings and booking sites; addresses, phone numbers and current operating status should be independently verified before booking.",
+  "restaurantsNote": "Restaurants were compiled from public listings (Justdial, Zomato, Restaurant Guru, magicpin and similar); addresses, phone numbers and current operating status should be independently verified before visiting.",
   "categories": {
     "government_offices": [
       { "name": "District Collectorate, Dharmapuri", "type": "Collectorate", "taluk": "Dharmapuri", "address": "Collectorate, Dharmapuri - 636705", "phone": "04342-231500" },
@@ -1147,6 +1161,38 @@
       { "name": "Hotel Sri Mahalakshmi Lodge & Party Hall", "tier": "Budget", "taluk": "Harur", "address": "T V K Nagar, Harur, Dharmapuri, Tamil Nadu 636903", "phone": "04346-223322" },
       { "name": "N.V.K Lodge", "tier": "Budget", "taluk": "Harur", "address": "Salem Bypass, Harur, Dharmapuri, Tamil Nadu 636903", "phone": null },
       { "name": "MVR Lodge", "tier": "Budget", "taluk": "Pappireddipatti", "address": "Pappireddipatti Bus Stand, Pappireddipatti, Dharmapuri, Tamil Nadu 636905", "phone": null }
+    ],
+    "restaurants": [
+      { "name": "Basmati Briyani World (A/c) Restaurant", "category": "Biryani", "taluk": "Dharmapuri", "address": "Moogambikai Complex, Salem Main Road, Lakkiampatty, Dharmapuri - 636701", "phone": null },
+      { "name": "Topi Vappa", "category": "Biryani", "taluk": "Dharmapuri", "address": "Moogambikai Complex, Salem Main Road, Lakkiampatty, Dharmapuri - 636701", "phone": null },
+      { "name": "Aviknaa Restaurant & Aviknaa Chicken", "category": "Chicken / Non-Veg", "taluk": "Dharmapuri", "address": "Thadangam, Dharmapuri", "phone": null },
+      { "name": "KFC", "category": "Chicken / Non-Veg", "taluk": "Dharmapuri", "address": "Unit No 3, Ground Floor, TS Square, Opposite Government Medical College, Nethaji Bye Pass Road, Dharmapuri - 636701", "phone": "080-45953141" },
+      { "name": "New Restaurant High Class Veg And Non Veg", "category": "Chicken / Non-Veg", "taluk": "Dharmapuri", "address": "Opposite Town Bus Stand, Mohammed Ali Club Road, Dharmapuri Bazaar, Dharmapuri - 636701", "phone": "07383517838" },
+      { "name": "Hotel Si Ramavilas (Non Veg)", "category": "Chicken / Non-Veg", "taluk": "Dharmapuri", "address": "129/24, Adhiyaman Bye Pass Road, K.R.K Mansion, Dharmapuri", "phone": null },
+      { "name": "Le Kings Non Veg Restaurant", "category": "Chicken / Non-Veg", "taluk": "Dharmapuri", "address": "Nethaji Bypass Road, Dharmapuri", "phone": null },
+      { "name": "Meat And Eat", "category": "Chicken / Non-Veg", "taluk": "Dharmapuri", "address": "Dharmapuri Locality, Dharmapuri", "phone": null },
+      { "name": "Domino's Pizza", "category": "Pizza", "taluk": "Dharmapuri", "address": "Ground Floor, Door No. 103, Salem Main Road, Dharmapuri - 636705", "phone": null },
+      { "name": "Kumaran Mess (Veg & Non Veg)", "category": "South Indian", "taluk": "Dharmapuri", "address": "111/2, Dharmapuri", "phone": "+91 94434 64425" },
+      { "name": "Mr. Parotta", "category": "South Indian", "taluk": "Dharmapuri", "address": "Dharmapuri Locality, Dharmapuri", "phone": null },
+      { "name": "JK Garden The Family Dhaba", "category": "North Indian", "taluk": "Dharmapuri", "address": "5/213-6, MGR Complex, NH Salem-Bengaluru Bypass, Ammani Reddihalli, Dharmapuri", "phone": "+91 73737 97575" },
+      { "name": "Ram's Kitchen", "category": "Chinese", "taluk": "Dharmapuri", "address": "11 R, 66 Feet Road, Bharathipuram, Dharmapuri", "phone": "+91 80561 19466" },
+      { "name": "Hotel Shri Saravana Bhavan", "category": "Vegetarian", "taluk": "Dharmapuri", "address": "Near L&T Toll Gate, Dhombrakampatti, Dharmapuri - 636807", "phone": null },
+      { "name": "Adyar Ananda Bhavan Veg Restaurant", "category": "Vegetarian", "taluk": "Dharmapuri", "address": "Near DPCL Petrol Pump, Thombarambakkam Village, Palayampudur, Dharmapuri", "phone": null },
+      { "name": "Classic Food Corner", "category": "Fast Food", "taluk": "Dharmapuri", "address": "Dharmapuri Locality, Dharmapuri", "phone": null },
+      { "name": "RR Food Corner", "category": "Fast Food", "taluk": "Dharmapuri", "address": "Dharmapuri Locality, Dharmapuri", "phone": null },
+      { "name": "Kwality Ice Cream Parlour and Fruit Juice Corner", "category": "Ice Cream & Sweets", "taluk": "Dharmapuri", "address": "292/51A, Nethaji Bye Pass Road, Dharmapuri - 636701", "phone": null },
+      { "name": "Ibaco", "category": "Ice Cream & Sweets", "taluk": "Dharmapuri", "address": "No. 6, Nethaji Bye Pass Road, Dharmapuri - 636701, Opposite RK Hospital", "phone": null },
+      { "name": "Cafe Saisangeet", "category": "Bakery & Cafe", "taluk": "Dharmapuri", "address": "48, Nethaji Byepass Road, Salem Main Road, Vellaikavundanpalayam, Dharmapuri", "phone": null },
+      { "name": "Om Sri Annapoorna", "category": "Vegetarian", "taluk": "Harur", "address": "Tirupattur Main Road, Harur - 636903", "phone": null },
+      { "name": "Ariyabhavan Veg Restaurant & Sweets", "category": "Vegetarian", "taluk": "Harur", "address": "Harur - 636903", "phone": null },
+      { "name": "Barbequeen Restaurant (Harur)", "category": "Chicken / Non-Veg", "taluk": "Harur", "address": "No. 3, Salem Bypass Road, Periyar Nagar, Harur - 636903", "phone": null },
+      { "name": "Luxury Chicken Corner", "category": "Chicken / Non-Veg", "taluk": "Harur", "address": "Harur - 636903", "phone": null },
+      { "name": "Harur Food Bazaar (HFB)", "category": "Pizza", "taluk": "Harur", "address": "Shop No. 1, Opposite Govt. Boys Hr. Sec. School, Harur - 636903", "phone": null },
+      { "name": "Harur Kitchen Multicuisine Restaurant", "category": "North Indian", "taluk": "Harur", "address": "Opposite KAS Petrol Bunk, Periyar Nagar, Harur", "phone": null },
+      { "name": "Kundhani Mess Restaurant", "category": "South Indian", "taluk": "Pappireddipatti", "address": "Mallapuram Road, Pappireddipatti - 636905", "phone": null },
+      { "name": "Selvi Mess", "category": "South Indian", "taluk": "Pennagaram", "address": "Near TTDC Hotel Tamilnadu, Hogenakkal, Pennagaram", "phone": null },
+      { "name": "Thirumoorthi Mess", "category": "South Indian", "taluk": "Palacode", "address": "Palacode - 636808", "phone": null },
+      { "name": "Mayura Grand Restaurant & Banquet", "category": "Chicken / Non-Veg", "taluk": "Palacode", "address": "Theerthagiri Nagar, Karagathahalli, Near Bus Stand, Palacode - 636808", "phone": "+91 4348 223880" }
     ]
   }
 }
@@ -1155,10 +1201,10 @@
   <script>
   (function(){
     var data = JSON.parse(document.getElementById('directory-data').textContent);
-    var cats = ['government_offices','schools','colleges','sightseeing','showrooms','hotels'];
-    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges', sightseeing: 'places to visit', showrooms: 'shops', hotels: 'hotels' };
-    var subcatFields = { showrooms: 'category', hotels: 'tier' };
-    var subcatAllLabel = { showrooms: 'All types', hotels: 'All tiers' };
+    var cats = ['government_offices','schools','colleges','sightseeing','showrooms','hotels','restaurants'];
+    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges', sightseeing: 'places to visit', showrooms: 'shops', hotels: 'hotels', restaurants: 'restaurants' };
+    var subcatFields = { showrooms: 'category', hotels: 'tier', restaurants: 'category' };
+    var subcatAllLabel = { showrooms: 'All types', hotels: 'All tiers', restaurants: 'All cuisines' };
 
     var pinIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
     var phoneIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
@@ -1168,7 +1214,8 @@
       colleges: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>',
       sightseeing: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 5.5-6L13 16l3-4 5 6"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/></svg>',
       showrooms: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
-      hotels: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M7 10V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/></svg>'
+      hotels: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M7 10V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/></svg>',
+      restaurants: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M5 2v20"/><path d="M19 2c-1.5 3-1.5 7 0 9 .5.5 1 .7 1 1.3V22"/></svg>'
     };
     var reachIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 20l-5.5-2V4L9 6m0 14l6-2m-6 2V6m6 12l5.5 2V6L15 4m0 14V4m0 0L9 6"/></svg>';
 
@@ -1205,7 +1252,7 @@
     var state = { cat: 'government_offices', taluk: 'all', q: initialQuery, subcat: 'all' };
 
     sourceNote.id = 'note';
-    sourceNote.textContent = data.note + ' ' + data.imageNote + ' ' + data.showroomsNote + ' ' + data.hotelsNote + ' Last updated ' + data.lastUpdated + '.';
+    sourceNote.textContent = data.note + ' ' + data.imageNote + ' ' + data.showroomsNote + ' ' + data.hotelsNote + ' ' + data.restaurantsNote + ' Last updated ' + data.lastUpdated + '.';
     heroStats.textContent = totalCount + ' verified listings · ' + allTaluks.length + ' areas · updated ' + data.lastUpdated;
 
     allTaluks.forEach(function(t){
