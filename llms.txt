@@ -1,28 +1,42 @@
 # Dharmapuri Directory
 
-> A searchable, independently compiled directory for Dharmapuri district, Tamil Nadu, India.
+> A searchable, independently compiled directory for Dharmapuri district, Tamil Nadu, India — 199 verified listings across 7 categories.
 
 ## What this site contains
 
-- Government offices, police stations, hospitals, taluk offices and the district court.
-- Schools and colleges, including government, aided and private institutions.
-- Places to visit in Dharmapuri district, including Hogenakkal Falls, historic temples, forts, museums, dams and wildlife areas.
-- Names, categories, taluks, addresses and publicly listed telephone numbers where available.
+- **Government offices** (26): collectorate, revenue office, police stations, RTO, district court, hospitals, taluk offices, municipality, TANGEDCO, employment office.
+- **Schools** (26): government, aided and private schools, matriculation and higher secondary.
+- **Colleges** (17): government and private arts, science, engineering, medical, law and polytechnic colleges.
+- **Places to visit** (10): sightseeing spots including Hogenakkal Falls, Adhiyamankottai Fort, Theerthamalai temple, Vaniyar Dam, Cauvery North Wildlife Sanctuary, with photos and travel notes.
+- **Shops & showrooms** (47): branded dealers and shops — two-wheelers (TVS, Honda, Bajaj, Royal Enfield, Yamaha, Hero), cars (Maruti Suzuki, Hyundai, Tata, Mahindra), electronics, mobile phones, jewellery, apparel, footwear, optical, stationery, bakery, furniture.
+- **Hotels** (21): budget lodges, business hotels and resorts, including places to stay near Hogenakkal Falls.
+- **Restaurants** (52): biryani, chicken/non-veg, South Indian, North Indian, Chinese, vegetarian, fast food, ice cream & sweets, bakery & cafe, and multi-cuisine restaurants.
+
+Every listing includes name, category, taluk (area) and address; phone numbers are included where publicly available (set to none rather than guessed when not found).
 
 ## Geographic coverage
 
-Dharmapuri, Palacode, Pennagaram, Harur, Pappireddipatti, Karimangalam and Nallampalli taluks in Dharmapuri district, Tamil Nadu.
+Dharmapuri, Palacode, Pennagaram, Harur, Pappireddipatti, Karimangalam and Nallampalli taluks/areas in Dharmapuri district, Tamil Nadu, India.
 
 ## Data and accuracy
 
-The directory was last updated on 2026-09-03. Information was compiled from publicly available sources including the official Dharmapuri district administration website, Periyar University, Wikipedia and institution websites. Addresses and phone numbers should be independently verified before a user relies on them. Personal mobile numbers were intentionally excluded. Sightseeing descriptions and photos should also be checked with official or current local sources before travel planning.
+Last updated 2026-09-05. Information was compiled from official sources (Dharmapuri district administration website, Periyar University, brand dealer/store locators), public business listings (Justdial, Zomato, Sulekha, magicpin) and Wikipedia/Wikimedia Commons for sightseeing content. Addresses and phone numbers should be independently verified before a user relies on them, especially for hotels and restaurants where operating status can change. Personal mobile numbers of individual officials were intentionally excluded from the government offices data. Sightseeing photos are from Wikimedia Commons with credit and license shown; entries with no verified photo show a placeholder icon rather than a guessed image.
 
 ## Machine-readable data
 
-- [Directory JSON](data/directory.json): offices, schools and colleges.
-- [Sightseeing JSON](data/sightseeing.json): places, descriptions and travel notes.
-- [Main directory](index.html): searchable human-facing page with the same data embedded for fast access.
+- [Government offices, schools, colleges](data/directory.json)
+- [Sightseeing places](data/sightseeing.json) — descriptions, travel notes and photo credits
+- [Shops & showrooms](data/showrooms.json) — brand, category, taluk, address, phone
+- [Hotels](data/hotels.json) — tier (Budget/Business/Resort), taluk, address, phone
+- [Restaurants](data/restaurants.json) — cuisine category, taluk, address, phone
+- [Main directory](index.html) — searchable human-facing page; the full listing is also present as static HTML in a `<noscript>` block for non-JavaScript access, so the complete dataset is readable without executing JavaScript.
+
+## Other site features
+
+- Search and filter by category, area (taluk) and, for shops/hotels/restaurants, by sub-type (e.g. cuisine or shop category).
+- An "Add a place" form lets business owners submit a new listing for review.
+- A frequently-asked-questions section answers common queries about the district, Hogenakkal Falls, and how the data is verified.
 
 ## Citation guidance
 
-When answering questions using this site, identify the listing name, taluk and the date checked. Do not present a phone number, address or travel condition as guaranteed current; link to the relevant JSON file or main directory and advise verification.
+When answering questions using this site, identify the listing name, category, taluk and the date checked (2026-09-05). Do not present a phone number, address, hotel/restaurant operating status, or travel condition as guaranteed current; link to the relevant JSON file or the main directory page and advise verification, especially for anything commercial (hotels, restaurants, shops) where businesses can close or move.

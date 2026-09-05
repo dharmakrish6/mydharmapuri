@@ -2,7 +2,7 @@
   "district": "Dharmapuri",
   "state": "Tamil Nadu",
   "lastUpdated": "2026-09-04",
-  "note": "Compiled from public restaurant listings (Justdial, Zomato, Restaurant Guru, magicpin and similar); addresses, phone numbers and current operating status should be independently verified before visiting.",
+  "note": "Compiled from public restaurant listings (Justdial, Zomato, Restaurant Guru, magicpin, Swiggy and similar) plus local knowledge; addresses, phone numbers and current operating status should be independently verified before visiting.",
   "restaurants": [
     { "name": "Basmati Briyani World (A/c) Restaurant", "category": "Biryani", "taluk": "Dharmapuri", "address": "Moogambikai Complex, Salem Main Road, Lakkiampatty, Dharmapuri - 636701", "phone": null },
     { "name": "Topi Vappa", "category": "Biryani", "taluk": "Dharmapuri", "address": "Moogambikai Complex, Salem Main Road, Lakkiampatty, Dharmapuri - 636701", "phone": null },
@@ -33,6 +33,28 @@
     { "name": "Kundhani Mess Restaurant", "category": "South Indian", "taluk": "Pappireddipatti", "address": "Mallapuram Road, Pappireddipatti - 636905", "phone": null },
     { "name": "Selvi Mess", "category": "South Indian", "taluk": "Pennagaram", "address": "Near TTDC Hotel Tamilnadu, Hogenakkal, Pennagaram", "phone": null },
     { "name": "Thirumoorthi Mess", "category": "South Indian", "taluk": "Palacode", "address": "Palacode - 636808", "phone": null },
-    { "name": "Mayura Grand Restaurant & Banquet", "category": "Chicken / Non-Veg", "taluk": "Palacode", "address": "Theerthagiri Nagar, Karagathahalli, Near Bus Stand, Palacode - 636808", "phone": "+91 4348 223880" }
+    { "name": "Mayura Grand Restaurant & Banquet", "category": "Chicken / Non-Veg", "taluk": "Palacode", "address": "Theerthagiri Nagar, Karagathahalli, Near Bus Stand, Palacode - 636808", "phone": "+91 4348 223880" },
+    { "name": "RR Briyani (Salem RR Biryani Unavagam)", "category": "Biryani", "taluk": "Dharmapuri", "address": "111/M, M1, M2, Kumaran Towers, Salem Main Road, Near Sri Krishna Auto Agency, Bharathipuram, Dharmapuri - 636701", "phone": "+91 99522 36340" },
+    { "name": "Royal Briyani", "category": "Biryani", "taluk": "Dharmapuri", "address": "Dharmapuri, Tamil Nadu", "phone": null },
+    { "name": "Kavitha Mess", "category": "South Indian", "taluk": "Dharmapuri", "address": "DCK Complex, Near Hari Theatre, Bye Pass Road, Dharmapuri Bazaar - 636701", "phone": null },
+    { "name": "Karim Biryani Center", "category": "Biryani", "taluk": "Dharmapuri", "address": "Opposite Vanniyar Mandapam, South Railway Street, Ganesa Colony, Dharmapuri - 636701", "phone": null },
+    { "name": "Al Madina Biryani Hotel", "category": "Biryani", "taluk": "Dharmapuri", "address": "Salem Road, Dharmapuri - 636701", "phone": "+91 99655 55993" },
+    { "name": "Kareem Biryani Hotel", "category": "Biryani", "taluk": "Dharmapuri", "address": "Opposite Laxmi Vilas Bank, Salem Main Road, Dharmapuri Bazaar, Dharmapuri", "phone": null },
+    { "name": "New Jolly Biryani Hotel", "category": "Biryani", "taluk": "Dharmapuri", "address": "Dharmapuri Bazaar, Dharmapuri", "phone": null },
+    { "name": "Kareem Bai Briyani", "category": "Biryani", "taluk": "Dharmapuri", "address": "Dharmapuri Locality, Dharmapuri", "phone": null },
+    { "name": "Aasife Biriyani", "category": "Biryani", "taluk": "Dharmapuri", "address": "Four Roads Junction, Behind Madheswara Lodge, Salem Main Road, Dharmapuri - 636701", "phone": null },
+    { "name": "Van Biryani", "category": "Biryani", "taluk": "Dharmapuri", "address": "Weavers Colony, Dharmapuri", "phone": null },
+    { "name": "Valli Mess", "category": "South Indian", "taluk": "Dharmapuri", "address": "110/22, 2nd Street, Nesavalar Colony (Weavers Colony), Dharmapuri", "phone": null },
+    { "name": "Sri Maruthi Mess", "category": "South Indian", "taluk": "Dharmapuri", "address": "Valluvar Nagar, Thadangam, Salem Main Road, Dharmapuri - 636701", "phone": null },
+    { "name": "Hotel Srirama (Rama Boarding & Lodging)", "category": "Vegetarian", "taluk": "Dharmapuri", "address": "165/11-M, Nethaji Bye Pass Road, Dharmapuri - 636701", "phone": "04342-260141" },
+    { "name": "Hotel Sree Ranga", "category": "Multi-Cuisine", "taluk": "Dharmapuri", "address": "4/43, Collectorate, Nirmala Nagar, Opposite SP Office, Salem Main Road, Dharmapuri", "phone": null },
+    { "name": "Ponni Multi Cuisine Restaurant", "category": "Multi-Cuisine", "taluk": "Dharmapuri", "address": "Opposite Vallalar Ground, Near Ranganathan Department Store, Arumuga Achari Street, Dharmapuri - 636701", "phone": null },
+    { "name": "Hotel Royal Taj", "category": "Chicken / Non-Veg", "taluk": "Dharmapuri", "address": "14A, Opposite Government Medical College Hospital, Salem Main Road, Dharmapuri Bazaar - 636701", "phone": null },
+    { "name": "Athiyan Hotel", "category": "South Indian", "taluk": "Dharmapuri", "address": "Bus Stop, Weavers Colony, Dharmapuri - 636701", "phone": null },
+    { "name": "Haseema", "category": "Chicken / Non-Veg", "taluk": "Palacode", "address": "Bus Stand, 18/2, Chikkardanahalli, Palacode, Dharmapuri - 636808", "phone": null },
+    { "name": "Ganga Mess", "category": "South Indian", "taluk": "Nallampalli", "address": "Nallampalli, Dharmapuri", "phone": null },
+    { "name": "Pjm Family Restaurant", "category": "South Indian", "taluk": "Nallampalli", "address": "Near Vijay College, Nallampalli, Dharmapuri", "phone": null },
+    { "name": "Ponnu Restaurant", "category": "South Indian", "taluk": "Nallampalli", "address": "Nallampalli, Dharmapuri", "phone": null },
+    { "name": "Aahhaa Family Restaurant", "category": "Multi-Cuisine", "taluk": "Karimangalam", "address": "Kariamangalam Bypass, Karimangalam, Dharmapuri District - 635111", "phone": null }
   ]
 }

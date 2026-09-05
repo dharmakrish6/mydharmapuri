@@ -3,26 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dharmapuri Directory: Offices, Schools, Colleges &amp; Tourist Places</title>
-<meta name="description" content="Find Dharmapuri district government offices, schools, colleges, hospitals, police stations, taluk offices, tourist places including Hogenakkal Falls, and branded showrooms (TVS, Maruti Suzuki, Kalyan Jewellers and more), with addresses, phone numbers and travel details.">
-<meta name="keywords" content="Dharmapuri directory, Dharmapuri district, Dharmapuri government offices, Dharmapuri schools, Dharmapuri colleges, Dharmapuri hospitals, Dharmapuri police stations, Dharmapuri taluk offices, Dharmapuri tourist places, places to visit in Dharmapuri, Hogenakkal Falls, Dharmapuri showrooms, Dharmapuri dealers, Tamil Nadu tourism">
+<title>Dharmapuri Directory: Offices, Schools, Hotels &amp; Restaurants</title>
+<meta name="description" content="Dharmapuri district directory: government offices, schools, colleges, hospitals, police stations, tourist places like Hogenakkal Falls, branded showrooms, hotels and restaurants (biryani, South Indian, non-veg and more) — with addresses, phone numbers and travel details.">
+<meta name="keywords" content="Dharmapuri directory, Dharmapuri district, Dharmapuri government offices, Dharmapuri schools, Dharmapuri colleges, Dharmapuri hospitals, Dharmapuri police stations, Dharmapuri taluk offices, Dharmapuri tourist places, places to visit in Dharmapuri, Hogenakkal Falls, Dharmapuri showrooms, Dharmapuri dealers, Dharmapuri hotels, hotels near Hogenakkal Falls, Dharmapuri restaurants, biryani in Dharmapuri, restaurants near me Dharmapuri, Tamil Nadu tourism">
 <meta name="author" content="Dharmapuri Directory">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="googlebot" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#f2f3ec">
-<link rel="canonical" href="https://dharmakrish6.github.io/mydharmapuri/">
+<link rel="canonical" href="https://mydharmapuri.com/">
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="AI-readable site summary">
-<link rel="alternate" type="application/json" href="data/directory.json" title="Dharmapuri directory data">
-<meta property="og:title" content="Dharmapuri Directory: Offices, Schools, Colleges & Tourist Places">
-<meta property="og:description" content="Addresses, phone numbers and travel details for Dharmapuri government offices, schools, colleges, tourist places and branded showrooms in Tamil Nadu.">
-<meta property="og:url" content="https://dharmakrish6.github.io/mydharmapuri/">
-<meta property="og:image" content="https://dharmakrish6.github.io/mydharmapuri/icon-512.png">
+<link rel="alternate" type="application/json" href="data/directory.json" title="Dharmapuri government offices, schools and colleges data">
+<link rel="alternate" type="application/json" href="data/sightseeing.json" title="Dharmapuri sightseeing places data">
+<link rel="alternate" type="application/json" href="data/showrooms.json" title="Dharmapuri shops and showrooms data">
+<link rel="alternate" type="application/json" href="data/hotels.json" title="Dharmapuri hotels data">
+<link rel="alternate" type="application/json" href="data/restaurants.json" title="Dharmapuri restaurants data">
+<meta property="og:title" content="Dharmapuri Directory: Offices, Schools, Hotels & Restaurants">
+<meta property="og:description" content="Addresses, phone numbers and travel details for Dharmapuri government offices, schools, colleges, tourist places, showrooms, hotels and restaurants in Tamil Nadu.">
+<meta property="og:url" content="https://mydharmapuri.com/">
+<meta property="og:image" content="https://mydharmapuri.com/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="Dharmapuri Directory">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dharmapuri Directory: Offices, Schools, Colleges & Tourist Places">
-<meta name="twitter:description" content="Explore Dharmapuri district offices, educational institutions, sightseeing places and branded showrooms with useful local details.">
-<meta name="twitter:image" content="https://dharmakrish6.github.io/mydharmapuri/icon-512.png">
+<meta name="twitter:title" content="Dharmapuri Directory: Offices, Schools, Hotels & Restaurants">
+<meta name="twitter:description" content="Explore Dharmapuri district offices, schools, colleges, sightseeing places, showrooms, hotels and restaurants with useful local details.">
+<meta name="twitter:image" content="https://mydharmapuri.com/icon-512.png">
+<meta name="geo.region" content="IN-TN">
+<meta name="geo.placename" content="Dharmapuri">
+<meta name="geo.position" content="12.1211;78.1582">
+<meta name="ICBM" content="12.1211, 78.1582">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
@@ -198,6 +210,13 @@
     position:relative;
     overflow:hidden;
     animation:rise .7s cubic-bezier(.2,.7,.25,1) both;
+  }
+  .hero-logo{
+    display:block;
+    width:clamp(4.5rem,12vw,6.5rem);
+    height:auto;
+    margin:0 auto 1.1rem;
+    filter:drop-shadow(0 10px 22px rgba(0,0,0,.4));
   }
   .hero-eyebrow{
     display:inline-flex;
@@ -631,6 +650,67 @@
     padding-top:1rem;
   }
 
+  /* ===== faq ===== */
+  .faq-list{display:grid;gap:.75rem}
+  .faq-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1rem;
+    padding:1rem 1.25rem;
+    box-shadow:var(--shadow);
+  }
+  .faq-item summary{
+    cursor:pointer;
+    font-weight:700;
+    font-size:.98rem;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";color:var(--leaf);font-weight:800;font-size:1.2rem;flex:none}
+  .faq-item[open] summary::after{content:"\2212"}
+  .faq-item p{margin:.75rem 0 0;color:var(--muted);font-size:.9rem;line-height:1.55}
+
+  /* ===== suggest form ===== */
+  .suggest-form{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1.4rem;
+    padding:clamp(1.5rem,4vw,2.25rem);
+    box-shadow:var(--shadow);
+  }
+  .form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1rem;
+    margin-bottom:1.25rem;
+  }
+  .form-field{display:flex;flex-direction:column;gap:.35rem}
+  .form-field.span-2{grid-column:1 / -1}
+  .form-field label{font-size:.78rem;font-weight:700;letter-spacing:.02em;color:var(--muted)}
+  .form-field input,
+  .form-field select,
+  .form-field textarea{
+    font:inherit;
+    font-size:.95rem;
+    color:var(--ink);
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:.75rem;
+    padding:.6rem .8rem;
+  }
+  .form-field textarea{resize:vertical;min-height:4rem}
+  .form-status{margin:.85rem 0 0;font-size:.88rem;color:var(--muted)}
+  .form-status.success{color:var(--leaf);font-weight:700}
+  .form-status.error{color:var(--orange);font-weight:700}
+
+  @media (max-width:640px){
+    .form-grid{grid-template-columns:1fr}
+  }
+
   /* ===== cta ===== */
   .cta{
     margin-top:clamp(3rem,7vw,4.5rem);
@@ -754,16 +834,16 @@
   "@context": "https://schema.org",
   "@type": ["WebSite", "WebPage"],
   "name": "Dharmapuri Directory",
-  "url": "https://dharmakrish6.github.io/mydharmapuri/",
-  "description": "A local directory of Dharmapuri district government offices, schools, colleges, sightseeing places and branded showrooms.",
+  "url": "https://mydharmapuri.com/",
+  "description": "A local directory of Dharmapuri district government offices, schools, colleges, sightseeing places, shops and showrooms, hotels and restaurants.",
   "inLanguage": "en-IN",
-  "dateModified": "2026-09-04",
-  "isPartOf": { "@type": "WebSite", "name": "Dharmapuri Directory", "url": "https://dharmakrish6.github.io/mydharmapuri/" },
-  "publisher": { "@type": "Organization", "name": "Dharmapuri Directory", "url": "https://dharmakrish6.github.io/mydharmapuri/" },
-  "mainEntityOfPage": "https://dharmakrish6.github.io/mydharmapuri/",
+  "dateModified": "2026-09-05",
+  "isPartOf": { "@type": "WebSite", "name": "Dharmapuri Directory", "url": "https://mydharmapuri.com/" },
+  "publisher": { "@type": "Organization", "name": "Dharmapuri Directory", "url": "https://mydharmapuri.com/" },
+  "mainEntityOfPage": "https://mydharmapuri.com/",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://dharmakrish6.github.io/mydharmapuri/?q={search_term_string}",
+    "target": "https://mydharmapuri.com/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   },
   "keywords": [
@@ -773,6 +853,10 @@
     "Dharmapuri tourist places",
     "Hogenakkal Falls",
     "Dharmapuri showrooms and dealers",
+    "Dharmapuri hotels",
+    "hotels near Hogenakkal Falls",
+    "Dharmapuri restaurants",
+    "biryani in Dharmapuri",
     "Tamil Nadu tourism"
   ],
   "about": {
@@ -785,13 +869,52 @@
     { "@type": "CollectionPage", "name": "Schools in Dharmapuri district" },
     { "@type": "CollectionPage", "name": "Colleges in Dharmapuri district" },
     { "@type": "CollectionPage", "name": "Places to visit in Dharmapuri" },
-    { "@type": "CollectionPage", "name": "Branded showrooms in Dharmapuri" }
+    { "@type": "CollectionPage", "name": "Branded showrooms and shops in Dharmapuri" },
+    { "@type": "CollectionPage", "name": "Hotels in Dharmapuri district" },
+    { "@type": "CollectionPage", "name": "Restaurants in Dharmapuri district" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many places are listed in the Dharmapuri directory?",
+      "acceptedAnswer": { "@type": "Answer", "text": "This directory lists 199 verified entries across government offices, schools, colleges, sightseeing places, shops and showrooms, hotels and restaurants — spanning Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Hogenakkal Falls located?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Hogenakkal Falls is in Pennagaram taluk of Dharmapuri district, Tamil Nadu, about 46 km from Dharmapuri town, where the Cauvery river cascades over rocks near the Tamil Nadu-Karnataka border. It's known for coracle (parisal) rides and riverside oil massages." }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the taluks of Dharmapuri district?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Dharmapuri district has five taluks — Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti — plus the Karimangalam and Nallampalli revenue blocks, which this directory also covers separately." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the addresses and phone numbers on this site verified?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Details are compiled from official sources and public listings, but businesses and offices can change address, hours or contact numbers over time. Always independently verify before visiting or booking, especially for hotels and restaurants." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get a biryani restaurant recommendation in Dharmapuri?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use the Restaurants tab and filter by the Biryani cuisine chip to see biryani-specialist spots in Dharmapuri town and other taluks, each with address and phone where available." }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I add my business to this directory?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use the \"Add a place\" form on the site to submit your business name, category, taluk, address and contact details — submissions are reviewed before being added." }
+    }
   ]
 }
 </script>
 </head>
 <body>
-
   <header class="navbar">
     <div class="wrap nav-inner">
       <a class="brand" href="#top">
@@ -808,13 +931,14 @@
         <a href="#directory" data-cat="restaurants">Restaurants</a>
         <a href="#app">App</a>
       </nav>
-      <a class="nav-cta" href="#app">Coming soon</a>
+      <a class="nav-cta" href="#suggest">Add a place</a>
     </div>
   </header>
 
   <main>
     <section class="hero wrap" id="top">
       <div class="hero-media">
+        <img class="hero-logo" src="icon-512.png" width="512" height="512" alt="Dharmapuri emblem — Hogenakkal falls, hill fort and temple gopuram">
         <span class="hero-eyebrow">District Directory · Tamil Nadu</span>
         <h1>Dharmapuri</h1>
         <p id="heroStats">Loading directory…</p>
@@ -940,6 +1064,77 @@
       </div>
     </section>
 
+    <section class="block wrap" id="suggest">
+      <div class="block-head">
+        <h2>Own a business here?</h2>
+        <p>Tell us about your shop, restaurant, hotel or showroom in Dharmapuri district and we'll review it for the directory.</p>
+      </div>
+
+      <form class="suggest-form" id="suggestForm">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="New place addition request">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="sf-name">Business / place name *</label>
+            <input type="text" id="sf-name" name="Business name" required>
+          </div>
+          <div class="form-field">
+            <label for="sf-category">Category *</label>
+            <select id="sf-category" name="Category" required>
+              <option value="">Select…</option>
+              <option>Government office</option>
+              <option>School</option>
+              <option>College</option>
+              <option>Sightseeing place</option>
+              <option>Shop / showroom</option>
+              <option>Hotel</option>
+              <option>Restaurant</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="sf-taluk">Taluk / area *</label>
+            <select id="sf-taluk" name="Taluk" required>
+              <option value="">Select…</option>
+              <option>Dharmapuri</option>
+              <option>Palacode</option>
+              <option>Pennagaram</option>
+              <option>Harur</option>
+              <option>Pappireddipatti</option>
+              <option>Karimangalam</option>
+              <option>Nallampalli</option>
+              <option>Other / not sure</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="sf-phone">Phone number</label>
+            <input type="tel" id="sf-phone" name="Phone">
+          </div>
+          <div class="form-field span-2">
+            <label for="sf-address">Address *</label>
+            <input type="text" id="sf-address" name="Address" required>
+          </div>
+          <div class="form-field span-2">
+            <label for="sf-notes">Anything else we should know?</label>
+            <textarea id="sf-notes" name="Notes" rows="3"></textarea>
+          </div>
+          <div class="form-field">
+            <label for="sf-submitter">Your name</label>
+            <input type="text" id="sf-submitter" name="Submitted by">
+          </div>
+          <div class="form-field">
+            <label for="sf-email">Your email (for updates)</label>
+            <input type="email" id="sf-email" name="_replyto">
+          </div>
+        </div>
+
+        <button type="submit" class="finder-go" id="suggestSubmit">Send request</button>
+        <p class="form-status" id="suggestStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
     <section class="cta wrap" id="app">
       <div class="cta-inner">
         <div>
@@ -952,6 +1147,383 @@
         </span>
       </div>
     </section>
+
+    <section class="block wrap" id="faq">
+      <div class="block-head">
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How many places are listed in the Dharmapuri directory?</summary>
+          <p>This directory lists <strong id="faqTotalCount">199</strong> verified entries across government offices, schools, colleges, sightseeing places, shops and showrooms, hotels and restaurants — spanning Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where is Hogenakkal Falls located?</summary>
+          <p>Hogenakkal Falls is in Pennagaram taluk of Dharmapuri district, Tamil Nadu, about 46 km from Dharmapuri town, where the Cauvery river cascades over rocks near the Tamil Nadu-Karnataka border. It's known for coracle (parisal) rides and riverside oil massages.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What are the taluks of Dharmapuri district?</summary>
+          <p>Dharmapuri district has five taluks — Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti — plus the Karimangalam and Nallampalli revenue blocks, which this directory also covers separately.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are the addresses and phone numbers on this site verified?</summary>
+          <p>Details are compiled from official sources and public listings, but businesses and offices can change address, hours or contact numbers over time. Always independently verify before visiting or booking, especially for hotels and restaurants.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I get a biryani restaurant recommendation in Dharmapuri?</summary>
+          <p>Use the Restaurants tab and filter by the "Biryani" cuisine chip to see biryani-specialist spots in Dharmapuri town and other taluks, each with address and phone where available.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How can I add my business to this directory?</summary>
+          <p>Use the "Add a place" form on this site to submit your business name, category, taluk, address and contact details — submissions are reviewed before being added.</p>
+        </details>
+      </div>
+    </section>
+  
+    <noscript>
+  <section class="wrap" aria-label="Full directory listing (no JavaScript view)">
+  <h2>Full Dharmapuri directory listing</h2>
+  <p>This page normally uses JavaScript for search and filtering. Here is the complete list of all 199 verified entries for browsers and crawlers without JavaScript.</p>
+  <h3>Government Offices (26)</h3>
+  <h4>Dharmapuri taluk</h4>
+  <ul>
+  <li><strong>District Collectorate, Dharmapuri</strong> (Collectorate). Collectorate, Dharmapuri - 636705. Phone: <a href="tel:04342231500">04342-231500</a></li>
+  <li><strong>District Revenue Officer (DRO) Office</strong> (Revenue Office). Collectorate, Dharmapuri - 636705. Phone: <a href="tel:04342230896">04342-230896</a></li>
+  <li><strong>Superintendent of Police Office, Dharmapuri</strong> (Police Office (SP Office)). District Police Office, Near Collectorate, Dharmapuri - 636705. Phone: <a href="tel:04342230000">04342-230000</a></li>
+  <li><strong>Regional Transport Office, Dharmapuri (TN-29)</strong> (RTO). Collectorate, Dharmapuri - 636705. Phone: <a href="tel:04342230907">04342-230907</a></li>
+  <li><strong>Dharmapuri District Court</strong> (District Court). Combined Court Buildings, Thadangam, Thokkampatti (Post), Dharmapuri - 636705. Phone: not listed</li>
+  <li><strong>Government Dharmapuri Medical College Hospital</strong> (Government Medical College Hospital). Salem Main Road, Dharmapuri - 636701. Phone: <a href="tel:04342233600">04342-233600</a></li>
+  <li><strong>Dharmapuri Municipality Office</strong> (Municipality Office). Municipal Office, Kandasamy Vathiyar Street, Dharmapuri - 636701. Phone: <a href="tel:04342260910">04342-260910</a></li>
+  <li><strong>TANGEDCO Electricity Distribution Circle Office, Dharmapuri</strong> (Electricity Board (TANGEDCO) Office). Dharmapuri - 636701. Phone: <a href="tel:04342230738">04342-230738</a></li>
+  <li><strong>District Employment Office, Dharmapuri</strong> (Employment Office). Near Government ITI, Palacode Main Road, Kadakathur, Dharmapuri - 636809. Phone: <a href="tel:04348235006">04348-235006</a></li>
+  <li><strong>Chief Educational Office, Dharmapuri</strong> (District Education Office). Chief Educational Office, Dharmapuri. Phone: <a href="tel:04342260085">04342-260085</a></li>
+  <li><strong>Dharmapuri Town Police Station</strong> (Police Station). Dharmapuri Town, Dharmapuri - 636701. Phone: <a href="tel:04342260026">04342-260026</a></li>
+  <li><strong>Taluk Office (Tahsildar Office), Dharmapuri</strong> (Taluk Office). Dharmapuri - 636705. Phone: <a href="tel:04342260927">04342-260927</a></li>
+  </ul>
+  <h4>Harur taluk</h4>
+  <ul>
+  <li><strong>Taluk Office (Tahsildar Office), Harur</strong> (Taluk Office). Harur, Dharmapuri - 636903. Phone: <a href="tel:04346222023">04346-222023</a></li>
+  <li><strong>Deputy Superintendent of Police Office, Harur Sub-Division</strong> (Police Office (DSP Office)). Harur, Dharmapuri - 636903. Phone: <a href="tel:04346223344">04346-223344</a></li>
+  <li><strong>Harur Police Station</strong> (Police Station). Harur, Dharmapuri - 636903. Phone: <a href="tel:04346222034">04346-222034</a></li>
+  <li><strong>Government Hospital, Harur</strong> (Government Hospital). Harur, Dharmapuri - 636903. Phone: not listed</li>
+  </ul>
+  <h4>Karimangalam taluk</h4>
+  <ul>
+  <li><strong>Taluk Office (Tahsildar Office), Karimangalam</strong> (Taluk Office). Karimangalam, Dharmapuri - 635111. Phone: <a href="tel:04348242411">04348-242411</a></li>
+  </ul>
+  <h4>Nallampalli taluk</h4>
+  <ul>
+  <li><strong>Taluk Office (Tahsildar Office), Nallampalli</strong> (Taluk Office). Nallampalli, Dharmapuri - 636807. Phone: <a href="tel:04342244456">04342-244456</a></li>
+  </ul>
+  <h4>Palacode taluk</h4>
+  <ul>
+  <li><strong>Taluk Office (Tahsildar Office), Palacode</strong> (Taluk Office). Palacode - 636808. Phone: <a href="tel:04348222045">04348-222045</a></li>
+  <li><strong>Deputy Superintendent of Police Office, Palacode Sub-Division</strong> (Police Office (DSP Office)). Palacode - 636808. Phone: <a href="tel:04348223000">04348-223000</a></li>
+  <li><strong>Government Hospital, Palacode</strong> (Government Hospital). Thiruvalluvar Nagar, Palacode, Dharmapuri - 636808. Phone: not listed</li>
+  </ul>
+  <h4>Pappireddipatti taluk</h4>
+  <ul>
+  <li><strong>Taluk Office (Tahsildar Office), Pappireddipatti</strong> (Taluk Office). Pappireddipatti, Dharmapuri - 636905. Phone: <a href="tel:04346246544">04346-246544</a></li>
+  </ul>
+  <h4>Pennagaram taluk</h4>
+  <ul>
+  <li><strong>Taluk Office (Tahsildar Office), Pennagaram</strong> (Taluk Office). Pennagaram, Dharmapuri - 636810. Phone: <a href="tel:04342255636">04342-255636</a></li>
+  <li><strong>Deputy Superintendent of Police Office, Pennagaram Sub-Division</strong> (Police Office (DSP Office)). Pennagaram, Dharmapuri - 636810. Phone: <a href="tel:04342255771">04342-255771</a></li>
+  <li><strong>Pennagaram Police Station</strong> (Police Station). Pennagaram, Dharmapuri - 636810. Phone: <a href="tel:04342255641">04342-255641</a></li>
+  <li><strong>Government Headquarters Hospital, Pennagaram</strong> (Government Hospital). Pennagaram, Dharmapuri - 636810. Phone: not listed</li>
+  </ul>
+  <h3>Schools (26)</h3>
+  <h4>Dharmapuri taluk</h4>
+  <ul>
+  <li><strong>Adhiyaman Government Boys Higher Secondary School</strong> (Government). Appavu Nagar, Dharmapuri - 636701. Phone: <a href="tel:04342261075">04342-261075</a></li>
+  <li><strong>Avvaiyar Government Girls Higher Secondary School</strong> (Government). Dharmapuri - 636702. Phone: <a href="tel:04342264057">04342-264057</a></li>
+  <li><strong>DAWN Metric Higher Secondary School</strong> (Private). No. 68, S.V. Road, Dharmapuri - 636701. Phone: <a href="tel:04342266516">04342-266516</a></li>
+  <li><strong>Government Higher Secondary School, Lakkiyampatti</strong> (Government). Lakkiyampatti, Dharmapuri - 636705. Phone: <a href="tel:04342236082">04342-236082</a></li>
+  <li><strong>Jack and Jill Metric School</strong> (Private). No. 4/1335, Bharathi Puram, Dharmapuri - 636705. Phone: <a href="tel:04342270606">04342-270606</a></li>
+  <li><strong>Kendriya Vidyalaya, Dharmapuri</strong> (Government). Pallakolai Village (Morappur Main Road), Dharmapuri - 636704. Phone: <a href="tel:04342293221">04342-293221</a></li>
+  <li><strong>Pachamuthu Metric Higher Secondary School</strong> (Private). 26-C, Salem Main Road, Dharmapuri - 636705. Phone: <a href="tel:04342230604">04342-230604</a></li>
+  <li><strong>Paramveer Banasingh Matric School</strong> (Private). Attukaranpatti, Dharmapuri - 636809. Phone: not listed</li>
+  <li><strong>Senthil Metric Higher Secondary School</strong> (Private). 2nd Narasimachari Street, Dharmapuri - 636701. Phone: <a href="tel:04342268842">04342-268842</a></li>
+  <li><strong>Seventh Day Metric Higher Secondary School</strong> (Private). Opposite Collectorate, Dharmapuri - 636705. Phone: <a href="tel:04342230288">04342-230288</a></li>
+  <li><strong>Vijay Vidyalaya Boys Higher Secondary School</strong> (Private). DNC Compound, Gandhi Nagar, Dharmapuri - 636701. Phone: <a href="tel:04342261166">04342-261166</a></li>
+  <li><strong>Vijay Vidyalaya Girls Higher Secondary School</strong> (Private). DNC Compound, Gandhi Nagar, Dharmapuri - 636701. Phone: <a href="tel:04342260922">04342-260922</a></li>
+  </ul>
+  <h4>Harur taluk</h4>
+  <ul>
+  <li><strong>Government Higher Secondary School, Harur (Boys)</strong> (Government). Harur Town, Harur, Dharmapuri - 636903. Phone: not listed</li>
+  <li><strong>Government Higher Secondary School, Harur (Girls)</strong> (Government). Harur Town, Harur, Dharmapuri - 636903. Phone: not listed</li>
+  </ul>
+  <h4>Karimangalam taluk</h4>
+  <ul>
+  <li><strong>Government Higher Secondary School, Karimangalam (Boys)</strong> (Government). Karimangalam North, Karimangalam, Dharmapuri. Phone: not listed</li>
+  </ul>
+  <h4>Nallampalli taluk</h4>
+  <ul>
+  <li><strong>Government Higher Secondary School, Adhiyamankottai</strong> (Government). Adhiyamankottai, Dharmapuri - 636807. Phone: <a href="tel:04342244599">04342-244599</a></li>
+  <li><strong>Government Higher Secondary School, Nallampalli</strong> (Government). Nallampalli, Dharmapuri - 636807. Phone: not listed</li>
+  </ul>
+  <h4>Palacode taluk</h4>
+  <ul>
+  <li><strong>Government Boys Higher Secondary School, Palacode</strong> (Government). Palacode - 636808. Phone: <a href="tel:04342222089">04342-222089</a></li>
+  <li><strong>Government Girls Higher Secondary School, Palacode</strong> (Government). Palacode - 636808. Phone: <a href="tel:04342222711">04342-222711</a></li>
+  <li><strong>Sri Vidya Mandir Matriculation Higher Secondary School</strong> (Private). Vidya Nagar, Palacode, Dharmapuri - 636808. Phone: <a href="tel:04342261042">04342-261042</a></li>
+  <li><strong>Sacred Heart Higher Secondary School, Selliyampatti</strong> (Private). Irudhayapuram, Selliyampatti, Dharmapuri - 636809. Phone: not listed</li>
+  </ul>
+  <h4>Pappireddipatti taluk</h4>
+  <ul>
+  <li><strong>Government Higher Secondary School, Pappireddipatti</strong> (Government). NH 179A, Pappireddipatti, Dharmapuri - 636905. Phone: not listed</li>
+  <li><strong>Adhikarapatti Government Higher Secondary School</strong> (Government). Athikarapatti, Pappireddipatti, Dharmapuri - 636905. Phone: not listed</li>
+  </ul>
+  <h4>Pennagaram taluk</h4>
+  <ul>
+  <li><strong>Government Boys Higher Secondary School, Pennagaram</strong> (Government). Dharmapuri-Hogenakkal Road, Pennagaram, Dharmapuri - 636810. Phone: not listed</li>
+  <li><strong>Pennagaram Government Girls Higher Secondary School</strong> (Government). Near Taluk Office, Hogenakkal Main Road, Pennagaram, Dharmapuri - 636810. Phone: not listed</li>
+  <li><strong>Government Higher Secondary School, Perumbalai</strong> (Government). Perumbalai, Pennagaram Taluk, Dharmapuri - 636810. Phone: not listed</li>
+  </ul>
+  <h3>Colleges (17)</h3>
+  <h4>Dharmapuri taluk</h4>
+  <ul>
+  <li><strong>Government Arts College, Dharmapuri</strong> (Government) — Arts &amp; Science. Salem Main Road, Dharmapuri - 636705. Phone: <a href="tel:04342230008">04342-230008</a></li>
+  <li><strong>Government College of Engineering, Dharmapuri</strong> (Government) — Engineering. Chettikarai, Dharmapuri - 636704. Phone: <a href="tel:04342290090">04342-290090</a></li>
+  <li><strong>Government Dharmapuri Medical College and Hospital</strong> (Government) — Medical. Salem Main Road, Dharmapuri - 636701. Phone: <a href="tel:04342233600">04342-233600</a></li>
+  <li><strong>Government I.T.I. College, Chelliyampatti</strong> (Government) — ITI / Vocational. Chelliyampatti, Dharmapuri - 636703. Phone: <a href="tel:04348235323">04348-235323</a></li>
+  <li><strong>Jayam College of Engineering and Technology</strong> (Private) — Engineering. Hogenakkal Road, Nallanur, Dharmapuri - 636813. Phone: <a href="tel:9942277777">9942277777</a></li>
+  <li><strong>S.M Arumugam Polytechnic College</strong> (Private) — Polytechnic. Papinayakanahalli, Dharmapuri - 636705. Phone: <a href="tel:04342264609">04342-264609</a></li>
+  <li><strong>Sakthi I.T.I. College</strong> (Private) — ITI / Vocational. Kadagathur Village, Chelliyampatti Post, Dharmapuri - 636809. Phone: <a href="tel:04342264967">04342-264967</a></li>
+  </ul>
+  <h4>Harur taluk</h4>
+  <ul>
+  <li><strong>Periyar University College of Arts and Science, Harur</strong> (Government) — Arts &amp; Science. Next to Harur Government Hospital, Morappur Main Road, Harur, Dharmapuri - 636903. Phone: <a href="tel:04346222212">04346-222212</a></li>
+  </ul>
+  <h4>Karimangalam taluk</h4>
+  <ul>
+  <li><strong>Government Law College, Dharmapuri</strong> (Government) — Law. NH-44, Baisuhalli Maatlampatti Cross Road, Karimangalam Taluk, Dharmapuri - 635205. Phone: <a href="tel:04348291292">04348-291292</a></li>
+  <li><strong>Government Arts College for Women, Karimangalam</strong> (Government) — Arts &amp; Science. Karimangalam, Dharmapuri - 635111. Phone: <a href="tel:04348241399">04348-241399</a></li>
+  </ul>
+  <h4>Nallampalli taluk</h4>
+  <ul>
+  <li><strong>Lakshmi Narayana Polytechnic College, Nallampalli</strong> (Private) — Polytechnic. Savulur Bus Stop, Nallampalli, Dharmapuri - 636807. Phone: <a href="tel:04342244274">04342-244274</a></li>
+  </ul>
+  <h4>Palacode taluk</h4>
+  <ul>
+  <li><strong>Co-op Sugar Mills Polytechnic College, Palacode</strong> (Government-Aided) — Polytechnic. Dandukaranahalli, Palacode, Dharmapuri - 636808. Phone: <a href="tel:9442222102">9442222102</a></li>
+  <li><strong>Pee Gee Arts and Science College, Palacode</strong> (Private) — Arts &amp; Science. NH-7, Krishnagiri Main Road, Periyanahalli, Palacode, Dharmapuri - 636808. Phone: <a href="tel:9443346221">9443346221</a></li>
+  </ul>
+  <h4>Pappireddipatti taluk</h4>
+  <ul>
+  <li><strong>Periyar University College of Arts and Science, Pappireddipatti</strong> (Government) — Arts &amp; Science. Pappireddipatti, Dharmapuri - 636905. Phone: <a href="tel:04346246212">04346-246212</a></li>
+  <li><strong>ERK Arts and Science College</strong> (Private) — Arts &amp; Science. Erumiyampatti, Kokkarapatti (PO), Pappireddipatti (Taluk), Dharmapuri - 636905. Phone: <a href="tel:04346251290">04346-251290</a></li>
+  </ul>
+  <h4>Pennagaram taluk</h4>
+  <ul>
+  <li><strong>Government Arts and Science College, Eriyur</strong> (Government) — Arts &amp; Science. Eriyur, Pennagaram Taluk, Dharmapuri - 636810. Phone: <a href="tel:04342291861">04342-291861</a></li>
+  <li><strong>Periyar University College of Arts and Science, Pennagaram</strong> (Government) — Arts &amp; Science. Pennagaram, Dharmapuri - 636803. Phone: <a href="tel:9442821455">9442821455</a></li>
+  </ul>
+  <h3>Places to Visit (10)</h3>
+  <h4>Dharmapuri taluk</h4>
+  <ul>
+  <li><strong>Adhiyamankottai Fort</strong> — Ruins of an oval-shaped mud fort built by the ancient Adhiyaman chieftains of Thagadur, one of the oldest forts in Tamil Nadu. The fort complex also contains a lake and historic temples, including the Chenraya Perumal Temple. How to reach: About 5-7 km from Dharmapuri town on the Salem-Dharmapuri road, in Adhiyamankottai village..</li>
+  <li><strong>Chenraya Perumal Temple, Adhiyamankottai</strong> — A large Vishnu temple within the Adhiyamankottai fort complex, held as a protected monument and believed to have contributions from the Krishnadevaraya and Hoysala periods. How to reach: Located inside the Adhiyamankottai fort site, about 5-7 km from Dharmapuri town..</li>
+  <li><strong>Adhiyamaan Kottai Mariyamman Temple</strong> — A Mariyamman (goddess) temple within the historic Adhiyamankottai fort premises, photographed as part of the Wiki Loves Monuments heritage documentation project. How to reach: Located within the Adhiyamankottai fort site, about 5-7 km from Dharmapuri town..</li>
+  <li><strong>Mallikarjunar Temple (Kottai Kovil)</strong> — An 8th-9th century Shiva temple on the northern side of Dharmapuri town, also called Kottai Kovil (&#x27;fort temple&#x27;) because it resembles a fort and has no main tower. Famous for a carved stone pillar in the sanctum that appears to hang without touching its base. How to reach: On the Dharmapuri bus stand-Tiruppatur road, within Dharmapuri town..</li>
+  <li><strong>Hero Stones Site Museum, Dharmapuri</strong> — An archaeological museum set up in 1979 near the Dharmapuri bus stand, displaying over 25 hero stones (memorial stones for those who died protecting their village) along with Neolithic tools, sculptures, coins and terracotta figurines from the district. How to reach: Near the main bus stand in the centre of Dharmapuri town..</li>
+  </ul>
+  <h4>Harur taluk</h4>
+  <ul>
+  <li><strong>Theerthamalai (Theerthagirishwarar Temple)</strong> — A hilltop Shiva temple reached by climbing about a kilometre up a hillock, dating from around the 7th century with later Chola and Pandya contributions. Known for five sacred springs and a small seasonal waterfall (Rama Theertham) near the temple. How to reach: Located in Theerthamalai village in Harur taluk..</li>
+  </ul>
+  <h4>Palacode taluk</h4>
+  <ul>
+  <li><strong>Cauvery North Wildlife Sanctuary (Melagiri Hills)</strong> — A wildlife sanctuary declared in 2014, covering part of the Melagiri hill range in Palacode taluk (the rest lies in Krishnagiri district). Dry deciduous and shola forest that is home to elephants, leopards, sloth bears and gaur. How to reach: Forest areas accessible via Palacode; visits typically require Tamil Nadu Forest Department permission..</li>
+  <li><strong>Modhur Archaeological Site</strong> — A Neolithic and Megalithic habitation site excavated in 2004-2005, yielding stone tools, pottery, and a terracotta mother-goddess figurine; thought to have been linked to the ancient Adhiyaman kingdom&#x27;s territory. How to reach: About 15 km from Dharmapuri town, in Palacode taluk..</li>
+  </ul>
+  <h4>Pappireddipatti taluk</h4>
+  <ul>
+  <li><strong>Vaniyar Dam</strong> — An irrigation dam built across the Vaniyar river (a tributary of the Ponnaiyar) at the foothills of the Shevaroy Hills, popular as a picnic and scenic spot near Pappireddipatti. How to reach: About 5 km from Pappireddipatti town..</li>
+  </ul>
+  <h4>Pennagaram taluk</h4>
+  <ul>
+  <li><strong>Hogenakkal Falls</strong> — Waterfalls where the Cauvery river cascades over rocks near the Tamil Nadu-Karnataka border, nicknamed the &#x27;Niagara of India&#x27;. Visitors take coracle (parisal) rides through the rapids and can get traditional oil massages by the riverside. How to reach: About 46 km from Dharmapuri town; nearest town is Hogenakkal itself, reachable by road via Pennagaram..</li>
+  </ul>
+  <h3>Shops &amp; Showrooms (47)</h3>
+  <h4>Dharmapuri taluk</h4>
+  <ul>
+  <li><strong>DNC TVS</strong> (Two-wheelers) — TVS. 74/41-A, Vijay Gardens, Salem Main Road, Dharmapuri, Tamil Nadu 636705. Phone: <a href="tel:04342232266">04342-232266</a></li>
+  <li><strong>SS Premier Honda</strong> (Two-wheelers) — Honda. 105/30-B1, Vattara Valarchi Colony, Near Ulavar Santhai, Krishnagiri Main Road, Dharmapuri, Tamil Nadu. Phone: <a href="tel:9677716161">96777-16161</a></li>
+  <li><strong>Sri Venkateshwara Honda</strong> (Two-wheelers) — Honda. 111G, Salem Main Road, Bharathipuram, Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  <li><strong>DNV Bajaj</strong> (Two-wheelers) — Bajaj. Shop No 40 &amp; 41B, Salem Main Road, Dharmapuri Collectorate, Bharathipuram, Dharmapuri, Tamil Nadu 636705. Phone: not listed</li>
+  <li><strong>Sm Motors (Nallanahalli)</strong> (Two-wheelers) — Royal Enfield. No 191/9, Old NH 7, Krishnagiri Main Road, Nallanahalli, Dharmapuri, Tamil Nadu. Phone: <a href="tel:9619973717">9619973717</a></li>
+  <li><strong>Muthu Agencies Yamaha</strong> (Two-wheelers) — Yamaha. Lakkiampatty, Dharmapuri, Tamil Nadu 636704. Phone: <a href="tel:8925807340">8925807340</a></li>
+  <li><strong>Sri Rajendra Auto Agency</strong> (Two-wheelers) — Hero MotoCorp. Near EB Office, Dharmapuri Main Road, Dharmapuri, Tamil Nadu 636810. Phone: <a href="tel:04342255129">04342-255129</a></li>
+  <li><strong>Amman Motors (Jettihalli) - Maruti Suzuki Arena</strong> (Cars) — Maruti Suzuki. Collector&#x27;s Bunglow Road, Near SVT Rice Mill, A.Jettihalli, Dharmapuri, Tamil Nadu 636807. Phone: <a href="tel:08037460639">08037460639</a></li>
+  <li><strong>Himavasini Hyundai</strong> (Cars) — Hyundai. No 20/4-K, Naduhalli Village, Salem By Pass Road, Near Sowloor Junction, Dharmapuri, Tamil Nadu 636703. Phone: not listed</li>
+  <li><strong>The True Saai Works</strong> (Cars) — Tata Motors. 7/234 D, Old Hosur By-pass Road, Jettihalli, Dharmapuri, Tamil Nadu 636807. Phone: not listed</li>
+  <li><strong>Siri Motor Ventures Pvt Ltd</strong> (Cars) — Mahindra. Opp Pachumuthu College of Arts and Science, NH47, Gundalapatti, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:08925965342">08925965342</a></li>
+  <li><strong>Reliance Digital</strong> (Electronics) — Reliance Digital. PS No 4/2A1, Ground &amp; 1st Floor, Salem Main Road, Bharathipuram, Dharmapuri, Tamil Nadu 636705. Phone: <a href="tel:08071889828">08071889828</a></li>
+  <li><strong>LG Best Shop</strong> (Electronics) — LG. Opp Thangam Hospital, Salem Main Road, Indhira Nagar, Dharmapuri, Tamil Nadu 636705. Phone: <a href="tel:07373048733">07373048733</a></li>
+  <li><strong>Vivo Exclusive Store</strong> (Mobile Phones) — Vivo. No.1, Municipal Complex, Mohammed Ali Club Road, Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  <li><strong>GRT Jewellers</strong> (Jewellery) — GRT Jewellers. 92, Adhiyamaan Bypass Road, Ganesa Colony, Near HDFC Bank, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342265515">04342-265515</a></li>
+  <li><strong>Malabar Gold &amp; Diamonds</strong> (Jewellery) — Malabar Gold &amp; Diamonds. Ground, First and Second Floor, Door No.124/86, Ward No.16, Adhiyaman Bypass Road, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342260916">04342-260916</a></li>
+  <li><strong>Kalyan Jewellers (My Kalyan Mini Store)</strong> (Jewellery) — Kalyan Jewellers. Senthil Nagar, Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  <li><strong>Reliance Trends</strong> (Apparel) — Reliance Trends. Salem Main Road, Indhira Nagar, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342292150">04342-292150</a></li>
+  <li><strong>Max Fashion</strong> (Apparel) — Max Fashion. No 74/41A, Salem Main Road, Virupatchipuram, Near Thangam Hospital, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:09150046770">09150046770</a></li>
+  <li><strong>Sathya Agencies</strong> (Electronics) — Sathya. 4A/1, Rajagopal Street, Near Old Bus Stand, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:8754046985">8754046985</a></li>
+  <li><strong>Vasanth &amp; Co (Bharathipuram)</strong> (Electronics) — Vasanth &amp; Co. No 413, Kumaran Tower, Salem Main Road, Bharathipuram, Dharmapuri, Tamil Nadu 636705. Phone: <a href="tel:8939884535">8939884535</a></li>
+  <li><strong>Vasanth &amp; Co (Indhira Nagar)</strong> (Electronics) — Vasanth &amp; Co. 41B, Salem Main Road, Near DNV Bajaj Showroom, Indhira Nagar, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Poorvika Mobiles (Nethaji Road)</strong> (Mobile Phones) — Poorvika. Lakshmi Complex, No.231, Nethaji Bypass, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Samsung Smart Plaza</strong> (Electronics) — Samsung. Salem Main Road, Opposite Hero Show Room, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Gowtham Electronics</strong> (Electronics). No 09, Achariya Street, Main Road, 7th Street, Dharmapuri Fort, Near Bus Stand, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Thangamayil Jewellery</strong> (Jewellery) — Thangamayil Jewellery. Four Road, Adhiyamaan Bypass Road, Dharmapuri Bazaar, Opposite Adhiyamaan Palace, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>R.V. Raja Gold Jewellers</strong> (Jewellery). Bazaar Street, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Dhanapal Jewellers</strong> (Jewellery). Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Govindan Jewellers</strong> (Jewellery). Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>S N S Thangamaligai</strong> (Jewellery). Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Bata</strong> (Footwear) — Bata. No.83, Salem Main Road, Next to Max Showroom, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:9840649253">9840649253</a></li>
+  <li><strong>KPM Footwear</strong> (Footwear). Kandasamy Vathiyar Street, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Titan Eye+</strong> (Optical) — Titan Eye+. Salem Main Road, Dharmapuri Collectorate, Near Thangam Hospital, Next to Dharmapuri Medical College, Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  <li><strong>Vetri Enterprises</strong> (Stationery). 28, P R Srinivasa Rao Street, Bazaar, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Royal Stationers</strong> (Stationery). Harur Main Road, Opposite Avvaiyar Girl School, Dharmapuri, Tamil Nadu. Phone: <a href="tel:9952680164">9952680164</a></li>
+  <li><strong>Sri Sathiyaa SAI Book Shop</strong> (Stationery). Main Market, Mohammed Ali Club Road, Dharmapuri, Tamil Nadu. Phone: <a href="tel:9443267210">9443267210</a></li>
+  <li><strong>Fairose</strong> (Furniture). Virupakshipuram, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>Royaloak Furniture</strong> (Furniture) — Royaloak. Salem Main Road, Bharathipuram, Lakkiampatty, Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  </ul>
+  <h4>Harur taluk</h4>
+  <ul>
+  <li><strong>Muthu Auto Agency</strong> (Two-wheelers) — Yamaha. Salem Main Road, Harur, Dharmapuri, Tamil Nadu 636903. Phone: <a href="tel:9751440050">9751440050</a></li>
+  <li><strong>Vasanth &amp; Co (Harur)</strong> (Electronics) — Vasanth &amp; Co. Harur, Dharmapuri District, Tamil Nadu 636903. Phone: not listed</li>
+  <li><strong>Poorvika Mobiles (Harur)</strong> (Mobile Phones) — Poorvika. Harur, Dharmapuri, Tamil Nadu 636903. Phone: not listed</li>
+  </ul>
+  <h4>Nallampalli taluk</h4>
+  <ul>
+  <li><strong>Adyar Ananda Bhavan</strong> (Bakery &amp; Sweets) — Adyar Ananda Bhavan (A2B). NH 44, Dharmapuri-Bengaluru Road, Nallampalli, Dharmapuri District, Tamil Nadu 636807. Phone: not listed</li>
+  </ul>
+  <h4>Palacode taluk</h4>
+  <ul>
+  <li><strong>TVS - Mahalakshmi Agencies</strong> (Two-wheelers) — TVS. Dharmapuri Main Road, Bazaar Street, Thiruvalluvar Nagar, Palacode, Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  </ul>
+  <h4>Pappireddipatti taluk</h4>
+  <ul>
+  <li><strong>TVS - AVC Motors</strong> (Two-wheelers) — TVS. No 31/4A/1A, Saraswathi Plaza, Salem Main Road, Near Bus Stand, Pappireddipatti, Dharmapuri, Tamil Nadu 636905. Phone: not listed</li>
+  </ul>
+  <h4>Pennagaram taluk</h4>
+  <ul>
+  <li><strong>TVS - Isha Agencies</strong> (Two-wheelers) — TVS. Dharmapuri Main Road, Papparapatti, Pennagaram Taluk, Dharmapuri, Tamil Nadu 636809. Phone: not listed</li>
+  <li><strong>Amman Motors (Pennagaram) - Maruti Suzuki Arena</strong> (Cars) — Maruti Suzuki. Thiruvallur Nagar, Pennagaram, Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  <li><strong>Sumangali Nagai Maligai</strong> (Jewellery). D.D.D.C Building, Bazaar Street, Pennagaram, Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  </ul>
+  <h3>Hotels (21)</h3>
+  <h4>Dharmapuri taluk</h4>
+  <ul>
+  <li><strong>Adhiyaman Palace Hotel &amp; Lodging</strong> (Business). #69/4, Adhiyamaan Bye Pass Road, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:9443865353">9443865353</a></li>
+  <li><strong>Dharmapuri Lodge</strong> (Budget). Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342261340">04342-261340</a></li>
+  <li><strong>DNC Lodge</strong> (Budget). Dharmapuri, Tamil Nadu 636705. Phone: <a href="tel:04342260199">04342-260199</a></li>
+  <li><strong>Kumaran Lodge</strong> (Budget). 105, Thenavaram Road, Near R C Church, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342262215">04342-262215</a></li>
+  <li><strong>Madheswara Lodge</strong> (Budget). 103, Adhiyamman Bye-Pass Road, Near Four Roads, Dharmapuri, Tamil Nadu 636701. Phone: not listed</li>
+  <li><strong>MK Lodge</strong> (Budget). Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342262310">04342-262310</a></li>
+  <li><strong>Sri Rama Lodge</strong> (Budget). 165/11-M, Salem Main Road, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342261641">04342-261641</a></li>
+  <li><strong>Vijay Lodge</strong> (Budget). Nethaji Bypass Road, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342260199">04342-260199</a></li>
+  <li><strong>Chandra Residency</strong> (Business). No 3/204, Soogathoor Koot Road, Pappinaickanahalli, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:7200731676">7200731676</a></li>
+  <li><strong>Hotel Sri Saravana Inn</strong> (Business). 102, Bye Pass Road, Near Four Roads, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:9789497722">9789497722</a></li>
+  <li><strong>Hotel PKP Grand</strong> (Business). No 2/64B, Sengodipuram, Near Bus Stand, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:04342269888">04342-269888</a></li>
+  <li><strong>Grand D Gala</strong> (Business). Railway Station Road, Indhira Nagar, Dharmapuri, Tamil Nadu 636701. Phone: <a href="tel:9080731865">9080731865</a></li>
+  <li><strong>DNG Residency</strong> (Business). 2/234A, Dharmapuri-Krishnagiri Main Road, Gundalapatti, Dharmapuri, Tamil Nadu 636704. Phone: <a href="tel:04342288355">04342-288355</a></li>
+  </ul>
+  <h4>Harur taluk</h4>
+  <ul>
+  <li><strong>Hotel Sai Sangeet</strong> (Budget). Harur, Dharmapuri District, Tamil Nadu 636903. Phone: <a href="tel:9942090008">9942090008</a></li>
+  <li><strong>Hotel Sri Mahalakshmi Lodge &amp; Party Hall</strong> (Budget). T V K Nagar, Harur, Dharmapuri, Tamil Nadu 636903. Phone: <a href="tel:04346223322">04346-223322</a></li>
+  <li><strong>N.V.K Lodge</strong> (Budget). Salem Bypass, Harur, Dharmapuri, Tamil Nadu 636903. Phone: not listed</li>
+  </ul>
+  <h4>Palacode taluk</h4>
+  <ul>
+  <li><strong>The Savoy Farmstay</strong> (Resort). Budihalli, Kotoor Village, Palacode, Dharmapuri District, Tamil Nadu 636806. Phone: not listed</li>
+  <li><strong>Hotel Mayura Grand</strong> (Business). Theerthagiri Nagar, Karagathahalli, Palacode, Dharmapuri, Tamil Nadu 636808. Phone: <a href="tel:04348223880">04348-223880</a></li>
+  </ul>
+  <h4>Pappireddipatti taluk</h4>
+  <ul>
+  <li><strong>MVR Lodge</strong> (Budget). Pappireddipatti Bus Stand, Pappireddipatti, Dharmapuri, Tamil Nadu 636905. Phone: not listed</li>
+  </ul>
+  <h4>Pennagaram taluk</h4>
+  <ul>
+  <li><strong>Sathyam Resorts</strong> (Resort). 1/329E, Bangalore Road, Koothapadi, Pennagaram, Near Hogenakkal, Dharmapuri, Tamil Nadu 636810. Phone: not listed</li>
+  <li><strong>TTDC Hotel Tamilnadu - Hogenakkal</strong> (Resort). Hogenakkal, Pennagaram, Dharmapuri, Tamil Nadu 636810. Phone: <a href="tel:9943332736">9943332736</a></li>
+  </ul>
+  <h3>Restaurants (52)</h3>
+  <h4>Dharmapuri taluk</h4>
+  <ul>
+  <li><strong>Basmati Briyani World (A/c) Restaurant</strong> (Biryani). Moogambikai Complex, Salem Main Road, Lakkiampatty, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Topi Vappa</strong> (Biryani). Moogambikai Complex, Salem Main Road, Lakkiampatty, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Aviknaa Restaurant &amp; Aviknaa Chicken</strong> (Chicken / Non-Veg). Thadangam, Dharmapuri. Phone: not listed</li>
+  <li><strong>KFC</strong> (Chicken / Non-Veg). Unit No 3, Ground Floor, TS Square, Opposite Government Medical College, Nethaji Bye Pass Road, Dharmapuri - 636701. Phone: <a href="tel:08045953141">080-45953141</a></li>
+  <li><strong>New Restaurant High Class Veg And Non Veg</strong> (Chicken / Non-Veg). Opposite Town Bus Stand, Mohammed Ali Club Road, Dharmapuri Bazaar, Dharmapuri - 636701. Phone: <a href="tel:07383517838">07383517838</a></li>
+  <li><strong>Hotel Si Ramavilas (Non Veg)</strong> (Chicken / Non-Veg). 129/24, Adhiyaman Bye Pass Road, K.R.K Mansion, Dharmapuri. Phone: not listed</li>
+  <li><strong>Le Kings Non Veg Restaurant</strong> (Chicken / Non-Veg). Nethaji Bypass Road, Dharmapuri. Phone: not listed</li>
+  <li><strong>Meat And Eat</strong> (Chicken / Non-Veg). Dharmapuri Locality, Dharmapuri. Phone: not listed</li>
+  <li><strong>Domino&#x27;s Pizza</strong> (Pizza). Ground Floor, Door No. 103, Salem Main Road, Dharmapuri - 636705. Phone: not listed</li>
+  <li><strong>Kumaran Mess (Veg &amp; Non Veg)</strong> (South Indian). 111/2, Dharmapuri. Phone: <a href="tel:+919443464425">+91 94434 64425</a></li>
+  <li><strong>Mr. Parotta</strong> (South Indian). Dharmapuri Locality, Dharmapuri. Phone: not listed</li>
+  <li><strong>JK Garden The Family Dhaba</strong> (North Indian). 5/213-6, MGR Complex, NH Salem-Bengaluru Bypass, Ammani Reddihalli, Dharmapuri. Phone: <a href="tel:+917373797575">+91 73737 97575</a></li>
+  <li><strong>Ram&#x27;s Kitchen</strong> (Chinese). 11 R, 66 Feet Road, Bharathipuram, Dharmapuri. Phone: <a href="tel:+918056119466">+91 80561 19466</a></li>
+  <li><strong>Hotel Shri Saravana Bhavan</strong> (Vegetarian). Near L&amp;T Toll Gate, Dhombrakampatti, Dharmapuri - 636807. Phone: not listed</li>
+  <li><strong>Adyar Ananda Bhavan Veg Restaurant</strong> (Vegetarian). Near DPCL Petrol Pump, Thombarambakkam Village, Palayampudur, Dharmapuri. Phone: not listed</li>
+  <li><strong>Classic Food Corner</strong> (Fast Food). Dharmapuri Locality, Dharmapuri. Phone: not listed</li>
+  <li><strong>RR Food Corner</strong> (Fast Food). Dharmapuri Locality, Dharmapuri. Phone: not listed</li>
+  <li><strong>Kwality Ice Cream Parlour and Fruit Juice Corner</strong> (Ice Cream &amp; Sweets). 292/51A, Nethaji Bye Pass Road, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Ibaco</strong> (Ice Cream &amp; Sweets). No. 6, Nethaji Bye Pass Road, Dharmapuri - 636701, Opposite RK Hospital. Phone: not listed</li>
+  <li><strong>Cafe Saisangeet</strong> (Bakery &amp; Cafe). 48, Nethaji Byepass Road, Salem Main Road, Vellaikavundanpalayam, Dharmapuri. Phone: not listed</li>
+  <li><strong>RR Briyani (Salem RR Biryani Unavagam)</strong> (Biryani). 111/M, M1, M2, Kumaran Towers, Salem Main Road, Near Sri Krishna Auto Agency, Bharathipuram, Dharmapuri - 636701. Phone: <a href="tel:+919952236340">+91 99522 36340</a></li>
+  <li><strong>Royal Briyani</strong> (Biryani). Dharmapuri, Tamil Nadu. Phone: not listed</li>
+  <li><strong>Kavitha Mess</strong> (South Indian). DCK Complex, Near Hari Theatre, Bye Pass Road, Dharmapuri Bazaar - 636701. Phone: not listed</li>
+  <li><strong>Karim Biryani Center</strong> (Biryani). Opposite Vanniyar Mandapam, South Railway Street, Ganesa Colony, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Al Madina Biryani Hotel</strong> (Biryani). Salem Road, Dharmapuri - 636701. Phone: <a href="tel:+919965555993">+91 99655 55993</a></li>
+  <li><strong>Kareem Biryani Hotel</strong> (Biryani). Opposite Laxmi Vilas Bank, Salem Main Road, Dharmapuri Bazaar, Dharmapuri. Phone: not listed</li>
+  <li><strong>New Jolly Biryani Hotel</strong> (Biryani). Dharmapuri Bazaar, Dharmapuri. Phone: not listed</li>
+  <li><strong>Kareem Bai Briyani</strong> (Biryani). Dharmapuri Locality, Dharmapuri. Phone: not listed</li>
+  <li><strong>Aasife Biriyani</strong> (Biryani). Four Roads Junction, Behind Madheswara Lodge, Salem Main Road, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Van Biryani</strong> (Biryani). Weavers Colony, Dharmapuri. Phone: not listed</li>
+  <li><strong>Valli Mess</strong> (South Indian). 110/22, 2nd Street, Nesavalar Colony (Weavers Colony), Dharmapuri. Phone: not listed</li>
+  <li><strong>Sri Maruthi Mess</strong> (South Indian). Valluvar Nagar, Thadangam, Salem Main Road, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Hotel Srirama (Rama Boarding &amp; Lodging)</strong> (Vegetarian). 165/11-M, Nethaji Bye Pass Road, Dharmapuri - 636701. Phone: <a href="tel:04342260141">04342-260141</a></li>
+  <li><strong>Hotel Sree Ranga</strong> (Multi-Cuisine). 4/43, Collectorate, Nirmala Nagar, Opposite SP Office, Salem Main Road, Dharmapuri. Phone: not listed</li>
+  <li><strong>Ponni Multi Cuisine Restaurant</strong> (Multi-Cuisine). Opposite Vallalar Ground, Near Ranganathan Department Store, Arumuga Achari Street, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Hotel Royal Taj</strong> (Chicken / Non-Veg). 14A, Opposite Government Medical College Hospital, Salem Main Road, Dharmapuri Bazaar - 636701. Phone: not listed</li>
+  <li><strong>Athiyan Hotel</strong> (South Indian). Bus Stop, Weavers Colony, Dharmapuri - 636701. Phone: not listed</li>
+  </ul>
+  <h4>Harur taluk</h4>
+  <ul>
+  <li><strong>Om Sri Annapoorna</strong> (Vegetarian). Tirupattur Main Road, Harur - 636903. Phone: not listed</li>
+  <li><strong>Ariyabhavan Veg Restaurant &amp; Sweets</strong> (Vegetarian). Harur - 636903. Phone: not listed</li>
+  <li><strong>Barbequeen Restaurant (Harur)</strong> (Chicken / Non-Veg). No. 3, Salem Bypass Road, Periyar Nagar, Harur - 636903. Phone: not listed</li>
+  <li><strong>Luxury Chicken Corner</strong> (Chicken / Non-Veg). Harur - 636903. Phone: not listed</li>
+  <li><strong>Harur Food Bazaar (HFB)</strong> (Pizza). Shop No. 1, Opposite Govt. Boys Hr. Sec. School, Harur - 636903. Phone: not listed</li>
+  <li><strong>Harur Kitchen Multicuisine Restaurant</strong> (North Indian). Opposite KAS Petrol Bunk, Periyar Nagar, Harur. Phone: not listed</li>
+  </ul>
+  <h4>Karimangalam taluk</h4>
+  <ul>
+  <li><strong>Aahhaa Family Restaurant</strong> (Multi-Cuisine). Kariamangalam Bypass, Karimangalam, Dharmapuri District - 635111. Phone: not listed</li>
+  </ul>
+  <h4>Nallampalli taluk</h4>
+  <ul>
+  <li><strong>Ganga Mess</strong> (South Indian). Nallampalli, Dharmapuri. Phone: not listed</li>
+  <li><strong>Pjm Family Restaurant</strong> (South Indian). Near Vijay College, Nallampalli, Dharmapuri. Phone: not listed</li>
+  <li><strong>Ponnu Restaurant</strong> (South Indian). Nallampalli, Dharmapuri. Phone: not listed</li>
+  </ul>
+  <h4>Palacode taluk</h4>
+  <ul>
+  <li><strong>Thirumoorthi Mess</strong> (South Indian). Palacode - 636808. Phone: not listed</li>
+  <li><strong>Mayura Grand Restaurant &amp; Banquet</strong> (Chicken / Non-Veg). Theerthagiri Nagar, Karagathahalli, Near Bus Stand, Palacode - 636808. Phone: <a href="tel:+914348223880">+91 4348 223880</a></li>
+  <li><strong>Haseema</strong> (Chicken / Non-Veg). Bus Stand, 18/2, Chikkardanahalli, Palacode, Dharmapuri - 636808. Phone: not listed</li>
+  </ul>
+  <h4>Pappireddipatti taluk</h4>
+  <ul>
+  <li><strong>Kundhani Mess Restaurant</strong> (South Indian). Mallapuram Road, Pappireddipatti - 636905. Phone: not listed</li>
+  </ul>
+  <h4>Pennagaram taluk</h4>
+  <ul>
+  <li><strong>Selvi Mess</strong> (South Indian). Near TTDC Hotel Tamilnadu, Hogenakkal, Pennagaram. Phone: not listed</li>
+  </ul>
+  </section>
+  </noscript>
   </main>
 
   <footer class="site-footer">
@@ -963,7 +1535,7 @@
         </a>
         <p>Government offices, schools, colleges, sightseeing spots, shops, hotels and restaurants of Dharmapuri district — address, contact and photos, in one place.</p>
         <p class="visit-counter">
-          <img src="https://hits.sh/dharmakrish6.github.io/mydharmapuri.svg?style=flat-square&label=site%20views&color=3e8e2f&labelColor=122a20" alt="Site view count" height="20" loading="lazy">
+          <img src="https://hits.sh/mydharmapuri.com.svg?style=flat-square&label=site%20views&color=3e8e2f&labelColor=122a20" alt="Site view count" height="20" loading="lazy">
         </p>
       </div>
       <div class="footer-col">
@@ -983,6 +1555,7 @@
         <h4>Contact</h4>
         <p>Dharmapuri, Tamil Nadu</p>
         <a href="mailto:admin@techieqa.com">admin@techieqa.com</a>
+        <a href="#suggest">Add your business</a>
       </div>
     </div>
     <div class="wrap footer-bottom">
@@ -1192,7 +1765,29 @@
       { "name": "Kundhani Mess Restaurant", "category": "South Indian", "taluk": "Pappireddipatti", "address": "Mallapuram Road, Pappireddipatti - 636905", "phone": null },
       { "name": "Selvi Mess", "category": "South Indian", "taluk": "Pennagaram", "address": "Near TTDC Hotel Tamilnadu, Hogenakkal, Pennagaram", "phone": null },
       { "name": "Thirumoorthi Mess", "category": "South Indian", "taluk": "Palacode", "address": "Palacode - 636808", "phone": null },
-      { "name": "Mayura Grand Restaurant & Banquet", "category": "Chicken / Non-Veg", "taluk": "Palacode", "address": "Theerthagiri Nagar, Karagathahalli, Near Bus Stand, Palacode - 636808", "phone": "+91 4348 223880" }
+      { "name": "Mayura Grand Restaurant & Banquet", "category": "Chicken / Non-Veg", "taluk": "Palacode", "address": "Theerthagiri Nagar, Karagathahalli, Near Bus Stand, Palacode - 636808", "phone": "+91 4348 223880" },
+      { "name": "RR Briyani (Salem RR Biryani Unavagam)", "category": "Biryani", "taluk": "Dharmapuri", "address": "111/M, M1, M2, Kumaran Towers, Salem Main Road, Near Sri Krishna Auto Agency, Bharathipuram, Dharmapuri - 636701", "phone": "+91 99522 36340" },
+      { "name": "Royal Briyani", "category": "Biryani", "taluk": "Dharmapuri", "address": "Dharmapuri, Tamil Nadu", "phone": null },
+      { "name": "Kavitha Mess", "category": "South Indian", "taluk": "Dharmapuri", "address": "DCK Complex, Near Hari Theatre, Bye Pass Road, Dharmapuri Bazaar - 636701", "phone": null },
+      { "name": "Karim Biryani Center", "category": "Biryani", "taluk": "Dharmapuri", "address": "Opposite Vanniyar Mandapam, South Railway Street, Ganesa Colony, Dharmapuri - 636701", "phone": null },
+      { "name": "Al Madina Biryani Hotel", "category": "Biryani", "taluk": "Dharmapuri", "address": "Salem Road, Dharmapuri - 636701", "phone": "+91 99655 55993" },
+      { "name": "Kareem Biryani Hotel", "category": "Biryani", "taluk": "Dharmapuri", "address": "Opposite Laxmi Vilas Bank, Salem Main Road, Dharmapuri Bazaar, Dharmapuri", "phone": null },
+      { "name": "New Jolly Biryani Hotel", "category": "Biryani", "taluk": "Dharmapuri", "address": "Dharmapuri Bazaar, Dharmapuri", "phone": null },
+      { "name": "Kareem Bai Briyani", "category": "Biryani", "taluk": "Dharmapuri", "address": "Dharmapuri Locality, Dharmapuri", "phone": null },
+      { "name": "Aasife Biriyani", "category": "Biryani", "taluk": "Dharmapuri", "address": "Four Roads Junction, Behind Madheswara Lodge, Salem Main Road, Dharmapuri - 636701", "phone": null },
+      { "name": "Van Biryani", "category": "Biryani", "taluk": "Dharmapuri", "address": "Weavers Colony, Dharmapuri", "phone": null },
+      { "name": "Valli Mess", "category": "South Indian", "taluk": "Dharmapuri", "address": "110/22, 2nd Street, Nesavalar Colony (Weavers Colony), Dharmapuri", "phone": null },
+      { "name": "Sri Maruthi Mess", "category": "South Indian", "taluk": "Dharmapuri", "address": "Valluvar Nagar, Thadangam, Salem Main Road, Dharmapuri - 636701", "phone": null },
+      { "name": "Hotel Srirama (Rama Boarding & Lodging)", "category": "Vegetarian", "taluk": "Dharmapuri", "address": "165/11-M, Nethaji Bye Pass Road, Dharmapuri - 636701", "phone": "04342-260141" },
+      { "name": "Hotel Sree Ranga", "category": "Multi-Cuisine", "taluk": "Dharmapuri", "address": "4/43, Collectorate, Nirmala Nagar, Opposite SP Office, Salem Main Road, Dharmapuri", "phone": null },
+      { "name": "Ponni Multi Cuisine Restaurant", "category": "Multi-Cuisine", "taluk": "Dharmapuri", "address": "Opposite Vallalar Ground, Near Ranganathan Department Store, Arumuga Achari Street, Dharmapuri - 636701", "phone": null },
+      { "name": "Hotel Royal Taj", "category": "Chicken / Non-Veg", "taluk": "Dharmapuri", "address": "14A, Opposite Government Medical College Hospital, Salem Main Road, Dharmapuri Bazaar - 636701", "phone": null },
+      { "name": "Athiyan Hotel", "category": "South Indian", "taluk": "Dharmapuri", "address": "Bus Stop, Weavers Colony, Dharmapuri - 636701", "phone": null },
+      { "name": "Haseema", "category": "Chicken / Non-Veg", "taluk": "Palacode", "address": "Bus Stand, 18/2, Chikkardanahalli, Palacode, Dharmapuri - 636808", "phone": null },
+      { "name": "Ganga Mess", "category": "South Indian", "taluk": "Nallampalli", "address": "Nallampalli, Dharmapuri", "phone": null },
+      { "name": "Pjm Family Restaurant", "category": "South Indian", "taluk": "Nallampalli", "address": "Near Vijay College, Nallampalli, Dharmapuri", "phone": null },
+      { "name": "Ponnu Restaurant", "category": "South Indian", "taluk": "Nallampalli", "address": "Nallampalli, Dharmapuri", "phone": null },
+      { "name": "Aahhaa Family Restaurant", "category": "Multi-Cuisine", "taluk": "Karimangalam", "address": "Kariamangalam Bypass, Karimangalam, Dharmapuri District - 635111", "phone": null }
     ]
   }
 }
@@ -1248,12 +1843,22 @@
     var quickScroll = document.getElementById('quickScroll');
     var subcatRow = document.getElementById('subcatRow');
 
+    function talukFromHash(){
+      var raw = decodeURIComponent((window.location.hash || '').replace(/^#/, ''));
+      if (!raw) return null;
+      var match = allTaluks.filter(function(t){ return t.toLowerCase() === raw.toLowerCase(); });
+      return match.length ? match[0] : null;
+    }
+
     var initialQuery = new URLSearchParams(window.location.search).get('q') || '';
-    var state = { cat: 'government_offices', taluk: 'all', q: initialQuery, subcat: 'all' };
+    var initialTaluk = talukFromHash() || 'all';
+    var state = { cat: 'government_offices', taluk: initialTaluk, q: initialQuery, subcat: 'all' };
 
     sourceNote.id = 'note';
     sourceNote.textContent = data.note + ' ' + data.imageNote + ' ' + data.showroomsNote + ' ' + data.hotelsNote + ' ' + data.restaurantsNote + ' Last updated ' + data.lastUpdated + '.';
     heroStats.textContent = totalCount + ' verified listings · ' + allTaluks.length + ' areas · updated ' + data.lastUpdated;
+    var faqTotalCount = document.getElementById('faqTotalCount');
+    if (faqTotalCount) faqTotalCount.textContent = totalCount;
 
     allTaluks.forEach(function(t){
       var opt = document.createElement('option');
@@ -1438,7 +2043,14 @@
     }
 
     function selectCategory(cat){ state.cat = cat; state.subcat = 'all'; render(); }
-    function selectTaluk(taluk){ state.taluk = taluk; render(); }
+    function selectTaluk(taluk){
+      state.taluk = taluk;
+      render();
+      if (window.history && window.history.replaceState) {
+        var newHash = taluk === 'all' ? '' : '#' + taluk;
+        window.history.replaceState(null, '', window.location.pathname + window.location.search + newHash);
+      }
+    }
     function selectSubcat(subcat){ state.subcat = subcat; render(); }
     function selectQuery(q){ state.q = q; render(); }
 
@@ -1493,6 +2105,57 @@
 
     renderQuick();
     render();
+
+    if (initialTaluk !== 'all') {
+      document.getElementById('directory').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    window.addEventListener('hashchange', function(){
+      var t = talukFromHash();
+      if (t) {
+        state.taluk = t;
+        render();
+        document.getElementById('directory').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    var suggestForm = document.getElementById('suggestForm');
+    var suggestStatus = document.getElementById('suggestStatus');
+    var suggestSubmit = document.getElementById('suggestSubmit');
+    if (suggestForm) {
+      suggestForm.addEventListener('submit', function(ev){
+        ev.preventDefault();
+
+        if (suggestForm.querySelector('[name="_honey"]').value) {
+          suggestForm.reset();
+          suggestStatus.textContent = 'Thanks — we\'ll review your submission and add it soon.';
+          suggestStatus.className = 'form-status success';
+          return;
+        }
+
+        suggestSubmit.disabled = true;
+        suggestStatus.textContent = 'Sending…';
+        suggestStatus.className = 'form-status';
+
+        fetch('https://formsubmit.co/ajax/admin@techieqa.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(suggestForm)
+        }).then(function(res){
+          if (!res.ok) throw new Error('bad response');
+          return res.json();
+        }).then(function(){
+          suggestForm.reset();
+          suggestStatus.textContent = 'Thanks — we\'ll review your submission and add it soon.';
+          suggestStatus.className = 'form-status success';
+        }).catch(function(){
+          suggestStatus.textContent = 'Something went wrong. Please email admin@techieqa.com directly.';
+          suggestStatus.className = 'form-status error';
+        }).finally(function(){
+          suggestSubmit.disabled = false;
+        });
+      });
+    }
   })();
   </script>
 
