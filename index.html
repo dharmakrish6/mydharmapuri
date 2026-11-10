@@ -18,8 +18,9 @@
 <link rel="alternate" type="application/json" href="data/showrooms.json" title="Dharmapuri shops and showrooms data">
 <link rel="alternate" type="application/json" href="data/hotels.json" title="Dharmapuri hotels data">
 <link rel="alternate" type="application/json" href="data/restaurants.json" title="Dharmapuri restaurants data">
+<link rel="alternate" type="application/json" href="data/hospitals.json" title="Dharmapuri hospitals data">
 <meta property="og:title" content="Dharmapuri Connect: Offices, Schools, Hotels & Restaurants">
-<meta property="og:description" content="Addresses, phone numbers and travel details for Dharmapuri government offices, schools, colleges, tourist places, showrooms, hotels and restaurants in Tamil Nadu.">
+<meta property="og:description" content="Addresses, phone numbers and travel details for Dharmapuri government offices, schools, colleges, hospitals, tourist places, showrooms, hotels and restaurants in Tamil Nadu.">
 <meta property="og:url" content="https://mydharmapuri.com/">
 <meta property="og:image" content="https://mydharmapuri.com/icon-512.png">
 <meta property="og:image:width" content="512">
@@ -29,7 +30,7 @@
 <meta property="og:site_name" content="Dharmapuri Connect">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dharmapuri Connect: Offices, Schools, Hotels & Restaurants">
-<meta name="twitter:description" content="Explore Dharmapuri district offices, schools, colleges, sightseeing places, showrooms, hotels and restaurants with useful local details.">
+<meta name="twitter:description" content="Explore Dharmapuri district offices, schools, colleges, hospitals, sightseeing places, showrooms, hotels and restaurants with useful local details.">
 <meta name="twitter:image" content="https://mydharmapuri.com/icon-512.png">
 <meta name="geo.region" content="IN-TN">
 <meta name="geo.placename" content="Dharmapuri">
@@ -58,6 +59,7 @@
     --violet:#6b5fc7;
     --sky:#2f6fb0;
     --crimson:#bf3b3b;
+    --rose:#c2416f;
     --muted:#5f7268;
     --line:#e2e2d4;
     --shadow:0 1px 2px rgba(19,58,43,.05), 0 8px 24px -12px rgba(19,58,43,.18);
@@ -79,6 +81,7 @@
       --violet:#9d94e8;
       --sky:#6fb3e8;
       --crimson:#e07070;
+      --rose:#ec7aa0;
       --muted:#8fa599;
       --line:#243128;
       --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
@@ -286,6 +289,7 @@
   }
   .finder-icon-btn[data-cat="government_offices"] .finder-icon-circle{background:linear-gradient(135deg,var(--leaf),color-mix(in srgb,var(--leaf) 65%,black))}
   .finder-icon-btn[data-cat="schools"] .finder-icon-circle{background:linear-gradient(135deg,var(--orange),color-mix(in srgb,var(--orange) 65%,black))}
+  .finder-icon-btn[data-cat="hospitals"] .finder-icon-circle{background:linear-gradient(135deg,var(--rose),color-mix(in srgb,var(--rose) 65%,black))}
   .finder-icon-btn[data-cat="colleges"] .finder-icon-circle{background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black))}
   .finder-icon-btn[data-cat="sightseeing"] .finder-icon-circle{background:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 65%,black))}
   .finder-icon-btn[data-cat="showrooms"] .finder-icon-circle{background:linear-gradient(135deg,var(--violet),color-mix(in srgb,var(--violet) 65%,black))}
@@ -592,6 +596,7 @@
   .card-media svg{width:2rem;height:2rem;color:#fff;opacity:.92}
   .cat-government_offices{background:linear-gradient(135deg,var(--leaf),color-mix(in srgb,var(--leaf) 65%,black))}
   .cat-schools{background:linear-gradient(135deg,var(--orange),color-mix(in srgb,var(--orange) 65%,black))}
+  .cat-hospitals{background:linear-gradient(135deg,var(--rose),color-mix(in srgb,var(--rose) 65%,black))}
   .cat-colleges{background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black))}
   .cat-sightseeing{background:linear-gradient(135deg,var(--gold),color-mix(in srgb,var(--gold) 65%,black))}
   .cat-showrooms{background:linear-gradient(135deg,var(--violet),color-mix(in srgb,var(--violet) 65%,black))}
@@ -835,9 +840,9 @@
   "@type": ["WebSite", "WebPage"],
   "name": "Dharmapuri Directory",
   "url": "https://mydharmapuri.com/",
-  "description": "A local directory of Dharmapuri district government offices, schools, colleges, sightseeing places, shops and showrooms, hotels and restaurants.",
+  "description": "A local directory of Dharmapuri district government offices, schools, colleges, hospitals, sightseeing places, shops and showrooms, hotels and restaurants.",
   "inLanguage": "en-IN",
-  "dateModified": "2026-09-05",
+  "dateModified": "2026-11-10",
   "isPartOf": { "@type": "WebSite", "name": "Dharmapuri Directory", "url": "https://mydharmapuri.com/" },
   "publisher": { "@type": "Organization", "name": "Dharmapuri Directory", "url": "https://mydharmapuri.com/" },
   "mainEntityOfPage": "https://mydharmapuri.com/",
@@ -850,6 +855,8 @@
     "Dharmapuri directory",
     "Dharmapuri district government offices",
     "Dharmapuri schools and colleges",
+    "Dharmapuri hospitals",
+    "eye hospitals in Dharmapuri",
     "Dharmapuri tourist places",
     "Hogenakkal Falls",
     "Dharmapuri showrooms and dealers",
@@ -868,6 +875,7 @@
     { "@type": "CollectionPage", "name": "Dharmapuri government offices" },
     { "@type": "CollectionPage", "name": "Schools in Dharmapuri district" },
     { "@type": "CollectionPage", "name": "Colleges in Dharmapuri district" },
+    { "@type": "CollectionPage", "name": "Hospitals in Dharmapuri district" },
     { "@type": "CollectionPage", "name": "Places to visit in Dharmapuri" },
     { "@type": "CollectionPage", "name": "Branded showrooms and shops in Dharmapuri" },
     { "@type": "CollectionPage", "name": "Hotels in Dharmapuri district" },
@@ -883,7 +891,7 @@
     {
       "@type": "Question",
       "name": "How many places are listed in the Dharmapuri directory?",
-      "acceptedAnswer": { "@type": "Answer", "text": "This directory lists 200 verified entries across government offices, schools, colleges, sightseeing places, shops and showrooms, hotels and restaurants — spanning Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks." }
+      "acceptedAnswer": { "@type": "Answer", "text": "This directory lists 231 verified entries across government offices, schools, colleges, hospitals, sightseeing places, shops and showrooms, hotels and restaurants — spanning Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks." }
     },
     {
       "@type": "Question",
@@ -925,6 +933,7 @@
         <a href="#directory" data-cat="government_offices">Government</a>
         <a href="#directory" data-cat="schools">Schools</a>
         <a href="#directory" data-cat="colleges">Colleges</a>
+        <a href="#directory" data-cat="hospitals">Hospitals</a>
         <a href="#directory" data-cat="sightseeing">Places to visit</a>
         <a href="#directory" data-cat="showrooms">Showrooms</a>
         <a href="#directory" data-cat="hotels">Hotels</a>
@@ -963,6 +972,12 @@
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
             </span>
             <span class="label">Colleges</span>
+          </button>
+          <button type="button" class="finder-icon-btn" role="tab" data-cat="hospitals">
+            <span class="finder-icon-circle">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+            </span>
+            <span class="label">Hospitals</span>
           </button>
           <button type="button" class="finder-icon-btn" role="tab" data-cat="sightseeing">
             <span class="finder-icon-circle">
@@ -1026,7 +1041,7 @@
     <section class="block wrap" id="directory">
       <div class="block-head">
         <h2>Browse the directory</h2>
-        <p>Government offices, schools, colleges, sightseeing spots, shops, hotels and restaurants across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
+        <p>Government offices, schools, colleges, hospitals, sightseeing spots, shops, hotels and restaurants across Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
       </div>
 
       <div class="browse-layout">
@@ -1040,6 +1055,7 @@
             <button type="button" class="tab" role="tab" data-cat="government_offices">Government offices <span class="n" data-n="government_offices">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="schools">Schools <span class="n" data-n="schools">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="colleges">Colleges <span class="n" data-n="colleges">0</span></button>
+            <button type="button" class="tab" role="tab" data-cat="hospitals">Hospitals <span class="n" data-n="hospitals">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="sightseeing">Places to visit <span class="n" data-n="sightseeing">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="showrooms">Showrooms <span class="n" data-n="showrooms">0</span></button>
             <button type="button" class="tab" role="tab" data-cat="hotels">Hotels <span class="n" data-n="hotels">0</span></button>
@@ -1155,7 +1171,7 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>How many places are listed in the Dharmapuri directory?</summary>
-          <p>This directory lists <strong id="faqTotalCount">200</strong> verified entries across government offices, schools, colleges, sightseeing places, shops and showrooms, hotels and restaurants — spanning Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
+          <p>This directory lists <strong id="faqTotalCount">231</strong> verified entries across government offices, schools, colleges, hospitals, sightseeing places, shops and showrooms, hotels and restaurants — spanning Dharmapuri, Palacode, Pennagaram, Harur and Pappireddipatti taluks.</p>
         </details>
         <details class="faq-item">
           <summary>Where is Hogenakkal Falls located?</summary>
@@ -1183,7 +1199,7 @@
     <noscript>
   <section class="wrap" aria-label="Full directory listing (no JavaScript view)">
   <h2>Full Dharmapuri directory listing</h2>
-  <p>This page normally uses JavaScript for search and filtering. Here is the complete list of all 200 verified entries for browsers and crawlers without JavaScript.</p>
+  <p>This page normally uses JavaScript for search and filtering. Here is the complete list of all 231 verified entries for browsers and crawlers without JavaScript.</p>
   <h3>Government Offices (26)</h3>
   <h4>Dharmapuri taluk</h4>
   <ul>
@@ -1318,6 +1334,53 @@
   <ul>
   <li><strong>Government Arts and Science College, Eriyur</strong> (Government) — Arts &amp; Science. Eriyur, Pennagaram Taluk, Dharmapuri - 636810. Phone: <a href="tel:04342291861">04342-291861</a></li>
   <li><strong>Periyar University College of Arts and Science, Pennagaram</strong> (Government) — Arts &amp; Science. Pennagaram, Dharmapuri - 636803. Phone: <a href="tel:9442821455">9442821455</a></li>
+  </ul>
+  <h3>Hospitals (31)</h3>
+  <h4>Dharmapuri taluk</h4>
+  <ul>
+  <li><strong>Government Dharmapuri Medical College Hospital</strong> (Multi-Speciality) — Government. Salem Main Road, Dharmapuri - 636701. Phone: <a href="tel:04342233600">04342-233600</a></li>
+  <li><strong>Government Elep Hospital, Kuppur</strong> (General) — Government. Kuppur, Dharmapuri - 636704. Phone: not listed</li>
+  <li><strong>BGR Hospital</strong> (Multi-Speciality) — Private. 2-B, Ramalingam Chetty Street, Near LIC, Dharmapuri - 636701. Phone: <a href="tel:04342267177">04342-267177</a></li>
+  <li><strong>Vijaya Multispeciality Hospital</strong> (Multi-Speciality) — Private. 4/486-A, Pennagaram Main Road, Near Vijay Vidhyalaya Boys School, Dharmapuri - 636701. Phone: <a href="tel:04342280108">04342-280108</a></li>
+  <li><strong>Supa Hospital</strong> (Multi-Speciality) — Private. 37, Siddha Veerappa Chetty Street, Near Bus Stand, Dharmapuri - 636701. Phone: <a href="tel:9500923592">9500923592</a></li>
+  <li><strong>Meenakshi Hospital &amp; Fertility Centre</strong> (Fertility &amp; Maternity) — Private. 18/61, Sengodipuram, Near Bus Stand, Dharmapuri - 636701. Phone: <a href="tel:04342269010">04342-269010</a></li>
+  <li><strong>Kamalam Hospital</strong> (General) — Private. 248, 53-M, Nethaji Bypass Road, Dharmapuri - 636701. Phone: <a href="tel:04342260707">04342-260707</a></li>
+  <li><strong>Nithya Hospital</strong> (General) — Private. 14-B, Nethaji Bypass Road, Opp. Government Medical College Hospital, Dharmapuri - 636701. Phone: <a href="tel:04342260371">04342-260371</a></li>
+  <li><strong>K.S. Hospital</strong> (General) — Private. 7/1, C.K. Srinivasa Rao Street, Near Bus Stand, Dharmapuri - 636701. Phone: <a href="tel:04342261948">04342-261948</a></li>
+  <li><strong>K.V. Hospital</strong> (General) — Private. 107, Nethaji Bypass Road, Near Malabar Finance, Dharmapuri - 636701. Phone: <a href="tel:9952100998">9952100998</a></li>
+  <li><strong>Sree Ragavendra Hospital</strong> (General) — Private. 79/C, S.V. Road, Opp. BBC Kalyana Mandapam, Dharmapuri - 636701. Phone: <a href="tel:8903641154">8903641154</a></li>
+  <li><strong>Sri Annai Hospital</strong> (General) — Private. 5C, Narasimha Achari Street, Opp. Sri Krishna Gurukulam School, Dharmapuri - 636701. Phone: <a href="tel:04342262738">04342-262738</a></li>
+  <li><strong>Thangam Hospital</strong> (General) — Private. 76/41 C, Salem Main Road, Bharathipuram, Dharmapuri - 636705. Phone: <a href="tel:9715199993">9715199993</a></li>
+  <li><strong>D.N.V. Polyclinic</strong> (General) — Private. 7, Rajagopal Gounder Street, Dharmapuri - 636701. Phone: <a href="tel:04342265091">04342-265091</a></li>
+  <li><strong>Om Sakthi Hospital</strong> (General) — Private. 4, Sengodipuram, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>P.M.K. Hospital</strong> (General) — Private. 3, C.K. Srinivasa Rao Street, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>SSS Hospital</strong> (General) — Private. 56A, Kandhasamy Vathiyar Street, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Guru Hospital</strong> (General) — Private. 32 A2, Nethaji Bypass Road, Opp. Government Medical College, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>DNV Ortho Care</strong> (Orthopaedics) — Private. 72 B, Salem Main Road, Dharmapuri - 636705. Phone: <a href="tel:8825942231">8825942231</a></li>
+  <li><strong>Dr. Agarwal&#x27;s Eye Hospital</strong> (Eye Care) — Private. 136, 1st Floor, Nethaji Bypass Road, Opp. Hotel Rama Boarding, Dharmapuri - 636701. Phone: <a href="tel:04342269555">04342-269555</a></li>
+  <li><strong>Vasan Eye Care Hospital</strong> (Eye Care) — Private. 1A, P.R. Sundaram Street, Bus Owners Association Building, Opp. Senthil Kumar Textiles, Dharmapuri - 636701. Phone: <a href="tel:04342262611">04342-262611</a></li>
+  <li><strong>Krishna Eye Foundation</strong> (Eye Care) — Private. 5, P.R. Sundaram Street, Dharmapuri - 636701. Phone: <a href="tel:04342262625">04342-262625</a></li>
+  <li><strong>Jothi Laser Eye Hospital</strong> (Eye Care) — Private. 110, Duraisamy Naidu Street, Dharmapuri - 636701. Phone: <a href="tel:04342262636">04342-262636</a></li>
+  <li><strong>T R Children and Dental Hospital</strong> (Children &amp; Dental) — Private. 14G, Anthony Colony, Opp. Government Dharmapuri Medical College Hospital, Dharmapuri - 636701. Phone: not listed</li>
+  <li><strong>Dr. Asokan Skin and ENT Care</strong> (Skin &amp; ENT) — Private. 57, P.R. Srinivasa Rao Street, Dharmapuri - 636701. Phone: not listed</li>
+  </ul>
+  <h4>Harur taluk</h4>
+  <ul>
+  <li><strong>Government Hospital, Harur</strong> (General) — Government. Harur, Dharmapuri - 636903. Phone: not listed</li>
+  <li><strong>Jeeva Hospital</strong> (General) — Private. 10/562, Cutchery Medu, Near Taluk Office, Harur, Dharmapuri - 636903. Phone: not listed</li>
+  </ul>
+  <h4>Palacode taluk</h4>
+  <ul>
+  <li><strong>Government Hospital, Palacode</strong> (General) — Government. Thiruvalluvar Nagar, Palacode, Dharmapuri - 636808. Phone: not listed</li>
+  <li><strong>Dr. M. Rajendran Hospital</strong> (General) — Private. 6/147/2, Thoddampatti Road, Palacode, Dharmapuri - 636808. Phone: not listed</li>
+  </ul>
+  <h4>Pappireddipatti taluk</h4>
+  <ul>
+  <li><strong>Government Hospital, Pappireddipatti</strong> (General) — Government. T.V.K. Nagar, Pappireddipatti, Dharmapuri. Phone: not listed</li>
+  </ul>
+  <h4>Pennagaram taluk</h4>
+  <ul>
+  <li><strong>Government Headquarters Hospital, Pennagaram</strong> (General) — Government. Pennagaram, Dharmapuri - 636810. Phone: not listed</li>
   </ul>
   <h3>Places to Visit (10)</h3>
   <h4>Dharmapuri taluk</h4>
@@ -1534,7 +1597,7 @@
           <span class="brand-mark" lang="ta">த</span>
           <span class="brand-name">DHARMAPURI</span>
         </a>
-        <p>Government offices, schools, colleges, sightseeing spots, shops, hotels and restaurants of Dharmapuri district — address, contact and photos, in one place.</p>
+        <p>Government offices, schools, colleges, hospitals, sightseeing spots, shops, hotels and restaurants of Dharmapuri district — address, contact and photos, in one place.</p>
         <p class="visit-counter">
           <img src="https://hits.sh/mydharmapuri.com.svg?style=flat-square&label=site%20views&color=3e8e2f&labelColor=122a20" alt="Site view count" height="20" loading="lazy">
         </p>
@@ -1544,6 +1607,7 @@
         <a href="#directory" data-cat="government_offices">Government offices</a>
         <a href="#directory" data-cat="schools">Schools</a>
         <a href="#directory" data-cat="colleges">Colleges</a>
+        <a href="#directory" data-cat="hospitals">Hospitals</a>
         <a href="#directory" data-cat="sightseeing">Places to visit</a>
         <a href="#directory" data-cat="showrooms">Showrooms</a>
         <a href="#directory" data-cat="hotels">Hotels</a>
@@ -1570,12 +1634,13 @@
   "district": "Dharmapuri",
   "state": "Tamil Nadu",
   "country": "India",
-  "lastUpdated": "2026-09-04",
+  "lastUpdated": "2026-11-10",
   "note": "Compiled from publicly available sources (official Dharmapuri district administration website dharmapuri.nic.in, Periyar University, Wikipedia, and institution websites); addresses and contact numbers should be independently verified. Phone numbers are office/institution landlines where found; personal mobile numbers of individual officers were intentionally excluded. Some source pages listed a few numbers with an apparently mismatched STD code (e.g. Palacode-area schools listed under Dharmapuri's 04342 code) — these are reproduced as published, not corrected.",
   "imageNote": "Sightseeing places were checked against official/Wikipedia sources to confirm they lie within Dharmapuri district; photos are from Wikimedia Commons, credited and licensed as shown on each card, and were left out entirely (rather than guessed) where no verified photo of that specific place could be found.",
   "showroomsNote": "Shops and showrooms were compiled from official brand dealer/store locators and public business listings (Justdial, Sulekha, magicpin and others); addresses and phone numbers should be independently verified before visiting, and this is not an exhaustive list of every shop in the district.",
   "hotelsNote": "Hotels and lodges were compiled from public listings and booking sites; addresses, phone numbers and current operating status should be independently verified before booking.",
   "restaurantsNote": "Restaurants were compiled from public listings (Justdial, Zomato, Restaurant Guru, magicpin and similar); addresses, phone numbers and current operating status should be independently verified before visiting.",
+  "hospitalsNote": "Government hospitals are from the Dharmapuri district health page (dharmapuri.nic.in/health); private hospitals were compiled from insurer network-hospital lists (IFFCO-Tokio, Star Health), PM-JAY/Ayushman Bharat listings and Bajaj Finserv Health. Speciality is shown where a source named one, otherwise 'General'. Personal mobile numbers of individual medical officers were intentionally excluded. Addresses and phone numbers should be independently verified; in an emergency call 108.",
   "categories": {
     "government_offices": [
       { "name": "District Collectorate, Dharmapuri", "type": "Collectorate", "taluk": "Dharmapuri", "address": "Collectorate, Dharmapuri - 636705", "phone": "04342-231500" },
@@ -1790,6 +1855,39 @@
       { "name": "Pjm Family Restaurant", "category": "South Indian", "taluk": "Nallampalli", "address": "Near Vijay College, Nallampalli, Dharmapuri", "phone": null },
       { "name": "Ponnu Restaurant", "category": "South Indian", "taluk": "Nallampalli", "address": "Nallampalli, Dharmapuri", "phone": null },
       { "name": "Aahhaa Family Restaurant", "category": "Multi-Cuisine", "taluk": "Karimangalam", "address": "Kariamangalam Bypass, Karimangalam, Dharmapuri District - 635111", "phone": null }
+    ],
+    "hospitals": [
+      { "name": "Government Dharmapuri Medical College Hospital", "ownership": "Government", "category": "Multi-Speciality", "taluk": "Dharmapuri", "address": "Salem Main Road, Dharmapuri - 636701", "phone": "04342-233600" },
+      { "name": "Government Headquarters Hospital, Pennagaram", "ownership": "Government", "category": "General", "taluk": "Pennagaram", "address": "Pennagaram, Dharmapuri - 636810", "phone": null },
+      { "name": "Government Hospital, Harur", "ownership": "Government", "category": "General", "taluk": "Harur", "address": "Harur, Dharmapuri - 636903", "phone": null },
+      { "name": "Government Hospital, Palacode", "ownership": "Government", "category": "General", "taluk": "Palacode", "address": "Thiruvalluvar Nagar, Palacode, Dharmapuri - 636808", "phone": null },
+      { "name": "Government Hospital, Pappireddipatti", "ownership": "Government", "category": "General", "taluk": "Pappireddipatti", "address": "T.V.K. Nagar, Pappireddipatti, Dharmapuri", "phone": null },
+      { "name": "Government Elep Hospital, Kuppur", "ownership": "Government", "category": "General", "taluk": "Dharmapuri", "address": "Kuppur, Dharmapuri - 636704", "phone": null },
+      { "name": "BGR Hospital", "ownership": "Private", "category": "Multi-Speciality", "taluk": "Dharmapuri", "address": "2-B, Ramalingam Chetty Street, Near LIC, Dharmapuri - 636701", "phone": "04342-267177" },
+      { "name": "Vijaya Multispeciality Hospital", "ownership": "Private", "category": "Multi-Speciality", "taluk": "Dharmapuri", "address": "4/486-A, Pennagaram Main Road, Near Vijay Vidhyalaya Boys School, Dharmapuri - 636701", "phone": "04342-280108" },
+      { "name": "Supa Hospital", "ownership": "Private", "category": "Multi-Speciality", "taluk": "Dharmapuri", "address": "37, Siddha Veerappa Chetty Street, Near Bus Stand, Dharmapuri - 636701", "phone": "9500923592" },
+      { "name": "Meenakshi Hospital & Fertility Centre", "ownership": "Private", "category": "Fertility & Maternity", "taluk": "Dharmapuri", "address": "18/61, Sengodipuram, Near Bus Stand, Dharmapuri - 636701", "phone": "04342-269010" },
+      { "name": "Kamalam Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "248, 53-M, Nethaji Bypass Road, Dharmapuri - 636701", "phone": "04342-260707" },
+      { "name": "Nithya Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "14-B, Nethaji Bypass Road, Opp. Government Medical College Hospital, Dharmapuri - 636701", "phone": "04342-260371" },
+      { "name": "K.S. Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "7/1, C.K. Srinivasa Rao Street, Near Bus Stand, Dharmapuri - 636701", "phone": "04342-261948" },
+      { "name": "K.V. Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "107, Nethaji Bypass Road, Near Malabar Finance, Dharmapuri - 636701", "phone": "9952100998" },
+      { "name": "Sree Ragavendra Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "79/C, S.V. Road, Opp. BBC Kalyana Mandapam, Dharmapuri - 636701", "phone": "8903641154" },
+      { "name": "Sri Annai Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "5C, Narasimha Achari Street, Opp. Sri Krishna Gurukulam School, Dharmapuri - 636701", "phone": "04342-262738" },
+      { "name": "Thangam Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "76/41 C, Salem Main Road, Bharathipuram, Dharmapuri - 636705", "phone": "9715199993" },
+      { "name": "D.N.V. Polyclinic", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "7, Rajagopal Gounder Street, Dharmapuri - 636701", "phone": "04342-265091" },
+      { "name": "Om Sakthi Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "4, Sengodipuram, Dharmapuri - 636701", "phone": null },
+      { "name": "P.M.K. Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "3, C.K. Srinivasa Rao Street, Dharmapuri - 636701", "phone": null },
+      { "name": "SSS Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "56A, Kandhasamy Vathiyar Street, Dharmapuri - 636701", "phone": null },
+      { "name": "Guru Hospital", "ownership": "Private", "category": "General", "taluk": "Dharmapuri", "address": "32 A2, Nethaji Bypass Road, Opp. Government Medical College, Dharmapuri - 636701", "phone": null },
+      { "name": "DNV Ortho Care", "ownership": "Private", "category": "Orthopaedics", "taluk": "Dharmapuri", "address": "72 B, Salem Main Road, Dharmapuri - 636705", "phone": "8825942231" },
+      { "name": "Dr. Agarwal's Eye Hospital", "ownership": "Private", "category": "Eye Care", "taluk": "Dharmapuri", "address": "136, 1st Floor, Nethaji Bypass Road, Opp. Hotel Rama Boarding, Dharmapuri - 636701", "phone": "04342-269555" },
+      { "name": "Vasan Eye Care Hospital", "ownership": "Private", "category": "Eye Care", "taluk": "Dharmapuri", "address": "1A, P.R. Sundaram Street, Bus Owners Association Building, Opp. Senthil Kumar Textiles, Dharmapuri - 636701", "phone": "04342-262611" },
+      { "name": "Krishna Eye Foundation", "ownership": "Private", "category": "Eye Care", "taluk": "Dharmapuri", "address": "5, P.R. Sundaram Street, Dharmapuri - 636701", "phone": "04342-262625" },
+      { "name": "Jothi Laser Eye Hospital", "ownership": "Private", "category": "Eye Care", "taluk": "Dharmapuri", "address": "110, Duraisamy Naidu Street, Dharmapuri - 636701", "phone": "04342-262636" },
+      { "name": "T R Children and Dental Hospital", "ownership": "Private", "category": "Children & Dental", "taluk": "Dharmapuri", "address": "14G, Anthony Colony, Opp. Government Dharmapuri Medical College Hospital, Dharmapuri - 636701", "phone": null },
+      { "name": "Dr. Asokan Skin and ENT Care", "ownership": "Private", "category": "Skin & ENT", "taluk": "Dharmapuri", "address": "57, P.R. Srinivasa Rao Street, Dharmapuri - 636701", "phone": null },
+      { "name": "Jeeva Hospital", "ownership": "Private", "category": "General", "taluk": "Harur", "address": "10/562, Cutchery Medu, Near Taluk Office, Harur, Dharmapuri - 636903", "phone": null },
+      { "name": "Dr. M. Rajendran Hospital", "ownership": "Private", "category": "General", "taluk": "Palacode", "address": "6/147/2, Thoddampatti Road, Palacode, Dharmapuri - 636808", "phone": null }
     ]
   }
 }
@@ -1798,10 +1896,10 @@
   <script>
   (function(){
     var data = JSON.parse(document.getElementById('directory-data').textContent);
-    var cats = ['government_offices','schools','colleges','sightseeing','showrooms','hotels','restaurants'];
-    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges', sightseeing: 'places to visit', showrooms: 'shops', hotels: 'hotels', restaurants: 'restaurants' };
-    var subcatFields = { showrooms: 'category', hotels: 'tier', restaurants: 'category' };
-    var subcatAllLabel = { showrooms: 'All types', hotels: 'All tiers', restaurants: 'All cuisines' };
+    var cats = ['government_offices','schools','colleges','hospitals','sightseeing','showrooms','hotels','restaurants'];
+    var labels = { government_offices: 'government offices', schools: 'schools', colleges: 'colleges', hospitals: 'hospitals', sightseeing: 'places to visit', showrooms: 'shops', hotels: 'hotels', restaurants: 'restaurants' };
+    var subcatFields = { hospitals: 'category', showrooms: 'category', hotels: 'tier', restaurants: 'category' };
+    var subcatAllLabel = { hospitals: 'All specialities', showrooms: 'All types', hotels: 'All tiers', restaurants: 'All cuisines' };
 
     var pinIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
     var phoneIcon = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
@@ -1809,6 +1907,7 @@
       government_offices: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>',
       schools: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
       colleges: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>',
+      hospitals: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>',
       sightseeing: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 5.5-6L13 16l3-4 5 6"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/></svg>',
       showrooms: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
       hotels: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M7 10V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/></svg>',
@@ -1857,7 +1956,7 @@
     var state = { cat: 'government_offices', taluk: initialTaluk, q: initialQuery, subcat: 'all' };
 
     sourceNote.id = 'note';
-    sourceNote.textContent = data.note + ' ' + data.imageNote + ' ' + data.showroomsNote + ' ' + data.hotelsNote + ' ' + data.restaurantsNote + ' Last updated ' + data.lastUpdated + '.';
+    sourceNote.textContent = data.note + ' ' + data.imageNote + ' ' + data.showroomsNote + ' ' + data.hotelsNote + ' ' + data.restaurantsNote + ' ' + data.hospitalsNote + ' Last updated ' + data.lastUpdated + '.';
     heroStats.textContent = totalCount + ' verified listings · ' + allTaluks.length + ' areas · updated ' + data.lastUpdated;
     var faqTotalCount = document.getElementById('faqTotalCount');
     if (faqTotalCount) faqTotalCount.textContent = totalCount;
@@ -1918,7 +2017,7 @@
         ? '<a href="tel:' + esc(e.phone.replace(/[^0-9+]/g,'')) + '">' + phoneIcon + esc(e.phone) + '</a>'
         : '<span class="muted">' + phoneIcon + 'Not listed</span>';
       var badgeText = e.type || e.category || e.tier;
-      var subLine = e.stream || e.brand;
+      var subLine = e.stream || e.brand || e.ownership;
       return '<li class="card">' +
         '<div class="card-media cat-' + cat + '">' + categoryIcons[cat] +
           (badgeText ? '<span class="media-badge">' + esc(badgeText) + '</span>' : '') +

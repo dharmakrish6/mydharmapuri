@@ -20,6 +20,7 @@ SOURCES = {
     "government_offices": ("directory.json", lambda d: d["categories"]["government_offices"]),
     "schools": ("directory.json", lambda d: d["categories"]["schools"]),
     "colleges": ("directory.json", lambda d: d["categories"]["colleges"]),
+    "hospitals": ("hospitals.json", lambda d: d["hospitals"]),
     "sightseeing": ("sightseeing.json", lambda d: d["places"]),
     "showrooms": ("showrooms.json", lambda d: d["showrooms"]),
     "hotels": ("hotels.json", lambda d: d["hotels"]),
@@ -30,6 +31,7 @@ HEADINGS = {
     "government_offices": "Government Offices",
     "schools": "Schools",
     "colleges": "Colleges",
+    "hospitals": "Hospitals",
     "sightseeing": "Places to Visit",
     "showrooms": "Shops &amp; Showrooms",
     "hotels": "Hotels",
@@ -57,6 +59,8 @@ def entry_html(cat, e):
         return f"{name} — {esc(e['description'])} How to reach: {esc(e['howToReach'])}."
     if cat == "colleges":
         label = f" ({esc(e['type'])}) — {esc(e['stream'])}"
+    elif cat == "hospitals":
+        label = f" ({esc(e['category'])}) — {esc(e['ownership'])}"
     elif cat == "showrooms":
         label = f" ({esc(e['category'])})" + (f" — {esc(e['brand'])}" if e.get("brand") else "")
     elif cat == "hotels":
@@ -113,6 +117,7 @@ def main():
         if fname not in loaded:
             loaded[fname] = json.loads((ROOT / "data" / fname).read_text(encoding="utf-8"))
         data["categories"][cat] = pick(loaded[fname])
+    data["hospitalsNote"] = loaded["hospitals.json"]["note"]
     data["lastUpdated"] = max(d["lastUpdated"] for d in loaded.values())
 
     old_total = sum(int(n) for n in re.findall(r"<h3>[^<]*\((\d+)\)</h3>", NOSCRIPT_BLOCK.search(page).group(2)))
