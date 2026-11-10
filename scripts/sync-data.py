@@ -118,6 +118,11 @@ def main():
             loaded[fname] = json.loads((ROOT / "data" / fname).read_text(encoding="utf-8"))
         data["categories"][cat] = pick(loaded[fname])
     data["hospitalsNote"] = loaded["hospitals.json"]["note"]
+    loaded["featured.json"] = json.loads((ROOT / "data" / "featured.json").read_text(encoding="utf-8"))
+    data["featured"] = loaded["featured.json"]["featured"]
+    for item in data["featured"]:
+        if not any(e["name"] == item["name"] for e in data["categories"][item["category"]]):
+            raise SystemExit(f"featured.json: no {item['category']} entry named {item['name']!r}")
     data["lastUpdated"] = max(d["lastUpdated"] for d in loaded.values())
 
     old_total = sum(int(n) for n in re.findall(r"<h3>[^<]*\((\d+)\)</h3>", NOSCRIPT_BLOCK.search(page).group(2)))

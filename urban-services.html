@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban Services – Coming Soon | Dharmapuri Connect</title>
+<meta name="description" content="Urban services for Dharmapuri are coming soon to Dharmapuri Connect.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#f2f3ec">
+<link rel="canonical" href="https://mydharmapuri.com/urban-services.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f2f3ec;
+    --card:#ffffff;
+    --ink:#122a20;
+    --orange:#e4711f;
+    --leaf:#3e8e2f;
+    --teal:#2c8781;
+    --muted:#5f7268;
+    --line:#e2e2d4;
+    --shadow:0 1px 2px rgba(19,58,43,.05), 0 8px 24px -12px rgba(19,58,43,.18);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0c1512;
+      --card:#151f1a;
+      --ink:#eef3ec;
+      --orange:#f0955a;
+      --leaf:#6dc860;
+      --teal:#4fc2ba;
+      --muted:#8fa599;
+      --line:#243128;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      color-scheme:dark;
+    }
+  }
+
+  *{box-sizing:border-box}
+  html{background:var(--paper)}
+  body{
+    margin:0;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    color:var(--ink);
+    font-family:"Anek Tamil",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(38% 32% at 10% 0%, color-mix(in srgb,var(--leaf) 26%,transparent), transparent 70%),
+      radial-gradient(34% 30% at 88% 8%, color-mix(in srgb,var(--orange) 22%,transparent), transparent 70%),
+      radial-gradient(46% 38% at 78% 92%, color-mix(in srgb,var(--teal) 20%,transparent), transparent 70%),
+      var(--paper);
+  }
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
+  .wrap{max-width:76rem;margin:0 auto;padding-inline:1.25rem;width:100%}
+
+  .navbar{border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem}
+  .brand{display:flex;align-items:center;gap:.55rem}
+  .brand-mark{
+    width:2.1rem;height:2.1rem;
+    display:grid;place-items:center;
+    border-radius:.65rem;
+    background:linear-gradient(135deg,var(--leaf),color-mix(in srgb,var(--leaf) 65%,black));
+    color:#fff;font-weight:800;font-size:.95rem;
+  }
+  .brand-name{font-weight:800;letter-spacing:.02em;font-size:1rem}
+  .back-link{font-size:.9rem;font-weight:600;color:var(--muted)}
+  .back-link:hover{color:var(--ink)}
+
+  main{flex:1;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;align-content:center;padding-block:3rem}
+  .soon{
+    width:100%;
+    max-width:34rem;
+    text-align:center;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1.5rem;
+    padding:clamp(2rem,6vw,3rem) clamp(1.25rem,5vw,2.75rem);
+    box-shadow:var(--shadow);
+  }
+  .soon-icon{
+    width:3.5rem;height:3.5rem;
+    margin:0 auto 1.25rem;
+    display:grid;place-items:center;
+    border-radius:1rem;
+    color:#fff;
+    background:linear-gradient(135deg,var(--teal),color-mix(in srgb,var(--teal) 65%,black));
+  }
+  .soon-icon svg{width:1.7rem;height:1.7rem}
+  .badge{
+    display:inline-block;
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--orange);
+    background:color-mix(in srgb,var(--orange) 14%,transparent);
+    padding:.3rem .8rem;
+    border-radius:999px;
+  }
+  h1{margin:.85rem 0 .6rem;font-size:clamp(1.8rem,6vw,2.4rem);font-weight:800;line-height:1.15;letter-spacing:-.01em}
+  .soon p{margin:0 0 1.75rem;color:var(--muted);font-size:1.02rem;line-height:1.55}
+  .btn{
+    display:inline-block;
+    font-weight:700;
+    font-size:.92rem;
+    background:var(--ink);
+    color:var(--paper);
+    padding:.75rem 1.4rem;
+    border-radius:999px;
+  }
+  .btn:hover{opacity:.9}
+
+  .planned{width:100%;max-width:46rem;margin-top:3rem}
+  .planned h2{margin:0 0 .35rem;font-size:1.35rem;font-weight:800;text-align:center}
+  .planned-sub{margin:0 0 1.5rem;text-align:center;color:var(--muted);font-size:.95rem}
+  .service-grid{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));
+    gap:.75rem;
+  }
+  .service{
+    display:flex;
+    align-items:center;
+    gap:.75rem;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:1rem;
+    padding:.85rem 1rem;
+    box-shadow:var(--shadow);
+    font-weight:600;
+    font-size:.95rem;
+    line-height:1.3;
+  }
+  .service-emoji{
+    flex:none;
+    width:2.4rem;height:2.4rem;
+    display:grid;place-items:center;
+    border-radius:.75rem;
+    font-size:1.25rem;
+    background:color-mix(in srgb,var(--teal) 14%,transparent);
+  }
+  @media (max-width:480px){
+    .service-grid{grid-template-columns:1fr 1fr}
+    .service{flex-direction:column;text-align:center;gap:.5rem;padding:.9rem .6rem;font-size:.88rem}
+  }
+
+  footer{border-top:1px solid var(--line);padding-block:1.25rem;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./">
+        <span class="brand-mark" lang="ta">த</span>
+        <span class="brand-name">DHARMAPURI</span>
+      </a>
+      <a class="back-link" href="./">← Back to directory</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="soon">
+      <div class="soon-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l5-3v16"/><path d="M10 21V3l9 4v14"/><path d="M14 9h1"/><path d="M14 13h1"/><path d="M14 17h1"/></svg>
+      </div>
+      <span class="badge">Coming soon</span>
+      <h1>Urban Services</h1>
+      <p>We're working on bringing Dharmapuri's urban services together in one place. This section will be available soon — please check back later.</p>
+      <a class="btn" href="./">Explore the directory</a>
+    </section>
+
+    <section class="planned" aria-labelledby="planned-title">
+      <h2 id="planned-title">What's coming</h2>
+      <p class="planned-sub">Service categories we're planning to launch</p>
+      <ul class="service-grid">
+        <li class="service"><span class="service-emoji" aria-hidden="true">🏠</span>Home Services</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🚗</span>Auto Services</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">💇</span>Beauty &amp; Personal Care</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🏥</span>Health &amp; Medical</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">👨‍💼</span>Professional Services</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🏡</span>Real Estate &amp; Construction</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🍴</span>Food &amp; Restaurants</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🎉</span>Events &amp; Wedding</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">📚</span>Education &amp; Training</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🛍️</span>Shopping &amp; Retail</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">💻</span>Computer &amp; Mobile</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🚚</span>Transport &amp; Logistics</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🔧</span>Repair &amp; Maintenance</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">💰</span>Finance &amp; Legal</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🐕</span>Pet &amp; Veterinary</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🧹</span>Cleaning &amp; Pest Control</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">🏋️</span>Fitness &amp; Sports</li>
+        <li class="service"><span class="service-emoji" aria-hidden="true">📦</span>Rental Services</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Dharmapuri Directory</div>
+  </footer>
+</body>
+</html>

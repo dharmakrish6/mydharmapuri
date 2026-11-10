@@ -1,0 +1,14 @@
+{
+  "lastUpdated": "2026-11-10",
+  "note": "Entries shown in the 'Frequently looked up' row on the home page, in this order. Each item points at an existing listing by category key (restaurants, hotels, hospitals, sightseeing, showrooms, colleges, schools, government_offices) and exact name. Optional 'label' shows a small tag on the card, e.g. \"Sponsored\" or \"Top pick\"; use null for none. Run python3 scripts/sync-data.py after editing.",
+  "featured": [
+    { "category": "sightseeing", "name": "Hogenakkal Falls", "label": null },
+    { "category": "hospitals", "name": "Government Dharmapuri Medical College Hospital", "label": null },
+    { "category": "hotels", "name": "Adhiyaman Palace Hotel & Lodging", "label": null },
+    { "category": "restaurants", "name": "Al Madina Biryani Hotel", "label": null },
+    { "category": "hotels", "name": "TTDC Hotel Tamilnadu - Hogenakkal", "label": null },
+    { "category": "restaurants", "name": "Adyar Ananda Bhavan Veg Restaurant", "label": null },
+    { "category": "government_offices", "name": "District Collectorate, Dharmapuri", "label": null },
+    { "category": "government_offices", "name": "Regional Transport Office, Dharmapuri (TN-29)", "label": null }
+  ]
+}
