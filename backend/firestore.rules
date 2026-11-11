@@ -1,0 +1,60 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Admins are users with a document at /admins/{uid}.
+    // Grant with: node backend/scripts/set-admin.mjs <email>
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function str(v, max) {
+      return v is string && v.size() > 0 && v.size() <= max;
+    }
+
+    function optStr(v, max) {
+      return v == null || (v is string && v.size() <= max);
+    }
+
+    match /places/{placeId} {
+      // Public sees approved places; submitters also see their own pending ones.
+      allow read: if resource.data.status == 'approved'
+                  || isAdmin()
+                  || (signedIn() && resource.data.submittedBy.uid == request.auth.uid);
+
+      // Signed-in users may submit a place, which always starts as pending.
+      allow create: if isAdmin() || (
+        signedIn()
+        && request.resource.data.status == 'pending'
+        && request.resource.data.views == 0
+        && request.resource.data.featuredRank == null
+        && request.resource.data.featuredLabel == null
+        && request.resource.data.submittedBy.uid == request.auth.uid
+        && str(request.resource.data.name, 120)
+        && str(request.resource.data.category, 40)
+        && str(request.resource.data.taluk, 40)
+        && optStr(request.resource.data.address, 300)
+        && optStr(request.resource.data.phone, 40)
+      );
+
+      // Admins can change anything. Anyone may bump the view counter by exactly 1.
+      allow update: if isAdmin() || (
+        resource.data.status == 'approved'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views'])
+        && request.resource.data.views == resource.data.views + 1
+      );
+
+      allow delete: if isAdmin();
+    }
+
+    match /admins/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow write: if false; // managed only with the Admin SDK script
+    }
+  }
+}
