@@ -1,0 +1,14 @@
+{
+  "name": "mydharmapuri-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "node scripts/build-seed.mjs",
+    "import": "node scripts/build-seed.mjs && node scripts/import-places.mjs",
+    "set-admin": "node scripts/set-admin.mjs",
+    "deploy:rules": "firebase deploy --only firestore"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0"
+  }
+}

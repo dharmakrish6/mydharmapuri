@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "179533317127",
+    "project_id": "dharmapuri-directory",
+    "storage_bucket": "dharmapuri-directory.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179533317127:android:e7d61dba2b153e054f56a2",
+        "android_client_info": {
+          "package_name": "com.techieqa.dharmapuri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179533317127-81agbse44k4153acqt6toobvasn57pmg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techieqa.dharmapuri",
+            "certificate_hash": "50e910325e9342e76d375a334557b6f5a556c571"
+          }
+        },
+        {
+          "client_id": "179533317127-g6181131eo0r6h1rvtpenhu0m7pc6tlk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techieqa.dharmapuri",
+            "certificate_hash": "1626e30ddf69af0d26410b9789ba5bf9b62bf793"
+          }
+        },
+        {
+          "client_id": "179533317127-sirlaqdgq9v7jk4nmsg3d65n9nt52r79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbKqlemJgqvmCgsAKS90jx4oSk2slvcJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179533317127-en47tmdatg8ic8q3oh9baej6evlmtgio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
