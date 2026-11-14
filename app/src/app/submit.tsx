@@ -5,6 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeIn, FadeInDown, ZoomIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScreenHeader, goBack } from '@/components/ScreenHeader';
+import { Seo } from '@/components/Seo';
+import { SUBMIT_SEO } from '@/lib/seo';
 import { Chip, PressableScale } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
 import { CATEGORIES, CATEGORY_BY_KEY, TALUKS } from '@/lib/categories';
@@ -82,6 +84,7 @@ export default function SubmitScreen() {
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1, backgroundColor: c.bg }}>
+      <Seo {...SUBMIT_SEO} />
       <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ paddingBottom: insets.bottom + 40 }}>
         <ScreenHeader title="Add a place" subtitle="Every submission is reviewed before it goes live" colors={[c.heroFrom, c.heroTo]} />
         <View style={styles.inner}>

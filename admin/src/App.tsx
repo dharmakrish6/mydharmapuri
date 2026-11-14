@@ -2,8 +2,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, configured, db } from './firebase';
-import { createPlace, removePlace, setStatus, updatePlace, usePlaces } from './data';
+import { createPlace, featuredInMonth, removePlace, rupees, setStatus, statTotal, thisMonth, unfeature, updatePlace, usePayments, usePlaces, useStats } from './data';
 import { PlaceForm } from './PlaceForm';
+import { FeaturedTab } from './Featured';
+import { PaymentsTab } from './Payments';
+import { AnalyticsTab } from './Analytics';
+import { PlaceDetail, type Section } from './PlaceDetail';
+import { placeHref } from './links';
 import { CATEGORIES, CATEGORY_LABEL, TALUKS, type Place, type PlaceDraft, type PlaceStatus } from './types';
 
 type Gate = 'loading' | 'signed-out' | 'not-admin' | 'admin';
@@ -39,8 +44,8 @@ export default function App() {
   if (gate === 'signed-out') {
     return (
       <Center>
-        <div className="brand-mark big">த</div>
-        <h1>Dharmapuri Connect Admin</h1>
+        <img className="brand-mark big" src="/logo.png" alt="MyDharmapuri logo" />
+        <h1>MyDharmapuri Admin</h1>
         <p className="muted">Sign in with an admin Google account.</p>
         <button className="btn primary" onClick={() => signInWithPopup(auth!, new GoogleAuthProvider()).catch((e) => setError(e.message))}>
           Continue with Google
@@ -66,11 +71,45 @@ function Center({ children }: { children: React.ReactNode }) {
   return <div className="center"><div className="center-card">{children}</div></div>;
 }
 
-type Tab = 'pending' | 'all';
+type Tab = 'pending' | 'all' | 'featured' | 'payments' | 'analytics';
+
+/** #/place/{id}[/edit|/payments] opens one business; anything else shows the tabs. */
+function readRoute(): { id: string; section: Section } | null {
+  const m = location.hash.match(/^#\/place\/([^/]+)(?:\/(edit|payments))?$/);
+  return m ? { id: decodeURIComponent(m[1]), section: (m[2] as Section) ?? 'analytics' } : null;
+}
+
+function useRoute() {
+  const [route, setRoute] = useState(readRoute);
+  useEffect(() => {
+    const on = () => {
+      setRoute(readRoute());
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', on);
+    return () => window.removeEventListener('hashchange', on);
+  }, []);
+  return route;
+}
+
+const closePlace = () => {
+  if (location.hash) location.hash = '';
+};
 
 function Dashboard({ user }: { user: User }) {
   const { places, loading, error } = usePlaces();
-  const [tab, setTab] = useState<Tab>('pending');
+  const { payments, error: paymentsError } = usePayments();
+  const month = thisMonth();
+  const monthList = useMemo(() => [month], [month]);
+  const { stats: monthStats } = useStats(monthList);
+  const clicksThisMonth = useMemo(() => new Map(monthStats.map((s) => [s.placeId, statTotal(s)])), [monthStats]);
+  const [tab, setTabState] = useState<Tab>('pending');
+  const route = useRoute();
+  const opened = route ? places.find((p) => p.id === route.id) : undefined;
+  const setTab = (t: Tab) => {
+    setTabState(t);
+    closePlace();
+  };
   const [editing, setEditing] = useState<Place | 'new' | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
@@ -83,7 +122,11 @@ function Dashboard({ user }: { user: User }) {
     rejected: places.filter((p) => p.status === 'rejected').length,
     featured: places.filter((p) => p.featuredRank != null).length,
     views: places.reduce((n, p) => n + (p.views || 0), 0),
-  }), [places]);
+    clicks: monthStats.reduce((n, s) => n + statTotal(s), 0),
+    due: places
+      .filter((p) => featuredInMonth(p, month) && p.featuredFee && !payments.some((x) => x.placeId === p.id && x.month === month))
+      .reduce((n, p) => n + (p.featuredFee ?? 0), 0),
+  }), [places, monthStats, payments, month]);
 
   const flash = (msg: string) => {
     setToast(msg);
@@ -107,12 +150,17 @@ function Dashboard({ user }: { user: User }) {
   return (
     <div className="layout">
       <header className="topbar">
-        <div className="brand"><span className="brand-mark">த</span><strong>Admin</strong></div>
+        <div className="brand"><img className="brand-mark" src="/logo.png" alt="" /><strong>Admin</strong></div>
         <nav className="tabs">
-          <button className={tab === 'pending' ? 'tab active' : 'tab'} onClick={() => setTab('pending')}>
+          <button className={!route && tab === 'pending' ? 'tab active' : 'tab'} onClick={() => setTab('pending')}>
             Pending {pending.length > 0 && <span className="pill warn">{pending.length}</span>}
           </button>
-          <button className={tab === 'all' ? 'tab active' : 'tab'} onClick={() => setTab('all')}>All places</button>
+          <button className={route || tab === 'all' ? 'tab active' : 'tab'} onClick={() => setTab('all')}>All places</button>
+          <button className={!route && tab === 'featured' ? 'tab active' : 'tab'} onClick={() => setTab('featured')}>Featured</button>
+          <button className={!route && tab === 'payments' ? 'tab active' : 'tab'} onClick={() => setTab('payments')}>
+            Payments {stats.due > 0 && <span className="pill warn">{rupees(stats.due)}</span>}
+          </button>
+          <button className={!route && tab === 'analytics' ? 'tab active' : 'tab'} onClick={() => setTab('analytics')}>Analytics</button>
         </nav>
         <div className="spacer" />
         <button className="btn primary" onClick={() => setEditing('new')}>+ Add place</button>
@@ -121,15 +169,54 @@ function Dashboard({ user }: { user: User }) {
       </header>
 
       <main className="content">
+        {route ? (
+          loading ? <div className="spinner" /> : opened ? (
+            <PlaceDetail
+              place={opened}
+              section={route.section}
+              payments={payments}
+              userEmail={user.email}
+              act={act}
+              onStatus={(p, s) => act(() => setStatus(p.id, s), `${p.name} → ${s}`)}
+              onDelete={(p) => {
+                if (confirm(`Delete "${p.name}" permanently?`)) {
+                  act(() => removePlace(p.id), `Deleted ${p.name}`);
+                  closePlace();
+                }
+              }}
+            />
+          ) : (
+            <div className="empty">This place doesn't exist any more. <a href="#">Back to all places</a></div>
+          )
+        ) : <>
         <section className="stats">
           <Stat label="Live places" value={stats.approved} />
           <Stat label="Waiting review" value={pending.length} tone={pending.length ? 'warn' : undefined} />
           <Stat label="Featured" value={stats.featured} />
-          <Stat label="Total views" value={stats.views.toLocaleString()} />
+          <Stat label="Clicks this month" value={stats.clicks.toLocaleString('en-IN')} />
+          <Stat label="Payments due this month" value={rupees(stats.due)} tone={stats.due ? 'warn' : undefined} />
         </section>
 
         {error && <p className="error">{error}</p>}
-        {loading ? <div className="spinner" /> : tab === 'pending' ? (
+        {paymentsError && (tab === 'payments' || tab === 'featured') && <p className="error">{paymentsError}</p>}
+        {loading ? <div className="spinner" /> : tab === 'featured' ? (
+          <FeaturedTab
+            places={places}
+            payments={payments}
+            clicksThisMonth={clicksThisMonth}
+            onEdit={setEditing}
+            onUnfeature={(p) => {
+              if (confirm(`Stop featuring "${p.name}"? Its fee and dates will be cleared; past payments are kept.`)) {
+                act(() => unfeature(p.id), `${p.name} is no longer featured`);
+              }
+            }}
+            act={act}
+          />
+        ) : tab === 'payments' ? (
+          <PaymentsTab places={places} payments={payments} userEmail={user.email} act={act} />
+        ) : tab === 'analytics' ? (
+          <AnalyticsTab places={places} />
+        ) : tab === 'pending' ? (
           <PendingList
             places={pending}
             onApprove={(p) => act(() => setStatus(p.id, 'approved'), `Approved ${p.name}`)}
@@ -146,6 +233,7 @@ function Dashboard({ user }: { user: User }) {
             }}
           />
         )}
+        </>}
       </main>
 
       {editing && (
@@ -185,7 +273,7 @@ function PendingList({ places, onApprove, onReject, onEdit }: {
             {p.subcategory && <span className="pill soft">{p.subcategory}</span>}
             <span className="muted small">{p.createdAt?.toDate().toLocaleString() ?? 'just now'}</span>
           </div>
-          <h3>{p.name}</h3>
+          <h3><a className="place-link" href={placeHref(p.id)}>{p.name}</a></h3>
           <dl>
             <dt>Area</dt><dd>{p.taluk}</dd>
             <dt>Address</dt><dd>{p.address ?? '—'}</dd>
@@ -262,8 +350,17 @@ function AllPlaces({ places, onEdit, onStatus, onDelete }: {
           </thead>
           <tbody>
             {rows.map((p) => (
-              <tr key={p.id}>
-                <td><strong>{p.name}</strong>{p.subcategory && <div className="muted small">{p.subcategory}</div>}</td>
+              <tr
+                key={p.id}
+                className="clickable"
+                onClick={(e) => {
+                  if (!(e.target as HTMLElement).closest('a, button, select')) location.hash = placeHref(p.id);
+                }}
+              >
+                <td>
+                  <a className="place-link" href={placeHref(p.id)}><strong>{p.name}</strong></a>
+                  {p.subcategory && <div className="muted small">{p.subcategory}</div>}
+                </td>
                 <td>{CATEGORY_LABEL[p.category] ?? p.category}</td>
                 <td>{p.taluk}</td>
                 <td className="nowrap">{p.phone ?? <span className="muted">—</span>}</td>
@@ -277,7 +374,8 @@ function AllPlaces({ places, onEdit, onStatus, onDelete }: {
                   </select>
                 </td>
                 <td className="nowrap">
-                  <button className="btn small" onClick={() => onEdit(p)}>Edit</button>
+                  <a className="btn small" href={placeHref(p.id)}>Open</a>
+                  <button className="btn small" onClick={() => onEdit(p)}>Quick edit</button>
                   <button className="btn small danger ghost" onClick={() => onDelete(p)}>Delete</button>
                 </td>
               </tr>

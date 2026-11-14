@@ -1,17 +1,28 @@
 import { useMemo, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Redirect, useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeInDown, LinearTransition } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { NativeAdCard } from '@/components/Ads';
 import { PlaceCard } from '@/components/PlaceCard';
 import { ScreenHeader } from '@/components/ScreenHeader';
+import { Seo } from '@/components/Seo';
+import { CATEGORIES } from '@/lib/categories';
+import { categorySeo } from '@/lib/seo';
 import { Chip, EmptyState, SearchField } from '@/components/ui';
 import { CATEGORY_BY_KEY } from '@/lib/categories';
 import { usePlaces } from '@/lib/places';
 import { matches } from '@/lib/search';
-import type { CategoryKey } from '@/lib/types';
+import type { CategoryKey, Place } from '@/lib/types';
 import { space, useTheme } from '@/theme';
+
+type Row = Place | { adSlot: number };
+
+/** Pre-render one page per category (web static export). */
+export function generateStaticParams() {
+  return CATEGORIES.map((c) => ({ key: c.key }));
+}
 
 export default function CategoryScreen() {
   const { key } = useLocalSearchParams<{ key: string }>();
@@ -36,14 +47,28 @@ export default function CategoryScreen() {
     [inCategory, taluk, sub, q],
   );
 
+  // In the app, a native ad card after the 4th listing and then every 10th (none on the website).
+  const rows = useMemo<Row[]>(() => {
+    if (Platform.OS === 'web') return results;
+    const out: Row[] = [];
+    results.forEach((p, i) => {
+      out.push(p);
+      if (i === 3 || (i > 3 && (i - 3) % 10 === 0)) out.push({ adSlot: i });
+    });
+    return out;
+  }, [results]);
+
   if (!meta) return <Redirect href="/" />;
   const tint = c[meta.color];
 
   return (
     <View style={{ flex: 1, backgroundColor: c.bg }}>
+      <Seo {...categorySeo(meta.key, [...inCategory].sort((a, b) => b.views - a.views))} />
       <Animated.FlatList
-        data={results}
-        keyExtractor={(p) => p.id}
+        data={rows}
+        keyExtractor={(r) => ('adSlot' in r ? `ad-${r.adSlot}` : r.id)}
+        // On the web render every listing up front so each place is a crawlable link in the HTML.
+        initialNumToRender={Platform.OS === 'web' ? Math.max(results.length, 10) : 10}
         itemLayoutAnimation={LinearTransition.springify().damping(18)}
         contentContainerStyle={{ paddingBottom: insets.bottom + 32 }}
         keyboardShouldPersistTaps="handled"
@@ -77,11 +102,13 @@ export default function CategoryScreen() {
             </View>
           </>
         }
-        renderItem={({ item, index }) => (
+        renderItem={({ item, index }) => ('adSlot' in item ? (
+          <NativeAdCard style={styles.adItem} />
+        ) : (
           <Animated.View entering={FadeInDown.delay(Math.min(index, 10) * 40).duration(350)} style={styles.item}>
             <PlaceCard place={item} />
           </Animated.View>
-        )}
+        ))}
         ListEmptyComponent={<EmptyState icon="search" title="Nothing found" body="Try a different area, filter or search word." />}
       />
     </View>
@@ -105,5 +132,6 @@ function countBy(values: string[]): [string, number][] {
 const styles = StyleSheet.create({
   filters: { paddingTop: space.lg, gap: space.sm, width: '100%', maxWidth: 1100, alignSelf: 'center' },
   chipRow: { gap: space.sm, paddingHorizontal: space.lg },
+  adItem: { marginHorizontal: space.lg, marginTop: space.md },
   item: { paddingHorizontal: space.lg, marginTop: space.md, width: '100%', maxWidth: 1100, alignSelf: 'center' },
 });

@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { CATEGORIES, EMPTY_DRAFT, TALUKS, type Place, type PlaceDraft } from './types';
 
 /** Modal form for adding a new place or editing an existing one. */
-export function PlaceForm({ initial, onSave, onCancel }: {
+export function PlaceForm({ initial, onSave, onCancel, inline = false }: {
   initial: Place | null;
   onSave: (draft: PlaceDraft) => Promise<void>;
   onCancel: () => void;
+  /** Render as a panel on the page (place detail) instead of a modal. */
+  inline?: boolean;
 }) {
   const [d, setD] = useState<PlaceDraft>(() => {
     if (!initial) return EMPTY_DRAFT;
@@ -33,10 +35,9 @@ export function PlaceForm({ initial, onSave, onCancel }: {
     }
   };
 
-  return (
-    <div className="modal-backdrop" onClick={onCancel}>
-      <form className="modal" onClick={(e) => e.stopPropagation()} onSubmit={submit}>
-        <h2>{initial ? 'Edit place' : 'Add place'}</h2>
+  const form = (
+      <form className={inline ? 'panel form' : 'modal'} onClick={(e) => e.stopPropagation()} onSubmit={submit}>
+        {!inline && <h2>{initial ? 'Edit place' : 'Add place'}</h2>}
         {initial?.submittedBy && (
           <p className="muted small">Submitted by {initial.submittedBy.name} {initial.submittedBy.email}</p>
         )}
@@ -108,14 +109,39 @@ export function PlaceForm({ initial, onSave, onCancel }: {
               <input className="input" placeholder="e.g. Sponsored" disabled={d.featuredRank == null} {...text('featuredLabel')} />
             </label>
           </div>
-          <p className="muted small">Featured places are pinned first in "Frequently looked up" (1 = first). The rest of that row fills with the most-viewed places.</p>
+          {d.featuredRank != null && (
+            <div className="grid3">
+              <label>Monthly fee (₹)
+                <input
+                  className="input"
+                  type="number"
+                  min={0}
+                  step={50}
+                  placeholder="Free"
+                  value={d.featuredFee ?? ''}
+                  onChange={(e) => set('featuredFee', e.target.value ? Number(e.target.value) : null)}
+                />
+              </label>
+              <label>Featured from
+                <input className="input" type="date" {...text('featuredFrom')} />
+              </label>
+              <label>Featured until
+                <input className="input" type="date" min={d.featuredFrom ?? undefined} {...text('featuredUntil')} />
+              </label>
+            </div>
+          )}
+          <p className="muted small">
+            Featured places are pinned first in "Frequently looked up" (1 = first). The rest of that row fills with the
+            most-viewed places. The app stops featuring a place after its "until" date; leave it empty to run indefinitely.
+          </p>
         </fieldset>
 
         <div className="actions end">
-          <button type="button" className="btn ghost" onClick={onCancel}>Cancel</button>
+          <button type="button" className="btn ghost" onClick={onCancel}>{inline ? 'Discard changes' : 'Cancel'}</button>
           <button type="submit" className="btn primary" disabled={busy}>{busy ? 'Saving…' : 'Save'}</button>
         </div>
       </form>
-    </div>
   );
+  if (inline) return form;
+  return <div className="modal-backdrop" onClick={onCancel}>{form}</div>;
 }

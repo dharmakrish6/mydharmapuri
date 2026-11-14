@@ -1,0 +1,47 @@
+{
+  "cli": {
+    "version": ">= 16.0.0",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "base": {
+      "env": {
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyCGm2paV7-v8Bz7daitvdRX1jEknXx5PzA",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "dharmapuri-directory.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "dharmapuri-directory",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "dharmapuri-directory.firebasestorage.app",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "179533317127",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:179533317127:web:a60ca36ac4ebe10e4f56a2",
+        "EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID": "179533317127-sirlaqdgq9v7jk4nmsg3d65n9nt52r79.apps.googleusercontent.com",
+        "EXPO_PUBLIC_SITE_URL": "https://mydharmapuri.com",
+        "EXPO_PUBLIC_ADMOB_BANNER_ANDROID": "ca-app-pub-7096292729380486/5939890560",
+        "EXPO_PUBLIC_ADMOB_NATIVE_ANDROID": "ca-app-pub-7096292729380486/9737545674"
+      }
+    },
+    "preview": {
+      "extends": "base",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_ADMOB_BANNER_ANDROID": "ca-app-pub-7096292729380486/5939890560",
+        "EXPO_PUBLIC_ADMOB_NATIVE_ANDROID": "ca-app-pub-7096292729380486/9737545674"
+      }
+    },
+    "production": {
+      "extends": "base",
+      "android": {
+        "buildType": "app-bundle"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
+  }
+}

@@ -16,6 +16,12 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { goBack } from '@/components/ScreenHeader';
 import { PlaceCard } from '@/components/PlaceCard';
+import { AdBanner } from '@/components/Ads';
+import { PlaceArt } from '@/components/PlaceArt';
+import { Seo } from '@/components/Seo';
+import seed from '@/data/places.seed.json';
+import { placeSeo } from '@/lib/seo';
+import type { Place } from '@/lib/types';
 import { Badge, PressableScale } from '@/components/ui';
 import { CATEGORY_BY_KEY } from '@/lib/categories';
 import { usePlaces } from '@/lib/places';
@@ -23,11 +29,16 @@ import { radius, shadow, space, useTheme } from '@/theme';
 
 const HERO = 300;
 
+/** Pre-render a page for every place in the bundled snapshot (web static export). */
+export function generateStaticParams() {
+  return (seed as Place[]).map((p) => ({ id: p.id }));
+}
+
 export default function PlaceScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { c } = useTheme();
   const insets = useSafeAreaInsets();
-  const { byId, places, loading, recordView } = usePlaces();
+  const { byId, places, loading, recordView, track } = usePlaces();
   const place = byId(id);
   const scrollY = useSharedValue(0);
 
@@ -63,7 +74,17 @@ export default function PlaceScreen() {
     .sort((a, b) => b.views - a.views)
     .slice(0, 3);
 
+  const call = () => {
+    if (!tel) return;
+    track(place.id, 'calls');
+    Linking.openURL(`tel:${tel}`);
+  };
+  const directions = () => {
+    track(place.id, 'directions');
+    Linking.openURL(mapsUrl);
+  };
   const share = async () => {
+    track(place.id, 'shares');
     const text = [place.name, place.address, place.phone && `Phone: ${place.phone}`, mapsUrl].filter(Boolean).join('\n');
     if (Platform.OS === 'web' && typeof navigator !== 'undefined' && navigator.share) {
       await navigator.share({ title: place.name, text }).catch(() => {});
@@ -74,15 +95,14 @@ export default function PlaceScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: c.bg }}>
+      <Seo {...placeSeo(place)} />
       {/* Parallax hero */}
       <Animated.View style={[styles.hero, heroStyle]}>
         <LinearGradient colors={[tint, tint + 'aa', c.heroFrom]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
         {place.image ? (
           <Image source={place.image.url} style={StyleSheet.absoluteFill} contentFit="cover" transition={300} />
         ) : (
-          <View style={styles.heroIconWrap}>
-            <Ionicons name={meta.icon} size={96} color="rgba(255,255,255,0.25)" />
-          </View>
+          <PlaceArt place={place} variant="hero" />
         )}
         <LinearGradient colors={['rgba(0,0,0,0.35)', 'transparent', 'rgba(0,0,0,0.55)']} style={StyleSheet.absoluteFill} />
       </Animated.View>
@@ -126,15 +146,15 @@ export default function PlaceScreen() {
 
             {/* Actions */}
             <Animated.View entering={FadeInDown.delay(120).springify().damping(16)} style={styles.actions}>
-              <Action icon="call" label="Call" color={c.leaf} disabled={!tel} onPress={() => tel && Linking.openURL(`tel:${tel}`)} />
-              <Action icon="navigate" label="Directions" color={c.sky} onPress={() => Linking.openURL(mapsUrl)} />
+              <Action icon="call" label="Call" color={c.leaf} disabled={!tel} onPress={call} />
+              <Action icon="navigate" label="Directions" color={c.sky} onPress={directions} />
               <Action icon="share-social" label="Share" color={c.violet} onPress={share} />
             </Animated.View>
 
             {/* Details */}
             <Animated.View entering={FadeInDown.delay(180).duration(450)} style={[styles.card, { backgroundColor: c.card, borderColor: c.line }, shadow(c)]}>
               {place.address && <InfoRow icon="location-outline" label="Address" value={place.address} />}
-              <InfoRow icon="call-outline" label="Phone" value={place.phone ?? 'Not listed'} onPress={tel ? () => Linking.openURL(`tel:${tel}`) : undefined} />
+              <InfoRow icon="call-outline" label="Phone" value={place.phone ?? 'Not listed'} onPress={tel ? call : undefined} />
               <InfoRow icon="map-outline" label="Area" value={`${place.taluk} taluk, Dharmapuri district`} last />
             </Animated.View>
 
@@ -153,6 +173,8 @@ export default function PlaceScreen() {
             {place.image && (
               <Text style={[styles.credit, { color: c.muted }]}>{place.image.credit} · {place.image.license}</Text>
             )}
+
+            <AdBanner />
 
             {nearby.length > 0 && (
               <View style={styles.block}>
@@ -215,7 +237,6 @@ function InfoRow({ icon, label, value, onPress, last }: {
 
 const styles = StyleSheet.create({
   hero: { position: 'absolute', top: 0, left: 0, right: 0, height: HERO, overflow: 'hidden' },
-  heroIconWrap: { position: "absolute", top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' },
   bar: { position: 'absolute', top: 0, left: 0, right: 0, zIndex: 2, justifyContent: 'center', paddingHorizontal: 64 },
   barTitle: { color: '#fff', fontSize: 16, fontWeight: '800', textAlign: 'center' },
   topButtons: { position: 'absolute', left: space.lg, right: space.lg, zIndex: 3, flexDirection: 'row', justifyContent: 'space-between' },

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { FlatList, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
+import { Image as ExpoImage } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, {
@@ -13,18 +14,23 @@ import Animated, {
   Extrapolation,
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { NativeAdCard } from '@/components/Ads';
 import { FeaturedCard } from '@/components/PlaceCard';
+import { Seo } from '@/components/Seo';
+import { HOME_SEO } from '@/lib/seo';
 import { PressableScale, SectionTitle } from '@/components/ui';
 import { CATEGORIES } from '@/lib/categories';
 import { usePlaces } from '@/lib/places';
-import { radius, shadow, space, useTheme } from '@/theme';
+import { radius, shadow, space, useInBrowser, useTheme } from '@/theme';
 
 const MAX_WIDTH = 1100;
 
 export default function Home() {
   const { c } = useTheme();
   const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
+  // Pre-rendered HTML has no window size; use it only after hydration so the first render matches.
+  const windowWidth = useWindowDimensions().width;
+  const width = useInBrowser() ? windowWidth : 0;
   const { places, popular, offline } = usePlaces();
   const scrollY = useSharedValue(0);
 
@@ -55,20 +61,30 @@ export default function Home() {
       style={{ backgroundColor: c.bg }}
       contentContainerStyle={{ paddingBottom: insets.bottom + 40 }}
     >
+      <Seo {...HOME_SEO} />
       {/* Hero */}
       <Animated.View style={heroStyle}>
-        <LinearGradient
-          colors={[c.heroFrom, c.heroTo]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={[styles.hero, { paddingTop: insets.top + space.xl }]}
-        >
-          <View style={styles.blobA} />
-          <View style={styles.blobB} />
+        <View style={[styles.hero, { paddingTop: insets.top + space.xl, backgroundColor: c.heroFrom }]}>
+          {/* Hogenakkal Falls — Photo: Ashwin Kumar, CC BY-SA 2.0 (credited below) */}
+          <ExpoImage
+            source={require('../../assets/images/hero-hogenakkal.jpg')}
+            style={StyleSheet.absoluteFill}
+            contentFit="cover"
+            contentPosition="center"
+            transition={300}
+            accessibilityLabel="Coracles on the Kaveri at Hogenakkal"
+          />
+          <LinearGradient
+            colors={['rgba(8,26,19,0.70)', 'rgba(8,26,19,0.30)', 'rgba(8,26,19,0.88)']}
+            locations={[0, 0.45, 1]}
+            style={StyleSheet.absoluteFill}
+          />
           <View style={[styles.inner, { maxWidth: MAX_WIDTH }]}>
             <Animated.View entering={FadeInDown.duration(500)} style={styles.brandRow}>
-              <View style={styles.brandMark}><Text style={styles.brandMarkText}>த</Text></View>
-              <Text style={styles.brandName}>DHARMAPURI</Text>
+              <View style={styles.brandMark}>
+                <Image source={require('../../assets/logo-mark.png')} style={styles.brandLogo} accessibilityLabel="MyDharmapuri logo" />
+              </View>
+              <Text style={styles.brandName}>MyDharmapuri</Text>
               <View style={{ flex: 1 }} />
               <PressableScale onPress={() => router.push('/submit')} style={styles.addBtn} accessibilityLabel="Add a place">
                 <Ionicons name="add" size={16} color="#122a20" />
@@ -85,13 +101,14 @@ export default function Home() {
               {places.length} verified listings · {areas} areas
             </Animated.Text>
             <Animated.View entering={FadeInDown.delay(260).duration(600)}>
-              <PressableScale onPress={() => router.push('/search')} scaleTo={0.98} style={[styles.heroSearch, shadow(c, 2)]}>
+              <PressableScale href="/search" scaleTo={0.98} style={[styles.heroSearch, shadow(c, 2)]}>
                 <Ionicons name="search" size={18} color="#5f7268" />
                 <Text style={styles.heroSearchText}>Search restaurants, hospitals, places…</Text>
               </PressableScale>
             </Animated.View>
           </View>
-        </LinearGradient>
+          <Text style={styles.heroCredit}>Hogenakkal · Photo: Ashwin Kumar, CC BY-SA 2.0</Text>
+        </View>
       </Animated.View>
 
       <View style={[styles.inner, styles.sheet, { backgroundColor: c.bg, maxWidth: MAX_WIDTH }]}>
@@ -109,7 +126,7 @@ export default function Home() {
             return (
               <Animated.View key={cat.key} entering={FadeInDown.delay(80 + i * 45).springify().damping(16)}>
                 <PressableScale
-                  onPress={() => router.push(`/category/${cat.key}`)}
+                  href={`/category/${cat.key}`}
                   accessibilityLabel={cat.label}
                   style={[styles.tile, { width: tileSize }]}
                 >
@@ -144,9 +161,11 @@ export default function Home() {
           </View>
         )}
 
+        <NativeAdCard style={{ marginTop: space.xl }} />
+
         {/* Urban services teaser */}
         <Animated.View entering={FadeInDown.delay(300).duration(500)} style={styles.section}>
-          <PressableScale onPress={() => router.push('/urban-services')} scaleTo={0.98}>
+          <PressableScale href="/urban-services" scaleTo={0.98}>
             <LinearGradient colors={[c.teal, c.violet]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[styles.promo, shadow(c, 2)]}>
               <View style={{ flex: 1, gap: 6 }}>
                 <View style={styles.soonPill}><Text style={styles.soonPillText}>COMING SOON</Text></View>
@@ -180,22 +199,18 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  hero: { paddingHorizontal: space.lg, paddingBottom: 72, overflow: 'hidden' },
-  blobA: {
-    position: 'absolute', width: 320, height: 320, borderRadius: 160,
-    backgroundColor: 'rgba(228,113,31,0.28)', top: -120, right: -80,
-  },
-  blobB: {
-    position: 'absolute', width: 260, height: 260, borderRadius: 130,
-    backgroundColor: 'rgba(109,200,96,0.22)', bottom: -120, left: -60,
+  hero: { paddingHorizontal: space.lg, paddingBottom: 84, overflow: 'hidden' },
+  heroCredit: {
+    position: 'absolute', right: space.lg, bottom: 44,
+    color: 'rgba(255,255,255,0.6)', fontSize: 10,
   },
   inner: { width: '100%', alignSelf: 'center' },
   brandRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 36 },
   brandMark: {
-    width: 36, height: 36, borderRadius: 11, backgroundColor: '#3e8e2f',
+    width: 46, height: 46, borderRadius: 23, backgroundColor: '#fff',
     alignItems: 'center', justifyContent: 'center',
   },
-  brandMarkText: { color: '#fff', fontWeight: '800', fontSize: 16 },
+  brandLogo: { width: 40, height: 40 },
   brandName: { color: '#fff', fontWeight: '800', letterSpacing: 0.6, fontSize: 15 },
   addBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: '#fff',

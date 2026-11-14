@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { router } from 'expo-router';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { CATEGORY_BY_KEY } from '@/lib/categories';
 import type { Place } from '@/lib/types';
 import { radius, shadow, space, useTheme } from '@/theme';
+import { PlaceArt } from './PlaceArt';
 import { PressableScale } from './ui';
 
 /** Row card used in category and search lists. */
@@ -15,7 +15,7 @@ export function PlaceCard({ place }: { place: Place }) {
   const tint = c[meta.color];
   return (
     <PressableScale
-      onPress={() => router.push(`/place/${place.id}`)}
+      href={`/place/${place.id}`}
       scaleTo={0.98}
       accessibilityLabel={place.name}
       style={[styles.card, { backgroundColor: c.card, borderColor: c.line }, shadow(c)]}
@@ -24,7 +24,7 @@ export function PlaceCard({ place }: { place: Place }) {
         {place.image ? (
           <Image source={place.image.url} style={StyleSheet.absoluteFill} contentFit="cover" transition={250} />
         ) : (
-          <Ionicons name={meta.icon} size={24} color="#fff" />
+          <PlaceArt place={place} variant="thumb" />
         )}
       </LinearGradient>
       <View style={styles.body}>
@@ -59,16 +59,18 @@ export function FeaturedCard({ place }: { place: Place }) {
   const tint = c[meta.color];
   return (
     <PressableScale
-      onPress={() => router.push(`/place/${place.id}`)}
+      href={`/place/${place.id}`}
       accessibilityLabel={place.name}
       style={[styles.featured, shadow(c, 2)]}
     >
       <LinearGradient colors={[tint, tint + 'cc', '#00000066']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={StyleSheet.absoluteFill} />
-      {place.image && (
+      {place.image ? (
         <>
           <Image source={place.image.url} style={StyleSheet.absoluteFill} contentFit="cover" transition={300} />
           <LinearGradient colors={['transparent', 'rgba(0,0,0,0.75)']} style={StyleSheet.absoluteFill} />
         </>
+      ) : (
+        <PlaceArt place={place} variant="card" />
       )}
       <View style={styles.featuredTop}>
         <View style={styles.featuredIcon}>

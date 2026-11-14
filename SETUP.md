@@ -1,4 +1,4 @@
-# Dharmapuri Connect — Firebase setup
+# MyDharmapuri — Firebase setup
 
 ```
 app/       Expo (React Native) app — Android, iOS and the website
@@ -61,6 +61,12 @@ view counts, status and featured settings. Add `-- --overwrite` to reset them.
 - **Frequently looked up**: places with a *Featured position* come first (use the
   *Featured tag*, e.g. "Sponsored", for ads), then the most-viewed places. Each place
   opened in the app counts one view per session.
+- **Sponsorships** (admin *Featured* tab): each featured place can have a monthly fee and a
+  from/until date. The app stops featuring a place after its until date.
+- **Payments** (admin *Payments* tab): one record per business per month in the `payments`
+  collection (`{placeId}_{YYYY-MM}`), admin-only. Featured places with a fee and no payment show as *Due*.
+- **Analytics** (admin *Analytics* tab): the app counts views, calls, directions and shares per
+  business per month in `stats/{placeId}_{YYYY-MM}` (India time; once per session each). Download as CSV.
 - **Security**: `backend/firestore.rules` lets the public read approved places only,
   lets signed-in users create pending places, lets anyone add exactly +1 to `views`,
   and reserves everything else for admins (users listed in the `admins` collection).
@@ -83,6 +89,58 @@ Sign-In, which needs a **development build** (it does not work in Expo Go):
 
 Browsing works in Expo Go without any of this.
 
+## Releasing the Android app (Google Play)
+
+The app replaces the old Play listing, so it keeps the package `com.techieqa.dharmapuri`.
+Bump `android.versionCode` in `app/app.json` for every upload (Play rejects a code it has seen).
+
+```sh
+cd app
+npx eas-cli login                                     # once, Expo account
+npx eas-cli build -p android --profile preview        # .apk to install on a phone and test
+npx eas-cli build -p android --profile production     # .aab to upload to Play Console
+```
+
+Signing: Play only accepts uploads signed with the listing's **upload key**
+(Play Console → Test and release → App integrity → *Upload key certificate*). Give EAS that
+keystore on the first production build, or request an upload-key reset there and let EAS generate one.
+
+Google sign-in on the Play build needs the **SHA-1 of the upload key and of the app signing key**
+(both shown on that App integrity page) added in Firebase → Project settings → Android app.
+`app/eas.json` carries the public Firebase web config because `.env` isn't uploaded to EAS.
+
+## Ads (AdMob, app only)
+
+`src/components/Ads.native.tsx` shows a native ad card on the home page and after every ~10 listings in a
+category, and an adaptive banner on place pages and under search results. The website never shows them
+(`Ads.tsx` renders nothing). Consent (EEA/UK) is asked via Google's UMP form before ads load.
+
+Until real IDs are set, the app shows **Google test ads**. To go live:
+
+1. In `app/app.json` → `react-native-google-mobile-ads` plugin, set `androidAppId` (and `iosAppId`)
+   to your AdMob app IDs (`ca-app-pub-…~…`).
+2. In `app/eas.json` → `build.base.env`, set `EXPO_PUBLIC_ADMOB_BANNER_ANDROID` and
+   `EXPO_PUBLIC_ADMOB_NATIVE_ANDROID` (ad unit IDs). Dev and `preview` builds always use test ads; only `production` shows real ads.
+3. Add `app/public/app-ads.txt` with your AdMob publisher line and redeploy the website.
+4. In Play Console declare *Contains ads* and the advertising ID in Data safety.
+
+## Hosting on Hostinger (mydharmapuri.com)
+
+The website and admin are static files, so any Hostinger web hosting plan works.
+`app/public/.htaccess` and `admin/public/.htaccess` reproduce the Firebase Hosting rules
+(clean URLs, place/category fallbacks, 404 page, caching, https + no-www redirects; SPA fallback for the admin).
+
+```sh
+cd app && npm run build:web && cd ../admin && npm run build && cd ..
+mkdir -p deploy
+(cd app/dist && zip -qr ../../deploy/mydharmapuri-website.zip .)
+(cd admin/dist && zip -qr ../../deploy/mydharmapuri-admin.zip .)
+```
+
+In hPanel: upload `mydharmapuri-website.zip` to the domain's `public_html` and extract it there;
+create the subdomain `admin.mydharmapuri.com` and extract `mydharmapuri-admin.zip` into its folder.
+Turn on SSL for both. The domains are already authorized for Google sign-in in Firebase.
+
 ## Running and deploying
 
 ```sh
@@ -91,8 +149,15 @@ cd app && npm run build:web    # static website in app/dist
 cd admin && npm run build      # admin dashboard in admin/dist
 ```
 
-Both `dist` folders are single-page apps: the host must serve `index.html` for unknown
-paths. `backend/firebase.json` already configures that for Firebase Hosting
+`npm run build:web` pre-renders one HTML page per place and category for search engines:
+it snapshots approved places from Firestore (`scripts/sync-places.mjs`), runs `expo export`,
+then writes each page's `<title>`/description/canonical/Open Graph tags plus `sitemap.xml`
+and `robots.txt` (`scripts/seo-postbuild.mjs`). Rebuild and redeploy after adding places so
+they get their own pages; until then they still open via the `/place/[id]` fallback.
+Set `EXPO_PUBLIC_SITE_URL` if the site is not served from `https://mydharmapuri.com`.
+
+The admin `dist` is a single-page app (serve `index.html` for unknown paths).
+`firebase.json` (repo root) configures both for Firebase Hosting
 (`firebase target:apply hosting app <site>` / `... admin <site>`, then `firebase deploy --only hosting`).
 
 To test locally without a real project: `firebase emulators:start` in `backend/`

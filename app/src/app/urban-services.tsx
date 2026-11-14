@@ -2,7 +2,9 @@ import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Animated, { FadeInDown, ZoomIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScreenHeader } from '@/components/ScreenHeader';
-import { radius, shadow, space, useTheme } from '@/theme';
+import { Seo } from '@/components/Seo';
+import { URBAN_SEO } from '@/lib/seo';
+import { radius, shadow, space, useInBrowser, useTheme } from '@/theme';
 
 const SERVICES = [
   ['🏠', 'Home Services'],
@@ -28,13 +30,16 @@ const SERVICES = [
 export default function UrbanServices() {
   const { c } = useTheme();
   const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
+  // Pre-rendered HTML has no window size; use it only after hydration so the first render matches.
+  const windowWidth = useWindowDimensions().width;
+  const width = useInBrowser() ? windowWidth : 0;
   const cols = width >= 900 ? 3 : 2;
   const inner = Math.min(width, 900) - space.lg * 2;
   const tileW = (inner - space.md * (cols - 1)) / cols;
 
   return (
     <Animated.ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={{ paddingBottom: insets.bottom + 40 }}>
+      <Seo {...URBAN_SEO} />
       <ScreenHeader title="Urban Services" subtitle="We're bringing Dharmapuri's services together in one place." colors={[c.teal, c.violet]}>
         <Animated.View entering={ZoomIn.delay(200).springify()} style={styles.soon}>
           <Text style={styles.soonText}>COMING SOON</Text>

@@ -2,7 +2,11 @@ import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeInDown, LinearTransition } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useLocalSearchParams } from 'expo-router';
 import { PlaceCard } from '@/components/PlaceCard';
+import { AdBanner } from '@/components/Ads';
+import { Seo } from '@/components/Seo';
+import { SEARCH_SEO } from '@/lib/seo';
 import { ScreenHeader } from '@/components/ScreenHeader';
 import { EmptyState, SearchField } from '@/components/ui';
 import { CATEGORIES } from '@/lib/categories';
@@ -16,7 +20,8 @@ export default function SearchScreen() {
   const { c } = useTheme();
   const insets = useSafeAreaInsets();
   const { places } = usePlaces();
-  const [q, setQ] = useState('');
+  const params = useLocalSearchParams<{ q?: string }>();
+  const [q, setQ] = useState(() => (typeof params.q === 'string' ? params.q : ''));
 
   const results = useMemo(() => {
     if (q.trim().length < 2) return [];
@@ -28,6 +33,7 @@ export default function SearchScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: c.bg }}>
+      <Seo {...SEARCH_SEO} />
       <Animated.FlatList
         data={results}
         keyExtractor={(p) => p.id}
@@ -41,6 +47,7 @@ export default function SearchScreen() {
             </View>
           </ScreenHeader>
         }
+        ListFooterComponent={results.length > 0 ? <AdBanner /> : undefined}
         renderItem={({ item, index }) => (
           <Animated.View entering={FadeInDown.delay(Math.min(index, 10) * 35).duration(300)} style={styles.item}>
             <PlaceCard place={item} />

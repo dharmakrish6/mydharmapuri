@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Dharmapuri Connect",
+    "name": "MyDharmapuri",
     "slug": "mydharmapuri",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -12,30 +12,63 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#FFFFFF",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.mydharmapuri.app"
+      "package": "com.techieqa.dharmapuri",
+      "versionCode": 10,
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "output": "single",
+      "output": "static",
       "bundler": "metro",
-      "name": "Dharmapuri Connect"
+      "name": "MyDharmapuri"
     },
     "plugins": [
       "expo-router",
       "expo-status-bar",
       "expo-image",
       "@react-native-google-signin/google-signin",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "image": "./assets/splash-icon.png",
+            "backgroundColor": "#0c1512"
+          }
+        }
+      ],
+      [
+        "react-native-google-mobile-ads/app.plugin.js",
+        {
+          "androidAppId": "ca-app-pub-7096292729380486~5035883337",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511",
+          "delayAppMeasurementInit": true
+        }
+      ]
     ],
     "scheme": "mydharmapuri",
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "b935d5c9-eb64-4976-b7b2-54cc4b338437"
+      }
     }
   }
 }

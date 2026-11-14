@@ -1,21 +1,12 @@
 import { type ReactNode } from 'react';
+import { Link, type Href } from 'expo-router';
 import { Platform, Pressable, StyleSheet, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
 import { radius, space, useTheme, type ColorKey } from '@/theme';
 
-/** Pressable that springs down slightly when touched. */
-export function PressableScale({
-  children,
-  onPress,
-  style,
-  containerStyle,
-  scaleTo = 0.96,
-  haptic = true,
-  accessibilityLabel,
-  disabled,
-}: {
+type PressableScaleProps = {
   children: ReactNode;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
@@ -25,12 +16,45 @@ export function PressableScale({
   haptic?: boolean;
   accessibilityLabel?: string;
   disabled?: boolean;
-}) {
+};
+
+/**
+ * Pressable that springs down slightly when touched. With `href` it navigates
+ * there and renders a real <a href> on the web, so search engines can follow it.
+ */
+export function PressableScale({ href, ...props }: PressableScaleProps & { href?: Href }) {
+  if (href && !props.disabled) {
+    // Link's asChild (Slot) rejects style arrays, so pass flattened styles through it.
+    return (
+      <Link href={href} asChild>
+        <ScalePressable
+          {...props}
+          style={StyleSheet.flatten(props.style)}
+          containerStyle={StyleSheet.flatten(props.containerStyle)}
+        />
+      </Link>
+    );
+  }
+  return <ScalePressable {...props} />;
+}
+
+function ScalePressable({
+  children,
+  onPress,
+  style,
+  containerStyle,
+  scaleTo = 0.96,
+  haptic = true,
+  accessibilityLabel,
+  disabled,
+  ...linkProps
+}: PressableScaleProps & Record<string, unknown>) {
   const scale = useSharedValue(1);
   const animated = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
   return (
     <Pressable
-      accessibilityRole="button"
+      {...linkProps}
+      accessibilityRole={linkProps.href ? 'link' : 'button'}
       accessibilityLabel={accessibilityLabel}
       disabled={disabled}
       style={containerStyle}

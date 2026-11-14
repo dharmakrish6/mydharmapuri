@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AdsProvider } from '@/components/Ads';
 import { AuthProvider } from '@/lib/auth';
 import { PlacesProvider } from '@/lib/places';
 import { useTheme } from '@/theme';
@@ -9,6 +10,7 @@ export default function RootLayout() {
   const { c, isDark } = useTheme();
   return (
     <SafeAreaProvider>
+      <AdsProvider>
       <AuthProvider>
         <PlacesProvider>
           <StatusBar style={isDark ? 'light' : 'dark'} />
@@ -23,6 +25,7 @@ export default function RootLayout() {
           </Stack>
         </PlacesProvider>
       </AuthProvider>
+      </AdsProvider>
     </SafeAreaProvider>
   );
 }

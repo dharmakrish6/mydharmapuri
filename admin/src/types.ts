@@ -37,6 +37,11 @@ export interface Place {
   views: number;
   featuredRank: number | null;
   featuredLabel: string | null;
+  /** Monthly sponsorship fee in rupees. */
+  featuredFee: number | null;
+  /** Sponsorship period, YYYY-MM-DD (IST). featuredUntil = last featured day. */
+  featuredFrom: string | null;
+  featuredUntil: string | null;
   source: 'import' | 'user' | 'admin';
   submittedBy: { uid: string; name: string | null; email: string | null } | null;
   createdAt?: Timestamp;
@@ -48,6 +53,7 @@ export type PlaceDraft = Pick<
   Place,
   'category' | 'name' | 'subcategory' | 'taluk' | 'address' | 'phone' | 'type' | 'brand' | 'ownership'
   | 'description' | 'howToReach' | 'status' | 'featuredRank' | 'featuredLabel'
+  | 'featuredFee' | 'featuredFrom' | 'featuredUntil'
 >;
 
 export const EMPTY_DRAFT: PlaceDraft = {
@@ -65,4 +71,42 @@ export const EMPTY_DRAFT: PlaceDraft = {
   status: 'approved',
   featuredRank: null,
   featuredLabel: null,
+  featuredFee: null,
+  featuredFrom: null,
+  featuredUntil: null,
 };
+
+export type StatKey = 'views' | 'calls' | 'directions' | 'shares';
+export const STAT_KEYS: { key: StatKey; label: string }[] = [
+  { key: 'views', label: 'Views' },
+  { key: 'calls', label: 'Calls' },
+  { key: 'directions', label: 'Directions' },
+  { key: 'shares', label: 'Shares' },
+];
+
+/** /stats/{placeId}_{YYYY-MM} — monthly counters written by the app. */
+export interface PlaceStats {
+  id: string;
+  placeId: string;
+  month: string;
+  views?: number;
+  calls?: number;
+  directions?: number;
+  shares?: number;
+}
+
+export const PAYMENT_METHODS = ['UPI', 'Cash', 'Bank transfer', 'Cheque'] as const;
+
+/** /payments/{placeId}_{YYYY-MM} — one sponsorship payment per business per month. */
+export interface Payment {
+  id: string;
+  placeId: string;
+  placeName: string;
+  month: string;
+  amount: number;
+  method: string;
+  paidOn: string;
+  note: string | null;
+  recordedBy: string | null;
+  createdAt?: Timestamp;
+}

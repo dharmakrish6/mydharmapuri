@@ -1,4 +1,5 @@
-import { useColorScheme } from 'react-native';
+import { useSyncExternalStore } from 'react';
+import { Platform, useColorScheme } from 'react-native';
 
 const light = {
   bg: '#f2f3ec',
@@ -45,9 +46,21 @@ const dark: typeof light = {
 export type Palette = typeof light;
 export type ColorKey = 'leaf' | 'orange' | 'teal' | 'gold' | 'violet' | 'sky' | 'crimson' | 'rose';
 
+// Web pages are pre-rendered in light mode. While React hydrates that HTML it must render the
+// same colours (it won't fix mismatched styles), so the server snapshot is "not in browser";
+// dark mode switches on right after hydration. Native apps aren't hydrated and use it directly.
+const noSubscribe = () => () => {};
+
+/** False while pre-rendering or hydrating a web page, true once running in the browser (always true on native). */
+export function useInBrowser() {
+  return useSyncExternalStore(noSubscribe, () => true, () => Platform.OS !== 'web');
+}
+
 export function useTheme() {
-  const scheme = useColorScheme();
-  return { c: scheme === 'dark' ? dark : light, isDark: scheme === 'dark' };
+  const system = useColorScheme();
+  const inBrowser = useInBrowser();
+  const isDark = inBrowser && system === 'dark';
+  return { c: isDark ? dark : light, isDark };
 }
 
 export const radius = { sm: 10, md: 16, lg: 22, xl: 28 };

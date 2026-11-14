@@ -36,5 +36,7 @@ export interface Place {
   views: number;
   featuredRank: number | null;
   featuredLabel: string | null;
+  /** Last day (YYYY-MM-DD, IST) the place stays featured; null = no end date. */
+  featuredUntil?: string | null;
   submittedBy: { uid: string; name: string | null; email: string | null } | null;
 }
