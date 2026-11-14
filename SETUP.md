@@ -126,20 +126,22 @@ Until real IDs are set, the app shows **Google test ads**. To go live:
 
 ## Hosting on Hostinger (mydharmapuri.com)
 
-The website and admin are static files, so any Hostinger web hosting plan works.
-`app/public/.htaccess` and `admin/public/.htaccess` reproduce the Firebase Hosting rules
-(clean URLs, place/category fallbacks, 404 page, caching, https + no-www redirects; SPA fallback for the admin).
+Hostinger deploys from git, but it does not build anything, so it must deploy **built files**, never `main`:
+
+| Branch | Hostinger site | Contents |
+|---|---|---|
+| `hostinger-site` | mydharmapuri.com | `app/dist` (with `.htaccess`) |
+| `hostinger-admin` | admin.mydharmapuri.com | `admin/dist` (with `.htaccess`) |
 
 ```sh
-cd app && npm run build:web && cd ../admin && npm run build && cd ..
-mkdir -p deploy
-(cd app/dist && zip -qr ../../deploy/mydharmapuri-website.zip .)
-(cd admin/dist && zip -qr ../../deploy/mydharmapuri-admin.zip .)
+scripts/deploy-hostinger.sh          # build both, commit to those branches, push
+scripts/deploy-hostinger.sh website  # or just one
 ```
 
-In hPanel: upload `mydharmapuri-website.zip` to the domain's `public_html` and extract it there;
-create the subdomain `admin.mydharmapuri.com` and extract `mydharmapuri-admin.zip` into its folder.
-Turn on SSL for both. The domains are already authorized for Google sign-in in Firebase.
+Then Hostinger pulls the branch (auto-deploy, or hPanel → Advanced → Git → Deploy).
+The `.htaccess` files reproduce the Firebase Hosting rules: clean URLs, place/category fallbacks,
+404 page, caching, https + no-www redirects, and the admin's single-page fallback.
+The domains are authorized for Google sign-in in Firebase.
 
 ## Running and deploying
 
