@@ -6,71 +6,15 @@
   "hosting": [
     {
       "target": "app",
-      "public": "app/dist",
+      "public": "backend/hosting-redirect",
       "ignore": [
         "**/.*"
       ],
-      "rewrites": [
+      "redirects": [
         {
-          "source": "/place/**",
-          "destination": "/place/[id].html"
-        },
-        {
-          "source": "/category/**",
-          "destination": "/category/[key].html"
-        }
-      ],
-      "cleanUrls": true,
-      "trailingSlash": false,
-      "headers": [
-        {
-          "source": "/flutter_service_worker.js",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "no-cache, no-store, must-revalidate"
-            }
-          ]
-        },
-        {
-          "source": "/_expo/**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=31536000, immutable"
-            }
-          ]
-        },
-        {
-          "source": "/assets/**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=31536000, immutable"
-            }
-          ]
-        },
-        {
-          "source": "**/*.html",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=300"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "target": "admin",
-      "public": "admin/dist",
-      "ignore": [
-        "**/.*"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
+          "regex": "^/([^_].*)?$",
+          "destination": "https://mydharmapuri.com/:1",
+          "type": 301
         }
       ]
     }

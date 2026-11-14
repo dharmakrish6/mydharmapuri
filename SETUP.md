@@ -126,22 +126,24 @@ Until real IDs are set, the app shows **Google test ads**. To go live:
 
 ## Hosting on Hostinger (mydharmapuri.com)
 
-Hostinger deploys from git, but it does not build anything, so it must deploy **built files**, never `main`:
+Both sites are deployed as built static files through Hostinger's API (Git deploy can't be used:
+Hostinger doesn't build, and the site root always holds the `admin` subdomain folder).
 
-| Branch | Hostinger site | Contents |
+| Site | Hostinger folder | Built from |
 |---|---|---|
-| `hostinger-site` | mydharmapuri.com | `app/dist` (with `.htaccess`) |
-| `hostinger-admin` | admin.mydharmapuri.com | `admin/dist` (with `.htaccess`) |
+| mydharmapuri.com | `public_html` | `app/dist` |
+| admin.mydharmapuri.com | `public_html/admin` | `admin/dist` |
 
 ```sh
-scripts/deploy-hostinger.sh          # build both, commit to those branches, push
+scripts/deploy-hostinger.sh          # build both and deploy
 scripts/deploy-hostinger.sh website  # or just one
 ```
 
-Then Hostinger pulls the branch (auto-deploy, or hPanel → Advanced → Git → Deploy).
-The `.htaccess` files reproduce the Firebase Hosting rules: clean URLs, place/category fallbacks,
-404 page, caching, https + no-www redirects, and the admin's single-page fallback.
-The domains are authorized for Google sign-in in Firebase.
+Needs a Hostinger API token (hPanel → profile → API) in `~/.hostinger-token`
+(`pbpaste > ~/.hostinger-token && chmod 600 ~/.hostinger-token`) — never inside the repo.
+The website deploy replaces the site root but keeps the `admin` folder.
+`.htaccess` files reproduce the Firebase Hosting rules (clean URLs, place/category fallbacks, 404,
+caching, https + no-www; SPA fallback for the admin). DNS is at GoDaddy: `@` and `admin` → 193.203.185.191.
 
 ## Running and deploying
 
@@ -159,8 +161,9 @@ they get their own pages; until then they still open via the `/place/[id]` fallb
 Set `EXPO_PUBLIC_SITE_URL` if the site is not served from `https://mydharmapuri.com`.
 
 The admin `dist` is a single-page app (serve `index.html` for unknown paths).
-`firebase.json` (repo root) configures both for Firebase Hosting
-(`firebase target:apply hosting app <site>` / `... admin <site>`, then `firebase deploy --only hosting`).
+Both are hosted on Hostinger (see above). Firebase Hosting only keeps the project's default site,
+which 301-redirects `dharmapuri-directory.web.app` / `.firebaseapp.com` to mydharmapuri.com while still
+serving Firebase's `/__/auth/…` sign-in handler (`firebase.json`, `backend/hosting-redirect/`).
 
 To test locally without a real project: `firebase emulators:start` in `backend/`
 (needs Java 21+), then run the scripts with `FIRESTORE_EMULATOR_HOST=localhost:8080`.
