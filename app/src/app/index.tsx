@@ -19,7 +19,7 @@ import { FeaturedCard } from '@/components/PlaceCard';
 import { Seo } from '@/components/Seo';
 import { HOME_SEO } from '@/lib/seo';
 import { PressableScale, SectionTitle } from '@/components/ui';
-import { CATEGORIES } from '@/lib/categories';
+import { CATEGORIES, TALUKS, areaSlug } from '@/lib/categories';
 import { usePlaces } from '@/lib/places';
 import { radius, shadow, space, useInBrowser, useTheme } from '@/theme';
 
@@ -161,6 +161,24 @@ export default function Home() {
           </View>
         )}
 
+        {/* Browse by area */}
+        <View style={styles.section}>
+          <SectionTitle title="Browse by area" />
+          <View style={styles.areaWrap}>
+            {TALUKS.map((t) => {
+              const n = places.filter((p) => p.taluk === t).length;
+              return (
+                <PressableScale key={t} href={`/area/${areaSlug(t)}`} scaleTo={0.96} accessibilityLabel={`Places in ${t}`}
+                  style={[styles.areaChip, { backgroundColor: c.card, borderColor: c.line }]}>
+                  <Ionicons name="location-outline" size={15} color={c.leaf} />
+                  <Text style={[styles.areaName, { color: c.ink }]}>{t}</Text>
+                  <Text style={[styles.areaCount, { color: c.muted }]}>{n}</Text>
+                </PressableScale>
+              );
+            })}
+          </View>
+        </View>
+
         <NativeAdCard style={{ marginTop: space.xl }} />
 
         {/* Urban services teaser */}
@@ -240,6 +258,13 @@ const styles = StyleSheet.create({
   tileLabel: { fontSize: 13, fontWeight: '700' },
   tileCount: { fontSize: 11, fontWeight: '600', marginTop: -4 },
   section: { marginTop: space.xxl },
+  areaWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
+  areaChip: {
+    flexDirection: 'row', alignItems: 'center', gap: 6, borderWidth: 1, borderRadius: radius.lg,
+    paddingHorizontal: 14, paddingVertical: 10,
+  },
+  areaName: { fontWeight: '700', fontSize: 14 },
+  areaCount: { fontSize: 12.5, fontWeight: '600' },
   promo: { flexDirection: 'row', alignItems: 'center', gap: space.lg, padding: space.xl, borderRadius: radius.xl },
   soonPill: { alignSelf: 'flex-start', backgroundColor: 'rgba(255,255,255,0.22)', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 },
   soonPillText: { color: '#fff', fontSize: 10.5, fontWeight: '800', letterSpacing: 1 },

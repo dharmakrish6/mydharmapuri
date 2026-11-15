@@ -1,5 +1,5 @@
 import { SITE_URL, breadcrumbs, type PageSeo } from '@/components/Seo';
-import { CATEGORY_BY_KEY, TALUKS } from './categories';
+import { CATEGORIES, CATEGORY_BY_KEY, TALUKS, areaSlug } from './categories';
 import type { CategoryKey, Place } from './types';
 
 /** schema.org type per category, for Google rich results. */
@@ -127,6 +127,36 @@ export const HOME_SEO: PageSeo = {
     },
   },
 };
+
+/** Area (taluk) landing page: every listing in one taluk, grouped by category. */
+export function areaSeo(taluk: string, places: Place[]) {
+  const path = `/area/${areaSlug(taluk)}`;
+  const where = taluk === 'Dharmapuri' ? 'Dharmapuri town & taluk' : `${taluk}, Dharmapuri`;
+  const kinds = CATEGORIES.filter((c) => places.some((p) => p.category === c.key)).map((c) => c.label.toLowerCase());
+  const title = `${taluk} – ${places.length} places: hospitals, schools, offices, shops & restaurants`;
+  const description = `${places.length} listings in ${where}: ${kinds.join(', ')}. Addresses, phone numbers and directions.`;
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: `Places in ${taluk}, Dharmapuri`,
+      url: `${SITE_URL}${path}`,
+      about: { '@type': 'AdministrativeArea', name: `${taluk} taluk`, containedInPlace: { '@type': 'AdministrativeArea', name: 'Dharmapuri district' } },
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: places.length,
+        itemListElement: places.slice(0, 50).map((p, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `${SITE_URL}/place/${p.id}`,
+          name: p.name,
+        })),
+      },
+    },
+    breadcrumbs([{ name: 'Home', path: '/' }, { name: taluk, path }]),
+  ];
+  return { title, description, path, jsonLd };
+}
 
 function topValues(values: (string | null)[], n = 6) {
   const m = new Map<string, number>();

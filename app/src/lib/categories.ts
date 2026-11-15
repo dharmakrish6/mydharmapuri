@@ -32,3 +32,7 @@ export const CATEGORIES: CategoryMeta[] = [
 export const CATEGORY_BY_KEY = Object.fromEntries(CATEGORIES.map((c) => [c.key, c])) as Record<CategoryKey, CategoryMeta>;
 
 export const TALUKS = ['Dharmapuri', 'Harur', 'Karimangalam', 'Nallampalli', 'Palacode', 'Pappireddipatti', 'Pennagaram'];
+
+/** URL slug for an area page: "Pappireddipatti" → "pappireddipatti" (/area/pappireddipatti). */
+export const areaSlug = (taluk: string) => taluk.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+export const TALUK_BY_SLUG: Record<string, string> = Object.fromEntries(TALUKS.map((t) => [areaSlug(t), t]));

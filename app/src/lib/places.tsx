@@ -1,8 +1,10 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { Platform } from 'react-native';
 import {
   addDoc,
   collection,
   doc,
+  getDoc,
   increment,
   onSnapshot,
   query,
@@ -16,6 +18,13 @@ import { db, firebaseConfigured } from './firebase';
 import type { CategoryKey, Place } from './types';
 
 const FEATURED_SLOTS = 8;
+
+/**
+ * The app keeps a live Firestore subscription. The website doesn't: every page already ships the
+ * snapshot taken at build time (scripts/sync-places.mjs), and subscribing on each page view read all
+ * places every time, which used up Firestore's free daily reads. Redeploy the site to publish changes.
+ */
+const LIVE = Platform.OS !== 'web';
 
 export type TrackEvent = 'views' | 'calls' | 'directions' | 'shares';
 
@@ -43,6 +52,10 @@ interface PlacesState {
   byId: (id: string) => Place | undefined;
   /** Featured (pinned/sponsored) first, then the most viewed places. */
   popular: Place[];
+  /** Website only: fetch one place missing from the build snapshot (e.g. approved since the last deploy). */
+  lookup: (id: string) => void;
+  /** Whether `byId(id)` is final — false while a website lookup is still running. */
+  resolved: (id: string) => boolean;
   recordView: (id: string) => void;
   /** Count a call / directions / share tap for the monthly analytics (once per session each). */
   track: (id: string, event: Exclude<TrackEvent, 'views'>) => void;
@@ -66,13 +79,15 @@ export function PlacesProvider({ children }: { children: ReactNode }) {
   // (and in the static HTML that search engines read); Firestore replaces it live.
   // `loading` stays true until the live data arrives, so unknown ids aren't redirected early.
   const [places, setPlaces] = useState<Place[]>(() => withActiveFeatured(seed as Place[]));
-  const [loading, setLoading] = useState(firebaseConfigured);
+  const [loading, setLoading] = useState(firebaseConfigured && LIVE);
+  // Website lookups of places that aren't in the build snapshot: place, or null when not found.
+  const [extra, setExtra] = useState<Record<string, Place | null>>({});
   const [error, setError] = useState<string | null>(null);
   const [offline, setOffline] = useState(!firebaseConfigured);
   const viewed = useRef(new Set<string>());
 
   useEffect(() => {
-    if (!db) return;
+    if (!db || !LIVE) return;
     const q = query(collection(db, 'places'), where('status', '==', 'approved'));
     return onSnapshot(
       q,
@@ -92,7 +107,18 @@ export function PlacesProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const index = useMemo(() => new Map(places.map((p) => [p.id, p])), [places]);
-  const byId = useCallback((id: string) => index.get(id), [index]);
+  const byId = useCallback((id: string) => index.get(id) ?? extra[id] ?? undefined, [index, extra]);
+  const resolved = useCallback((id: string) => LIVE || index.has(id) || id in extra, [index, extra]);
+
+  const lookup = useCallback((id: string) => {
+    if (LIVE || !db || index.has(id) || id in extra) return;
+    getDoc(doc(db, 'places', id))
+      .then((snap) => {
+        const data = snap.exists() ? ({ ...(snap.data() as Omit<Place, 'id'>), id: snap.id }) : null;
+        setExtra((prev) => ({ ...prev, [id]: data && data.status === 'approved' ? withActiveFeatured([data])[0] : null }));
+      })
+      .catch(() => setExtra((prev) => ({ ...prev, [id]: null })));
+  }, [index, extra]);
 
   const popular = useMemo(() => {
     const featured = places
@@ -147,8 +173,8 @@ export function PlacesProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ places, loading, error, offline, byId, popular, recordView, track, submitPlace }),
-    [places, loading, error, offline, byId, popular, recordView, track, submitPlace],
+    () => ({ places, loading, error, offline, byId, popular, lookup, resolved, recordView, track, submitPlace }),
+    [places, loading, error, offline, byId, popular, lookup, resolved, recordView, track, submitPlace],
   );
   return <PlacesContext.Provider value={value}>{children}</PlacesContext.Provider>;
 }

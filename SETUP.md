@@ -54,6 +54,10 @@ view counts, status and featured settings. Add `-- --overwrite` to reset them.
 
 ## How it works
 
+- **Website data is a snapshot.** The website does not read Firestore while people browse (that used up
+  the free daily reads): each deploy (`scripts/deploy-hostinger.sh`) copies approved places into the pages.
+  Run it after approving or editing places. A place approved since the last deploy still opens at
+  `/place/<id>` (one read). The phone app and admin always read Firestore live.
 - **Places** live in the `places` collection. `status` is `approved` (public), `pending`
   (waiting for review) or `rejected`.
 - **Add a place** in the app requires Google sign-in; submissions arrive as `pending`

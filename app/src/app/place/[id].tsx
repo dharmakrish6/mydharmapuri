@@ -23,7 +23,7 @@ import seed from '@/data/places.seed.json';
 import { placeSeo } from '@/lib/seo';
 import type { Place } from '@/lib/types';
 import { Badge, PressableScale } from '@/components/ui';
-import { CATEGORY_BY_KEY } from '@/lib/categories';
+import { CATEGORY_BY_KEY, areaSlug } from '@/lib/categories';
 import { usePlaces } from '@/lib/places';
 import { radius, shadow, space, useTheme } from '@/theme';
 
@@ -38,13 +38,18 @@ export default function PlaceScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { c } = useTheme();
   const insets = useSafeAreaInsets();
-  const { byId, places, loading, recordView, track } = usePlaces();
+  const { byId, places, loading, lookup, resolved, recordView, track } = usePlaces();
   const place = byId(id);
   const scrollY = useSharedValue(0);
 
   useEffect(() => {
     if (place) recordView(place.id);
   }, [place?.id, recordView]);
+
+  // Website: a place approved since the last deploy isn't in the page data yet; fetch just that one.
+  useEffect(() => {
+    if (!place && id) lookup(id);
+  }, [place, id, lookup]);
 
   const onScroll = useAnimatedScrollHandler((e) => {
     scrollY.value = e.contentOffset.y;
@@ -60,7 +65,7 @@ export default function PlaceScreen() {
   }));
 
   if (!place) {
-    if (loading) return <View style={{ flex: 1, backgroundColor: c.bg }} />;
+    if (loading || !resolved(id)) return <View style={{ flex: 1, backgroundColor: c.bg }} />;
     return <Redirect href="/" />;
   }
 
@@ -184,6 +189,11 @@ export default function PlaceScreen() {
                 </View>
               </View>
             )}
+
+            <PressableScale href={`/area/${areaSlug(place.taluk)}`} scaleTo={0.98} style={[styles.report, { borderColor: c.line }]}>
+              <Ionicons name="location-outline" size={16} color={c.leaf} />
+              <Text style={{ color: c.ink, fontSize: 13, fontWeight: '700' }}>Everything in {place.taluk} →</Text>
+            </PressableScale>
 
             <PressableScale onPress={() => router.push('/submit')} scaleTo={0.98} style={[styles.report, { borderColor: c.line }]}>
               <Ionicons name="create-outline" size={16} color={c.muted} />
