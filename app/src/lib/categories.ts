@@ -15,7 +15,17 @@ export interface CategoryMeta {
   subLabel: string | null;
   /** "All …" chip text for the sub-type filter. */
   subAll: string;
+  /** Fixed sub-types to pick from (instead of free text) when adding a place. */
+  subOptions?: readonly string[];
+  /** Shown as a tile in the home page grid (Urban services has its own card instead). */
+  inGrid?: boolean;
 }
+
+/**
+ * Urban services offered so far — the sub-types of the `services` category. Add new ones here
+ * (and in admin/src/types.ts SERVICE_TYPES); the Urban Services page shows a section per type.
+ */
+export const SERVICE_TYPES = ['Two-wheeler mechanic', 'RO water purifier service'] as const;
 
 // Ordered by everyday interest — this is the order shown across the app.
 export const CATEGORIES: CategoryMeta[] = [
@@ -27,7 +37,14 @@ export const CATEGORIES: CategoryMeta[] = [
   { key: 'colleges', label: 'Colleges', short: 'Colleges', icon: 'school', color: 'teal', subLabel: 'Stream', subAll: 'All streams' },
   { key: 'schools', label: 'Schools', short: 'Schools', icon: 'book', color: 'orange', subLabel: 'Type', subAll: 'All types' },
   { key: 'government_offices', label: 'Government offices', short: 'Govt', icon: 'business', color: 'leaf', subLabel: 'Office', subAll: 'All offices' },
+  {
+    key: 'services', label: 'Urban services', short: 'Services', icon: 'construct', color: 'teal',
+    subLabel: 'Service', subAll: 'All services', subOptions: SERVICE_TYPES, inGrid: false,
+  },
 ];
+
+/** Categories shown as tiles on the home page. */
+export const GRID_CATEGORIES = CATEGORIES.filter((c) => c.inGrid !== false);
 
 export const CATEGORY_BY_KEY = Object.fromEntries(CATEGORIES.map((c) => [c.key, c])) as Record<CategoryKey, CategoryMeta>;
 

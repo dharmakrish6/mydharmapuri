@@ -10,7 +10,11 @@ export const CATEGORIES = [
   { key: 'colleges', label: 'Colleges', subLabel: 'Stream' },
   { key: 'schools', label: 'Schools', subLabel: 'Type' },
   { key: 'government_offices', label: 'Government offices', subLabel: 'Office type' },
+  { key: 'services', label: 'Urban services', subLabel: 'Service' },
 ] as const;
+
+/** Urban service types (keep in sync with SERVICE_TYPES in app/src/lib/categories.ts). */
+export const SERVICE_TYPES = ['Two-wheeler mechanic', 'RO water purifier service'] as const;
 
 export type CategoryKey = (typeof CATEGORIES)[number]['key'];
 export const CATEGORY_LABEL = Object.fromEntries(CATEGORIES.map((c) => [c.key, c.label])) as Record<CategoryKey, string>;

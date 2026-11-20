@@ -12,6 +12,7 @@ const SCHEMA_TYPE: Record<CategoryKey, string> = {
   colleges: 'CollegeOrUniversity',
   schools: 'School',
   government_offices: 'GovernmentOffice',
+  services: 'LocalBusiness',
 };
 
 /** Singular, lower-case noun per category for titles ("Hospital in Harur"). */
@@ -24,13 +25,16 @@ const NOUN: Record<CategoryKey, string> = {
   colleges: 'College',
   schools: 'School',
   government_offices: 'Government office',
+  services: 'Service',
 };
 
 export function placeSeo(place: Place) {
   const path = `/place/${place.id}`;
-  const kind = place.subcategory ? `${place.subcategory} ${NOUN[place.category].toLowerCase()}` : NOUN[place.category];
+  // Services read better by their type alone: "Two-wheeler mechanic in Harur".
+  const noun = place.category === 'services' && place.subcategory ? place.subcategory : NOUN[place.category];
+  const kind = place.subcategory && place.category !== 'services' ? `${place.subcategory} ${noun.toLowerCase()}` : noun;
   const where = place.taluk === 'Dharmapuri' ? 'Dharmapuri' : `${place.taluk}, Dharmapuri`;
-  const title = `${place.name} – ${NOUN[place.category]} in ${where}`;
+  const title = `${place.name} – ${noun} in ${where}`;
   // Phone first: descriptions are cut at ~160 characters.
   const description = [
     `${place.name}: ${kind.toLowerCase()} in ${where}, Tamil Nadu.`,
@@ -176,11 +180,30 @@ export const SUBMIT_SEO: PageSeo = {
   path: '/submit',
   noindex: true,
 };
-export const URBAN_SEO: PageSeo = {
-  title: 'Urban Services in Dharmapuri – Coming soon',
-  description: 'Home, auto, beauty, repair, cleaning and 13 more local service categories for Dharmapuri — launching soon on MyDharmapuri.',
-  path: '/urban-services',
-};
+export function urbanSeo(places: Place[]): PageSeo {
+  const path = '/urban-services';
+  const types = [...new Set(places.map((p) => p.subcategory).filter(Boolean))] as string[];
+  const list = types.length ? types.join(', ').toLowerCase() : 'local service providers';
+  return {
+    title: `Urban Services in Dharmapuri – ${list.replace(/^./, (c) => c.toUpperCase())}`,
+    description: `${places.length || 'Local'} service providers in Dharmapuri district: ${list}. Phone numbers, addresses and directions on MyDharmapuri.`,
+    path,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Urban Services in Dharmapuri',
+        url: `${SITE_URL}${path}`,
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: places.length,
+          itemListElement: places.slice(0, 50).map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE_URL}/place/${p.id}`, name: p.name })),
+        },
+      },
+      breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Urban Services', path }]),
+    ],
+  };
+}
 export const NOT_FOUND_SEO: PageSeo = {
   title: 'Page not found – MyDharmapuri',
   description: "This page doesn't exist on MyDharmapuri.",

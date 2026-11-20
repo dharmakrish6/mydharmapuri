@@ -6,7 +6,8 @@ export type CategoryKey =
   | 'showrooms'
   | 'colleges'
   | 'schools'
-  | 'government_offices';
+  | 'government_offices'
+  | 'services';
 
 export type PlaceStatus = 'approved' | 'pending' | 'rejected';
 

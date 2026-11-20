@@ -37,7 +37,7 @@ const KEEP = [
   'category', 'name', 'subcategory', 'taluk', 'address', 'phone', 'type', 'brand', 'ownership',
   'description', 'howToReach', 'image', 'status', 'views', 'featuredRank', 'featuredLabel', 'featuredUntil',
 ];
-const ORDER = ['restaurants', 'hotels', 'hospitals', 'sightseeing', 'showrooms', 'colleges', 'schools', 'government_offices'];
+const ORDER = ['restaurants', 'hotels', 'hospitals', 'sightseeing', 'showrooms', 'colleges', 'schools', 'government_offices', 'services'];
 
 const env = readEnv();
 const projectId = env.EXPO_PUBLIC_FIREBASE_PROJECT_ID;

@@ -56,6 +56,11 @@ const BY_SUBCATEGORY: Record<CategoryKey, Record<string, ArtIcon> & { default: A
     Polytechnic: 'precision-manufacturing',
   },
   schools: { default: 'school', Government: 'school', Private: 'menu-book' },
+  services: {
+    default: 'handyman',
+    'Two-wheeler mechanic': 'two-wheeler',
+    'RO water purifier service': 'water-drop',
+  },
   government_offices: {
     default: 'account-balance',
     Collectorate: 'account-balance',

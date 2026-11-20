@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CATEGORIES, EMPTY_DRAFT, TALUKS, type Place, type PlaceDraft } from './types';
+import { CATEGORIES, EMPTY_DRAFT, SERVICE_TYPES, TALUKS, type Place, type PlaceDraft } from './types';
 
 /** Modal form for adding a new place or editing an existing one. */
 export function PlaceForm({ initial, onSave, onCancel, inline = false }: {
@@ -58,7 +58,15 @@ export function PlaceForm({ initial, onSave, onCancel, inline = false }: {
         <label>Name *<input className="input" required minLength={2} {...text('name')} /></label>
 
         <div className="grid2">
-          {sub && <label>{sub}<input className="input" placeholder="Used for the filter chips" {...text('subcategory')} /></label>}
+          {sub && d.category === 'services' ? (
+            <label>{sub} *
+              <select className="input" required value={d.subcategory ?? ''} onChange={(e) => set('subcategory', e.target.value || null)}>
+                <option value="">Choose…</option>
+                {SERVICE_TYPES.map((t) => <option key={t}>{t}</option>)}
+                {d.subcategory && !(SERVICE_TYPES as readonly string[]).includes(d.subcategory) && <option>{d.subcategory}</option>}
+              </select>
+            </label>
+          ) : sub && <label>{sub}<input className="input" placeholder="Used for the filter chips" {...text('subcategory')} /></label>}
           <label>Phone<input className="input" {...text('phone')} /></label>
         </div>
 

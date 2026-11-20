@@ -117,7 +117,7 @@ export default function SubmitScreen() {
               <Field label="Category" c={c}>
                 <View style={styles.wrap}>
                   {CATEGORIES.map((cat) => (
-                    <Chip key={cat.key} label={cat.label} color={cat.color} active={category === cat.key} onPress={() => setCategory(cat.key)} />
+                    <Chip key={cat.key} label={cat.label} color={cat.color} active={category === cat.key} onPress={() => { setCategory(cat.key); setSubcategory(''); }} />
                   ))}
                 </View>
               </Field>
@@ -126,7 +126,15 @@ export default function SubmitScreen() {
               </Field>
               {category && CATEGORY_BY_KEY[category].subLabel && (
                 <Field label={CATEGORY_BY_KEY[category].subLabel!} c={c}>
-                  <Input c={c} value={subcategory} onChangeText={setSubcategory} placeholder="e.g. Biryani, Eye Care, Budget…" />
+                  {CATEGORY_BY_KEY[category].subOptions ? (
+                    <View style={styles.wrap}>
+                      {CATEGORY_BY_KEY[category].subOptions!.map((opt) => (
+                        <Chip key={opt} label={opt} color={CATEGORY_BY_KEY[category].color} active={subcategory === opt} onPress={() => setSubcategory(opt)} />
+                      ))}
+                    </View>
+                  ) : (
+                    <Input c={c} value={subcategory} onChangeText={setSubcategory} placeholder="e.g. Biryani, Eye Care, Budget…" />
+                  )}
                 </Field>
               )}
               <Field label="Area (taluk) *" c={c}>

@@ -19,7 +19,7 @@ import { FeaturedCard } from '@/components/PlaceCard';
 import { Seo } from '@/components/Seo';
 import { HOME_SEO } from '@/lib/seo';
 import { PressableScale, SectionTitle } from '@/components/ui';
-import { CATEGORIES, TALUKS, areaSlug } from '@/lib/categories';
+import { GRID_CATEGORIES, TALUKS, areaSlug } from '@/lib/categories';
 import { usePlaces } from '@/lib/places';
 import { radius, shadow, space, useInBrowser, useTheme } from '@/theme';
 
@@ -121,7 +121,7 @@ export default function Home() {
 
         {/* Categories */}
         <View style={styles.grid}>
-          {CATEGORIES.map((cat, i) => {
+          {GRID_CATEGORIES.map((cat, i) => {
             const tint = c[cat.color];
             return (
               <Animated.View key={cat.key} entering={FadeInDown.delay(80 + i * 45).springify().damping(16)}>
@@ -186,9 +186,11 @@ export default function Home() {
           <PressableScale href="/urban-services" scaleTo={0.98}>
             <LinearGradient colors={[c.teal, c.violet]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[styles.promo, shadow(c, 2)]}>
               <View style={{ flex: 1, gap: 6 }}>
-                <View style={styles.soonPill}><Text style={styles.soonPillText}>COMING SOON</Text></View>
+                <View style={styles.soonPill}><Text style={styles.soonPillText}>NEW</Text></View>
                 <Text style={styles.promoTitle}>Urban Services</Text>
-                <Text style={styles.promoBody}>Home, auto, beauty, repairs and 14 more service categories — launching soon.</Text>
+                <Text style={styles.promoBody}>
+                  {counts.services ? `${counts.services} providers · ` : ''}Two-wheeler mechanics, RO water purifier service and more on the way.
+                </Text>
               </View>
               <Ionicons name="arrow-forward-circle" size={36} color="#fff" />
             </LinearGradient>

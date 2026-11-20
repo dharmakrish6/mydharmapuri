@@ -18,7 +18,7 @@ WHAT="${1:-all}"
 [ -f "$TOKEN_FILE" ] || { echo "Missing $TOKEN_FILE — see the notes at the top of this script." >&2; exit 1; }
 TOKEN="$(tr -d ' \n\r' < "$TOKEN_FILE")"
 json() { python3 -c "import json,sys; print(json.load(sys.stdin)[sys.argv[1]])" "$1"; }
-api() { curl -sS --fail-with-body -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json' -H 'Content-Type: application/json' "$@"; }
+api() { curl -sS --retry 3 --fail-with-body -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json' -H 'Content-Type: application/json' "$@"; }
 
 deploy() { # deploy <domain> <dist dir> <zip name>
   local domain="$1" dist="$2" zip="$3" tmp size cred url ak rk
@@ -28,9 +28,9 @@ deploy() { # deploy <domain> <dist dir> <zip name>
   echo "[$domain] uploading $zip ($size bytes)"
   cred=$(api -X POST -d "{\"username\":\"$ACCOUNT\",\"domain\":\"$domain\"}" "$API/files/upload-urls")
   url=$(echo "$cred" | json url); ak=$(echo "$cred" | json auth_key); rk=$(echo "$cred" | json rest_auth_key)
-  curl -sS --fail -o /dev/null -X POST "$url/$zip?override=true" -H "X-Auth: $ak" -H "X-Auth-Rest: $rk" \
+  curl -sS --retry 3 --fail -o /dev/null -X POST "$url/$zip?override=true" -H "X-Auth: $ak" -H "X-Auth-Rest: $rk" \
     -H "Tus-Resumable: 1.0.0" -H "Upload-Length: $size" -H "Upload-Offset: 0"
-  curl -sS --fail -o /dev/null -X PATCH "$url/$zip?override=true" -H "X-Auth: $ak" -H "X-Auth-Rest: $rk" \
+  curl -sS --retry 3 --fail -o /dev/null -X PATCH "$url/$zip?override=true" -H "X-Auth: $ak" -H "X-Auth-Rest: $rk" \
     -H "Tus-Resumable: 1.0.0" -H "Content-Type: application/offset+octet-stream" -H "Upload-Offset: 0" --data-binary "@$tmp"
   api -X POST -d "{\"archive_path\":\"$zip\"}" "$API/accounts/$ACCOUNT/websites/$domain/deploy" >/dev/null
   api -X DELETE "$API/accounts/$ACCOUNT/websites/$domain/cache/clear" >/dev/null || true
