@@ -34,6 +34,17 @@
       "android": {
         "buildType": "app-bundle"
       }
+    },
+    "production-apk": {
+      "extends": "production",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_ADMOB_BANNER_ANDROID": "test",
+        "EXPO_PUBLIC_ADMOB_NATIVE_ANDROID": "test"
+      }
     }
   },
   "submit": {

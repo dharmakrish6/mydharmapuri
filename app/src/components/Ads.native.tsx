@@ -11,14 +11,15 @@ try {
   ads = null;
 }
 
-/** Real ad units come from EXPO_PUBLIC_ADMOB_* (eas.json); dev builds and missing values use Google's test ads. */
+/** Real ad units come from EXPO_PUBLIC_ADMOB_* (eas.json); dev builds and missing/"test" values use Google's test ads. */
 function unit(kind: 'banner' | 'native'): string | null {
   if (!ads) return null;
   const real = Platform.select({
     android: kind === 'banner' ? process.env.EXPO_PUBLIC_ADMOB_BANNER_ANDROID : process.env.EXPO_PUBLIC_ADMOB_NATIVE_ANDROID,
     ios: kind === 'banner' ? process.env.EXPO_PUBLIC_ADMOB_BANNER_IOS : process.env.EXPO_PUBLIC_ADMOB_NATIVE_IOS,
   });
-  if (!__DEV__ && real) return real;
+  // Anything that isn't a real AdMob unit (e.g. "test" in the production-apk profile) means test ads.
+  if (!__DEV__ && real?.startsWith('ca-app-pub-')) return real;
   return kind === 'banner' ? ads.TestIds.ADAPTIVE_BANNER : ads.TestIds.NATIVE;
 }
 

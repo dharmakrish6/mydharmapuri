@@ -68,6 +68,9 @@ export function FeaturedCard({ place }: { place: Place }) {
         <>
           <Image source={place.image.url} style={StyleSheet.absoluteFill} contentFit="cover" transition={300} />
           <LinearGradient colors={['transparent', 'rgba(0,0,0,0.75)']} style={StyleSheet.absoluteFill} />
+          {place.image.credit.startsWith('Representative') && (
+            <Text style={styles.representative}>Representative photo</Text>
+          )}
         </>
       ) : (
         <PlaceArt place={place} variant="card" />
@@ -135,5 +138,6 @@ const styles = StyleSheet.create({
   featuredLabelText: { color: '#fff', fontSize: 10, fontWeight: '800', letterSpacing: 0.5, textTransform: 'uppercase' },
   featuredCat: { color: 'rgba(255,255,255,0.8)', fontSize: 11, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
   featuredName: { color: '#fff', fontSize: 18, fontWeight: '800', lineHeight: 22, marginTop: 4 },
+  representative: { position: 'absolute', right: 10, bottom: 6, color: 'rgba(255,255,255,0.6)', fontSize: 9 },
   featuredMeta: { color: 'rgba(255,255,255,0.85)', fontSize: 12.5, marginTop: 6 },
 });

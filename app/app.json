@@ -19,7 +19,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.techieqa.dharmapuri",
-      "versionCode": 10,
+      "versionCode": 11,
       "googleServicesFile": "./google-services.json"
     },
     "web": {
@@ -53,6 +53,14 @@
           "androidAppId": "ca-app-pub-7096292729380486~5035883337",
           "iosAppId": "ca-app-pub-3940256099942544~1458002511",
           "delayAppMeasurementInit": true
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraProguardRules": "# Room databases are created by reflection (WorkManager's WorkDatabase_Impl, used by Google Mobile Ads).\n-keep class * extends androidx.room.RoomDatabase { <init>(); }\n-keep class androidx.work.impl.WorkDatabase_Impl { *; }\n-keep class androidx.work.** { *; }\n-dontwarn androidx.work.**"
+          }
         }
       ]
     ],
