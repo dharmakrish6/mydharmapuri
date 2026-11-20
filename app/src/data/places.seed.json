@@ -169,6 +169,28 @@
     "updatedAt": "2026-11-12T03:53:45.511Z"
   },
   {
+    "id": "M9Qe434w0LclGkxp64tu",
+    "category": "restaurants",
+    "name": "Ayyanar Sweets",
+    "subcategory": "Indian",
+    "taluk": "Dharmapuri",
+    "address": "Annadhanam Committee Building, 85, by pass road, Dharmapuri, Tamil Nadu 636701",
+    "phone": "9443971114",
+    "type": null,
+    "brand": null,
+    "ownership": null,
+    "description": "தமிழக என்னைப் பலகாரம்",
+    "howToReach": null,
+    "image": null,
+    "status": "approved",
+    "views": 0,
+    "featuredRank": 1,
+    "featuredLabel": null,
+    "featuredUntil": "2026-11-30",
+    "submittedBy": null,
+    "updatedAt": "2026-11-20T07:04:30.065Z"
+  },
+  {
     "id": "restaurants-barbequeen-restaurant-harur",
     "category": "restaurants",
     "name": "Barbequeen Restaurant (Harur)",

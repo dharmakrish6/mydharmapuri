@@ -5,11 +5,13 @@ import {
   collection,
   doc,
   getDoc,
+  getDocs,
   increment,
   onSnapshot,
   query,
   serverTimestamp,
   setDoc,
+  Timestamp,
   updateDoc,
   where,
 } from 'firebase/firestore';
@@ -25,6 +27,9 @@ const FEATURED_SLOTS = 8;
  * places every time, which used up Firestore's free daily reads. Redeploy the site to publish changes.
  */
 const LIVE = Platform.OS !== 'web';
+
+/** When the bundled snapshot was taken: the newest `updatedAt` in it. */
+const SNAPSHOT_AT = (seed as { updatedAt?: string }[]).reduce((m, p) => (p.updatedAt && p.updatedAt > m ? p.updatedAt : m), '');
 
 export type TrackEvent = 'views' | 'calls' | 'directions' | 'shares';
 
@@ -89,6 +94,7 @@ export function PlacesProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!db || !LIVE) return;
     const q = query(collection(db, 'places'), where('status', '==', 'approved'));
+    // (Website: see the "changed since the snapshot" effect below instead.)
     return onSnapshot(
       q,
       (snap) => {
@@ -104,6 +110,24 @@ export function PlacesProvider({ children }: { children: ReactNode }) {
         setLoading(false);
       },
     );
+  }, []);
+
+  // Website: one small query for places approved or edited since the snapshot was built, so new
+  // listings show up (and are searchable) before the next deploy. Usually returns nothing.
+  useEffect(() => {
+    if (LIVE || !db || !SNAPSHOT_AT) return;
+    const since = Timestamp.fromDate(new Date(SNAPSHOT_AT));
+    getDocs(query(collection(db, 'places'), where('status', '==', 'approved'), where('updatedAt', '>', since)))
+      .then((snap) => {
+        if (snap.empty) return;
+        const fresh = snap.docs.map((d) => ({ ...(d.data() as Omit<Place, 'id'>), id: d.id }));
+        setPlaces((prev) => {
+          const byIdMap = new Map(prev.map((p) => [p.id, p]));
+          for (const p of fresh) byIdMap.set(p.id, p);
+          return withActiveFeatured([...byIdMap.values()]);
+        });
+      })
+      .catch(() => {}); // Offline or quota: the snapshot is still complete as of the last deploy.
   }, []);
 
   const index = useMemo(() => new Map(places.map((p) => [p.id, p])), [places]);
