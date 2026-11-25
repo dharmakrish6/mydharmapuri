@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "179533317127-ea69r7lj2gcki7mg8akj0v1n2cr47t7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techieqa.dharmapuri",
+            "certificate_hash": "63dba20982b2125f5c16f0163305aa9ede8266b8"
+          }
+        },
+        {
           "client_id": "179533317127-g6181131eo0r6h1rvtpenhu0m7pc6tlk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
