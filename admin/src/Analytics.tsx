@@ -1,6 +1,6 @@
 import { placeHref } from './links';
 import { useMemo, useState } from 'react';
-import { monthLabel, monthsEnding, shiftMonth, statTotal, thisMonth, useStats } from './data';
+import { monthLabel, monthsEnding, shiftMonth, statTotal, thisMonth, trafficTotals, useStats, useTraffic } from './data';
 import { MonthPicker } from './MonthPicker';
 import { BarChart, Tile } from './Payments';
 import { CATEGORIES, CATEGORY_LABEL, STAT_KEYS, type Place, type PlaceStats, type StatKey } from './types';
@@ -89,6 +89,8 @@ export function AnalyticsTab({ places }: { places: Place[] }) {
         <button className="btn" onClick={exportCsv} disabled={!rows.length}>Download CSV</button>
       </div>
 
+      <SiteVisits month={month} />
+
       <section className="stats">
         {STAT_KEYS.map(({ key, label }) => (
           <Tile key={key} label={label} value={cur[key].toLocaleString('en-IN')} sub={before && <Change now={cur[key]} before={before[key]} />} />
@@ -153,6 +155,52 @@ export function AnalyticsTab({ places }: { places: Place[] }) {
       )}
       <p className="muted small">
         Views count once per visitor session; calls, directions and shares count the first tap per session. Months are in India time.
+      </p>
+    </div>
+  );
+}
+
+/** Days of `month` (YYYY-MM) as YYYY-MM-DD, up to today. */
+function daysOf(month: string) {
+  const [y, m] = month.split('-').map(Number);
+  const count = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  const today = new Date(Date.now() + 330 * 60_000).toISOString().slice(0, 10);
+  return Array.from({ length: count }, (_, i) => `${month}-${String(i + 1).padStart(2, '0')}`).filter((d) => d <= today);
+}
+
+const dayLabel = (day: string, style: 'long' | 'short') =>
+  style === 'short'
+    ? String(Number(day.slice(8)))
+    : new Date(`${day}T00:00:00Z`).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+
+/** Page visits across the whole website + app for one month, per day. */
+function SiteVisits({ month }: { month: string }) {
+  const { days, loading, error } = useTraffic(month);
+  const prev = useTraffic(shiftMonth(month, -1));
+  const t = trafficTotals(days);
+  const before = prev.loading ? undefined : trafficTotals(prev.days);
+  const byDay = new Map(days.map((d) => [d.id, (d.webViews ?? 0) + (d.appViews ?? 0)]));
+  const fmt = (n: number) => n.toLocaleString('en-IN');
+  return (
+    <div className="panel">
+      <h3>Page visits · {monthLabel(month)}</h3>
+      {error && <p className="error">{error}</p>}
+      <section className="stats">
+        <Tile label="Page visits" value={fmt(t.views)} sub={before && <Change now={t.views} before={before.views} />} />
+        <Tile label="Visitors (sessions)" value={fmt(t.visits)} sub={before && <Change now={t.visits} before={before.visits} />} />
+        <Tile label="Website page visits" value={fmt(t.webViews)} sub={<span className="muted">{fmt(t.webVisits)} visitors</span>} />
+        <Tile label="App screen visits" value={fmt(t.appViews)} sub={<span className="muted">{fmt(t.appVisits)} visitors</span>} />
+      </section>
+      {loading ? <div className="spinner" /> : (
+        <BarChart
+          data={daysOf(month).map((d) => ({ month: d, value: byDay.get(d) ?? 0 }))}
+          format={(n) => `${fmt(n)} page visits`}
+          label={dayLabel}
+        />
+      )}
+      <p className="muted small">
+        Every page opened on mydharmapuri.com and every screen opened in the app counts once; a visitor is one browser
+        session or app launch. Counting started 26 Nov 2026. Days are in India time.
       </p>
     </div>
   );

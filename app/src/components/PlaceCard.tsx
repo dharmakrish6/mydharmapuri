@@ -3,7 +3,7 @@ import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { CATEGORY_BY_KEY } from '@/lib/categories';
-import type { Place } from '@/lib/types';
+import { placePath, type Place } from '@/lib/types';
 import { radius, shadow, space, useTheme } from '@/theme';
 import { PlaceArt } from './PlaceArt';
 import { PressableScale } from './ui';
@@ -15,7 +15,7 @@ export function PlaceCard({ place }: { place: Place }) {
   const tint = c[meta.color];
   return (
     <PressableScale
-      href={`/place/${place.id}`}
+      href={placePath(place)}
       scaleTo={0.98}
       accessibilityLabel={place.name}
       style={[styles.card, { backgroundColor: c.card, borderColor: c.line }, shadow(c)]}
@@ -59,7 +59,7 @@ export function FeaturedCard({ place }: { place: Place }) {
   const tint = c[meta.color];
   return (
     <PressableScale
-      href={`/place/${place.id}`}
+      href={placePath(place)}
       accessibilityLabel={place.name}
       style={[styles.featured, shadow(c, 2)]}
     >

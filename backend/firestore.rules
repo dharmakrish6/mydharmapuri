@@ -79,6 +79,30 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    // Site-wide visit counters: /traffic/{YYYY-MM-DD}. Anyone may add +1 to a page-view
+    // counter (and to the matching visitor counter); only admins read them.
+    function trafficKeys() {
+      return ['webViews', 'webVisits', 'appViews', 'appVisits'];
+    }
+    match /traffic/{day} {
+      allow read: if isAdmin();
+      allow create: if
+        day.matches('^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')
+        && request.resource.data.keys().hasOnly(trafficKeys())
+        && request.resource.data.keys().size() >= 1
+        && request.resource.data.keys().size() <= 2
+        && request.resource.data.get('webViews', 1) == 1
+        && request.resource.data.get('webVisits', 1) == 1
+        && request.resource.data.get('appViews', 1) == 1
+        && request.resource.data.get('appVisits', 1) == 1;
+      allow update: if
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(trafficKeys())
+        && request.resource.data.diff(resource.data).affectedKeys().size() <= 2
+        && bumpedByOne('webViews') && bumpedByOne('webVisits')
+        && bumpedByOne('appViews') && bumpedByOne('appVisits');
+      allow delete: if isAdmin();
+    }
+
     // Sponsorship payments: /payments/{placeId}_{YYYY-MM}. Admin only.
     match /payments/{paymentId} {
       allow read, write: if isAdmin();

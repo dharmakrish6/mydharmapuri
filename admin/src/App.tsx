@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, configured, db } from './firebase';
-import { createPlace, featuredInMonth, removePlace, rupees, setStatus, statTotal, thisMonth, unfeature, updatePlace, usePayments, usePlaces, useStats } from './data';
+import { createPlace, featuredInMonth, removePlace, rupees, setStatus, statTotal, thisMonth, todayIST, trafficTotals, unfeature, updatePlace, usePayments, usePlaces, useStats, useTraffic } from './data';
 import { PlaceForm } from './PlaceForm';
 import { FeaturedTab } from './Featured';
 import { PaymentsTab } from './Payments';
@@ -102,6 +102,11 @@ function Dashboard({ user }: { user: User }) {
   const month = thisMonth();
   const monthList = useMemo(() => [month], [month]);
   const { stats: monthStats } = useStats(monthList);
+  const { days: trafficDays } = useTraffic(month);
+  const traffic = useMemo(() => {
+    const today = todayIST();
+    return { month: trafficTotals(trafficDays).views, today: trafficTotals(trafficDays.filter((d) => d.id === today)).views };
+  }, [trafficDays]);
   const clicksThisMonth = useMemo(() => new Map(monthStats.map((s) => [s.placeId, statTotal(s)])), [monthStats]);
   const [tab, setTabState] = useState<Tab>('pending');
   const route = useRoute();
@@ -193,6 +198,8 @@ function Dashboard({ user }: { user: User }) {
           <Stat label="Live places" value={stats.approved} />
           <Stat label="Waiting review" value={pending.length} tone={pending.length ? 'warn' : undefined} />
           <Stat label="Featured" value={stats.featured} />
+          <Stat label="Page visits today" value={traffic.today.toLocaleString('en-IN')} />
+          <Stat label="Page visits this month" value={traffic.month.toLocaleString('en-IN')} />
           <Stat label="Clicks this month" value={stats.clicks.toLocaleString('en-IN')} />
           <Stat label="Payments due this month" value={rupees(stats.due)} tone={stats.due ? 'warn' : undefined} />
         </section>

@@ -1,6 +1,6 @@
 import { SITE_URL, breadcrumbs, type PageSeo } from '@/components/Seo';
 import { CATEGORIES, CATEGORY_BY_KEY, TALUKS, areaSlug } from './categories';
-import type { CategoryKey, Place } from './types';
+import { placePath, type CategoryKey, type Place } from './types';
 
 /** schema.org type per category, for Google rich results. */
 const SCHEMA_TYPE: Record<CategoryKey, string> = {
@@ -29,7 +29,7 @@ const NOUN: Record<CategoryKey, string> = {
 };
 
 export function placeSeo(place: Place) {
-  const path = `/place/${place.id}`;
+  const path = placePath(place);
   // Services read better by their type alone: "Two-wheeler mechanic in Harur".
   const noun = place.category === 'services' && place.subcategory ? place.subcategory : NOUN[place.category];
   const kind = place.subcategory && place.category !== 'services' ? `${place.subcategory} ${noun.toLowerCase()}` : noun;
@@ -97,7 +97,7 @@ export function categorySeo(key: CategoryKey, places: Place[]) {
         itemListElement: places.slice(0, 50).map((p, i) => ({
           '@type': 'ListItem',
           position: i + 1,
-          url: `${SITE_URL}/place/${p.id}`,
+          url: `${SITE_URL}${placePath(p)}`,
           name: p.name,
         })),
       },
@@ -152,7 +152,7 @@ export function areaSeo(taluk: string, places: Place[]) {
         itemListElement: places.slice(0, 50).map((p, i) => ({
           '@type': 'ListItem',
           position: i + 1,
-          url: `${SITE_URL}/place/${p.id}`,
+          url: `${SITE_URL}${placePath(p)}`,
           name: p.name,
         })),
       },
@@ -197,7 +197,7 @@ export function urbanSeo(places: Place[]): PageSeo {
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: places.length,
-          itemListElement: places.slice(0, 50).map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE_URL}/place/${p.id}`, name: p.name })),
+          itemListElement: places.slice(0, 50).map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE_URL}${placePath(p)}`, name: p.name })),
         },
       },
       breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Urban Services', path }]),

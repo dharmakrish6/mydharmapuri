@@ -86,9 +86,9 @@ export default function Home() {
               </View>
               <Text style={styles.brandName}>MyDharmapuri</Text>
               <View style={{ flex: 1 }} />
-              <PressableScale onPress={() => router.push('/submit')} style={styles.addBtn} accessibilityLabel="Add a place">
+              <PressableScale onPress={() => router.push('/submit')} style={styles.addBtn} accessibilityLabel="Add your Business">
                 <Ionicons name="add" size={16} color="#122a20" />
-                <Text style={styles.addBtnText}>Add a place</Text>
+                <Text style={styles.addBtnText}>Add your Business</Text>
               </PressableScale>
             </Animated.View>
             <Animated.Text entering={FadeInDown.delay(80).duration(600)} style={styles.heroKicker}>

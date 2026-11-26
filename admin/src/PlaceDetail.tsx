@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import {
   featureExpired, featuredInMonth, fmtDate, monthLabel, monthsEnding, recordPayment, removePayment, rupees,
-  shiftMonth, statTotal, thisMonth, todayIST, updatePlace, usePlaceStats,
+  SITE, shiftMonth, sitePath, statTotal, thisMonth, todayIST, updatePlace, usePlaceStats,
 } from './data';
 import { Change } from './Analytics';
 import { MonthPicker } from './MonthPicker';
@@ -16,7 +16,6 @@ const SECTIONS: { key: Section; label: string }[] = [
   { key: 'payments', label: 'Sponsorship & payments' },
 ];
 
-const SITE = 'https://mydharmapuri.com';
 const HISTORY_MONTHS = 12;
 
 /** One business: header with status/actions, then analytics, the edit form, and its payment ledger. */
@@ -63,7 +62,7 @@ export function PlaceDetail({ place, section, payments, userEmail, act, onStatus
             <option value="rejected">Rejected</option>
           </select>
           {place.status === 'approved' && (
-            <a className="btn small" href={`${SITE}/place/${encodeURIComponent(place.id)}`} target="_blank" rel="noreferrer">View on site ↗</a>
+            <a className="btn small" href={`${SITE}${sitePath(place)}`} target="_blank" rel="noreferrer">View on site ↗</a>
           )}
           <button className="btn small danger ghost" onClick={() => onDelete(place)}>Delete</button>
         </div>

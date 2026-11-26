@@ -4,6 +4,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  documentId,
   onSnapshot,
   query,
   serverTimestamp,
@@ -13,7 +14,7 @@ import {
   writeBatch,
 } from 'firebase/firestore';
 import { db } from './firebase';
-import type { Payment, Place, PlaceDraft, PlaceStats, PlaceStatus, StatKey } from './types';
+import type { Payment, Place, PlaceDraft, PlaceStats, PlaceStatus, StatKey, TrafficDay } from './types';
 
 // ---------- Dates (all in India time) ----------
 
@@ -61,6 +62,29 @@ export const statTotal = (s: Partial<Record<StatKey, number>> | undefined) =>
   (s?.views ?? 0) + (s?.calls ?? 0) + (s?.directions ?? 0) + (s?.shares ?? 0);
 
 /** Live list of every place (all statuses). Admin-only by Firestore rules. */
+// ---------- Page URLs (slugs) ----------
+
+/** Latest places seen by usePlaces(), used to keep slugs unique. */
+let known: Place[] = [];
+
+const slugify = (s: string) =>
+  s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+
+/** "Bright RO Systems" → "bright-ro-systems" (or "-harur", "-2" … if taken). Same rules as backend/scripts/backfill-slugs.mjs. */
+function newSlug(name: string, taluk: string, ownId?: string) {
+  const taken = new Set(known.filter((p) => p.id !== ownId).flatMap((p) => [p.id, p.slug].filter(Boolean) as string[]));
+  const base = slugify(name) || 'place';
+  const t = slugify(taluk);
+  for (const s of [base, t && `${base}-${t}`]) if (s && !taken.has(s)) return s;
+  for (let n = 2; ; n++) if (!taken.has(`${base}-${n}`)) return `${base}-${n}`;
+}
+
+/** The slug a place should have: its existing one, else a new one from its name. */
+const slugFor = (id: string, name: string, taluk: string) => known.find((p) => p.id === id)?.slug || newSlug(name, taluk, id);
+
+export const SITE = 'https://mydharmapuri.com';
+export const sitePath = (p: Pick<Place, 'id' | 'slug'>) => `/place/${p.slug || p.id}`;
+
 export function usePlaces() {
   const [places, setPlaces] = useState<Place[]>([]);
   const [loading, setLoading] = useState(true);
@@ -71,7 +95,8 @@ export function usePlaces() {
     return onSnapshot(
       collection(db, 'places'),
       (snap) => {
-        setPlaces(snap.docs.map((d) => ({ ...(d.data() as Omit<Place, 'id'>), id: d.id })));
+        known = snap.docs.map((d) => ({ ...(d.data() as Omit<Place, 'id'>), id: d.id }));
+        setPlaces(known);
         setLoading(false);
       },
       (err) => {
@@ -89,6 +114,9 @@ function clean(draft: PlaceDraft) {
   return {
     ...draft,
     name: draft.name.trim(),
+    image: draft.image?.url.trim()
+      ? { url: draft.image.url.trim(), credit: draft.image.credit.trim(), license: draft.image.license.trim(), sourcePage: draft.image.sourcePage.trim() }
+      : null,
     subcategory: t(draft.subcategory),
     address: t(draft.address),
     phone: t(draft.phone),
@@ -107,7 +135,7 @@ function clean(draft: PlaceDraft) {
 export async function createPlace(draft: PlaceDraft) {
   await addDoc(collection(db!, 'places'), {
     ...clean(draft),
-    image: null,
+    slug: newSlug(draft.name.trim(), draft.taluk),
     views: 0,
     source: 'admin',
     submittedBy: null,
@@ -117,11 +145,16 @@ export async function createPlace(draft: PlaceDraft) {
 }
 
 export async function updatePlace(id: string, draft: PlaceDraft) {
-  await updateDoc(doc(db!, 'places', id), { ...clean(draft), updatedAt: serverTimestamp() });
+  await updateDoc(doc(db!, 'places', id), { ...clean(draft), slug: slugFor(id, draft.name.trim(), draft.taluk), updatedAt: serverTimestamp() });
 }
 
 export async function setStatus(id: string, status: PlaceStatus) {
-  await updateDoc(doc(db!, 'places', id), { status, updatedAt: serverTimestamp() });
+  const p = known.find((x) => x.id === id);
+  await updateDoc(doc(db!, 'places', id), {
+    status,
+    ...(p && !p.slug && { slug: newSlug(p.name, p.taluk, id) }), // user submissions get their URL on review
+    updatedAt: serverTimestamp(),
+  });
 }
 
 export async function removePlace(id: string) {
@@ -179,6 +212,33 @@ export function usePlaceStats(placeId: string) {
   }, [placeId]);
   const fresh = result.id === placeId;
   return { stats: fresh ? result.stats : [], loading: !fresh, error: fresh ? result.error : null };
+}
+
+/** Live site-wide visit counters for every day of `month` (YYYY-MM). */
+export function useTraffic(month: string) {
+  const [result, setResult] = useState<{ month: string; days: TrafficDay[]; error: string | null }>({ month: '', days: [], error: null });
+  useEffect(() => {
+    if (!db) return;
+    return onSnapshot(
+      query(collection(db, 'traffic'), where(documentId(), '>=', `${month}-01`), where(documentId(), '<=', `${month}-31`)),
+      (snap) => setResult({ month, days: snap.docs.map((d) => ({ ...(d.data() as Omit<TrafficDay, 'id'>), id: d.id })), error: null }),
+      (err) => setResult({ month, days: [], error: err.message }),
+    );
+  }, [month]);
+  const fresh = result.month === month;
+  return { days: fresh ? result.days : [], loading: !fresh, error: fresh ? result.error : null };
+}
+
+/** Page views + visitors summed over days. */
+export function trafficTotals(days: TrafficDay[]) {
+  const t = { webViews: 0, webVisits: 0, appViews: 0, appVisits: 0 };
+  for (const d of days) {
+    t.webViews += d.webViews ?? 0;
+    t.webVisits += d.webVisits ?? 0;
+    t.appViews += d.appViews ?? 0;
+    t.appVisits += d.appVisits ?? 0;
+  }
+  return { ...t, views: t.webViews + t.appViews, visits: t.webVisits + t.appVisits };
 }
 
 // ---------- Payments ----------

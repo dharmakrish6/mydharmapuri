@@ -190,11 +190,13 @@ export function Tile({ label, value, sub, tone }: { label: string; value: string
 }
 
 /** Single-series vertical bars by month, with hover values and click-to-select. */
-export function BarChart({ data, format, highlight, onSelect }: {
+export function BarChart({ data, format, highlight, onSelect, label = monthLabel }: {
   data: { month: string; value: number }[];
   format: (n: number) => string;
   highlight?: string;
   onSelect?: (month: string) => void;
+  /** Column label: long for the tooltip, short under the bar. Defaults to month names. */
+  label?: (key: string, style: 'long' | 'short') => string;
 }) {
   const max = Math.max(1, ...data.map((d) => d.value));
   return (
@@ -206,11 +208,11 @@ export function BarChart({ data, format, highlight, onSelect }: {
           role="listitem"
           className={`bar-col ${d.month === highlight ? 'on' : ''}`}
           onClick={() => onSelect?.(d.month)}
-          aria-label={`${monthLabel(d.month)}: ${format(d.value)}`}
+          aria-label={`${label(d.month, 'long')}: ${format(d.value)}`}
         >
-          <span className="bar-tip">{monthLabel(d.month)}<strong>{format(d.value)}</strong></span>
+          <span className="bar-tip">{label(d.month, 'long')}<strong>{format(d.value)}</strong></span>
           <span className="bar-track"><span className="bar" style={{ height: `${(d.value / max) * 100}%` }} /></span>
-          <span className="bar-label">{monthLabel(d.month, 'short')}</span>
+          <span className="bar-label">{label(d.month, 'short')}</span>
         </button>
       ))}
     </div>

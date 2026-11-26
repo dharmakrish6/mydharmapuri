@@ -18,10 +18,10 @@ import { goBack } from '@/components/ScreenHeader';
 import { PlaceCard } from '@/components/PlaceCard';
 import { AdBanner } from '@/components/Ads';
 import { PlaceArt } from '@/components/PlaceArt';
-import { Seo } from '@/components/Seo';
+import { SITE_URL, Seo } from '@/components/Seo';
 import seed from '@/data/places.seed.json';
 import { placeSeo } from '@/lib/seo';
-import type { Place } from '@/lib/types';
+import { placePath, type Place } from '@/lib/types';
 import { Badge, PressableScale } from '@/components/ui';
 import { CATEGORY_BY_KEY, areaSlug } from '@/lib/categories';
 import { usePlaces } from '@/lib/places';
@@ -31,7 +31,7 @@ const HERO = 300;
 
 /** Pre-render a page for every place in the bundled snapshot (web static export). */
 export function generateStaticParams() {
-  return (seed as Place[]).map((p) => ({ id: p.id }));
+  return (seed as Place[]).map((p) => ({ id: p.slug || p.id }));
 }
 
 export default function PlaceScreen() {
@@ -50,6 +50,11 @@ export default function PlaceScreen() {
   useEffect(() => {
     if (!place && id) lookup(id);
   }, [place, id, lookup]);
+
+  // Old links by ID → the readable URL (/place/bright-ro-systems).
+  useEffect(() => {
+    if (place?.slug && id !== place.slug) router.replace(placePath(place));
+  }, [place, id]);
 
   const onScroll = useAnimatedScrollHandler((e) => {
     scrollY.value = e.contentOffset.y;
@@ -90,11 +95,13 @@ export default function PlaceScreen() {
   };
   const share = async () => {
     track(place.id, 'shares');
-    const text = [place.name, place.address, place.phone && `Phone: ${place.phone}`, mapsUrl].filter(Boolean).join('\n');
+    // The page link goes first: WhatsApp, Telegram, etc. build their preview card from the first link.
+    const url = `${SITE_URL}${placePath(place)}`;
+    const details = [place.name, place.address, place.phone && `Phone: ${place.phone}`, `Directions: ${mapsUrl}`].filter(Boolean).join('\n');
     if (Platform.OS === 'web' && typeof navigator !== 'undefined' && navigator.share) {
-      await navigator.share({ title: place.name, text }).catch(() => {});
+      await navigator.share({ title: place.name, text: details, url }).catch(() => {});
     } else {
-      await Share.share({ message: text, title: place.name }).catch(() => {});
+      await Share.share({ message: `${url}\n\n${details}`, title: place.name }).catch(() => {});
     }
   };
 
@@ -175,8 +182,8 @@ export default function PlaceScreen() {
                 <Text style={[styles.body, { color: c.ink }]}>{place.howToReach}</Text>
               </Animated.View>
             )}
-            {place.image && (
-              <Text style={[styles.credit, { color: c.muted }]}>{place.image.credit} · {place.image.license}</Text>
+            {!!(place.image?.credit || place.image?.license) && (
+              <Text style={[styles.credit, { color: c.muted }]}>{[place.image.credit, place.image.license].filter(Boolean).join(' · ')}</Text>
             )}
 
             <AdBanner />

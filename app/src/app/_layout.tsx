@@ -4,10 +4,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AdsProvider } from '@/components/Ads';
 import { AuthProvider } from '@/lib/auth';
 import { PlacesProvider } from '@/lib/places';
+import { usePageVisitCounter } from '@/lib/traffic';
 import { useTheme } from '@/theme';
 
 export default function RootLayout() {
   const { c, isDark } = useTheme();
+  usePageVisitCounter();
   return (
     <SafeAreaProvider>
       <AdsProvider>

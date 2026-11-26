@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { uploadImage } from './upload';
 import { CATEGORIES, EMPTY_DRAFT, SERVICE_TYPES, TALUKS, type Place, type PlaceDraft } from './types';
 
 /** Modal form for adding a new place or editing an existing one. */
@@ -18,6 +19,29 @@ export function PlaceForm({ initial, onSave, onCancel, inline = false }: {
     return draft;
   });
   const [busy, setBusy] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [imageError, setImageError] = useState<string | null>(null);
+  const [broken, setBroken] = useState(false);
+  const setImage = (patch: Partial<NonNullable<PlaceDraft['image']>> | null) => {
+    setBroken(false);
+    setD((prev) => ({
+      ...prev,
+      image: patch === null ? null : { url: '', credit: '', license: '', sourcePage: '', ...prev.image, ...patch },
+    }));
+  };
+  const onFile = async (file: File | undefined) => {
+    if (!file) return;
+    setImageError(null);
+    setUploading(true);
+    try {
+      // A new photo replaces the old one, so drop the old photo's credit.
+      setImage({ url: await uploadImage(file, d.name), credit: '', license: '', sourcePage: '' });
+    } catch (e) {
+      setImageError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setUploading(false);
+    }
+  };
   const set = <K extends keyof PlaceDraft>(k: K, v: PlaceDraft[K]) => setD((prev) => ({ ...prev, [k]: v }));
   const text = (k: keyof PlaceDraft) => ({
     value: (d[k] as string | null) ?? '',
@@ -94,6 +118,53 @@ export function PlaceForm({ initial, onSave, onCancel, inline = false }: {
         {d.category === 'sightseeing' && <label>How to reach<textarea className="input" rows={2} {...text('howToReach')} /></label>}
 
         <fieldset>
+          <legend>Photo</legend>
+          <div className="image-field">
+            <div className="image-preview">
+              {d.image?.url && !broken
+                ? <img src={d.image.url} alt="" onError={() => setBroken(true)} />
+                : <span className="muted small">{broken ? "Can't load this image" : 'No photo — the app shows an icon'}</span>}
+            </div>
+            <div className="stack grow">
+              <div className="actions">
+                <label className={`btn ${uploading ? 'disabled' : ''}`}>
+                  {uploading ? 'Uploading…' : d.image?.url ? 'Upload new photo' : 'Upload photo'}
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    hidden
+                    disabled={uploading}
+                    onChange={(e) => { onFile(e.target.files?.[0]); e.target.value = ''; }}
+                  />
+                </label>
+                {d.image?.url && <button type="button" className="btn ghost" onClick={() => setImage(null)}>Remove photo</button>}
+              </div>
+              <label>…or paste an image URL
+                <input
+                  className="input"
+                  type="url"
+                  placeholder="https://…/photo.jpg"
+                  value={d.image?.url ?? ''}
+                  onChange={(e) => (e.target.value || d.image?.credit ? setImage({ url: e.target.value }) : setImage(null))}
+                />
+              </label>
+              {d.image?.url && (
+                <label>Credit (optional)
+                  <input
+                    className="input"
+                    placeholder='e.g. "Photo: shop owner" — start with "Representative" if it is not this exact place'
+                    value={d.image.credit}
+                    onChange={(e) => setImage({ credit: e.target.value })}
+                  />
+                </label>
+              )}
+              {imageError && <p className="error small">{imageError}</p>}
+            </div>
+          </div>
+          <p className="muted small">Uploads are resized to 1600px and saved on mydharmapuri.com. Use photos you have permission to use.</p>
+        </fieldset>
+
+        <fieldset>
           <legend>Visibility</legend>
           <div className="grid3">
             <label>Status
@@ -146,7 +217,7 @@ export function PlaceForm({ initial, onSave, onCancel, inline = false }: {
 
         <div className="actions end">
           <button type="button" className="btn ghost" onClick={onCancel}>{inline ? 'Discard changes' : 'Cancel'}</button>
-          <button type="submit" className="btn primary" disabled={busy}>{busy ? 'Saving…' : 'Save'}</button>
+          <button type="submit" className="btn primary" disabled={busy || uploading}>{busy ? 'Saving…' : 'Save'}</button>
         </div>
       </form>
   );

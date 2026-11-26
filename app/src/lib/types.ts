@@ -20,6 +20,8 @@ export interface PlaceImage {
 
 export interface Place {
   id: string;
+  /** Readable URL name: mydharmapuri.com/place/<slug>. Missing on places not yet approved. */
+  slug?: string | null;
   category: CategoryKey;
   name: string;
   /** Filterable sub-type: cuisine, hotel tier, speciality, stream, … */
@@ -41,3 +43,6 @@ export interface Place {
   featuredUntil?: string | null;
   submittedBy: { uid: string; name: string | null; email: string | null } | null;
 }
+
+/** A place's page path, by its readable slug when it has one. */
+export const placePath = (p: Pick<Place, 'id' | 'slug'>) => `/place/${p.slug || p.id}` as const;

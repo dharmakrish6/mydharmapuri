@@ -7,6 +7,7 @@ import {
   getDoc,
   getDocs,
   increment,
+  limit,
   onSnapshot,
   query,
   serverTimestamp,
@@ -130,13 +131,23 @@ export function PlacesProvider({ children }: { children: ReactNode }) {
       .catch(() => {}); // Offline or quota: the snapshot is still complete as of the last deploy.
   }, []);
 
-  const index = useMemo(() => new Map(places.map((p) => [p.id, p])), [places]);
+  // Places by ID and by URL slug (page URLs use the slug; old links may still use the ID).
+  const index = useMemo(() => {
+    const m = new Map<string, Place>();
+    for (const p of places) {
+      m.set(p.id, p);
+      if (p.slug) m.set(p.slug, p);
+    }
+    return m;
+  }, [places]);
   const byId = useCallback((id: string) => index.get(id) ?? extra[id] ?? undefined, [index, extra]);
   const resolved = useCallback((id: string) => LIVE || index.has(id) || id in extra, [index, extra]);
 
   const lookup = useCallback((id: string) => {
     if (LIVE || !db || index.has(id) || id in extra) return;
-    getDoc(doc(db, 'places', id))
+    const fs = db;
+    getDocs(query(collection(fs, 'places'), where('slug', '==', id), where('status', '==', 'approved'), limit(1)))
+      .then(async (found) => (found.empty ? await getDoc(doc(fs, 'places', id)) : found.docs[0]))
       .then((snap) => {
         const data = snap.exists() ? ({ ...(snap.data() as Omit<Place, 'id'>), id: snap.id }) : null;
         setExtra((prev) => ({ ...prev, [id]: data && data.status === 'approved' ? withActiveFeatured([data])[0] : null }));

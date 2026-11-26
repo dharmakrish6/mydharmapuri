@@ -25,6 +25,8 @@ export type PlaceStatus = 'approved' | 'pending' | 'rejected';
 
 export interface Place {
   id: string;
+  /** Readable page URL: mydharmapuri.com/place/<slug>. Set once, kept when the name changes. */
+  slug?: string | null;
   category: CategoryKey;
   name: string;
   subcategory: string | null;
@@ -56,7 +58,7 @@ export interface Place {
 export type PlaceDraft = Pick<
   Place,
   'category' | 'name' | 'subcategory' | 'taluk' | 'address' | 'phone' | 'type' | 'brand' | 'ownership'
-  | 'description' | 'howToReach' | 'status' | 'featuredRank' | 'featuredLabel'
+  | 'description' | 'howToReach' | 'image' | 'status' | 'featuredRank' | 'featuredLabel'
   | 'featuredFee' | 'featuredFrom' | 'featuredUntil'
 >;
 
@@ -72,6 +74,7 @@ export const EMPTY_DRAFT: PlaceDraft = {
   ownership: null,
   description: null,
   howToReach: null,
+  image: null,
   status: 'approved',
   featuredRank: null,
   featuredLabel: null,
@@ -113,4 +116,13 @@ export interface Payment {
   note: string | null;
   recordedBy: string | null;
   createdAt?: Timestamp;
+}
+
+/** Site-wide visit counters for one day: /traffic/{YYYY-MM-DD}. */
+export interface TrafficDay {
+  id: string; // YYYY-MM-DD
+  webViews?: number;
+  webVisits?: number;
+  appViews?: number;
+  appVisits?: number;
 }

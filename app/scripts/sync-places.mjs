@@ -34,7 +34,7 @@ function decode(v) {
 }
 
 const KEEP = [
-  'category', 'name', 'subcategory', 'taluk', 'address', 'phone', 'type', 'brand', 'ownership',
+  'slug', 'category', 'name', 'subcategory', 'taluk', 'address', 'phone', 'type', 'brand', 'ownership',
   'description', 'howToReach', 'image', 'status', 'views', 'featuredRank', 'featuredLabel', 'featuredUntil',
 ];
 const ORDER = ['restaurants', 'hotels', 'hospitals', 'sightseeing', 'showrooms', 'colleges', 'schools', 'government_offices', 'services'];
